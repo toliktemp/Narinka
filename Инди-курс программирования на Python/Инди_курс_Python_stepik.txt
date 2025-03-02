@@ -1,0 +1,6556 @@
+https://stepik.org/course/63085/promo
+
+https://pythontutor.com/visualize.html#mode=edit
+
+
+********************
+
+
+https://stepik.org/lesson/295797/step/1?auth=login&unit=277501
+
+a = int(input('Введите первое число: '))
+b = int(input('Введите второе число: '))
+print(f"Произведение чисел {a} и {b} равно {a*b}!")
+
+
+
+функция input() останавливает выполнение программы и ждет, когда пользователь введет текст, то ее можно использовать как паузу или остановку в вашей программе. Пауза будут длиться до тех пор, пока пользователь не введет Enter
+
+print('Привет')
+input('Пауза № 1, нажми Enter и увидишь следующий print')
+print('Меня зовут Артём')
+input()
+print('Нравится курс?')
+input('Пауза № 3')
+print('Для чего изучаешь Python? Делись в комментариях')
+
+
+Ввод нескольких переменных
+
+Но при помощи int(input()) вы можете считать только одно число в одной строке. Если вам потребуется ввести несколько чисел в одну строчку через пробел, нужно поступать следующим образом:
+
+
+a, b = input().split() # вводится ТОЛЬКО 2 числа через пробел
+
+a = int(a)
+b = int(b)
+
+print(a, b)
+print(type(a),type(b))
+
+
+Здесь вводятся только два значения в одну строку через пробел. Затем каждое из них преобразуется к целому значению.
+
+Другой способ прочитать несколько значений - использовать функцию map
+
+a, b, c = map(int, input().split()) #считываем 3 целых числа через пробел
+print(a,b,c)
+
+
+Заключение
+Варианты использования функцииinput()
+
+a = input() - если необходимо ввести строку и сохранить ее в переменную а
+a = int(input()) - если необходимо ввести целое число и сохранить его в переменную а
+a = float(input()) - если необходимо ввести вещественное число и сохранить его в переменную а
+a,b = map(int,input().split()) - если необходимо ввести два целых числа в одну строку через пробел
+a,b,c = map(float,input().split()) - если необходимо ввести три вещественных числа в одну строку через пробел
+
+
+
+https://stepik.org/lesson/295797/step/4?auth=login&unit=277501
+
+num = int(input())
+print(num + 1)
+
+
+num = int(input())
+print(num * 2)
+print(num / 2)
+
+
+Формула вычисления площади квадрата следующая: S = a ** 2
+
+a = float(input())
+
+s = a ** 2
+print(s)
+
+
+Сумма двух чисел
+
+a = int(input())
+b = int(input())
+
+sum = a + b
+print(sum)
+
+
+Площадь и периметр прямоугольника
+
+Вам понадобятся следующие формулы:
+
+S = a * b
+P = 2 *(a + b)
+
+
+a = float(input())
+b = float(input())
+
+s = a * b
+p = 2 * (a + b)
+
+print(f'{s} {p}')
+
+
+Из Фаренгейтов в градусы Цельсия
+
+Дано значение температуры в градусах Фаренгейта. Определить значение этой же температуры в градусах Цельсия. Температура по Цельсию C и температура по Фаренгейту F связаны следующим соотношением:
+
+C = (F - 32) *5 / 9)
+
+
+f = float(input())
+c = ((f - 32) * 5 / 9)
+print(c)
+
+***
+
+a = int(input())
+b = int(input())
+
+sum = abs(a) + abs(b)
+print(sum)
+
+***
+Напишите программу, которая вычисляет длину отрезка (т.е. расстояние между двумя точками), заданного двумя значениями x1 и x2 (вещественные числа).
+
+
+
+a = float(input())
+b = float(input())
+
+sum = abs(b - a)
+print(sum)
+
+
+import math
+
+def calculate_segment_length(x1, x2):
+    length = abs(x2 - x1)
+    return length
+
+x1 = float(input("Enter x1: "))
+x2 = float(input("Enter x2: "))
+
+segment_length = calculate_segment_length(x1, x2)
+
+print("The length of the segment between x1 = {} and x2 = {} is {:.2f}".format(x1, x2, segment_length))
+
+
+***
+
+Вводится вещественное число и нам нужно его округлить до 2 и 3 разряда после запятой и вывести полученный результат через пробел в одной строчке
+
+
+x = float(input())
+
+x1 = round(x,2)
+x2 = round(x,3)
+
+print(f'{x1} {x2}')
+
+***
+
+Разность времен
+
+def calculate_time_difference(hours1, minutes1, seconds1, hours2, minutes2, seconds2):
+    total_seconds1 = hours1 * 3600 + minutes1 * 60 + seconds1
+    total_seconds2 = hours2 * 3600 + minutes2 * 60 + seconds2
+    difference = abs(total_seconds2 - total_seconds1)
+    return difference
+    
+    
+
+hours1 = int(input("Enter hours for the first time point: "))
+minutes1 = int(input("Enter minutes for the first time point: "))
+seconds1 = int(input("Enter seconds for the first time point: "))
+
+hours2 = int(input("Enter hours for the second time point: "))
+minutes2 = int(input("Enter minutes for the second time point: "))
+seconds2 = int(input("Enter seconds for the second time point: "))
+
+time_difference = calculate_time_difference(hours1, minutes1, seconds1, hours2, minutes2, seconds2)
+
+print("The number of seconds between the two time points is:", time_difference)
+
+
+
+
+def calculate_time_difference(hours1, minutes1, seconds1, hours2, minutes2, seconds2):
+    total_seconds1 = hours1 * 3600 + minutes1 * 60 + seconds1
+    total_seconds2 = hours2 * 3600 + minutes2 * 60 + seconds2
+    difference = abs(total_seconds2 - total_seconds1)
+    return difference
+
+try:
+    hours1 = int(input("Enter hours for the first time point: "))
+    minutes1 = int(input("Enter minutes for the first time point: "))
+    seconds1 = int(input("Enter seconds for the first time point: "))
+
+    hours2 = int(input("Enter hours for the second time point: "))
+    minutes2 = int(input("Enter minutes for the second time point: "))
+    seconds2 = int(input("Enter seconds for the second time point: "))
+
+    if hours1 < 0 or hours1 > 23 or minutes1 < 0 or minutes1 > 59 or seconds1 < 0 or seconds1 > 59:
+        raise ValueError("Invalid input for the first time point")
+    if hours2 < 0 or hours2 > 23 or minutes2 < 0 or minutes2 > 59 or seconds2 < 0 or seconds2 > 59:
+        raise ValueError("Invalid input for the second time point")
+
+    time_difference = calculate_time_difference(hours1, minutes1, seconds1, hours2, minutes2, seconds2)
+
+    print("The number of seconds between the two time points is:", time_difference)
+
+except ValueError as e:
+    print("Error: " + str(e))
+except Exception as e:
+    print("Error: " + str(e))
+
+
+
+
+In this program, we first define a function called calculate_time_difference that takes six arguments representing the hours, minutes, and seconds of two time points. The function calculates the total number of seconds for each time point using the formula hours * 3600 + minutes * 60 + seconds, calculates the absolute difference between the two times, and returns the result.
+
+We then prompt the user to enter the hours, minutes, and seconds for both time points using the input() function and convert the input values to integers using the int() function.
+
+Next, we call the calculate_time_difference function with the values of hours, minutes, and seconds for both time points, and store the result in a variable called time_difference.
+
+Finally, we use the print() function to display the calculated time difference to the user.
+
+Note that in this example, we assume that the input values of hours, minutes, and seconds are valid integers. You may want to add error handling code to check for invalid input values or exceptions that may occur during the execution of the program.
+
+~
+
+print(sum([int(input()) * i for i in [-3600, -60, -1, 3600, 60, 1]]))
+
+~
+
+hour_1, minute_1, second_1 = int(input()), int(input()), int(input())
+hour_2, minute_2, second_2 = int(input()), int(input()), int(input())
+
+# переводим все часы и минуты в секунды
+hour_1 *= 3600
+minute_1 *= 60
+hour_2 *= 3600
+minute_2 *= 60
+
+# находим общее кол-во секунд для каждого момента времени
+second_1 = hour_1 + minute_1 + second_1
+second_2 = hour_2 + minute_2 + second_2
+
+# кол-во секунд между моментами времени
+print(second_2 - second_1)
+
+~
+
+h1, m1, s1, h2, m2, s2 = (int(input()) for _ in range(6))
+print(3600 * (h2 - h1) + 60 * (m2 - m1) + (s2 - s1))
+
+
+~
+a,b,c,d,e,f = [int(input()) for _ in range(6)] 
+x = a * 3600 + b * 60 + c
+z = d * 3600 + e * 60 + f
+print(z - x)
+
+~
+
+a = [int(input()) for i in range(6)]
+print(sum((a[3]*3600, a[4]*60, a[5])) - sum((a[0]*3600, a[1]*60, a[2])))
+
+
+~
+
+def writing():
+    a = int(input())*3600+int(input())*60+int(input())
+    return a
+print(-writing()+writing())
+
+
+~
+
+часы_1, минуты_1, секунды_1 = [int(input()) for _ in range(3)]
+часы_2, минуты_2, секунды_2 = [int(input()) for _ in range(3)]
+print(abs(((часы_1 * 60 + минуты_1) * 60 + секунды_1) - ((часы_2 * 60 + минуты_2) * 60 + секунды_2)))
+
+
+~
+
+equation0 = (hours * 3600) + (minutes * 60) + seconds
+equation1 = (hours1 * 3600) + (minutes1 * 60) + seconds1
+
+final_equation = abs(equation0 - equation1)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Выражение
+
+
+Define a function that takes three integers a, b, and c as input and returns the maximum value of the expression that can be formed using the numbers and the operators + and *.
+
+Initialize a variable max_value to zero.
+
+Use three nested loops to generate all possible combinations of the operators + and * between the numbers a, b, and c. The outer loop iterates over the possible operators between a and b, the middle loop iterates over the possible operators between b and c, and the inner loop iterates over the possible parentheses.
+
+For each combination of operators, evaluate the expression using the eval() function and update max_value if the resulting value is greater than the current max_value.
+
+Return max_value as the output of the function.
+
+
+
+def max_expression_value(a, b, c):
+    max_value = 0
+    for op1 in ['+', '*']:
+        for op2 in ['+', '*']:
+            for paren in ['', '(', ')']:
+                expr = '{}{}{}{}{}{}{}'.format(paren, a, op1, paren, b, op2, c)
+                value = eval(expr)
+                if value > max_value:
+                    max_value = value
+    return max_value
+
+
+
+
+https://zazloo.ru/indi-python-module-1-5/
+
+a,b,c = int(input()),int(input()),int(input())
+
+x1 = a + b + c
+x2 = a * b * c
+x3 = (a + b) * c
+x4 = a * (b + c)
+
+print(max(x1, x2, x3, x4))
+
+
+~
+
+a = int(input())
+b = int(input())
+c = int(input())
+otv1 = max(a * b, a + b)
+otv2 = max(otv1 * c, otv1 + c)
+print(otv2)
+
+
+~
+
+a, b, c = (int(input()) for _ in range(3))
+print(max(a*b*c, a+b+c, (a+b)*c, a*(b+c)))
+
+
+~
+
+a, b, c = int(input()), int(input()), int(input())
+v0 = a + b + c
+v1 = a * b * c
+v2 = (a + b) * c
+v3 = a + b * c
+v4 = a * (b + c)
+v5 = a * b + c
+print(max(v0, v1, v2, v3, v4, v5))
+
+~
+
+a = int(input())
+b = int(input())
+c = int(input())
+print(max((a+b+c), (a*b+c), (a+b*c), ((a+b)*c), (a*(b+c)), (a*b*c)))
+
+~
+
+a, b, c = [int(input()) for _ in range(3)]
+p = a + b + c
+y = a * b * c
+t = a + b * c
+h = a * b + c
+o = (a + b) * c
+n = a * (b + c)
+print(max(p, y, t, h, o, n))
+
+~
+
+a = int(input())
+b = int(input())
+c = int(input())
+print (max( ((a+b)*c), (a*(b+c)), (a*b*c), (a*(b+c)), (a+b+c), ((a*b)+c)))
+
+
+~
+a,b,c = int(input()), int(input()), int(input())
+print(max(a+b+c, a+b*c, a*b*c, a*(b+c), (a+b)*c))
+
+
+~
+
+a, b, c = (int(input()) for _ in range(3))
+print(max(a + b + c, a * b * c, a + b * c, a * b + c, (a + b) * c, a * (b + c)))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+https://stepik.org/lesson/811743/step/1?auth=login&unit=815018
+
+
+Ввод нескольких значений в одной строке
+При помощи int(input()) вы можете считать только одно число в одной строке. Если вам потребуется ввести два числа в одну строчку через пробел, можно воспользоваться следующим кодом:
+
+
+a, b = input().split() # вводится ТОЛЬКО 2 числа через пробел
+a = int(a)
+b = int(b)
+print(a, b)
+print(type(a),type(b))
+
+
+
+a, b, c = map(int, input().split()) #считываем 3 целых числа через пробел
+print(a,b,c)
+
+
+
+Заключение
+Варианты использования функцииinput()
+
+a = input() - если необходимо ввести строку и сохранить ее в переменную а
+a = int(input()) - если необходимо ввести целое число и сохранить его в переменную а
+a = float(input()) - если необходимо ввести вещественное число и сохранить его в переменную а
+a,b = map(int,input().split()) - если необходимо ввести два целых числа в одну строку через пробел
+a,b,c = map(float,input().split()) - если необходимо ввести три вещественных числа в одну строку через пробел
+
+
+
+Напишите программу, которая вычисляет среднее арифметическое четырех введенных целых чисел.
+
+a, b, c, d = map(int, input().split()) 
+sum = a + b + c + d
+avg = sum / 4
+
+print(avg)
+
+~
+
+print(sum(map(int, a:= input().split()))/len(a))
+
+
+~
+
+numbers = [int(i) for i in input().split()]
+print(sum(numbers) / len(numbers))
+
+~
+
+l = [int(i) for i in input().split()]
+print(sum(l) / len(l))
+
+~
+print(sum(map(int,input().split())) / 4)
+
+~
+
+if __name__ == '__main__':
+    numbers = list(map(int, input().split()))
+    print(sum(numbers) / len(numbers))
+
+~
+
+d = list(map(int, input().split()))
+print(sum(d) / len(d))
+
+
+~
+
+print(sum(lst := list(map(int, input().split()))) / len(lst))
+
+
+~
+
+print(sum(map(int, input().split())) / 4)
+
+*******************************
+
+Найти лучшую оценку
+Напишите программу, которая находит наилучшую оценку ученика за решение пяти контрольных работ. 
+
+Оценки всех пяти работ вводятся в одну строку, могут быть только целые числа от 1 до 100
+
+input_numbers = [int(i) for i in input().split()]
+best_rating = max(input_numbers)
+print(best_rating)
+
+
+~
+
+print(max(map(int, input().split())))
+
+~
+
+print(max([int(i) for i in input().split()]))
+
+
+~
+
+a = list(map(int, input().split()))
+print(max(a))
+
+
+
+====================================
+
+Известно, что на обработку одного квадратного метра панели требуется 1г сульфида. Всего необходимо обработать N прямоугольных панелей размером A на B метров. Вам необходимо подсчитать, сколько всего сульфида необходимо на обработку всех панелей. И не забудьте, что панели требуют обработки с обеих сторон.
+
+На вход программе подаются 3 положительных целых числа N,A,B в одну строку
+
+PS: в этой задаче обратите внимание на формат ввода. Числа вводятся в одну строку, поэтому вы уже не можете их так считать:
+
+n = int(input())
+a = int(input())
+b = int(input())
+Возникнет ошибка! Чтобы считать три значения, которые поступают через пробел в  одной строке пользуйтесь следующей инструкцией
+
+
+
+panel, height, width = map(int, input().split())
+
+total = (height * width) * 2
+print(panel * total)
+
+
+~
+n, a, b = map(int,input().split())
+print(2 * n * (a * b))
+
+~
+
+print(*[(n*a*b*2) for n, a, b in [map(int, input().split())]])
+
+
+~
+
+n, a, b = [int(i) for i in input().split()]
+print(((a * b) * n) * 2)
+
+~
+
+n, a, b = (int(_) for _ in input().split())
+print(n * a * b * 2)
+
+
+~
+
+print(*[n1 * n2 * n3 * 2 for n1, n2, n3 in [map(int, input().split())]])
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Журавлики
+
+Петя, Катя и Сережа делают из бумаги журавликов. Вместе они сделали S журавликов. Сколько журавликов сделал каждый ребенок, если известно, что Петя и Сережа сделали одинаковое количество журавликов, а Катя сделала в два раза больше журавликов, чем Петя и Сережа вместе?
+
+Входные данные
+Поступает одно натуральное число S – общее количество сделанных журавликов.
+
+
+a = int(input())
+
+k = int((a/3)*2)
+p = int((k/2)/2)
+s = int(p)
+
+print(p, k, s)
+
+
+~
+
+Петя = Сережа = int(int(input()) / 6); 
+
+Катя = 2 * (Петя + Сережа); 
+
+print( Петя, Катя, Сережа )
+
+~
+
+s = int(input()) // 3
+print(s // 2, s * 2, s // 2)
+
+~ 
+
+a=int(input())
+k=int(a-(a/3))
+p=int(a/3/2)
+s=int(a/3/2)
+print(p,k,s)
+
+~
+
+s = int(int(input()) / 6)
+print(s, s * 4, s)
+
+~
+
+print(n := int(input()) // 6, n * 4, n)
+
+~
+
+import numpy as np
+print(*int(input()) // 6 * np.array((1, 4, 1)))
+
+~
+
+s = int(input())
+a = s // 6
+print(a, 4*a, a)
+
+~
+
+====================================
+
+Магазин канцелярских товаров
+
+Однажды, посетив магазин канцелярских товаров, Вася купил X карандашей, Y ручек и Z фломастеров. Известно, что цена ручки на 2 рубля больше цены карандаша и на 7 рублей меньше цены фломастера. Также известно, что стоимость карандаша составляет 3 рубля. Требуется определить общую стоимость покупки.
+
+
+x, y, z = map(int,input().split())
+
+a = 3
+b = a + 2
+c = b + 7
+print((x*a) + (y*b) + (z * c))
+
+
+~
+
+x, y, ivoynne = map(int, input().split())
+print(x * 3 + y * 5 + ivoynne * 12)
+
+~
+
+x, y, z = map(int, input().split())
+print(3*x + 5*y + 12*z)
+
+
+~
+
+print((n := [*map(int, input().split())])[0]*3 + n[1]*5 + n[2]*12)
+
+~
+
+[print(a[0] * 3 + a[1] * 5 + a[2] * 12) for a in [list(map(int, input().split()))]]
+
+
+~
+
+x, y, z = map(int, input().split()) #. x-карандашей, y-ручек, z-фломастеров
+price_x = 3
+price_y = price_x + 2 #. 5
+price_z = price_y + 7 #. 12
+print(price_x * x + price_y * y + price_z * z)
+
+~
+
+x, y, z = map(int,input().split())
+print(3 * x + 5 * y + 12 * z)
+
+~
+
+x, y, z = map(int,input().split())
+k = 3
+p = (k + 2)
+f = (p + 7)
+print(k * x + p * y + f * z)
+
+
+=========================================
+
+Два бандита
+Бандиты Гарри и Ларри отдыхали на природе. Решив пострелять, они выставили на бревно несколько банок из-под кока-колы (не больше 10). Гарри начал простреливать банки по порядку, начиная с самой левой, Ларри — с самой правой. В какой-то момент получилось так, что они одновременно прострелили одну и ту же последнюю банку.
+
+Гарри возмутился и сказал, что Ларри должен ему кучу денег за то, что тот лишил его удовольствия прострелить несколько банок. В ответ Ларри сказал, что Гарри должен ему еще больше денег по тем же причинам. Они стали спорить кто кому сколько должен, но никто из них не помнил сколько банок было в начале, а искать простреленные банки по всей округе было неохота. Каждый из них помнил только, сколько банок прострелил он сам.
+
+Определите по этим данным, сколько банок не прострелил Гарри и сколько банок не прострелил Ларри.
+
+
+
+gary, lary = map(int, input().split())
+bank = gary + lary - 1
+
+print(bank - gary, bank - lary)
+
+~
+
+x, y = map(int, input().split())
+print(y-1, x-1)
+
+~
+
+a, b = map(int, input().split())
+n = (a + b) - 1
+garry = n - a
+larry = n - b
+
+print(garry, larry)
+
+
+~
+
+Гарри, Ларри = map(int, input().split())
+Гарри, Ларри = Ларри-1, Гарри-1
+print( Гарри, Ларри )
+
+
+~
+
+Garry, larry = map(int,input().split())
+print(((Garry + larry) - 1) - Garry, ((Garry + larry) - 1) - larry)
+
+
+
+==============================================
+
+https://stepik.org/lesson/295798/step/1?auth=login&unit=277502
+
+
+
+
+print(1234)
+print(1, 2, 3, 4)
+print('hello', True, 21)
+print(2+3, 4*5, 2+3*4)
+
+
+a = 100
+b = 200
+print(a, '+', b, '=', a + b)
+print(a, ' * ', b, ' = ', a * b)
+
+
+
+Обратите внимание на второй вывод в примере. Количество пробелов увеличилось, потому что мы добавили пробелы в саму строку.
+
+Между значениями print всегда по умолчанию ставит один пробел.
+
+
+Необязательные аргументы print()
+аргумент sep называется разделителем (от англ. «separator»). Он отвечает за то, что будет выводиться между значениями в пределах одной команды print. Как я уже писал ранее по умолчанию разделитель равен знаку пробел. Но это значение можно изменить при помощи параметра sep. Ему нужно присвоить внутри функции print() новое значение в виде строки. 
+
+
+print(1, 2, 3, 4)
+print(1, 2, 3, 4, sep=' ')
+print(1, 2, 3, 4, sep='')
+print(1, 2, 3, 4, sep=',')
+print(1, 2, 3, 4, sep='*')
+print(1, 2, 3, 4, sep='###')
+
+
+
+аргумент end. От этого аргумента будет зависеть, что будет печататься после вывода всех значений в пределах одной команды print(). Команда print() по умолчанию  в конце производит перенос на новую строчку, потому что по умолчанию аргумент end принимает значение \n - это служебный символ, обозначающий перенос строки.
+
+
+print(1, 2, 3)
+print('hello', end='\n')
+print(4, 5, 6)
+print('new hello')
+print(7, 8, 9)
+
+
+
+Если вам нужно добавить в вашем выводе перенос на новую строчку без каких либо дополнительных символов, мы можете воспользоваться просто этой командой, так как по умолчанию print в конце сделает перенос
+
+print()
+Если вы хотите добавить дополнительный перенос строки или отменить его вовсе, заменив любым символов, просто присвойте end новое значение в виде строки.
+
+print(1, 2, 3, end='!') #не будет переноса в конце
+print('hello') # здесь будет перенос
+print(5, 6, 7) # и здесь будет перенос
+
+
+Можно одновременно пользоваться атрибутами sep и end . Задавать им значения можно в любом порядке, главное прописать имя атрибута
+
+
+print(1, 2, 3, sep='!', end='?')
+print('new', 'string')
+print(5, 6, 7, 8, 9, end='END', sep='@') # и здесь будет перенос
+
+
+
+https://stepik.org/lesson/295798/step/7?auth=login&unit=277502
+
+Напишите программу, которая  принимает на вход три целых числа в одной строке через пробел и выводит их последовательно через запятую как в примерах ниже
+
+
+a, b, c = map(int, input().split())
+print(a, b, c, sep=", ")
+
+
++++++++++++++++++++++
+
+a=int(input())
+print((a-1),a,(a+1),sep=' < ')
+
+
+~~ 
+num = int(input())
+
+print(f'{num-1}<{num}<{num + 1}')
+
+~
+
+print(num := int(input()) - 1, num + 1, num + 2, sep='<')
+
+~
+
+n = int(input())
+print(n-1, n, n+1, sep='<')
+
+~~
+
+[print(*[i for i in range(a-1, a+2)], sep='<') for a in [int(input())]]
+
+
+=================
+
+
+
+Вам необходимо вывести три фразы, разделяя их тремя дефисами. Сами фразы вводятся с клавиатуры на трех разных строчках
+
+
+a = input() 
+b = input()
+c = input()
+
+print(a,b,c,sep = '---')
+
+
+~~
+print(input(), input(), input(), sep='---')
+
+~
+
+print(*[input() for _ in range(3)], sep='---')
+
+~
+
+print('---'.join([input() for _ in range(3)]))
+
+~~~
+
+a = input ()
+b = input ()
+c = input ()
+print (a, end="---")
+print (b, end="---")
+print (c)
+
+~~
+
+print(f"{input()}---{input()}---{input()}")
+
+
+~~
+
+import sys
+
+print(*map(str.strip, sys.stdin), sep='---')
+
+===================
+
+
+В этой задаче мы сами будем решать, какое значение использовать в качестве разделителя в параметре sep
+
+Программа принимает на вход строку — разделитель, вам необходимо распечатать числа от 1 до 5, выводя между ними введенный разделитель
+
+
+s = input()
+print(1,2,3,4,5, sep=s)
+
+~~
+
+print(*range(1, 6), sep=input())
+
+~~
+
+print(input().join('12345'))
+
+~~
+
+separator = input()
+num = [1, 2, 3, 4, 5]
+print(*num, sep=(separator))
+
+===============================
+
+str = input()
+print(str, end=' - Сказала она!')
+
+~~
+
+print(input(), end=" - Сказала она!")
+
+~~
+
+print(f"{input()} - Сказала она!")
+
+
+========================
+
+print('Гвидо', 'Ван', 'Россум', sep='*', end='-')
+print('Основатель', 'Питона', sep='_', end='!')
+
+Гвидо*Ван*Россум-Основатель_Питона!
+
+
+
+
+
+1.8  ++++++++++++++++++++++++++++++++++++++++
+
+https://stepik.org/lesson/295805/step/1?auth=login&unit=277509
+
+
+
+
+Деление нацело
+В python данная операция обозначается знаком двойного слеша //. И допустим если вам надо нацело поделить a на b (a//b), нужно ответить на вопрос: «Cколько раз второе число (в нашем случае b) умещается в первое?»
+
+И попробуйте посчитать примеры ниже. Нажав на кнопку треугольника вы увидите правильные ответы
+
+
+print(21//5)
+print(37//10)
+print(42//6)
+print(5//8)
+print(17956//1000)
+print(37//8)
+
+
+Остаток от деления в python обозначается знаком процента %. Чтобы посчитать, вы должны ответить на вопрос:
+«Сколько останется от первого числа после того, как в него максимальное количество раз уместится второе число?»
+
+И ниже на примерах проверьте правильно ли вы определяете остаток от деления
+
+
+print(31%5)
+print(89%10)
+print(35%7)
+print(5%13)
+print(8541%100)
+print(37%8)
+
+
+~~~~~~~~~~~~
+
+Напишите программу, которая найдет сколько полных килограмм умещается в заданное число грамм.
+
+num = int(input())
+
+print(num // 1000)
+
+~~
+print(int(input()) // 1000)
+
+
+~~
+
+# print(int(input()) // 1000)
+print(int(f'0{input()[:-3]}'))
+
+~~
+
+print(int(input()) // 1000)
+
+~~
+
+
+++++++++++++++++  Дележ яблок - 1
+n школьников делят k яблок поровну, неделящийся остаток остается в корзинке. Сколько яблок достанется каждому школьнику? Программа получает на вход сперва число n, а потом k.
+
+
+n = int(input())
+k = int(input())
+print(k // n)
+
+
+~~
+
+a=int(input())
+print(int(input())//a)
+
+~
+
+n, k = int(input()), int(input())
+print(k // n)
+
+~
+
+print(*[ j // i for i, j in [ [int(input()), int(input())] ] ] )
+
+
+~
+
+''' Яблоки '''
+print(int(int(input()) ** -1 * int(input())))
+
+~~
+print(*[k // n for n, k in [[int(input()) for _ in range(2)]]])
+
+
+=======================
+
+У вас есть N рублей и вы хотите купить максимальное количество пар кроссовок по цене R рублей. Сколько пар кроссовок Вы можете себе купить?
+
+На вход программе поступают два натуральных числа N и R
+
+n = int(input())
+r = int(input())
+print(n // r)
+
+~
+
+print(int(input()) // int(input()))
+
+~
+
+n, r = int (input()), int(input() )
+print(n // r)
+
+~
+print(int([n:= int(input()), n//int(input())][1]))
+
+
+==================================
+
++++ Программе поступает на вход одно целое положительное число, ваша задача вывести его последнюю цифру
+
+
+num = int(input())
+last_digit = num % 10
+
+print(last_digit)
+
+
+~~
+
+print( input() [-1] )
+
+~~
+
+print(int(input()) % 10)
+
+~~
+
+print(int(input())%10) #print(input()[-1])   #два рабочих способа
+
+~~
+
+n = int(input())
+print( n  -n // 10 * 10)
+
+~~
+
+n = int(input())
+print( n - ( n // 10 * 10 ))
+
+~~~~~~
+
+num = int(input("Enter a positive integer: "))
+
+last_digit = num % 10
+
+print("The last digit of", num, "is", last_digit)
+
+
+In this program, we first prompt the user to enter a positive integer using the input() function, and then convert the input string to an integer using the int() function.
+
+Next, we use the modulo operator % to find the remainder of the input number when divided by 10, which gives us the last digit.
+
+
+
++++ =============================
+
+Дано целое положительное число, ваша задача вывести разряд сотен этого числа
+
+
+num = int(input("Enter a positive integer: "))
+
+hundreds_digit = (num // 100) % 10
+
+print("The hundreds digit of", num, "is", hundreds_digit)
+
+
+In this program, we first prompt the user to enter a positive integer using the input() function, and then convert the input string to an integer using the int() function.
+
+Next, we use integer division // to divide the input number by 100, which removes the last two digits. Then we use the modulo operator % to find the remainder when this result is divided by 10, which gives us the digit in the hundreds place.
+
+~~~
+
+print(( '000' + input() ) [-3])
+
+
+~~
+
+print((int(input()) // 100) % 10)
+
+
+~~~
+
+print( int(input()) % 1000 // 100)
+
+~~~
+
+try:
+    print( input() [-3] )
+except:
+    print(0)
+
+
+~~
+
+print(  *[a[-3] if int(a) > 99 else 0 for a in [input() ] ] )
+
+~
+
+a = str(int(input()) // 100) [-1]
+
+print(int(a))
+
+
++++ ===================================
+
+program that receives a positive three-digit integer as input and outputs the sum of its digits:
+
+num = int(input("Enter a positive three-digit integer: "))
+
+digit1 = num // 100
+digit2 = (num // 10) % 10
+digit3 = num % 10
+
+digit_sum = digit1 + digit2 + digit3
+
+print("The sum of the digits in", num, "is", digit_sum)
+
+
+In this program, we first prompt the user to enter a positive three-digit integer using the input() function, and then convert the input string to an integer using the int() function.
+
+Next, we use integer division // and the modulo operator % to extract each digit of the input number. 
+
+Specifically, digit1 is the first digit (i.e., the hundreds digit), 
+
+digit2 is the second digit (i.e., the tens digit), 
+
+and digit3 is the third digit (i.e., the ones digit).
+
+~~~
+
+print(sum(map(int,input())))
+
+~~~
+
+a = int(input())
+print((a // 100) + (a // 10 % 10) + (a % 10))
+
+~~~
+
+a = int(input())
+
+a1 = a // 100
+a2 = a  // 10 % 10
+a3 = a % 10
+
+print(a1 + a2 + a3)
+
+~~~~
+
+
+n = int(input())
+
+hundreds = n // 100				# hundreds
+tens =  n % 100 // 10			# tens digits
+one = n % 10						# one digit
+
+
+
+
+
++++ =================================
+
+Выиграть в лотерею
+У Олега в банке есть n евро. Он хочет снять всю сумму наличными. Номиналы еврокупюр равны 1, 5, 10, 20, 100. Какое минимальное число купюр должен получить Олег после того, как снимет все деньги? На вход программе поступает одно положительные целое число n.
+
+
+n = int(input())
+
+hundreds = n // 100
+
+twentys = n % 100 // 20
+
+tens = n % 20 // 10
+
+fives = n % 10 // 5
+
+units = n % 5 // 1
+
+banknotes = hundreds + twentys + tens + fives + units
+
+print(banknotes)
+
+
+~~~
+
+n = int(input())
+
+n1 = n // 100 # купюры по 100
+n2 = n % 100 // 20 # купюры по 20, после выдачи купюр по 100
+n3 = n % 20 // 10 # купюры по 10, после выдачи купюр по 20
+n4 = n % 10 // 5 # купюры по 5, после выдачи купюр по 10
+n5 = n % 5 // 1 # купюры по 1, после выдачи купюр по 5
+
+
+print(n1 + n2 +n3 + n4 + n5) # скалдываем кол-во купюр
+
+~~~
+
+x = int(input())
+print(x // 100 + x % 100 // 20 + x % 20 // 10 + x % 10 // 5 + x % 5 // 1)
+
+~~~
+
+n, s, lst = int(input()), 0, [100, 20, 10, 5, 1]
+
+for i in lst:
+    s += n // i
+    n %= i
+    
+print(s)
+
+
+~~~
+
+
+n = int(input())
+a = n // 100
+b = n %100 // 20
+c = n % 100 % 20 // 10
+d = n % 100 % 20 % 10 // 5
+e = n % 100 % 20 % 10 % 5 // 1
+print(a + b + c + d +e)
+
+~~~
+
+cash = int(input())
+sum = 0
+for i in [100, 20, 10, 5, 1]:
+    sum += cash // i
+    cash = cash % i
+print(sum)
+
+
+
+======================================
+
+ Электронные часы - 1
+ 
+Дано число n. С начала суток прошло n минут. Определите, сколько часов и минут будут показывать электронные часы в этот момент.
+
+Программа должна вывести два числа: количество часов (от 0 до 23) и количество минут (от 0 до 59).
+
+Учтите, что число n может быть больше, чем количество минут в сутках.
+
+
+a = int(input())
+
+b = (a // 60 % 24)
+c = a % 60
+
+print(b, c)
+
+~~~~~
+
+n = int(input())
+print(n // 60 % 24, n % 60)
+
+~~~~
+
+time_passed = int(input())
+
+hour = time_passed // 60 % 24
+minute = time_passed % 60 
+
+print(hour, minute)
+
+~~~
+
+n = int(input())
+
+ost = n % 1440   						# 1440 минут в сутках (получаем остаток от деления на 1440)
+hours = ost // 60  					# 60 минут в часу (получаем ко-во часов)
+minutes = ost % 60  				# 60 минут в часу (получаем остаток от деления  ко-во минут)
+
+print(hours, minutes)
+
+
+
+=========================
+
+Следующее четное
+
+Дано целое число n. Выведите следующее за ним четное число.
+
+Задачу необходимо решить целочисленными операциями без использования условных операторов и\или циклов.
+
+x = int(input())
+
+y = x // 2
+
+print((y + 1) * 2)
+
+~~~~
+n = int(input())
+
+print(n + 2 - n % 2)
+
+
+~~~~
+
+print(int(input()) // 2 * 2 + 2)
+
+~~~~
+
+n = int(input())
+
+print( 2 * (n // 2 + 1))
+
+
+~~~~
+
+n = int(input())
+print ((n+2)//2*2)
+
+~~~~
+
+a = int(input())
+print( a + 2 - a % 2)
+
+~~~~
+
+a=int(input())
+b = (a+2) - (a+2) % 2
+
+print(b)
+
+
+==================================
+
+Электронные часы - 2
+
+Электронные часы показывают время в формате h:mm:ss, то есть сначала записывается количество часов в диапазоне от 0 до 23, потом обязательно двузначное количество минут, затем обязательно двузначное количество секунд. Количество минут и секунд при необходимости дополняются до двузначного числа нулями.
+
+Программа получает на вход число n - количество секунд, которое прошло с начала суток.
+
+Выведите показания часов, соблюдая формат.
+
+
+a = int(input())
+
+hours = a // 3600
+minutes = a % 3600 // 60
+seconds = a % 60
+
+print(hour, ':',  minutes // 10, minutes % 10, ':',  seconds // 10, seconds % 10, sep='')
+
+~~~~~~~
+
+all_seconds = int(input())
+
+hours = all_seconds // 60 // 60 % 24
+minutes = all_seconds // 60 % 60
+seconds = all_seconds % 60
+
+print(f'{hours}:{minutes:02}:{seconds:02}')
+
+~~~~~~~~~
+
+N = int(input())
+
+n = N % (3600 * 24)
+h = n // 3600
+m = n % 3600 // 60
+s = n % 60
+
+print(h, ':', m // 10, (m % 10), ':', s // 10, s % 10, sep='')
+
+
+~~~~~~~
+
+n = int(input())
+
+s = n % 60 
+m = n // 60 % 60
+h = n // 60 // 60
+
+print(h,':', m // 10, m % 10,':',s // 10, s % 10, sep='')
+
+
+~~~~~~~
+
+s = int(input())
+
+print('{}:{:02}:{:02}'.format(s//3600, s%3600//60, s%60))
+
+ the format() method to print a string in a specific format. The string contains three placeholders {}, {:02}, and {:02}, which will be replaced by values specified in the format() method.
+ 
+ s//3600: This expression calculates the number of hours in s, where s is a variable that holds the total number of seconds. The double slash operator // performs integer division, which means that the result is rounded down to the nearest integer. This gives us the number of hours in s.
+
+s%3600//60: This expression calculates the number of minutes in s. The % operator gives us the remainder after dividing s by 3600 (the number of seconds in an hour), and then the // operator performs integer division by 60 (the number of seconds in a minute), which gives us the number of minutes.
+
+s%60: This expression calculates the number of seconds left after calculating the number of hours and minutes. The % operator gives us the remainder after dividing s by 60 (the number of seconds in a minute).
+
+'{:02}': This is a formatting directive that specifies that the corresponding value should be printed with at least two digits. If the value has only one digit, a leading zero will be added.
+
+
+~~~~
+
+n = int(input())
+
+h = n // 3600 % 24
+m = n % 3600 // 60
+s = n % 3600 % 60
+
+print(h, end=':')
+print(m // 10, m % 10, sep='', end=':')
+print(s // 10,  s % 10, sep='')
+
+***
+
+time = int(input())
+
+hours = time // 3600 % 24
+minutes_1 = time // 60 % 60 // 10
+minutes_2 = time // 60 % 60 % 10
+
+seconds_1 = time % 60 // 10
+seconds_2 = time % 60 % 10
+
+print(f'{hours}:{minutes_1}{minutes_2}:{seconds_1}{seconds_2}')
+
+~~~~~~~~~~
+
+
+================================
+
+Оператор присваивания с операцией
+
+https://stepik.org/lesson/752092/step/1?auth=login&unit=753944
+
+
+
+Наиболее часто используемая операция в программировании это увеличение переменной на единицу. Она используется при организации счетчиков значений. Операцию увеличения на единицу также называют инкремент. Давайте и мы реализуем эту операцию.
+
+Ваша задача увеличить входящее целое значение на единицу используя присвоение с оператором
+
+
+
+print(int(input())	 +1)			#+=
+
+
+num = 1
+num += 1
+print(num)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Банк обещает внесенную вами сумму увеличить за год в 1.5 раза. Ваша программа должна посчитать сколько вы получите через год, если внесете x рублей
+
+
+
+deposit = float(input())
+deposit *= 1.5
+print(deposit)
+
+
+=============
+
+ b **= a
+ 
+ b = b ** 
+ 
+ 
+ =======================================
+ 
+ Логический тип
+ 
+ https://stepik.org/lesson/295806/step/1?auth=login&unit=277510
+ 
+ 
+ Что такое логический тип?
+В компьютерных программах очень часто нужно будет оперировать такими понятиями как Правда и Ложь. Для этого во многих языках программирования придумали специальный тип данных, который называется логический или булевый тип. 
+
+Bool(от англ. boolean - логический) является встроенным типом в Python. Логический тип может принимать только одно из двух значений:
+
+ True (Истина)
+ False (Ложь).
+ 
+ 
+ Никакое другое значение не будет иметь тип bool, только True и False.
+
+Булев тип широко используется в операциях сравнения.
+
+Операции сравнения
+Прежде чем рассмотрим сами операции стоит отметить, что результатом любого допустимого сравнения будет логический тип: либо значение True, либо False
+
+При любом сравнении участвуют правда операнда: левый операнд (стоит слева от операции сравнения) и правый операнд. Python поддерживает следующие операции сравнения:
+
+== Возвращает True, если оба операнда равны. ...
+!= Возвращает True, если оба операнда НЕ равны. ...
+> (больше чем) Возвращает True, если первый операнд больше второго.
+< (меньше чем) ...
+>= (больше или равно) ...
+<= (меньше или равно)
+
+
+a = 5
+b = 7
+c = 5
+
+print(a == b)
+print(a != b)
+print(a == c)
+
+print('-'*10)
+print(a > b)
+print(a < b)
+print(a > c)
+
+print('-'*10)
+print(a >= b)
+print(a <= b)
+print(a >= c)
+print(a <= c)
+
+
+~~~~~~~~~~~
+
+На вход поступает целое число.
+
+Программа должна вывести True, если введенное значение является положительным числом, в противном случае - False.
+
+
+x = int(input())
+print(x > 0)
+
+~~~~~~
+
+n = int(input())
+print(bool(abs(n)+n))
+
+
+~~~~~~~~
+
+print(int(input()) > 0)
+
+
+~~~~~~~~
+
+b= int(input())
+print(-b != abs(b))
+
+~~~~~~~~~
+
+print('True' if int(input()) > 0 else 'False')
+
+
+====================================
+
+На вход поступает целое число.
+
+Программа должна вывести True, если введенное значение является четным числом, в противном случае - False.
+
+Сделать задачу необходимо без использования условного оператора.
+
+num = int(input())
+
+print(num % 2 == 0)
+
+
+~~~
+
+print(bool(1 - int(input()) % 2))
+
+~~~
+
+print(not int(input()) % 2)
+
+~~~
+
+print(not int(input()) & -~0)
+
+
+
+The code print(not int(input()) & -~0) takes user input as an integer, applies the bitwise operator & with the value -~0, and then applies the boolean operator not to the result before printing it out.
+
+Here's what each part of the code does:
+
+    input() prompts the user to enter some input, which is expected to be a number.
+    int() converts the input to an integer, which allows it to be processed mathematically.
+    -~0 is a clever way of representing the number 1 using bitwise operators. The -~ operator is a shorthand for adding 1 to a number. Therefore, -~0 is equivalent to 1. Using bitwise operators instead of a simple 1 can be a way to write shorter code or to optimize performance, although it can also make the code less readable.
+    & is the bitwise AND operator, which compares each bit of the two input values and returns a new value with a 1 bit in each position where both inputs had a 1 bit. In this case, it's being used to check if the input number is odd. Specifically, since -~0 is 1 (which has a binary representation of 0b0001), taking the bitwise AND of any odd number n with -~0 will return 1 (binary 0b0001) because the least significant bit of n is always 1.
+    not is the boolean NOT operator, which reverses the truth value of a boolean expression. In this case, it's being used to invert the result of the bitwise AND operation. Therefore, the final result of not int(input()) & -~0 will be True if the input number is even, and False if the input number is odd.
+
+Overall, this code is a compact and somewhat obfuscated way of checking whether a user-provided integer is odd or even. It does so by using bitwise operators instead of more common arithmetic operations, which can make the code harder to understand for people who aren't familiar with these operators.
+
+========================
+
+На вход поступает целое положительное число.
+
+Программа должна вывести True, если у введенного числа последняя цифра 2, в противном случае — False.
+
+Сделать задачу необходимо без использования условного оператора.
+
+n = int(input())
+
+print( n%10 == 2)
+
+
+~~~
+
+print(input()[-1] == '2')
+
+~~~
+
+a = int(input())
+b = a % 10
+b = b ==2
+print (b)
+
+~~~~
+
+print(not bool(int(input()) % 10 -  2))
+
+
+
+===========================================
+
+На вход программе поступают два целых числа в одной строке.
+
+Программа должна вывести True, если оба числа делятся на 7, в противном случае - False.
+
+Сделать задачу необходимо без использования условного оператора.
+
+
+
+a, b = map(int,input().split())
+n = (a % 7 == 0) and (b % 7 ==0 )
+
+print(n)
+
+
+~~~
+print(all([not int(i) % 7 for i in input().split()]))
+
+~~~
+
+#print(sum([int(i) % 7 for i in input().split()]) == 0)
+
+#print(sum(map(lambda x: int(x) % 7, input().split())) == 0)
+
+#print(sum(map(lambda x: int(x) % 7 == 0, input().split())) == 2)
+
+#print(all(map(lambda x: int(x) % 7 == 0, input().split())))
+
+a, b = map(int, input().split())
+print(a % 7 == 0 and b % 7 == 0)
+
+
+~~~~
+
+a, b = map(int, input().split())
+print(not a%7 and not b%7)
+
+~~~
+
+print([0,0] == ([int(a)%7  for a in (input().split())]))
+
+~~~
+
+=================
+
+На вход поступают три целых числа - стороны треугольника.
+
+Необходимо вывести True, если данные стороны образуют правильный треугольник, в противном случае - False.
+
+a, b, c = map(int, input().split())
+
+print(a == b == c)
+
+
+~~~
+
+x,y,z = map(int,input().split())
+s = x+y+z
+print( x == s // 3)
+
+
+~~~
+
+print(*[a==b==c for a,b,c in [map(int,input().split())]])
+
+~~~
+
+''' Треугольник '''
+print((lambda a, b, c: a == b == c)(*list(map(int, input().split()))))
+
+
+==============================
+
+На вход поступает целое число.
+
+Программа должна вывести True, если введенное значение принадлежит интервалу от 5 не включительно до 19 включительно , в противном случае - False.
+
+num = int(input())
+
+print(num > 5 and num <= 19)
+
+
+~~~
+print(int(input()) in range(19, 5, -1))
+
+~~~
+
+print(5 < int(input()) < 20)
+
+~~~
+
+i = int(input())
+print(5 < i <= 19)
+
+
+========================================
+
+На вход поступают два слова.
+
+Программа должна вывести True, если хотя бы одно слово равно слову "awesome".
+
+
+str1 = input()
+str2 = input()
+
+print(str1 == 'awesome' or str2 == 'awesome')
+
+~~~
+
+print('awesome' in {input(), input()})
+
+~~~
+
+print(any(input() == 'awesome' for _ in '__'))
+
+
+~~~
+
+print("awesome" in input() + input())
+
+~~~
+
+print(input() == 'awesome' or input() == 'awesome')
+
+
+=========================
+
+На вход поступают три целых числа - стороны треугольника.
+
+Необходимо вывести True, если данные стороны образуют равнобедренный треугольник, в противном случае - False.
+
+Сделать задачу необходимо без использования условного оператора.
+
+
+
+a, b, c = [int(i) for i in input().split()]
+
+print((a == b) or (a == c) or (b == c))
+
+
+~~~
+
+a,c,b=map(int,input().split())
+print(a==b or a==c or b==c)
+
+
+~~~
+
+a,b,c=map(int,input().split())
+print((min(a,b))==(min(b,c)))
+
+
+~~~
+
+a, b, c = map(int, input().split())
+print(a in [b, c])
+
+
+~~~
+
+a,b,c=map(int,input().split())
+
+print((a==b and (a <= c or a >= c or b <= c or b>= c)) 
+		or (a == c and (a >= b or a <= b or c >= b or c <= b)) 
+		or (b == c and (b >= a or b <= a or c >= a or c <= a)) 
+		or a == b ==c ) 
+		
+~~~
+
+print(len(set(input().split())) < 3)
+
+
+~~~
+
+a = list(map(int, input().split()))
+print(sum(a)  !=  sum(set(a)))
+
+
+
+======================
+
+На вход поступает целое положительное число.
+
+Программа должна вывести True, если данное число является двузначным, в противном случае - False.
+
+num = int(input())
+
+print(num >= 10 and num < 100)
+
+
+~~~
+
+print(len(input()) == 2)
+
+~~~
+
+a = int(input())
+print(a // 100 == 0 and a // 10 != 0)
+
+
+~~~
+
+''' Двузначное '''
+print(int(input()) in range(10, 100))
+
+~~~
+
+a = int(input())
+print(10 <=  a  <=  99)
+
+~~~
+
+a=int(input())
+
+print(a % 100 == a  !=a % 10)
+
+
+=============================
+
+На вход поступают три целых числа - стороны треугольника.
+
+Необходимо вывести True, если данные стороны образуют прямоугольный треугольник, в противном случае - False.
+
+Для написания программы необходимо вспомнить теорему Пифагора
+
+formula : a ** 2 + b ** 2 = c ** 2
+
+a, b, c = map(int,input().split())
+
+print((a ** 2 + b ** 2 == c ** 2) or (c ** 2 + a ** 2 == b ** 2) or (c ** 2 + b ** 2 == a ** 2))
+
+
+
+~~~
+
+f = sorted(map(int,input().split()))
+print(f[0] ** 2 + f[1] ** 2 == f[2] ** 2)
+
+~~~
+
+a,b,c=map(int,input().split())
+
+x=max(a,b,c)
+y=min(a,b,c)
+z=(a+b+c)-x-y
+
+print(x**2==(y**2)+(z**2))
+
+
+~~~
+
+a, b, c = sorted(map(int, input().split()))
+print(a**2 + b**2 == c**2)
+
+
+~~~
+
+def square(number):
+    return number ** 2
+
+a, b, c = map(square, (map(int, input().split())))
+print(a+b==c or a+c==b or b+c==a)
+
+
+
+=================================================
+
+https://stepik.org/lesson/295932/step/1?auth=login&unit=277636
+
+Округление вверх и округление вниз
+
+
+1. Функция trunc - является частью модуля math. Отсекает дробную часть от числа. Фактически, проще использовать встроенную функцию приведения типов int, так как её подгружать через модуль не нужно.
+
+Примеры:
+
+from math import trunc
+
+print(trunc(2.5)) # 2
+print(trunc(3.5)) # 3
+print(trunc(-2.5)) # -2
+
+print(int(2.5)) # 2
+print(int(3.5)) # 3
+print(int(-2.5)) # -2
+
+2. Функция floor - является частью модуля math. Округляет числа в сторону минус бесконечности (вниз).
+
+Примеры:
+
+from math import floor
+
+print(floor(2.5)) # 2
+print(floor(3.5)) # 3
+print(floor(-2.5)) # -3
+
+3. Функция ceil - является частью модуля math. Округляет числа в сторону плюс бесконечности (вверх).
+
+Примеры:
+
+from math import ceil
+
+print(ceil(2.5)) # 3
+print(ceil(3.5)) # 4
+print(ceil(-2.5)) # -2
+
+4. Функция round - является встроенной функцией, которую не нужно подгружать. Она похожа на "школьное округление", но у неё есть своя особенность:
+
+Числа с дробной частью от 0 до 0.5 (не включая 0.5) - round округляет вниз.
+print(round(5.3)) 		# 5
+
+Числа с дробной частью от 0.5 (не включая 0.5) до 1 - round округляет вверх.
+print(round(6.7)) 		# 7
+
+Числа с дробной частью 0.5 - round округляет до ближайшего целого чётного числа.
+
+print(round(12.5)) 	# 12
+print(round(13.5)) 	 # 14
+
+П.с.: "школьное" округление (если дробная часть от 0 до 0.5 (не включая 0.5) - округление вниз, а если от 0.5 до 1 - округление вверх) - это Российский стандарт и в Питон его не закладывали, поэтому приходится самим его реализовывать, вот код:
+
+from math import floor, ceil
+
+N = float(input())
+if N - int(N) < 0.5:
+    print(floor(N))
+else:
+    print(ceil(N))
+
+
+
+==================
+
+Перевязь
+
+from math import ceil
+
+num = int(input())
+
+x = ceil(num * 0.10)
+
+print(x)
+
+
+~~~
+
+import math
+print(math.ceil(int(input()) / 10))
+
+~~~
+
+n = int(input())
+
+print((n % 10 and 1) + n // 10)
+
+~~~
+
+a = int(input())
+print(a // 10 + 1 * ((a % 10)! = 0))
+
+
+
+==========================
+
+После вечеринки компания из N человек хочет добраться домой с помощью такси. Максимальное количество человек, которое может уместиться в машину равно 4. Сколько машин придется вызвать ребятам, чтобы все могли уехать?
+
+from math import ceil
+
+num = int(input())
+
+x = ceil(num / 4)
+print(x)
+
+
+~~~
+
+import math
+print(math.ceil(int(input()) / 4))
+
+~~~
+
+''' Такси '''
+print(-(-int(input()) // 4))
+
+~~~
+
+import math
+n = int(input())
+print(math.ceil(n/4))
+
+~~~
+
+people = int(input())
+taxi = 0
+taxi += people // 4
+if people % 4 > 0:
+    taxi+=1
+print(taxi)
+
+~~~
+
+from math import ceil
+print(ceil(int(input()) / 4))
+
+~~~
+
+b = int(input())
+print(b // 4 + bool(b % 4 != 0))
+
+
+======================
+
+Парты 
+В некоторой школе решили набрать три новых математических класса и оборудовать кабинеты для них новыми партами. За каждой партой может сидеть два учащихся. Известно количество учащихся в каждом из трех классов. Выведите наименьшее число парт, которое нужно приобрести для них. 
+
+from math import ceil
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+x1 = ceil(a / 2)
+x2 = ceil(b / 2)
+x3 = ceil(c / 2)
+sum = x1 + x2 + x3
+
+print(sum)
+
+~~~
+from math import ceil
+
+print(sum([ceil(int(input()) / 2) for _ in range(3) ]))
+
+~~~
+
+import math
+a = int(input())
+b = int(input())
+c = int(input())
+print(math.ceil(a/2) + math.ceil(b/2) + math.ceil(c/2))
+
+
+~~~
+
+from math import *
+a, b, c = int(input()), int(input()), int(input())
+print(ceil(a / 2) + ceil(b / 2) + ceil(c / 2))
+
+
+~~~
+
+import math
+print(sum(map(math.ceil, [int(input())/2 for _ in "..."])))
+
+
+~~~
+
+import math
+class1 = int(input())
+class2 = int(input())
+class3 = int(input())
+print(math.ceil(class1/2)+math.ceil(class2/2)+math.ceil(class3/2))
+
+
+~~~
+
+n1, n2, n3 = int(input()), int(input()), int(input())
+n1 = n1 + (n1 % 2)
+n2 = n2 + (n2 % 2)
+n3 = n3 + (n3 % 2)
+print(int((n1 + n2 + n3) / 2))
+
+~~~
+from math import ceil
+print(sum(ceil(int(input()) / 2) for i in '123'))
+
+
+=================================
+
+Ремонт
+
+import math 
+
+l, w, h = map(int,input().split())
+
+
+p = 2 * (l * h) + 2 * (w * h)                  #находим площадь для покраски
+total_cans = p / 16                            #получаем сколько банок нужно для покраски 
+
+print(math.ceil(total_cans))                  #округляем вверх полученое кол-во банок
+
+
+~~~
+
+import math
+l, w, h = map(int, input().split())
+n = (l + w)*h*2
+print(math.ceil(n/16))
+
+
+~~~
+
+import math
+
+l, w, h = map(int, input().split())
+
+s = (l * h + w * h) * 2  # площадь поверхности стены
+
+count = math.ceil(s / 16)  # необходимое количество банок
+
+print(count)
+
+
+~~~
+
+import math
+
+L, W, H = map(int, input().split())
+
+print(math.ceil((L + W) * 2 * H / 16))
+
+
+~~~
+
+
+=====================================
+
+https://stepik.org/lesson/407056/step/1?unit=396340
+
+1.12 Деление нацело и по остатку отрицательных чисел в Python
+
+19 / 5 = 3.8			19 / -5 = -3.8		-19 / 5 = -3.8
+19 // 5 = 3			19 // -5 = -4			-19 // 5 = -4
+19 % 5 = 4			19 = -4 * (-5) + (-1)
+
+19 % 5 = -1			-19 = -4 * 5 + 1
+
+19 = 5 * 3 + 4
+a / b    a = r * b + q
+
+q - это остаток
+
+a = (r // b) * b + q
+
+53 = 5 * 10 + 3
+
+
+~~~
+
+-19 // -5 = 3
+-19 % -5
+-19 = 3 * (-5)  + (-4)
+-19 / -5 = [3.8] = 3
+
+Деление нацело и по остатку отрицательных чисел
+
+
+import math
+
+a = -33
+b = 7
+q = a % b   # узнаем остаток от деления
+
+d = (a // b) * b + q
+
+if d == a:
+    print("Значение равные")
+else:
+    print("Значение не равные")
+
+
+
+
+=========== Cтроки и операции над ними ===============
+
+
+https://stepik.org/lesson/295799/step/1?unit=277503
+
+ascii code table
+
+Числовое значение каждого символа вы можете получить с помощью команды ord(). 
+
+Строки совподают если у них одинаковое количество символов и длина
+
+
+Операции над строками:
+
+Конкатенация 
+
+Дублирование строки
+
+Следующая операция - это умножение строки на какое-либо число.  Результатом выполнения будет строка, которая повторится заданное число раз.
+
+
+Нахождение длины
+
+Следующая операция - это нахождение длины строки len() от английского length - длина. Вы пишите эту функцию len() и указываете внутри строку. Вы можете указать строку напрямую или передать её в качестве переменной:
+
+
+Проверка вхождения
+
+Следующая операция in проверяет есть ли какая-либо подстрока в нашей строке. Например, в нашей переменной s сейчас содержится слово Hello. Мы можем проверить содержатся ли в ней символ l или подстрока He Обратите внимание, что порядок символов и регистр важен. Результатом операции будет булево значение:
+
+str = 'Hello'
+
+l in str => True
+
+
+Сравнение строк
+Строки можно сравнивать между собой. Строки будут равны если длина и символы полностью будут совпадать. регистр букв при данной операции также важен: 
+
+=====================
+
+Напишите программу, которая выводит фразу «Я стану крутым программистом!» три раза на отдельных строках; строки должны быть именно такие, символ в символ!.
+
+a = 'Я стану крутым программистом!\n'
+print(a*3)
+
+
+=======================
+
+Напишите программу, которая напечатает строку, состоящую из 777 букв "W"
+
+
+
+print("W" * 777)
+
+[print('W', end='') for _ in range(777)]
+
+
+
+========================
+
+Напишите программу, которая выводит «Лев Николаевич Толстой написал "Война и мир"» (без внешних кавычек).
+
+print ('Лев Николаевич Толстой написал "Война и мир"')
+
+
+print('''Лев Николаевич Толстой написал "Война и мир"''')
+
+
+print("Лев Николаевич Толстой написал \"Война и мир\"")
+
+~~~
+s = '«Лев Николаевич Толстой написал "Война и мир"»'
+print(s[1:-1])
+
+~~~
+a = 'Лев'
+b = 'Николаевич'
+c = 'Толстой'
+d = 'написал'
+f = '"Война'
+g = 'и'
+h = 'мир"'
+print(a, b, c, d, f, g, h, sep = ' ')
+
+
+~~~
+
+print(input().lstrip("<<").rstrip(">>"))
+
+
+==========================
+
+Напишите программу, которая сначала считывает две фразы по очереди, а потом воспроизводит их в той же последовательности, каждую на отдельной строчке.
+
+a, b= input(), input()
+print(a,b, sep = '\n')
+
+
+print(input()+"\n" + input())
+
+
+print(f"{input()}\n{input()}")
+
+
+a = input()
+b = input()
+print(a + '\n' + b)
+==========================
+
+Напишите программу, которая сначала считывает три фразы по очереди, а потом воспроизводит их в обратной последовательности, каждую на отдельной строчке.
+
+st1 = input()
+st2 = input()
+st3 = input()
+
+print(st3, st2, st1, sep='\n')
+
+~~~
+l=[ input() for _ in range(3)]
+for i in l[::-1]:
+    print(i)
+
+~~~
+print(*reversed([input() for _ in range(3)]), sep='\n')
+
+~~~
+print(*[input() for _ in range(3)][::-1], sep='\n')
+
+==========================
+
+Напишите программу, которая считывает с клавиатуры слово (или фразу, неважно), после чего выводит это же слово четыре раза на одной строке, разделяя их пробелами.
+
+
+str = input()
+
+print((str + ' ') * 4) 
+
+~~~
+
+print((input()+' ') * 4)
+
+
+~~~
+
+str = input() + ' '
+print(str * 4)
+
+
+~~~
+x = input()
+print(x,x,x,x,sep = ' ')
+
+
+===========================
+
+Напишите программу, которая считывает с клавиатуры фразу и выводит на экран количество символ, которое содержалось в ней, учитывая все знаки препинания и пунктуации.
+
+print(len(input()))
+
+===========================
+
+
+Напишите программу, которая считывает с клавиатуры два слова (или фразы, неважно), после чего вы должны при помощи операции конкатенации сцепить вторую фразу с первой и вывести результат на экран.
+
+a = input()
+b = input()
+
+print(b + a)
+
+
+
+============================
+
+Напишите программу, которая считывает с клавиатуры слово (или фразу, неважно), после чего вывести данную строку, увеличенную по длине  в 3 раза.
+
+str = input()
+
+print(str * 3)
+
+
+=============================
+
+Какой результат данной операции (1+2)*(‘4’+’5’) ?
+
+Постарайтесь ответить без использования консоли python
+
+454545
+
+
+=============================
+
+Программа принимает на вход три символа через пробел в одну строку. Необходимо вывести код каждого символа при помощи функции ord в определенном формате.
+
+a,b,c = input().split()
+print('Simvol code ' + a + ' is ' + str(ord(a)) + '.')
+print('Simvol code ' + b + ' is ' + str(ord(b)) + '.')
+print('Simvol code ' + c + ' is ' + str(ord(c)) + '.')
+
+~~~
+
+a,b, c = input().split()
+
+print(f'Simvol code {a} is {str(ord(a))}.')
+print(f'Simvol code {b} is {str(ord(b))}.')
+print(f'Simvol code {c} is {str(ord(c))}.')
+
+~~~
+
+[print(f'Simvol code {el} is {ord(el)}.') for el in input().split()]
+
+~~~
+
+a,b,c=map(str,input().split())
+print("Simvol code",a,"is",ord(a),end='.\n')
+print("Simvol code",b,"is",ord(b),end='.\n')
+print("Simvol code",c,"is",ord(c),end='.\n')
+
+~~~
+chars = input().split()
+
+for c in chars:
+    print(f"Simvol code {c} is {ord(c)}.")
+
+==============================
+
+https://stepik.org/lesson/295800/step/1?unit=277504
+
+2.2 Строки: индексы и срезы
+
+
+Номер последнего индекса меньше чем длина всей строки на 1. Cледовательно, последний индекс можно записать таким образом: в квадратных скобках вы находите длину вашей строки и вычитаете из неё один символ.
+
+s = privet
+s[len(s) - 1] 	=> 't'
+
+
+d = 'hello world'
+
+Таким образом вы можете получить последнюю букву, но на самом деле это очень сложный пример и чтобы его упростить в Python существует еще обратная нумерация. Она начинается с правого края и последняя буква стоит под индексом -1, затем будет стоять под -2 и так далее. Последняя будет стоять под индексом -11.
+
+Отсюда мы можем сделать следующий вывод: чтобы получить последний индекс вы можете указать просто -1. И это будет работать в любой строке вне зависимости от ее длины.
+
+
+Если вы напишете вот таким образом s[:] , то есть не укажете ни первый параметр, ни последний, то вы возьмите копию всей строки или всю строку целиком.
+
+
+
+Также при срезах вы можете использовать третий параметр - это шаг.
+
+Например, у нас с вами всего 11 букв и мы хотим взять все буквы стоящие через одну:
+
+Это можно сделать следующим образом: мы берем всю строку, то есть от начала до конца и третьим параметром передаем с каким шагом нужно брать следующую букву: s[::2] . В данном случае шаг равен двум.
+
+
+
+Если вы укажете таким образом: s[::-1], то есть с самого начала и до конца и шагом -1, то перевернёте строку:
+
+
+Также вы можете писать таким образом s[2:8:3], то есть указать начало 2, конец 8 и шаг 3 - мы получим с вами такой результат:
+
+
+
+Cтрока - это неизменяемый объект. Например, вы можете спокойно получить первый символ эту букву h, но если вы попытаетесь записать в эту строку какой-либо другой символ, то есть присвоить по индексу, например, скажем букву а, то вы получите вот такую ошибку, в которой говорится, что строка не поддерживает изменения.
+
+
+То есть в уже существующем объекте вы не можете исправлять какую-либо букву и если вы хотите какую-либо букву изменить, то вы должны действовать по-другому - вы должны будете создать новую строку.
+
+Если мы с вами в строке s хотим изменить букву о стоящую на четвертом месте на букву а, то мы можем срезом взять всё, что стоит до этой буквы а, то есть с самого начала и до 4 элемента, затем к этому срезу добавить нашу новую букву и затем взять срез, который находится после буквы а, то есть начиная с пятого элемента и до самого конца.
+
+s[: 4] + 'a' + s[5:] 	=> hella world
+
+
+===========================
+
+Программа получает на вход строку и ваша задача вывести первый элемент данной строки
+
+
+print(input()[0])
+
+
+print(input()[-1])
+
+
+print(input()[:4])
+
+print(input()[-4:])
+
+print(input()[::2])
+
+print(input()[1::2])
+
+
+print(input()[::-1])
+
+
+
+Выведите каждый третий символ строки в обратном порядке, начиная с последнего.
+
+print(input()[-1::-3])
+
+
+The program receives one word as input. Your task is to move the last letter to the beginning, thereby shifting all the other letters to the right by one digit. As an answer, you need to output the received word
+
+
+str = input()
+new_str = str[-1] + str[:-1]
+
+print(new_str)
+
+
+~~~
+
+a = input()
+print(a[-1], a[0:-1], sep='')
+
+======================================
+
+2.3 Методы строк
+
+
+https://stepik.org/lesson/295801/step/1?unit=277505
+
+Метод .upper  имеет следующий шаблон вызова:
+
+S.upper()
+Данный метод возвращает новую строку из строки S, превращает все буквы в заглавные. Если в строке будут присутствовать символы или цифры, то они останутся неизменными. Цифры и знаки пунктуации игнорируются.
+
+Не забывайте ставить скобки после вызова метода. Python в этом случае сообщит вам о том, что такой метод существует, но он его не вызовет, т.е. функциональность этого метода не будет задействована:
+
+
+Метод upper вы обязаны знать. Он часто используется для приведения строк к одному регистру. Преобразовывать строки к одному регистру необходимо для успешной проверки на равенство двух строк в том случае, когда регистр букв не важен.  При этом сами строки могут содержать буквы как маленького регистра так и буквы большого регистра. Пример рассмотрим в следующем методе.
+
+
+
+Метод .lower  имеет следующий шаблон вызова:
+
+S.lower()
+Метод .lower является противоположным методу .upper . Данный метод возвращает новую строку из строки S, превращает все буквы в строчные(нижний регистр). Если в строке будут присутствовать символы или цифры, то они останутся неизменными.
+
+
+s1 = 'NotHinG'
+s2 = 'NOThing'
+
+print(s1, s2, s1 == s2)
+print(s1, s2, s1.upper() == s2.upper())
+print(s1, s2, s1.lower() == s2.lower())
+
+
+
+Метод .title  имеет следующий шаблон вызова:
+
+S.title()
+Метод .title возвращает новую строку, в которой каждое слово исходной строки начинается с буквы в верхнем регистре, а все остальные буквы в нижнем. Цифры и знаки пунктуации игнорируются.
+
+
+
+Метод .capitalize  имеет следующий шаблон вызова:
+
+S.capitalize()
+Метод .capitalize возвращает новую строку, в которой только первый символ находится в верхнем регистре, а все остальные в нижнем. Цифры и знаки пунктуации игнорируются.
+
+
+
+Метод .swapcase  имеет следующий шаблон вызова:
+
+S.swapcase()
+Метод .swapcase возвращает новую строку, в которой  все заглавные буквы преобразованы в строчные, строчные – в заглавные. Цифры и знаки пунктуации игнорируются.
+
+
+~~~~~~~~~~~~~~~
+
+
+На вход подается строка. Ваша задача отформатировать строку так, чтобы первые 3 и последние 3 символа были заглавными, а оставшиеся строчные.
+
+
+str = input()
+
+print(str[:3].upper() + str[3:-3].lower() + str[-3:].upper())
+
+~~~
+
+s = input().lower()
+s = s.replace(s[0:3],s[0:3].upper()).replace(s[-3:],s[-3:].upper())
+print(s)
+
+
+~~~
+
+word = input().lower()
+
+first = word[0:3].upper()
+last = word[-3::].upper()
+mid = word[3:-3]
+
+print(first+mid+last)
+
+
+
+==============
+
+На вход программе поступает строка, состоящая как из заглавных так из строчных букв. Ваша задача преобразовать строку так, чтобы все строчные символы заменились на заглавные, все заглавные - на строчные. Символы пунктуации и цифры не нужно преобразовывать.
+
+
+print(input().swapcase())
+
+
+===============
+
+На вход программе поступает строка, состоящая как из заглавных так из строчных букв. Ваша задача преобразовать строку так, чтобы первая буква у каждого слова стала маленькой, а остальные буквы превратились в заглавные
+
+
+str = input().lower()
+x = str.title().swapcase()
+
+print(x)
+
+~~~
+
+print(input().title().swapcase())
+
+~~~
+
+print(str.swapcase(input().title()))
+
+
+~~~
+
+def convert_string(s):
+    words = s.split()
+    new_words = []
+    
+    for word in words:
+        new_word = word[0].lower() + word[1:].upper()
+        new_words.append(new_word)
+        
+    new_string = ' '.join(new_words)
+    
+    return new_string
+
+
+s = "ThIS is a TesT StrinG"
+new_s = convert_string(s)
+print(new_s)  # Output: "this Is A Test String"
+
+
+~~~
+
+a = input().title()
+print(a.swapcase())
+
+
+========== Метод count ============
+
+Метод .count имеет следующий шаблон вызова:
+
+S.count(sub[, start[, end]])
+Данный метод переводится как количество. С помощью метода count вы можете посчитать сколько раз вам встретилась строка sub в строке S .
+
+
+s = 'hello world'
+ 
+# сколько раз встретится буква 'l' в строке 
+# со 2-го по 6-й символ включительно
+
+print(s.count('l', 2, 7))
+
+
+Метод .count используется очень часто, его вы обязаны знать. 
+
+
+str = input().lower()
+
+print(str.count('e'))
+
+~~~
+
+print(input().lower().count('e'))
+
+~~~
+a=input()
+
+b = a
+
+a=a.count("e")
+b=b.count("E")
+
+print(a + b)
+
+
+========= Метод index() ==============
+
+Метод .index имеет следующий шаблон вызова:
+
+S.index(sub[, start[, end]])
+
+Метод  .index также возвращает индекс первой найденной подстроки, аналогично методу .find  
+
+
+s = 'hello world'
+print(s.index('o'))
+
+
+Но между ними есть разница: если вы будете искать подстроку, которой у вас нет, то метод index()  вернет ошибку, то есть программа автоматически завершится.
+
+
+
+*** There are two methods in Python that can find the first occurrence of a character on the left in a string and output its index: find() and index().
+
+find() method:
+The find() method returns the lowest index of the first occurrence of a substring in a string. If the substring is not found, the method returns -1.
+
+s = "Hello, World!"
+index = s.find('o')
+print(index)  # Output: 4
+
+
+In this example, the find() method is called on the string s with the argument 'o', which finds the first occurrence of the character 'o' on the left side of the string and returns its index, which is 4.
+
+index() method:
+The index() method works similarly to find(), but it raises a ValueError if the substring is not found instead of returning -1.
+
+
+s = "Hello, World!"
+index = s.index('o')
+print(index)  # Output: 4
+
+
+s = "Hello, World!"
+index = s.index('o')
+print(index)  # Output: 4
+
+
+In this example, the index() method is called on the string s with the argument 'o', which finds the first occurrence of the character 'o' on the left side of the string and returns its index, which is 4.
+
+Note that if the substring is not found, index() will raise a ValueError. For example:
+
+s = "Hello, World!"
+index = s.index('z')
+print(index)  # This will raise a ValueError: substring not found
+
+In general, find() is preferred over index() when you are not sure whether the substring will be found, as it avoids the need to handle exceptions.
+
+
+======================
+
+На вход программе поступает строка, ваша задача вывести на экран индекс первой найденной латинской буквы a
+
+Если такого символа в введенной строке нет, выведите -1
+
+print(input().find('a'))
+
+
+~~~
+
+s = input()
+try:
+    n = s.index('a')
+except ValueError:
+    n = -1
+print(n)
+
+~~~
+
+a = input()
+if 'a' in a:
+    print(a.index('a'))
+else:
+    print('-1')
+    
+    
+ ~~~
+ 
+ a = input()
+print(-1 if not 'a' in a else a.index('a'))
+
+
+
+====================
+
+На вход программе поступает строка, ваша задача вывести на экран индекс последней найденной латинской буквы a
+
+Если такого символа в введенной строке нет, выведите -1
+
+
+print(input().rfind('a'))
+
+
+~~~
+
+n = input()
+print(n.rindex("a") if "a" in n else -1 )
+
+~~~
+
+chlen=input()
+if 'a' in chlen:
+    print(chlen.rfind('a'))
+else:
+    print(-1)
+    
+ ~~~
+
+string = "test test test test"
+[i for i in range(len(string)) if string.startswith('test', i)]
+[0, 5, 10, 15]
+
+~~~
+
+import collections
+
+a = "example"
+counter = collections.Counter(a)
+
+print(dict(counter))
+# {'e': 2, 'x': 1, 'a': 1, 'm': 1, 'p': 1, 'l': 1}
+
+
+
+
+======== Метод replace ===========
+
+Метод .replace имеет следующий шаблон вызова:
+
+S.replace(old, new[, count])
+
+
+s = 'hello world'
+
+print(s.replace('e', 'a'))
+print(s.replace(' ', ''))
+print(s.replace('l', '?', 2))
+
+
+
+==================
+
+Программа получает на вход фразу, состоящую из нескольких слов, разделенных пробелом.
+
+Ваша задача заменить все пробелы запятыми и вывести полученную строку
+
+
+print(input().replace(' ', ','))
+
+
+===================
+
+На вход программе поступает строка, ваша задача удалить из нее все символы w и z.
+
+Учитываем только маленькие буквы
+
+
+str = input().lower()
+
+new_str = str.replace('w', '').replace('z', '')
+
+print(new_str)
+
+~~~
+
+a = input()
+a = a.split('w')
+a = ''.join(a)
+a = a.split('z')
+a = ''.join(a)
+
+print(a)
+
+
+~~~
+
+n = input()
+n = n.replace('w','')
+n = n.replace('z','')
+print(n)
+
+~~~
+
+a=input().replace('w','')
+print(a.replace('z',''))
+
+~~~
+
+print(''.join(''.join(input().split('w')).split('z')))
+
+~~~
+
+print(*([_ for _ in input() if _ not in ('w', 'z')]), sep='')
+
+~~~
+
+print(input().lower().replace('w','').replace('z',''))
+
+
+=====================================
+
+Упражнение на строки
+
+Петя записался в кружок по программированию. На первом занятии Пете задали написать простую программу. Программа должна делать следующее: в заданной строке, которая состоит из прописных и строчных латинских букв, она:
+
+удаляет все гласные буквы,
+перед каждой согласной буквой ставит символ ".",
+все прописные согласные буквы заменяет на строчные.
+Гласными буквами считаются буквы A, O, Y, E, U, I, а согласными — все остальные. На вход программе подается ровно одна строка, она должна вернуть результат в виде одной строки, получившейся после обработки.
+
+
+a = input().lower()
+
+a = a.replace('a','')
+a = a.replace('o','')
+a = a.replace('i','')
+a = a.replace('e','')
+a = a.replace('y','')
+a = a.replace('u','')
+a = a.replace('','.')
+
+a = (a[0:-1])
+
+print(a)
+
+
+~~~
+
+s = input()
+s = s.lower()
+s = s.replace('a', '')
+s = s.replace('o', '')
+s = s.replace('y', '')
+s = s.replace('e', '')
+s = s.replace('u', '')
+s = s.replace('i', '')
+s = s.replace('', '.')
+
+s = s.rstrip('.')
+
+print(s)
+
+
+~~~
+
+print(*("." + i for i in input().lower() if i not in "aoyeui"), sep="")
+
+~~~
+
+print('.' +  '.'.join(input().lower().replace('a','').replace('o','').replace('y','').replace('e','').replace('u','').replace('i','')))
+
+
+~~~
+
+a = input().lower()  					# Приняли строку и сразу перевели все буквы в строчные
+b = ['a', 'o', 'y', 'e', 'u', 'i']  		# Создали список гласных букв
+
+for i in a:  									# Переменная i поочередно принимает каждую буквы из строки a
+    if i not in b:  							# Если переменная i не входит в список b (список глассных)
+        print('.' + i, end='')  			# То мы ее выводим пользователю, предварительно поставив перед буквой точку
+
+
+~~~
+
+x = input()
+
+y = x.lower().replace('a', '').replace('o', '').replace('i', '').replace('e', '').replace('u','').replace('y','')
+o = len(y)
+
+print(y.replace('','.',o))
+
+
+~~~
+
+s = [i for i in input().lower() if i not in 'aoyeui']
+
+print(end='.')
+print(*s, sep='.')
+
+
+~~~
+
+a = input().lower() 				# делаем все строчными
+
+a= a.replace('a','').replace('o','').replace('y','').replace('e','').replace('u','').replace('i','')
+# удаляем лишние буквы
+
+a = a.replace('','.') 				# cтавим точку вместо пустых знаков
+
+s = len(a) -1 
+
+print(a[:s])
+
+
+~~~
+
+a = input().lower()
+exception = 'aoyeui'
+for i in a:
+    if i not in exception:
+        print('.' + i, end='')
+        
+
+===================================================
+
+
+Цепочка вызовов методов
+
+Так как результатом вызова большинства методов выше является новая строка, то мы можем от нее вновь вызывать следующий метод. Таким образом получается цепочка вызовов:
+
+
+https://stepik.org/lesson/816439/step/1?unit=819767
+
+z=input('Введите строку: ').upper()
+print(z)
+
+print(z.lower().replace('a','l'))
+print(z)
+
+s=input('Введите строку: ').title().swapcase()
+print(s)
+
+print(input('Введите строку: ').upper().count('E'))
+
+
+Но будьте аккуратны, результатом некоторых методов являются не строки. Например, метод .count возвращает число, а к числам уже нельзя применять методы строк:
+
+
+============ Метод split()   ===============
+
+Метод .split  имеет следующий шаблон вызова:
+
+S.split(sep=None, maxsplit=-1)
+ Метод .split выполняет разбиение исходной строки S на подстроки по разделителю sep и возвращает их в виде списка. Со списками мы познакомимся с вами позднее. По умолчанию разделитель sep равен пробелу
+ 
+ 
+ 
+ w='ivanov ivan ivanovich'
+print(w.split())
+print(len(w.split()))
+
+print('a b C d e'.split())
+
+
+Вы можете задать параметру другое значение. Когда параметр sep будет задан, то следующие друг за другом разделители не воспринимаются как один и считаются разделителями пустых строк:
+
+
+print('1, 2, 3, 4, 5'.split(', '))
+
+print('a->b->C->->d->e'.split('->'))
+
+print('1      4      5'.split())
+
+print('   a  b   c   '.split())
+
+print('    '.split())
+
+print('wwwww'.split('w'))
+
+
+Если параметр sep не указан, то последовательные пробелы объединяются вместе и вообще исключаются из разбиений. А если строка состоит только из пробелов или является пустой, то результатом разделения по пробелу будет пустой список
+
+Также можно передать вторым параметром maxsplit какое максимальное количество разбиений вы хотите выполнить
+
+
+
+print('1, 2, 3, 4, 5'.split(', ', maxsplit=2))
+print('a b C d e'.split(maxsplit=1))
+print('a b C d e'.split(maxsplit=2))
+print('a b C d e'.split(maxsplit=3))
+
+
+Метод .split используется очень часто, его вы обязаны знать. При помощи него можно узнать сколько отдельных слов было в исходной строке. Для этого достаточно посчитать длину списка после разбиения
+print(len(S.split()))
+
+
+
+=================================================
+
+Программа получает на вход фразу, ваша задача посчитать из скольких слов состоит данная фраза. Для удобства будем считать словом любую последовательность символов.
+
+print(len(input().split()))
+
+
+
+
+============== Метод join() ======================
+
+Метод .join является противоположностью метода .split. При помощи него вы можете разбитую строку вновь собрать в одно целое.
+
+Метод .join  имеет следующий шаблон вызова:
+
+S.join(iterable)
+Метод .join заставляет нас встретиться с темой, которую мы еще не проходили: итерабельные(iterable) объекты. Не волнуйтесь, мы ее в дальнейшем конечно же разберем. И советую вернуться к этому уроку. Сейчас для упрощения лишь скажу, что к iterable относятся строки и списки, и мы их можем передать в данный метод
+
+Метод .join отвечает за объединение списка строк с помощью определенного указателя. Часто это используется при конвертации списка в строку. Вначале вы пишете строку-соединитель, затем ставите точку и вызываете метод  .join. В скобках указываете переменную, в которой у вас храниться список или другая строка.
+
+
+w = 'ivanov ivan ivanovich'
+s = w.split()
+print(s)
+print('!'.join(s))
+
+y = 'hello world'
+print('&'.join(y))
+
+words = ['London', 'is', 'the', 'capital', 'of', 'GB']
+print(','.join(words))
+
+
+
+=======================================
+
+
+list_strings = ['Follow', 'the', 'Cops', 'Back', 'Home']
+
+print('-'.join(list_strings))
+
+~~~
+
+print('-'.join(['Follow', 'the', 'Cops', 'Back', 'Home']))
+
+
+
+==============  Метод startswith ===============
+
+Метод .startswith  имеет следующий шаблон вызова:
+
+S.startswith(prefix[, start[, end]])
+
+Данный метод возвращает True если строка S начинается с последовательности символов prefix (префикса) и False в противном случае.  При передаче параметра start проверка начнется именно с этой позиции. Если передать значение  end, проверка закончится в этой позиции.
+
+
+s = 'Мила Кунис'
+
+print(s.startswith('Мила'))
+print(s.startswith('М'))
+print(s.startswith('Бред'))
+
+print('-----')
+
+print(s.startswith('Мила', 1))
+print(s.startswith('ила', 1))
+
+print('-----')
+
+print(s.startswith('ил', 1, 2))
+print(s.startswith('ил', 1, 3))
+
+
+
+=========== Метод endswith =============
+
+Метод endswith() имеет следующий шаблон вызова:
+
+S.endswith(prefix[, start[, end]])
+
+Данный метод возвращает True если строка S заканчивается последовательностью символов prefix (префикса) и False в противном случае.  При передаче параметра start проверка начнется именно с этой позиции. Если передать значение  end, проверка закончится в этой позиции.
+
+
+s = 'Мила Кунис'
+
+print(s.endswith('Кунис'))
+print(s.endswith('с'))
+print(s.endswith('Бред'))
+
+print('-----')
+
+print(s.endswith('нис', 10))
+print(s.endswith('нис', 7))
+print(s.endswith('нис', -3))
+
+print('-----')
+
+print(s.endswith('ис', 8, 9))
+print(s.endswith('ис', 8, 10))
+
+
+================================
+Напишите программу, которая проверяет начинается ли введенная фраза строкой mam вне зависимости от регистра букв
+
+В качестве ответа необходимо вывести True, если введенная строка начинается с mam, во всех остальных случаях нужно вывести False
+
+
+
+str = input().lower()
+
+if str.startswith('mam'):
+    print(True)
+else:
+    print('False')
+
+
+~~~
+print(input().lower().startswith('mam'))
+
+~~~
+print(input().lower()[:3] == "mam")
+
+~~~
+
+print('mam' in input().lower()[:3])
+
+~~~~~~
+
+========================================
+
+Программа получает на вход две строки, назовем их s и postfix. Напишите программу, которая проверяет заканчивается ли введенная фраза s строкой postfix 
+
+s = input()
+postfix = input()
+
+if s.endswith(postfix):
+    print(True)
+else:
+    print(False)
+    
+ ~~~
+ 
+    print(True if input().endswith(input()) else False)
+    
+  ~~~
+  s, postfix = input(), input()
+print(s.endswith(postfix))
+
+~~~
+
+s, p = input(), input()
+print(p in s)
+
+~~~~
+
+a=input()
+b=input()
+c=len(b)
+
+print(a[-c:]==b)
+
+
+~~~
+
+x = str(input())
+y = str(input())
+if x[-len(y)::] == y:
+    print(True)
+else:
+    print(False)
+
+
+====================================
+
+Напишите программу, которая проверяет, чтобы введенная фраза s одновременно начиналась со строки prefix и заканчивалась строкой postfix 
+
+
+
+s = input()
+prefix = input()
+postfix = input()
+
+if s.startswith(prefix) and s.endswith(postfix):
+    print(True)
+else:
+    print(False)
+
+
+~~~
+
+print((s := input()).startswith(input()) and s.endswith(input()))
+
+~~~
+
+s = input()
+print(s.startswith(input()) and s.endswith(input()))
+
+~~~
+
+======================================
+
+Группа методов is
+
+У строк есть целая группа методов, которая начинается на строку is. Все эти методы объединяет одно: они выполняют проверку и результат будет либо  True, либо False
+
+Не забывайте, что строка - неизменяемый объект. Поэтому любой вызов метода строки не изменяет первоначальный объект
+
+
+Метод islower
+
+Метод .islower  имеет следующий шаблон вызова:
+
+S.islower()
+Данный метод возвращает True , если строка S не пустая и "состоит только из алфавитных строчных(нижний регистр) букв." Если в строке имеется хотя бы одна заглавная буква, будет возвращено False. Все символы цифр или знак пунктуации игнорируются в проверках.
+
+
+print(''.islower())
+print('abcdefg', 'abcdefg'.islower())
+print('abcDefG', 'abcDefG'.islower())
+print('qwerty!', 'qwerty!'.islower())
+print('12345', '12345'.islower())
+print('12345abc', '12345abc'.islower())
+print('12345aBc', '12345aBc'.islower())
+
+
+
+Метод isupper
+
+ Метод .isupper  имеет следующий шаблон вызова:
+
+S.isupper()
+
+Данный метод возвращает True , если строка S не пустая и "состоит только из алфавитных заглавных(верхний регистр) букв." Если в строке имеется хотя бы одна строчная буква, будет возвращено False. Все символы цифр или знак пунктуации игнорируются в проверках.
+
+print(''.isupper())
+print('ABCDEF', 'ABCDEF'.isupper())
+print('ABCdEF', 'ABCdEF'.isupper())
+print('QWERTY!', 'QWERTY!'.isupper())
+print('12345', '12345'.isupper())
+print('12345ZXC', '12345ZXC'.isupper())
+print('12345ZxC', '12345ZxC'.isupper())
+
+
+
+Метод isdigit
+
+ Метод .isdigit  имеет следующий шаблон вызова:
+
+S.isdigit()
+
+Данный метод возвращает True , если строка S не пустая и "состоит только из десятичных цифр и символов, которые так же относятся к цифрам." В случае, если встретится другой символ, вернется False
+
+print(''.isdigit())
+print('0123456789', '0123456789'.isdigit())
+print('0,1', '0,1'.isdigit())
+print('qwerty', 'qwerty'.isdigit())
+print('12a45', '12a45'.isdigit())
+
+
+"Эта проверка на цифры может быть полезна перед преобразованием строки в целое число."
+
+=========Метод isalpha========================
+
+Метод .isalpha  имеет следующий шаблон вызова:
+
+S.isalpha()
+Данный метод возвращает True , если строка S не пустая и "состоит только из букв."
+
+
+print(''.isalpha())
+print('ЗемфиРа', 'ЗемфиРа'.isalpha())
+print('Я искала тебя', 'Я искала тебя'.isalpha())
+print('Годами', 'Годами'.isalpha())
+print('qwerty', 'qwerty'.isalpha())
+print('12a45', '12a45'.isalpha())
+print('qwerty!', 'qwerty!'.isalpha())
+
+
+========= Метод isalnum ====================
+
+Метод .isalnum  имеет следующий шаблон вызова:
+
+S.isalnum()
+Данный метод возвращает True , если строка S не пустая и "состоит только из букв и цифр." Если в строке имеется хотя бы один не буквенный и не числовой символ, то будет возвращено False:
+
+
+
+print(''.isalnum())
+print('ЗемфиРа', 'ЗемфиРа'.isalnum())
+print('Я искала тебя', 'Я искала тебя'.isalnum())
+print('Годами', 'Годами'.isalnum())
+print('qwerty', 'qwerty'.isalnum())
+print('12a45', '12a45'.isalnum())
+print('qwerty!', 'qwerty!'.isalnum())
+
+
+
+====== Метод istitle =====================
+
+Метод .istitle  имеет следующий шаблон вызова:
+
+S.istitle()
+Данный метод возвращает True , если строка S "не пустая и является строкой заголовков: каждое новое слово начинается с заглавной буквы"
+
+
+print(''.istitle())
+print('ЗемфиРа', 'ЗемфиРа'.istitle())
+print('Хочешь солнце', 'Хочешь солнце'.istitle())
+print('вместо лампы', 'вместо лампы'.istitle())
+print('Хочешь', 'Хочешь'.istitle())
+print('За Окошком Альпы?', 'За Окошком Альпы?'.istitle())
+print('12345', '12345'.istitle())
+
+
+
+===========================================
+
+
+Напишите программу, которая проверяет "состоит ли введенная строка целиком из десятичных цифр"
+
+print(input().isdigit())
+
+
+
+Напишите программу, которая проверяет "состоит ли введенная строка целиком из заглавных букв"
+
+print(input().isupper())
+
+
+Напишите программу, которая проверяет "состоит ли введенная строка целиком из строчных букв"
+
+print(input().islower())
+
+
+
+======= Метод ljust ===================
+
+Метод .ljust  имеет следующий шаблон вызова:
+
+S.ljust(width[, fillchar])
+
+Метод  .ljust принимает один обязательный параметр width - ширину строки и один необязательный параметр fillchar - знак заполнителя (по умолчанию пробел) . 
+
+"Возвращает новую строку, в которой исходная строка S дополнена справа символами fillchar до указанной длины width. Если параметр width меньше длины строки, то будет возвращена исходная строка без изменений"
+
+d = 'qwerty'
+
+print(d.ljust(10))
+print(d.ljust(10, '-'))		# qwerty----
+print(d.ljust(10, '&'))
+print(d.ljust(5, '!'))
+
+"В параметр fillchar можно передать только строку, состоящую из одного символа. Если передать пустую строку или более одного символа, произойдет ошибка:"
+
+
+
+========= Метод rjust ====================
+
+Метод .rjust  имеет следующий шаблон вызова:
+
+S.rjust(width[, fillchar])
+
+Метод .rjust принимает один обязательный параметр width - ширину строки и один необязательный параметр fillchar - знак заполнителя (по умолчанию пробел) . 
+
+"Возвращает новую строку, в которой исходная строка S дополнена слева символами fillchar до указанной длины width. Если параметр width меньше длины строки, то будет возвращена исходная строка без изменений"
+
+
+d = 'qwerty'
+
+print(d.rjust(10))
+print(d.rjust(10, '-')) 			# ----qwerty
+print(d.rjust(10, '&'))
+print(d.rjust(5, '!'))
+
+"В параметр fillchar также можно передать только строку, состоящую из одного символа."
+
+
+
+============= Метод center ===============
+
+
+Метод .center  имеет следующий шаблон вызова:
+
+S.center(width[, fillchar])
+
+Метод .center принимает один обязательный параметр width - ширину строки и один необязательный параметр fillchar - знак заполнителя (по умолчанию пробел) . 
+
+"Возвращает новую строку длины width, в которой исходная строка S находится в центре, а справа и слева от нее находятся символы fillchar . Если параметр width меньше длины строки, то будет возвращена исходная строка без изменений."
+
+
+d = 'qwerty'
+print(d.center(10))
+print(d.center(12, '!'))
+print(d.center(13, '?')) 			# ????qwerty???
+print(d.center(5, '!'))
+
+
+"В параметр fillchar также можно передать только строку, состоящую из одного символа. В случаях, когда количество необходимых для дополнения символов нечетно, слева будет на один символ fillchar больше чем справа"
+
+
+
+=========== Метод zfill ==============
+
+Метод .zfill  имеет следующий шаблон вызова:
+
+S.zfill(width)
+
+Метод .zfill "возвращает новую строку, в которой исходная строка S дополнена нулями слева так, чтобы длина новой строки стала равна width."
+
+d = '123'
+print(d.zfill(5))
+print(d.zfill(6))					# 000123
+print(d.zfill(2))
+print(d.zfill(3))
+print('0.123'.zfill(6)) 			# 00.123
+
+"Метод .zfill используется редко, но полезно знать о его существовании"
+
+
+===================
+
+
+На вход программе поступает строка, состоящая из произвольного количества символов. Ваша задача дополнить введенную строку до 15 символов в том случае, когда ей не хватает длины. Дополнять ее нужно символом -, ставя его в конец строки. В качестве ответа нужно вывести преобразованную строку
+
+
+print(input().ljust(15, '-'))
+
+~~~
+
+На вход программе поступает строка. Ваша задача дополнить ее впереди восклицательными знаками так, чтобы длина строки стала 10 символов.
+
+print(input().rjust(10, '!'))
+
+~~~
+
+При помощи метода .center дополните введенную строку до 15 символов. В качестве параметра fillchar возьмите нижнее подчеркивание _
+
+
+
+# print(d.center(13, '?')) 
+
+print(input().center(15, '_'))
+
+
+~~~
+
+Ваша задача вывести данное число так, чтобы вывод занимал 10 разрядов. Если у числа не хватает разрядов, необходимо добавлять вперед незначащие нули.
+
+#print(d.zfill(5))
+
+print(input().zfill(10))
+
+
+=========  Метод strip ==============
+
+
+ Метод .strip  имеет следующий шаблон вызова:
+
+S.strip([chars])
+
+Метод  .strip "возвращает копию строки, удаляя как начальные, так и конечные символы (в зависимости от переданного строкового аргумента)."
+
+"Метод удаляет символы как слева, так и справа в зависимости от аргумента chars . Если аргумент chars не передан, то по умолчанию удаляться пробелы и символы переноса на новую строку \n."
+
+
+q = '   hello   '
+
+print(q)															# hello
+
+print(q.strip())
+
+print('\n\n\n_USB_\n\n\n\n'.strip()) 				# _USB_
+
+print('123_USB_123'.strip('123'))
+
+
+"Символы в параметре chars рассматриваются не как последовательность, а как набор символов, которые необходимо удалить:"
+
+print('321232321_USB_31121312'.strip('123')) 			# _USB_
+
+Метод .strip используется очень часто, его вы обязаны знать. Очень часто используется при обработке файлов для удаления пробельных символов и символов переноса.
+
+
+=========  Метод rstrip ==============
+
+https://stepik.org/lesson/818712/step/1?unit=822093
+
+
+Метод .rstrip  имеет следующий шаблон вызова:
+
+S.rstrip([chars])
+
+Метод  .rstrip "возвращает копию строки, в которой справа удалены указанные символы (по умолчанию удаляются пробельные символы)."
+
+q = '   hello   '
+
+print(q)
+print(q.rstrip())
+print('\n\n\n_USB_\n\n\n\n'.rstrip()) 							# _USB_
+print('123_USB_123'.rstrip('123')) 								# 123_USB_
+print('321232321_USB_31121312'.rstrip('123'))  		# 321232321_USB_
+
+
+=========  Метод lstrip ==============
+
+ Метод .lstrip  имеет следующий шаблон вызова:
+
+S.lstrip([chars])
+
+Метод  .lstrip "возвращает копию строки, в которой слева удалены указанные символы (по умолчанию удаляются пробельные символы)."
+
+
+q = '   hello   '
+
+print(q)															# hello 
+
+print(q.lstrip())
+print('\n\n\n_USB_\n\n\n\n'.lstrip())
+print('123_USB_123'.lstrip('123'))
+print('321232321_USB_31121312'.lstrip('123'))
+
+
+====================
+
+Напишите название подходящего метода строки
+
+"Метод, который удаляет все указанные символы слева от строки, называется => lstrip()"
+
+"Метод, который удаляет все указанные символы как слева так и справа от строки, называется => strip()"
+
+"Метод, который удаляет все указанные символы справа от строки, называется => rstrip()"
+
+~~~~~~~~~~~
+
+Вводится строка, которая может быть окружена символами -, _, !, ?
+Ваша задача избавиться от символов -, _, !, ? и вывести полученную строку
+
+
+print(input().strip('-, _, !, ?'))
+
+
+~~~~~~~~~~~~
+
+Вводится строка, которая может быть окружена символами -, _, !, ?
+Ваша задача убрать`все символы -, _, !, ? слева от строки и вывести полученный результат
+
+print(input().lstrip('-, _, !, ?'))
+
+~~~~~~~~~~~~
+
+Ваша задача убрать все символы -, _, !, ? справа от строки и вывести полученный результат
+
+
+print(input().rstrip('-, _, !, ?'))
+
+
+================= Метод partition =========================
+
+
+Метод .partition  имеет следующий шаблон вызова:
+
+S.partition(sep)
+
+Метод  .partition "разбивает строку по указанному разделителю и возвращает кортеж из трех элементов" => 
+"строка до разделителя, сам разделитель и строка после разделителя." 
+
+"Если разделитель не найден, то возвращается кортеж так же состоящий из трех элементов в котором первый элемент – это исходная строка S, а два других элемента – это пустые строки."
+
+
+text = "Python is best"
+
+print(text.partition('is ')) 				# ('Python ', 'is ', 'best')
+
+print(text.partition('not ')) 			# ('Python is best', '', '')
+
+s = "Python is best, isn't it" 		
+print(s.partition('is'))						# ('Python ', 'is', " best, isn't it")
+
+
+"Метод .rpartition используется не часто, но знать его полезно. Вернитесь к его изучению, когда познакомитесь с кортежами."
+
+
+
+
+================= Метод rpartition =========================
+
+Метод .rpartition  имеет следующий шаблон вызова:
+
+S.rpartition(sep)
+
+Метод  .rpartition "разбивает строку по последнему встреченному разделителю sep и возвращает кортеж, который состоит из трех элементов"  => "строки до разделителя, самого разделителя и строки после разделителя." 
+
+"Если разделитель в строке отсутствует, то кортеж будет состоять из: двух пустых строк и исходной строки"
+
+text = "Python is best"
+
+print(text.rpartition('is '))  		# ('Python ', 'is ', 'best')
+
+print(text.rpartition('not '))		# ('', '', 'Python is best')
+
+
+s = "Python is best, isn't it"
+
+print(s.rpartition('is')) 		# ('Python is best, ', 'is', "n't it")
+
+
+Метод .rpartition используется не часто, но знать его полезно. Вернитесь к его изучению, когда познакомитесь с кортежами.
+
+=======================================
+
+
+		Модель кодирования RGB
+		
+
+Программе поступают последовательно три числа: значения оттенка красного, потом зеленого и затем синего цветов. Данные числа варьируются от 0 до 255 включительно
+
+
+
+Ваша задача закодировать оттенки цветов согласно RGB модели.
+
+Не забывайте, что на каждый цвет всегда должно отводиться два разряда. Символы букв в шестнадцатеричной системе необходимо записывать в верхнем регистре.
+
+
+Примечание: для перевода в 16-ую систему вы можете воспользоваться функцией hex, она возвращает строку перевода в 16ую систему, впереди которой находятся два служебных знака 0x
+
+print(f'hex(255) : {hex(255)}') 		=> hex(255) : 0xff
+print(f'hex(10) : {hex(10)}') 			=> hex(10) : 0xa
+
+
+Под перевод в 16-ой системе необходимо отводить обязательно два разряда. Когда не хватает разрядов, нужно добавлять незначащие нули вперед. Вспоминайте методы, которые помогут это сделать 
+
+
+# take input of the shade of red, green, and blue
+r = int(input())
+g = int(input())
+b = int(input())
+
+# convert each shade to its hexadecimal representation
+r_hex = hex(r)[2:].zfill(2).upper()
+g_hex = hex(g)[2:].zfill(2).upper()
+b_hex = hex(b)[2:].zfill(2).upper()
+
+# concatenate the three hexadecimal values to form the final RGB color code
+rgb_code = f"#{r_hex}{g_hex}{b_hex}"
+
+# print the RGB color code
+print(rgb_code)
+
+
+
+~~~~~
+
+r=hex(int(input()))[2:].upper().zfill(2)
+g=hex(int(input()))[2:].upper().zfill(2)
+b=hex(int(input()))[2:].upper().zfill(2)
+
+print ('#'+r+g+b)
+
+~~~~~
+
+r, g, b = int(input()), int(input()), int(input())
+
+print(f'#{r:02X}{g:02X}{b:02X}')
+
+
+~~~~~
+
+r = hex(int(input()))[2:].upper().rjust(2,'0')
+g = hex(int(input()))[2:].upper().rjust(2,'0')
+b = hex(int(input()))[2:].upper().rjust(2,'0')
+
+print('#',r,g,b, sep='')
+
+~~~~~
+
+
+red = hex(int(input()))
+green = hex(int(input()))
+blue =  hex(int(input()))
+
+r = red.strip(red[:2]).upper()
+g = green.strip(green[:2]).upper()
+b = blue.strip(blue[:2]).upper()
+
+print('#', r.zfill(2), g.zfill(2), b.zfill(2), sep = '')
+
+~~~~~
+
+R=hex(int(input())).lstrip("0x").upper().rjust(2,'0')
+G=hex(int(input())).lstrip("0x").upper().rjust(2,'0')
+B=hex(int(input())).lstrip("0x").upper().rjust(2,'0')
+
+print("#"+R+G+B)
+
+
+~~~~~
+
+print('#' + ''.join([hex(int(input()))[2:].upper().zfill(2) for _ in '...']))
+
+~~~~~
+
+a, b, c = (hex(int(input())).replace('0x', '').zfill(2) for _ in range(3))
+print(('#' + a + b + c).upper())
+
+~~~~~
+
+print('#',
+      hex(int(input()))[2:].upper().zfill(2), 
+      hex(int(input()))[2:].upper().zfill(2), 
+      hex(int(input()))[2:].upper().zfill(2), sep='')
+
+~~~~~
+
+def get_color(r: int, g: int, b: int) -> str:
+    """
+    Возвращает преобразованный код цвета от RGB
+    """
+    rgb_numbers = (hex(r)[2:].upper(), hex(g)[2:].upper(), hex(b)[2:].upper())
+    color = ''
+    for i in rgb_numbers:
+        if len(i) == 1:
+            color += str(0) + i
+        else:
+            color += i
+    print('#' + color)
+    return color
+
+
+get_color(int(input()), int(input()), int(input()))
+
+~~~~~
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+hex_a = hex(a)[2::].upper()
+hex_b = hex(b)[2::].upper()
+hex_c = hex(c)[2::].upper()
+
+rgb = '#'
+if len(hex_a) == 1:
+    hex_a = '0' + hex_a
+if len(hex_b) == 1:
+    hex_b = '0' + hex_b
+if len(hex_c) == 1:
+    hex_c = '0' + hex_c
+rgb += hex_a + hex_b + hex_c
+
+print(rgb)
+
+
+~~~~~
+
+r, g, b = int(input()), int(input()), int(input())
+print(('#' + str(hex(r)).strip('0x').zfill(2) + str(hex(g)).strip('0x').zfill(2) + str(hex(b)).strip('0x').zfill(2)).upper())
+
+
+~~~~~
+
+nums = [int(input()) for _ in range(3)]
+hex_nums = [hex(num)[2:].upper().zfill(2) for num in nums]
+hex_str = '#' + ''.join(hex_nums)
+print(hex_str)
+
+
+~~~~~
+
+r = int(input())
+g = int(input())
+b = int(input())
+
+r = hex(r)
+g = hex(g)
+b = hex(b)
+
+r = (r[len(r) - 2:len(r)]).upper().replace('X', '').zfill(2)
+g = (g[len(g) - 2:len(g)]).upper().replace('X', '').zfill(2)
+b = (b[len(b) - 2:len(b)]).upper().replace('X', '').zfill(2)
+
+print('#' + r + g + b)
+
+
+~~~~~
+
+rgb_to_hex=''.join(['#'] + list(str(hex(int(input()))).lstrip('0x').upper().rjust(2,'0') for i in range(3)))
+print(rgb_to_hex)
+
+
+~~~~~
+def rgb_hex_conv():
+
+    def to_int():
+        s = input('Введите строку в формате "#RRGGBB": ').lstrip('#')
+        rgb = [s[i-2:i] for i in range(1,len(s)+2,1) if i%2==0]
+        print(f'RED:   {int(rgb[0],16)}\n'
+              f'GREEN: {int(rgb[1],16)}\n'
+              f'BLUE:  {int(rgb[2],16)}\n')
+
+    def to_hex():
+        print('Введите 3 цифры цветов RGB через "enter"')
+        data=''.join(['#'] + list(str(hex(int(input('Введите номер цвета: ')))).lstrip('0x').upper().rjust(2,'0') for i in range(3)))
+        print(data)
+        
+    print('*'*((len('Из десятичной в hex (1)\nИз hex в десятичную (2)\nВыход (3)'))//2))
+    print('Из десятичной в hex (1)\nИз hex в десятичную (2)\nВыход (3)')
+    print('*'*((len('Из десятичной в hex (1)\nИз hex в десятичную (2)\nВыход (3)'))//2))
+    ask = int(input('Введите номер: '))
+    
+    if ask == 1:
+        to_hex()
+    elif ask == 2:
+        to_int()
+    else:
+        print('Досвидос!!!')
+rgb_hex_conv()
+
+~~~~~
+
+a="#"
+for i in range(3):
+  b=hex(int(input()))[2:]
+  if len(b)<2:
+    a+=(str(0)+b)
+  else:
+    a+=b
+print(a.upper())
+
+
+============== Комментарии в коде =======================
+
+
+https://stepik.org/lesson/611483/step/1?unit=606805
+
+Давайте добавим наш первый комментарий. Он должен начинаться с символа решетки и это отличительная черта комментария. Он делает эту строчку невидимой для интерпретатора и после решетки вы можете писать любой текст или любые инструкции, которые вы хотите - они проигнорируются.
+
+
+Комментарии дают возможность программисту написать пояснение как для себя, так и для своих коллег. В самом начале программы он может, например, написать что делает данный модуль, для чего он будет полезен и по этим комментариям другой разработчик сразу поймет какую задачу решает эта программа и как ее использовать. 
+
+
+Также при помощи комментариев можно добавить какое-то пояснение конкретной строчки. Это можно делать именно перед строчкой или после строки.
+
+
+В реальной практике таких очевидных комментариев вам лучше избегать - комментируйте только те строчки в которых могут возникнуть сложности.
+
+Здесь стоит также отметить, что комментарии при помощи решеток вам не позволят сделать многострочный комментарий. Для этого вам понадобится уже создать объект строки и создать его при помощи трех апострофов или тройных кавычек. Внутри этих кавычек вы уже можете писать многострочные комментарии. Эта строка у нас не сохранится ни в какой переменной и на вывод она тоже не пойдёт.
+
+'''
+another comment
+another comment
+another comment
+'''
+
+"""
+another comment
+another comment
+another comment
+"""
+
+"Если вы поставите знак # внутри строки, то правая часть от этой решетки не воспринимается как комментарий, но если решетка стоит за строкой, то соответственно вся правая  часть будет уже восприниматься комментарием. Поэтому в примере ниже на третьей строке у команды print закрывающаяся скобка попадет в комментарий, следовательно print не закрывается и возникает исключение SyntaxError"
+
+print("На степике # (stepik.org)")
+
+Помимо написания пояснений, комментарии также полезны когда вы хотите закомментировать некоторые участки вашего кода - это может быть одна или несколько строк. Это полезно когда вы хотите посмотреть, например, что будет без этих конкретных строчек. Это можно сделать путем добавления решетки к каждой вручную, либо с помощью горячих клавиш. В IDLE есть сочетание клавиш alt + 3 .  В PyCharm, если вы уже им пользуетесь, комментирование и раскомментирование происходит по нажатии ctrl + /. 
+
+
+================Экранированные (служебные символы) в Python ==========
+
+https://stepik.org/lesson/296344/step/1?unit=278059
+
+В этом уроке у нас речь пойдёт об экранированных символах или, как их ещё по-другому называют, служебные символы.
+
+Чтобы увидеть свой первый служебный символ вам необходимо создать многостраничную строку. Мы её будем хранить в переменной s и здесь в начале необходимо указать три открывающих кавычки. Внутри мы можем с вами записать обычную строку и при этом ещё переходить на новую строчку. Не забудьте указать в конце три закрывающие кавычки. Теперь мы можем увидеть её содержимое. Обратите внимание на \n - он является служебным и обозначает перенос строки.
+
+s = """Hello
+world
+hi
+bye"""
+print(s)
+
+
+Теперь мы можем увидеть её содержимое и здесь обратите внимание на \n - он является служебным и обозначает перенос строки и у нас записался как раз в то место, где мы этот перенос делали. Но если вы попробуете вывести эту строку, то она отобразится в том формате в котором была введена. То есть все служебные символы при выводе будут преобразованы.
+
+print('Hello\nworld\nhi\nbye')
+Также вы можете и напрямую сохранять в переменную этот служебный символ. Введем abc, затем укажем знак переноса и следующие три буквы алфавита. Закрываем нашу строку и при выводе мы увидим, что у нас сработает этот символ переноса.
+
+a = "abc\ndef"
+print(a)
+
+Давайте посмотрим какова длина нашей строки.
+
+print(len(a))		# 7
+
+Кроме \n есть еще и другие служебные символы.
+
+
+
+Среди них стоит отметить \t - он обозначает знак табуляции или другими словами 4 пробела. Если мы попробуем сами вывести такую строку, то в том месте где он стоял будут выведены 4 пробела. Все остальные вы будете встречать очень редко.
+
+Будьте аккуратны. В дальнейшем нам с вами понадобится работать с файлами. Для того чтобы открыть файл нужно указать его путь. Типичный путь какой-либо папки содержит символы обратного слеша и как мы уже знаем это знак экранирования. Если вдруг у нас после него будет стоять какой-либо символ который в сочетании с обратным слешем образует сочетание служебных символов, то наш путь изменится. Если мы выведем путь с помощью команды print, то он уже будет отображать его в том виде, в котором её видит Python, то есть он уже воспринимает эти символы как служебные.
+
+Чтобы исправить такую ситуацию вы можете экранировать сам знак обратного флэша. Для этого вам нужно после него указать ещё один такой слеш.  В принт она уже будет восприниматься нормально без всяких переносов.
+
+"Также существует ещё один способ это сделать. Если вы поставите букву r перед началом строки, то она автоматически будет убирать все служебные символы в этой строке."
+
+print(r'c:\Users\PycharmProjects')
+
+~~~~~~~~~~~~~~~~~
+
+print('/\\_/\\')
+print('>^,^<')
+print(' / \\\n(|_|)_/')
+
+
+print('  /~~~\\')
+print(' //^ ^\\\\')
+print('(/(_*_)\\)')
+print("_/''*''\_")     #для экранирования кавычек ' используем " кавычки
+print('(/_)^(_\\)')
+
+
+print(r'''
+  /~~~\
+ //^ ^\\
+(/(_*_)\)
+_/''*''\_
+(/_)^(_\)''')
+
+
+
+print('  /~~~\\\n //^ ^\\\\\n(/(_*_)\)\n_/\'\'*\'\'\_\n(/_)^(_\)')
+
+
+
+print('  /~~~\\', ' //^ ^\\\\', '(/(_*_)\)', "_/''*''\\_", '(/_)^(_\)', sep= '\n')
+
+
+a = r"  /~~~\ % //^ ^\\%(/(_*_)\)%_/''*''\_%(/_)^(_\)"
+print('\n'.join(a.split('%')))
+
+
+print("  /~~~\\")
+print(r" //^ ^\\")
+print(r"(/(_*_)\)")
+print("_/''*''\_")
+print("(/_)^(_\)")
+
+
+
+============== 2.8 Форматирование строк ===============
+
+
+https://stepik.org/lesson/296345/step/1?unit=278060
+
+Форматирование строк
+
+Попробуем воспользоваться методом строки, которая называется format . Мы его вызываем после нашей строки и передаём ему наши три переменные, в том порядке, в котором они появляются в нашей строке. Также в самой строке в фигурных скобках указываем порядковые номера переменных, которые находятся в скобках.
+
+name = 'Семён'
+mid_name = 'Семёнов'
+balance = 32.56
+
+text = """Дорогой {0} {1}, 
+баланс Вашего лицевого счёта составляет {2} руб.""".format(name, mid_name, balance)
+
+print(text)
+
+
+"При использовании форматирования в таком виде вам никто не запрещает переставить переменные местами и это, соответственно, повлияет на результат."
+
+Второй вариант использования формата - это именованное использование переменных. Вместо индексов проставляются имена переменных.
+
+name = 'Семён'
+mid_name = 'Семёнов'
+balance = 32.56
+
+text = """Дорогой {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {balance} руб.""".format(mid_name=mid_name, name=name, balance=balance)
+
+print(text)
+
+
+Также хочу обратить Ваше внимание что имена внутри шаблона вы выбираете сами. Вы спокойно могли их сократить до переменных n, m и b, что соответствует первой букве каждого из этих значений.
+
+name = 'Семён'
+mid_name = 'Семёнов'
+balance = 32.56
+
+text = """Дорогой {n} {m}, 
+баланс Вашего лицевого счёта составляет {b} руб.""".format(m=mid_name, n=name, b=balance)
+
+print(text)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая считывает слово, затем выводит:
+
+«Что Вы сказали? [это слово] ? Какое интересное слово».
+
+
+
+print(f'Что Вы сказали? {input()}? Какое интересное слово')
+
+
+print('Что Вы сказали? {0}? Какое интересное слово'.format(input()))
+
+
+a = input()
+text = """Что Вы сказали? {a}? Какое интересное слово""".format(a=a)
+print(text)
+
+
+
+q=input()
+print('Что Вы сказали? %s? Какое интересное слово'%q)
+
+
+==============
+
+Программа запрашивает у пользователя имя и фамилию, после чего выводит приветственное сообщение в следующем формате «Здравствуйте, <фамилия> <имя>!»
+
+
+name = input()
+surename = input()
+
+print(f'Здравствуйте, {surename} {name}!')
+
+
+~~~
+
+print('Здравствуйте, {b} {a}!'.format(a=input(), b=input()))
+
+~~~
+
+name = input()
+surname = input()
+print('Здравствуйте, {1} {0}!'.format(name, surname))
+
+~~~~
+
+name=input()
+surname=input()
+
+print("""Здравствуйте, {s} {n}!""".format(n=name,s=surname))
+
+~~~~~
+
+print(f"Здравствуйте, {' '.join([input(), input()][::-1])}!")
+
+~~~~
+
+print('Здравствуйте, {lname} {fname}!'.format(fname=input(), lname=input()))
+
+
+~~~
+
+name, surname = input(), input()
+print('Здравствуйте, {s} {n}!'.format(n = name, s = surname))
+
+=====================
+
+
+Напишите программу, которая считывает целое число, и затем сообщает какие числа будут следующим и предыдущим в определенном формате. Пробелы, знаки препинания, заглавные и строчные буквы важны!
+
+numb = int(input())
+
+print(f'Для числа {numb} предыдущим будет число {numb - 1}.')
+print(f'Для числа {numb} следующим будет число {numb + 1}.')
+
+
+~~~~
+
+n = int(input())
+print('''Для числа {0} предыдущим будет число {1}.
+Для числа {0} следующим будет число {2}.'''.format(n, n - 1, n + 1)) 
+
+~~~
+
+message = "Для числа {n} предыдущим будет число {prev}.\nДля числа {n} следующим будет число {next}."
+n = int(input())
+print(message.format(n=n, prev=n - 1, next=n + 1))
+
+~~~
+
+a=int(input())
+print('Для числа {0} предыдущим будет число {1}.'.format(a,a-1))
+print('Для числа {0} следующим будет число {1}.'.format(a,a+1))
+
+
+~~~
+
+num = int(input())
+num1 = num - 1
+num2 = num + 1
+print('Для числа {0} предыдущим будет число {1}.\nДля числа {0} следующим будет число {2}.'.format(num, num1, num2))
+
+~~~
+
+n = int(input())
+
+text = """Для числа {a} предыдущим будет число {b}.
+Для числа {a} следующим будет число {c}.""".format(a=n, b=n-1, c=n+1)
+print(text)
+
+
+
+=============== 2.9 F-строки ==============
+
+https://stepik.org/lesson/296346/step/1?unit=278061
+
+name = 'Семён'
+mid_name = 'Семёнов'
+balance = 32.56
+
+text = f"""Дорогой {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {56 * 2} руб."""
+
+print(text)
+
+
+
+"Внутри скобок вы можете также вызвать другие функции. Например, мы можем вызвать функцию abs() от отрицательного числа"
+
+text = f"""Дорогой {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {abs(-123)} руб."""
+
+
+
+"Вы можете написать свою самописную функцию. Например, напишем функцию, которая принимает одно число и возвращает его квадрат. Внутри f-строки мы можем по имени этой функции вызвать её и передать аргумент. "
+
+
+name = 'Семён'
+mid_name = 'Семёнов'
+
+def f(x):
+    return x ** 2
+
+text = f"""Дорогой {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {f(5)} руб."""
+
+print(text)
+
+
+"Также вы можете использовать все возможности словарей. Мы можем заключить все наши три переменные в словарь.  Мы с вами имеем словарь d и к словарю можно обращаться по ключам."
+
+
+d = {
+    "name": 'Семён',
+    "mid_name": 'Семёнов',
+    "balance": 32.56
+}
+
+
+text = f"""Дорогой {d['name']} {d['mid_name']}, 
+баланс Вашего лицевого счёта составляет {d['balance']} руб."""
+
+print(text)
+
+
+"Также вам никто не запрещает обращаться к методам словарей. Например, получить значение ключа при помощи метода get."
+
+d = {
+    "name": 'Семён',
+    "mid_name": 'Семёнов',
+    "balance": 32.56
+}
+
+
+text = f"""Дорогой {d.get('name')} {d.get('mid_name')}, 
+баланс Вашего лицевого счёта составляет {d.get('balance')} руб."""
+
+print(text)
+
+
+
+"Давайте создадим из наших 3-х переменных один большой список, в котором будут содержаться имя, отчество и баланс. Но это будет не простой список, а вложенный - в нём будут содержаться данные о нескольких людях. Тем самым мы с вами можем сделать подобие SMS-рассылки, где будем в наш текст подставлять имена и баланс наших пользователей. Для того чтобы вывести все это на экран для каждого пользователя задействуем цикл for. "
+
+a = [
+    ['Семён', 'Семёнов', 32.56],
+    ['Зоя', 'Иванова', 378],
+    ['Катерина', 'Петрова', 65],
+]
+
+for name, mid_name, balance in a:
+    text = f"""Дорогой {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {balance} руб."""
+    print(text)
+    
+    
+"У нас ещё есть небольшая проблемка, которая заключается в том, что у нас выводит слова "дорогой" и для мужчин, и для женщин. Это можно решить следующим образом - мы можем внутри нашего списка сохранять дополнительную информацию о поле человека. Давайте для мужчин мы будем ставить букву m и для женщин букву f. Также нам понадобится словарь и для буквы m будем выводить слово дорогой, а для буквы f - дорогая."
+
+gender = {
+    'm': 'Дорогой',
+    'f': 'Дорогая',
+}
+
+a = [
+    ['Семён', 'Семёнов', 32.56, 'm'],
+    ['Зоя', 'Иванова', 378, 'f'],
+    ['Катерина', 'Петрова', 65, 'f'],
+]
+
+for name, mid_name, balance, g in a:
+    text = f"""{gender[g]} {name} {mid_name}, 
+баланс Вашего лицевого счёта составляет {balance} руб."""
+    print(text)
+    
+
+========================
+На вход программе поступает строка - имя пользователя. Вам необходимо при помощи f-строки вывести сообщение:
+
+"Мое имя <name>!"
+
+print(f'Мое имя {input()}!')
+
+~~
+name = input()
+message = f'''Мое имя {name}!'''
+print(message)
+
+~~
+name = input()
+print(f'Мое имя {name.title()}!')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Теперь ваша программа спрашивает у пользователя не только имя, но и его возраст. После этого программа должна вывести сообщение:
+
+"Hello <name>. You are <age> years old."
+
+Обратите внимание, что буквы в имени все должны быть заглавные.
+
+name = input()
+age = int(input())
+
+print(f'Hello {name.upper()}. You are {age} years old.')
+
+~~
+print(f"Hello {input().upper()}. You are {input()} years old.")
+
+~~~
+
+c = {
+    "name" : input(),
+    "age" : input(),
+}
+
+print(f"Hello {c['name'].upper()}. You are {c['age']} years old.")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая запрашивает имя пользователя и его год рождения. Программа должна вывести на экран сообщение "<Имя пользователя>, вам исполнится 77 лет в <год>"
+
+
+name = input()
+year_of_birth = int(input())
+
+print(f'{name}, вам исполнится 77 лет в {year_of_birth + 77}')
+
+
+
+~~
+
+print(f'{input()}, вам исполнится 77 лет в {int(input()) + 77}')
+
+~~~
+
+class Human:
+    def __init__(self, name: str, year: int):
+        self.name = name
+        self.year_of_birth = year
+
+    def year_of_age(self, age: int):
+        print(f"{self.name}, вам исполнится {age} лет в {self.year_of_birth + age}")
+
+
+user = Human(input(), int(input()))
+user.year_of_age(77)
+
+
+~~~
+
+print(input(),', вам исполнится 77 лет в ', int(input()) + 77, sep='' )
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу для перевода натурального значения секунд в значение минут определенного формата.
+
+99 сек - это 1 мин. 39 сек.
+
+
+total_seconds = int(input())
+
+minutes = total_seconds // 60    # Делим нацело
+seconds = total_seconds % 60     # получаем остаток от деления
+
+print(f'{total_seconds} сек - это {minutes} мин. {seconds} сек.')
+
+
+~~~
+
+class TimeConverter:
+    def __init__(self):
+        self.minutes = 0
+        self.seconds = 0
+        self.old_seconds = 0
+
+    def add_time(self, time: int):
+        self.old_seconds += time
+        return self._convert_time()
+
+    def _convert_time(self):
+        self.minutes += self.old_seconds // 60
+        self.seconds += self.old_seconds % 60
+
+    def info(self):
+        return f"{self.old_seconds} сек - это {self.minutes} мин. {self.seconds} сек."
+
+
+clock = TimeConverter()
+clock.add_time(int(input()))
+result = clock.info()
+print(result)
+
+~~~
+
+sec = int(input())
+print(f"{sec} сек - это {sec//60} мин. {sec%60} сек.")
+
+~~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Вам поступает на вход два натуральных числа - ширина экрана и его высота в пикселях. В результате на экране разрешение экрана и общее количество пикселей в определенном формате. Все знаки препинания, пробелы, регистр букв важны. Также обратите внимание, что в этом месте «1920 x 1080» стоит английская буква «x»
+
+width, height = map(int,input().split())
+
+print(f'Разрешение экрана: {width} x {height}.')
+print(f'Общее количество пикселей = {height * width}.')
+
+
+~~~
+
+a, b = map(int, input().split())
+
+print(f'Разрешение экрана: {a} x {b}.\nОб
+
+~~~
+
+a, b = map(int, input().split())
+
+print(f"""Разрешение экрана: {a} x {b}.
+Общее количество пикселей = {a * b}.""")
+
+~~~
+
+print(*[f'Разрешение экрана: {l} x {w}.\nОбщее количество пикселей = {l*w}. ' for l, w in [map(int, input().split())]])
+
+~~~
+
+width, height = map(int, input().split())
+
+print(f'Разрешение экрана: {width} x {height}.', f'Общее количество пикселей = {width * height}.', sep = '\n' )
+
+
+~~~
+a, b = map(int, input().split())
+print(f'Разрешение экрана: {a} x {b}.\nОбщее количество пикселей = {a * b}.')
+
+~~~
+
+a = input().split()
+print(f"Разрешение экрана: {a[0]} x {a[1]}.")
+print(f"Общее количество пикселей = {int(a[0]) * int(a[1])}.")
+
+~~~
+
+print(f'Разрешение экрана: {(x:=list(map(int, input().split())))[0]} x {x[1]}.\nОбщее количество пикселей = {x[0] * x[1]}.')
+
+~~~
+
+print(f'''Разрешение экрана: {(num := list(map(int, input().split())))[0]} x {num[1]}.
+Общее количество пикселей = {num[0] * num[1]}.''')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Давайте при помощи F-строк выведем информацию о трех видах деления, которые мы с вами изучили ранее: обычное деление, целочисленное и деление по остатку. 
+
+11 / 5 = 2.2
+11 // 5 = 2
+11 % 5 = 1
+
+
+a = int(input())
+b = int(input())
+
+print(f'{a} / {b} = {a / b}')
+print(f'{a} // {b} = {a // b}')
+print(f'{a} % {b} = {a % b}')
+
+~~~
+
+a,b=int(input()),int(input())
+print(f'{a} / {b} = {a/b}',f'{a} // {b} = {a//b}',f'{a} % {b} = {a%b}',sep='\n')
+
+~~~
+
+d1, d2 = int(input()), int(input())
+print(f'''
+{d1} / {d2} = {d1 / d2}
+{d1} // {d2} = {d1 // d2}
+{d1} % {d2} = {d1 % d2}
+''')
+
+~~~
+
+a = int(input())
+b = int(input())
+
+for i in ['/', '//', '%']:
+    print(f'{a} {i} {b} = {eval(f"{a}{i}{b}")}')
+
+The for loop iterates over a list ['/', '//', '%'] containing three arithmetic operators: division (/), integer division (//), and modulo (%).
+
+For each operator in the list, the loop uses the print() function to display a string formatted with f-strings. The f-string contains the values of a, b, the operator i, and the result of applying the operator to a and b.
+
+"The eval() function is used to dynamically evaluate the string expression created by concatenating a, i, and b inside the f-string. This is equivalent to applying the operator specified by i to the values of a and b."
+
+Overall, this code prompts the user for two integer values, and then displays the result of performing three different arithmetic operations on those values: division (/), integer division (//), and modulo (%).
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Нашей программе поступает на вход x, y, z - три целых числа, обозначающие координаты вектора А. Затем необходимо найти координаты вектора B, путем увеличения на 5 каждой из координаты вектора А.
+
+Оба вектора необходимо распечатать в определенном формате
+Vector A(1, 2, 3)
+Vector B(6, 7, 8)
+
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+print(f"Vector A({a}, {b}, {c})")
+print(f"Vector B({a + 5}, {b + 5}, {c + 5})")
+
+~~~
+
+def f(n):
+    return n + 5
+
+x, y, z = [int(input()) for _ in range(3)]
+
+print(f'Vector A({x}, {y}, {z})')
+print(f'Vector B({f(x)}, {f(y)}, {f(z)})')
+
+~~~
+
+x, y, z = int(input()), int(input()), int(input())
+
+print(f'''Vector A({x}, {y}, {z})
+Vector B({x + 5}, {y + 5}, {z + 5})''')
+
+~~
+
+x, y, z = (int(input()) for _ in '...')
+
+print(f'Vector A({x}, {y}, {z})')
+print(f'Vector B({x + 5}, {y + 5}, {z + 5})')
+
+
+~~~
+
+a = [int(input()) for y in range(3)]
+b = ', '.join(str(y+5)for y in a)
+a = ', '.join(str(i) for i in a)
+print(f"Vector A({a})\nVector B({b})")
+
+~~~
+
+print(f'''Vector A({(a := int(input()))}, {(b := int(input()))}, {(c := int(input()))})
+Vector B({a + 5}, {b + 5}, {c + 5})''')
+
+"The code uses the := operator to both assign the user input to variables a, b, and c and also to embed them in the f-string. The := operator is known as the "walrus operator" and was introduced in Python 3.8. It allows you to assign a value to a variable as part of an expression."
+
+"The entire formatted string is enclosed in triple quotes (''') to allow for a multi-line string that spans over two lines. "
+
+
+~~~
+
+s = [int(input()) for x in range(3)]
+
+print(f'''Vector A{str(tuple(s))}
+Vector B{str(tuple([x + 5 for x in s]))}''')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа запрашивает у пользователя курс доллара - вещественное число,  и также количество долларов(целое число), которое пользователь хочет приобрести. В итоге программа должна вывести следующее сообщение:
+
+Current dollar rate is <курс доллара>. You want to buy <количество долларов> dollars
+You must pay <стоимость>
+
+curs = float(input())
+count = int(input())
+
+print(f"Current dollar rate is {curs}. You want to buy {count} dollars")
+print(f"You must pay {curs * count}")
+
+
+~~~
+
+a, b = float(input()), int(input())
+print(f"Current dollar rate is {a}. You want buy {b} dollars\nYou must pay {a * b}")
+
+~~~
+
+print(*[f"Current dollar rate is {a}. You want buy {b} dollars\nYou must pay {b * a}" for a, b in [(float(input()), int(input()))]])
+
+~~~
+
+print(f'''Current dollar rate is {(a:=float(input()))}. You want buy {(b:=(int(input())))} dollars
+You must pay {a * b}''')
+
+
+~~~
+
+print(
+    f"Current dollar rate is {(dollar_rate := float(input()))}. ",
+    f"You want to buy {(dollars_count := int(input()))} dollars\n",
+    f"You must pay {dollar_rate * dollars_count}",
+    sep="",
+)
+
+
+
+============= 2.10 F-строки, дополнительные возможности ============
+
+https://stepik.org/lesson/752819/step/1?unit=754744
+
+
+Вывод переменных 
+
+Мы знаем теперь как при помощи f-строки вывести имя переменной и ее значение. Вот можете полюбоваться примером ниже:
+
+x = 14
+y = 17
+print(f"x = {x}, y = {y}") 		# x = 14, y = 17
+
+
+"Но начиная с версии Python 3.8 функционал f-строк был дополнен новой возможностью по выводу имён переменных и их значений. Посмотрите как теперь это можно сделать:"
+
+x = 11
+y = 98
+
+print(f"{x=}, {y=}")
+#пробелы будут учтены
+
+print(f"{x  =}, {y= }")
+
+Output:
+
+x=11, y=98
+x  =11, y= 98
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вход вашей программе поступают координаты точки x и y - два целых числа, каждое вводится на отдельной строчке. 
+
+Ваша задача обязательно сохранить поступающие на вход значения в переменные x и y соответственно, и затем вывести строку вида Точка(x = {значение}, y = {значение})
+
+
+x = int(input())
+y = int(input())
+
+print(f'Точка({x = }, {y = })')
+
+~~~
+
+print(f'Точка(x = {(x:=int(input()))}, y = {(y:=int(input()))})')
+
+~~~
+
+
+========== Формат вывода дробной части числа ============
+
+Встречаются задачи, где нужно вывести только определенное количество знаков после запятой. 
+
+Допустим, мы хотим вывести ровно три знака после запятой для любого числа. 
+Но далеко не у всех чисел в представлении есть эти три знака после запятой. У некоторых чисел они есть, у других либо не хватает знаков, либо имеется больше чем хотелось бы
+
+a = 1/8
+b = 1/2
+c = 1/3
+
+print(f'{a = }')			a = 0.125
+
+print(f'{b = }')			b = 0.5
+
+print(f'{c = }')			c = 0.3333333333333333
+
+
+
+"Ответ простой - форматировать. F-строки поддерживают функционал форматирования. Мы указываем специальным образом после имени переменной сколько символов ожидаем увидеть."
+
+
+a = 1/8
+b = 1/2
+c = 1/3
+print(f'{a = :.3f}') 				a = 0.125
+
+print(f'{b = :.3f}')				b = 0.500
+
+print(f'{c = :.3f}')				c = 0.333
+
+print('------')
+
+print(f'{c:.3f}')					0.333
+
+print(f'{c:.1f}')					0.3
+
+print(f'{c:.2f}')					0.33
+
+print(f'{c:.10f}')					0.3333333333
+
+
+"Запись c:.3f говорит, что  переменную c нужно представить в вещественном виде (это знак f) и отобразить три символа после запятой. Если у переменной c не хватает символов для трех знаков, проставятся нули. Если символов в избытке, произойдет округление до третьего символа после запятой."
+
+
+"Над целыми числами тоже можно так издеваться)"
+
+d = 100
+
+print(f'{d:.1f}')			100.0
+
+print(f'{d:.2f}')			100.00
+
+print(f'{d:.3f}')			100.000
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Допишите программу, чтобы выводилось только шесть знаков после запятой у переменной number_pi
+
+
+number_pi = 3.141592653589793
+
+print(f'{number_pi: 6f}')
+
+
+~~~
+
+number_pi = 3.141592653589793
+print(f'{number_pi:.6f}')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+при купле/продаже обычно оставляют только два знака после запятой. В этом и будет заключаться, ваша задача - принять вещественное число, и вывести его в формате двух знаков после запятой
+
+
+num = float(input())
+rounded_num = round(num, 2)
+output_str = "{:.2f}".format(rounded_num)
+print(output_str)
+
+
+~~~
+
+print(f'{float (input()): .2f}')
+
+
+~~
+
+n = float(input())
+print(f"{n:.2f}")
+
+
+
+========== Формат вывода целых чисел ===========
+
+При помощи f-строк мы можем влиять и на отображение целых чисел.
+
+n = 12345
+print(f'{n:8d}')
+print(f'{n:7d}')
+print(f'{n:6d}')
+print(f'{n:5d}')
+print(f'{n:4d}')
+
+"Запись n:7d говорит, что  переменную n нужно представить в виде целого числа (это знак  d ) и на отображение всего числа выделить 7 знаков."
+
+"Если у переменной n не хватает разрядов до семи, то впереди отображения появятся знаки пробелов. Можно вместо пробелов добавить незначащие нули, для этого нужно подписать 0 перед количеством разрядов"
+
+
+n = 12345
+print(f'{n:08d}')				00012345
+print(f'{n:07d}')				0012345
+print(f'{n:06d}')
+print(f'{n:05d}')
+print(f'{n:04d}')
+
+
+"Можно также влиять на знак разделителя между группами чисел, посмотрите пример ниже"
+
+
+n = 12345678912345
+
+print(f'{n:,d}')					12,345,678,912,345
+print(f'{n:_d}')					12_345_678_912_345
+
+sep = '_'
+print(f'{n:{sep}d}') # вложенная f-строка
+
+12_345_678_912_345
+
+
+"Если вы попытаетесь указать другие знаки разделителя вместо знаков , и _ , получите ошибку"
+
+Также нельзя совмещать указание разделителя с указанием количества разрядов. Вот смотрите"
+
+n = 12345678912345
+
+print(f'{n:,15d}')
+
+
+Где это может быть полезно?
+
+"Это пригодится там, где нужно красиво и ровно вывести информацию."
+
+Наша программа печатает для каждого числа от 1 до 10 значения его квадрата и куба. Смотрите как все это получается без выравнивания
+
+print(f'Число Квадрат Куб')
+
+for x in range(1, 11):
+   print(f'{x} {x*x} {x*x*x}')
+   
+"А теперь с выравниванием"
+
+print(f'Число\t\tКвадрат\t\tКуб')
+
+for x in range(1, 11):
+   print(f'{x:2d}\t\t{x*x:3d}\t\t{x*x*x:4d}')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вводится целое число, необходимо вывести его на экран, отведя как минимум 10 разрядов под отображение числа. Если в числе не хватает разрядов, необходимо выводить незначащие нули
+
+
+num = int(input())
+
+print(f'{num:010d}')
+
+~~~
+
+print(f'{int(input()):010d}')
+
+~~~
+s=input()
+s=s.rjust(10,'0')
+print(s)
+
+~~~
+
+n = int(input())
+print(f'{n:0>10d}')
+
+~~~
+
+n = int(input())
+print(str(n).zfill(10))
+
+
+
+============= Выравнивание ===========
+
+https://stepik.org/lesson/752819/step/8?unit=754744
+
+"<   Выравнивает выражение в фигурных скобках по левому краю. У строк такое поведение по умолчанию"
+
+">.   Выравнивает выражение в фигурных скобках по правому краю. У чисел такое поведение по умолчанию"
+
+
+"^    Выравнивает выражение в фигурных скобках по центру"
+
+
+
+number = 12345.6789
+
+print(f"Число {number = }")
+print(f"|{number:25}|")
+print(f"|{number:<25}|")
+print(f"|{number:>25}|")
+print(f"|{number:^25}|")
+print('-'*25)
+
+text = "Python 3.10"
+
+print(f"Строка {text = }")
+print(f"|{text:25}|")
+print(f"|{text:<25}|")
+print(f"|{text:>25}|")
+print(f"|{text:^25}|")
+
+
+"Символы " | " используются в f-строке, чтобы помочь очертить интервал. Число после « : » указывает на количество символов в ширину."
+
+
+
+Практический пример выравнивания
+
+
+APPLES = .50
+BREAD = 1.50
+CHEESE = 2.25
+
+num_apples = 3
+num_bread = 10
+num_cheese = 6
+
+price_apples = num_apples * APPLES
+price_bread = num_bread * BREAD
+price_cheese = num_cheese * CHEESE
+
+str_apples = 'Яблоки'
+str_bread = 'Хлеб'
+str_cheese = 'Сыр'
+
+total = price_bread + price_cheese + price_apples
+
+print(f'{"Список покупок":^30s}')
+
+print(f'{"=" * 30}')
+
+print(f'{str_apples:10s}{num_apples:10d}\t${price_apples:>5.2f}')
+
+print(f'{str_bread:10s}{num_bread:10d}\t${price_bread:>5.2f}')
+
+print(f'{str_cheese:10s}{num_cheese:10d}\t${price_cheese:>5.2f}')
+
+print(f'{"Total:":>20s}\t${total:>5.2f}')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вводится целое число, необходимо выполнить выравнивание его по центру, отведя 15 символов под отображение числа. Символом заполнителем должен являться знак дефиса -
+
+print(f"{int(input()):-^15}")
+
+
+~~~
+
+num = int(input())
+
+output_str = "{:-^15}".format(num)
+
+print(output_str)
+
+~~~
+
+r=int(input())
+print(f"{r:^15}")
+
+~~~
+
+print(f'{int(input()):-^15d}')
+
+~~~
+
+a = int(input())
+print(f'{a: ^15}')
+
+~~~
+
+s=int(input())
+print(f"{s: >15}")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вам необходимо подправить код ниже так, чтобы он выравнивал
+
+первый print по центру
+второй print по правому краю
+третий print по левому краю
+
+|&&&&&&&hello&&&&&&&&|
+|&&&&&&&&&&&&&&&hello|
+|hello&&&&&&&&&&&&&&&|
+
+
+text = input()
+print(f"|{text:&^20}|")
+print(f"|{text:&>20}|")
+print(f"|{text:&<20}|")
+
+~~~
+
+text = input()
+print(*[f"|{text:&{i}20}|" for i in ['^', '>', '<']], sep='\n')
+
+~~~
+print(f"|{(text:=input()):&^20}|\n|{text:&>20}|\n|{text:&<20}|")
+~~~
+
+============= 2.11 Списки и операции над ними ================
+
+
+https://stepik.org/lesson/295802/step/1?unit=277506
+
+Сложение (конкатенация) списков
+
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+print(a + b) 				# [1, 2, 3, 4, 5, 6]
+print(a + [4])				# [1, 2, 3, 4]
+
+a = ['hi'] + a 				# ['hi', 1, 2, 3]
+
+print(a)
+a = a + b
+print(a)						# ['hi', 1, 2, 3, 4, 5, 6]
+
+
+
+Нахождение длины
+
+print(len([]))
+print(len([1, 2, 3, 4]))
+print(len([1, 2, 3, [1, 2, 3]]))
+
+
+Дублирование списка
+
+
+​​"Списки можно дублировать.  Умножать список на вещественное число вы не сможете - в этом случае получите ошибку."
+​​
+​​a = [0] * 5
+print(a) 							# [0, 0, 0, 0, 0]
+
+b = [1, 2, 3] * 3
+print(b)								# [1, 2, 3, 1, 2, 3, 1, 2, 3]
+				
+
+Проверка вхождения элемента в список
+
+"Это делается с помощью союза in и python сообщит, что это правда(True), если найдёт такой элемент. Если вы будете искать элемент, которого нет в этом списке, то получите ложь(False). Также поиск осуществляется целиком по элементу - если вы будете искать лишь часть этого элемента(например, строку), то python ее не найдет."
+
+
+a = [2, 5, 8, 9]
+print(5 in a)
+print(15 in a)
+
+
+Нахождение min и max
+
+a = [2, 5, 8, 9]
+print(max(a))  # Максимальное значение
+print(min(a))  # Минимальное значение
+print(sum(a))  # Сумма всех элементов
+
+
+
+Сортировка
+
+"Также вы можете отсортировать свой список с помощью функции sorted. По умолчанию она отсортирует по возрастанию. При этом сам список не меняется. Если вы хотите отсортировать по убыванию, то вы должны будете дописать слово reverse и присвоить ему значение True."
+
+
+b = [6, 5, 2, 9]
+print(sorted(b))  
+print(sorted(b, reverse=True)) 
+# сам список b не изменился
+print(b)  
+# теперь изменим b
+b = sorted(b)  
+print(b)  
+
+
+"В случае, если в вашем списке будут находиться не только числа, но и другие объекты, то мы получим ошибку. При использовании функций максимум, минимум, сумма и сортировка  вы должны быть уверены, что в списке хранятся одинаковые типы."
+
+
+Сравнение списков
+
+Также списки можно сравнивать между собой. Списки, как и строки, сравниваются по элементам, то есть берутся первые элементы и если первый элемент больше второго, то мы сразу получаем ответ. Списки будут полностью совпадать только в случае, если в них находятся одинаковые элементы и длина списков одинаковая.
+
+
+a = [2, 5, 8, 99999]
+b = [2, 5, 9]
+print(a > b)
+
+a = [2, 5, 9]
+b = [2, 5, 9]
+print(a == b)
+
+
+"Вы можете легко найти среднее арифметическое списка. Для этого вам необходимо будет сумму всех элементов разделить на количество этих элементов."
+
+
+a = [2, 5, 9, 8]
+print(sum(a) / len(a))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Сохраните в переменной  my_list список, в котором должно быть 77 элемента и все они представляют собой единицу
+
+
+my_list = [1 for _ in range(77)]
+print(my_list)
+
+
+~~~
+
+my_list = [1 for _ in range(77)]
+print(my_list)
+
+~~~
+
+print(my_list := [1] * 77)
+
+~~~
+
+my_list=[]
+
+for i in range(77):
+    my_list.append(1)
+    
+print(my_list)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Сохраните в переменной  my_list список из 15-ти повторений букв q, w, t
+
+
+my_list = ['q', 'w', 't'] * 15
+
+print(my_list)
+
+~~~
+
+print([*'qwt'] * 15)
+
+~~~
+
+print(list(15 * 'qwt'))
+
+~~~
+
+print(my_list := ['q', 'w', 't'] * 15)
+
+~~~
+
+class ListConstructor:
+    def __init__(self, list_name: str, elements: list, elements_count: int):
+        self.list_name = list_name
+        self.elements = elements
+        self.elements_count = elements_count
+
+    def make_list(self):
+        globals()[self.list_name] = self.elements * self.elements_count
+
+
+list_constructor = ListConstructor("my_list", ["q", "w", "t"], 15)
+list_constructor.make_list()
+print(my_list)
+
+
+~~~
+
+print(my_list := [i for _ in range(15) for i in ['q', 'w', 't']])
+
+~~~
+
+my_list=list('qwt')*15; print(my_list)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Допишите программу ниже, чтобы она вывела через пробел в одной строке значения самого маленького и самого большого элементов списка my_list.
+
+
+smallest = min(my_list)
+largest = max(my_list)
+
+print(f'{smallest} {largest}')
+
+~~~
+
+my_list.sort()
+print(my_list[0],my_list[-1])
+
+~~~
+
+print(min(my_list), max(my_list))
+
+~~~
+
+print(sorted(my_list)[0], sorted(my_list, reverse=True)[0])
+
+~~~
+
+
+========= Как ввести список чисел с клавиатуры =============
+
+В python существует функция map(). 
+
+Она делает следующее - преобразовывает в целое число всё, что вы введёте и разобьете по пробелам. Записывается она таким образом:
+
+map(int, input().split())
+
+
+"Но нам нужно будет превратить её в список, так как изначально результатом будет объект."
+
+list(map(int, input().split()))
+
+
+"Аналогично можно приводить и к типу float:"
+
+list(map(float, input().split()))
+
+
+b = list(map(int, input('Введите значения: ').split()))
+
+print(f'Вот наш список: {b}')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список из целых чисел. Ваша задача вывести True в случае, если в данном списке встречается значение 777. В противном случае вывести False
+
+
+my_list = list(map(int, input().split()))
+
+if 777 in my_list:
+    print(True)
+else:
+    print(False)
+    
+~~~
+
+print(777 in list(map(int, input().split())))
+    
+~~~
+
+numbers = [int(i) for i in (input().split())]
+print(777 in numbers)
+~~~
+
+print(777 in map(int,input().split()))
+
+~~~
+
+print('777' in input())
+
+~~~
+
+print('777' in input().split())
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список из целых чисел. Ваша задача найти сумму списка
+
+
+numbers = [int(i) for i in (input().split())]
+print(sum(numbers))
+
+
+~~~
+
+
+print(sum(list(map(int, input().split()))))
+
+
+~~~
+
+a = input().split()
+
+c = [int(i) for i in a]
+
+print(sum(c))
+
+~~~~~~~~
+
+print(sum([int(i) for i in input().split()]))
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Арбузы
+
+Иван Васильевич пришел на рынок и решил купить два арбуза: один для себя, а другой для тещи. Понятно, что для себя нужно выбрать арбуз потяжелей, а для тещи полегче. Но вот незадача: арбузов слишком много и он не знает как же выбрать самый легкий и самый тяжелый арбуз? Помогите ему!
+
+
+Вам нужно вывести два числа через пробел: массу арбуза, который Иван Васильевич купит теще и массу арбуза, который он купит себе.
+
+Чтобы прочитать из ввода целые числа и сохранить их в виде списка в переменной mas вам необходимо написать строчку
+
+
+mas = list(map(int, input().split()))
+
+for_yourself = max(mas)
+mother_in_law = min(mas)
+
+print(f'{mother_in_law} {for_yourself}')
+
+~~~
+
+a = list(map(int, input().split()))
+a.sort()
+print(a[0], a[-1])
+
+
+~~~
+
+a = list(map(int,input().split()))
+print(min(a),max(a))
+
+~~~
+
+print(*[f'{min(a)} {max(a)}' for a in [list(map(int, input().split()))]])
+
+~~~
+
+l = list(map(int, input().split())); print(min(l), max(l))
+
+~~~
+
+[print(i[0], i[-1]) for i in [sorted(map(int, input().split()))]]
+
+~~~
+
+a = [int(i) for i in input().split()]
+print(min(a), max(a))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список из целых чисел. Ваша задача найти среднее арифметическое введенного списка чисел
+
+list_numbers = list(map(int, input().split()))
+
+print(sum(list_numbers) / len(list_numbers))
+
+~~~
+
+print(sum(x:=[*map(int, input().split())]) / len(x))
+
+~~~
+
+
+============= 2.12 Списки: индексы и срезы ===============
+
+https://stepik.org/lesson/295803/step/1?unit=277507
+
+
+a = [34, 23, 12, 28, 9, 15]
+print(a[2])  # => 12
+
+
+
+Также в списках не допускается обращаться к индексу элемента которого нет.
+
+a = [34, 23, 12, 28, 9, 15]
+print(a[6])  # => Ошибка
+
+
+"Списки поддерживают и обратную индексацию - вы можете обратится и к последнему элементу списка по индексу -1."
+
+
+a = [34, 23, 12, 28, 9, 15]
+print(a[-1])  # => 15
+
+
+a = [34, 23, 12, 28, 9, 15]
+
+print(a[2:4])
+print(a[:4])
+print(a[2::2])
+print(a[::3])
+print(a[::-1])
+
+
+"Cписок является изменяемым объектом. Вы можете не только обращаться по индексу к какому-либо значению, но и, используя индексы и срезы, поместить туда новое значение. Строки не позволяют это сделать. "
+
+
+a = [34, 23, 12, 28, 9, 15]
+a[2] = 123
+print(a)  # => [34, 23, 123, 28, 9, 15]
+
+a[3:5] = [23, 34]
+print(a)  # => [34, 23, 123, 23, 34, 15]
+
+a[1:5] = 23, 34
+print(a)  # => [34, 23, 34, 15]
+
+
+"С помощью функции del вы можете удалять какой-либо элемент по индексу. "
+
+a = [34, 23, 12, 28, 9, 15]
+
+del a[2]
+print(a)  # => [34, 23, 28, 9, 15]
+
+
+"Есть одна очень большая особенность. Вы можете присваивать списки друг другу. Но в таком случае при изменении одного списка будет меняться и другой. Причина в том, что Python хранит в переменных ссылки на объекты. В примере ниже переменные a и b будут ссылаться на один и тот же объект и все изменения которые вы будете производить с одной переменной будут также влиять и на другую."
+
+a = [34, 23, 12, 28, 9, 15]
+b = a
+print(a)  # => [34, 23, 12, 28, 9, 15]
+print(b)  # => [34, 23, 12, 28, 9, 15]
+
+print('-' * 10)
+
+b[0] = 999
+print(a)  # => [999, 23, 12, 28, 9, 15]
+print(b)  # => [999, 23, 12, 28, 9, 15]
+
+
+
+"Чтобы избежать такой ситуации вы должны будете делать копию списка. Это делается следующим образом: "
+
+a = [34, 23, 12, 28, 9, 15]
+b = a[:]
+print(a)  # => [34, 23, 12, 28, 9, 15]
+print(b)  # => [34, 23, 12, 28, 9, 15]
+
+print('-' * 10)
+
+b[0] = 999
+print(a)  # => [34, 23, 12, 28, 9, 15]
+print(b)  # => [999, 23, 12, 28, 9, 15]
+
+print('-' * 10)
+
+a[0] = 111
+print(a)  # => [111, 23, 12, 28, 9, 15]
+print(b)  # => [999, 23, 12, 28, 9, 15]
+
+
+~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список целых чисел и ваша задача вывести второй элемент этого списка.
+
+a = list(map(int, input().split()))
+
+print(a[1])
+
+
+~~~
+
+print(list(map(int, input().split())) [1])
+
+~~~
+
+print(input().split()[1])
+
+
+
+~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список целых чисел и ваша задача вывести срез списка с третьего элемента по пятый включительно.
+
+a = list(map(int, input().split()))
+print(a[2:5])
+
+~~~
+
+print(list(map(int, input().split()))[2:5])
+
+
+~~~
+
+print([int(i) for i in input().split()][2:5])
+
+
+
+~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список целых чисел и ваша задача вывести последние три элемента этого списка через срез
+
+
+print([int(i) for i in input().split()][-3:])
+
+
+
+~~~
+
+print([*map(int, input().split())][-3:])
+
+~~~
+
+a = list(map(int, input().split()))
+
+b=a[::-1]   #развернул
+
+a=b[:3]      #отрезал
+
+b=a[::-1]      #развернул получившийся срез
+
+print(b)
+
+
+
+~~~
+
+a= list(map(int, input().split()))
+b=len(a)-3
+print(a[b:])
+
+
+"Calculates the value of b as the length of the list a minus 3. "
+"In this case, len(a) is 6, so b is equal to 3."
+"Prints a slice of the list a starting from the index b to the end of the list using the syntax a[b:]. "
+"This means the slice will contain elements at index 3 and beyond, which are 33, 65, and 12."
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список целых чисел и ваша задача вывести каждый третий элемент этого списка, начиная со второго по счету значения.
+
+
+print([int(i) for i in input().split()][1::3])
+
+
+~~~
+
+a = list(map(int, input().split()))
+print(a[1::3])
+
+~~~
+
+print( list(map(int, input().split()))[1::3])
+
+~~~
+
+a = list(map(int, input().split()))
+del a[0]
+
+print(a[::3])
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+"Программа получает на вход список целых чисел и ваша задача вывести этот список  в обратном порядке при помощи срезов"
+
+
+print([int(i) for i in input().split()][::-1])
+
+~~~
+
+print( list(map(int, input().split()))[::-1)
+
+~~~
+
+a = list(map(int, input().split()))
+
+print(a[::-1])
+
+~~~
+
+a = list(map(int, input().split()))
+a.reverse()
+print(a)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Перед вами список топовых сериалов по версии кинопоиска. Ваша задача заменить в нем сериал "Бригада" на "Сверхъестественное" и "Друзья" на "Настоящий детектив"
+
+
+top = ['Игра престолов', 'Шерлок', 'Друзья', 'Во все тяжкие', 'Доктор Хаус', 'Теория большого взрыва', 'Бригада']
+
+top[-1] = 'Сверхъестественное'
+top[2] = 'Настоящий детектив'
+
+print(top)
+
+~~~
+
+top=['Игра престолов', 'Шерлок', 'Друзья', 'Во все тяжкие', 'Доктор Хаус', 'Теория большого взрыва', 'Бригада']
+
+top[-1],top[2]='Сверхъестественное','Настоящий детектив'
+
+print(top)
+
+~~~***
+
+top[top.index('Бригада')] = 'Сверхъестественное'
+top[top.index('Друзья')] = 'Настоящий детектив'
+
+print(top)
+
+~~~
+
+top = ['Игра престолов', 'Шерлок', 'Друзья', 'Во все тяжкие',
+       'Доктор Хаус', 'Теория большого взрыва', 'Бригада']
+       
+top[top.index("Бригада")], top[top.index("Друзья")] = "Сверхъестественное", "Настоящий детектив"
+print(top)
+
+
+~~~
+
+top = ['Игра престолов', 'Шерлок', 'Друзья', 'Во все тяжкие', 'Доктор Хаус', 'Теория большого взрыва', 'Бригада']
+
+top[2::4] = ['Настоящий детектив', 'Сверхъестественное']
+
+print(top)
+
+
+~~~ ~***
+
+print(str(top).replace("Бригада","Сверхъестественное").replace("Друзья","Настоящий детектив"))
+
+~~~ *** 
+
+top = ','.join(top).replace('Друзья', 'Настоящий детектив').replace('Бригада', 'Сверхъестественное').split(',')
+print(top)
+
+~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Перед вами находится список months, хранящий сокращенное название месяцев в году
+
+Ваша программа получает на вход порядковый номер месяца в году - целое число от 1 до 12.
+
+Ваша задача распечатать кратное название месяца, которое соответствует порядковому номеру месяца
+
+
+~~~
+
+months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+month_number = int(input())
+
+print(months[month_number - 1])
+
+
+~~~
+
+from calendar import month_abbr
+
+print(month_abbr[int(input())])
+
+~~~
+
+print(months[int(input()) - 1])
+
+~~~
+
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+month_number = int(input("Enter a month number (1-12): "))
+
+if month_number < 1 or month_number > 12:
+    print("Invalid month number!")
+else:
+    month_name = months[month_number - 1]
+    print("The month is:", month_name)
+
+
+
+============ 2.13 Списки и их методы =========
+
+https://stepik.org/lesson/295804/step/1?unit=277508
+
+
+		Методы списков
+
+С методами мы уже с вами сталкивались при изучении строк, но строки были неизменяемые объекты, а списки наоборот. Поэтому использование практически каждого метода списка будет влиять на сам список без явного присваивания. Давай взглянем
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Метод append
+
+a = [34, 23, 12, 28, 9, 15]
+print(a)  # [34, 23, 12, 28, 9, 15]
+a.append(1)
+print(a)  # [34, 23, 12, 28, 9, 15, 1]
+
+"Если вы сделаете присвоение в переменную, то потеряете все значения, которые у вас были в списке."
+
+
+"Метод .append принимает только одно значение - это может быть строка, число или даже список, но ни в коем случае больше одного элемента."
+
+"Поэтому если вам нужно добавить три элемента, потребуется вызвать три раза метод .append"
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод clear
+		
+Следующий метод это .clear. У него следующий формат вызова:
+
+L.clear()
+
+Метод .clear не принимает никаких аргументов и делает список L пустым, удаляет все его элементы. 
+
+
+a = [34, 23, 12, 28, 9, 15]
+print(a)  # [34, 23, 12, 28, 9, 15]
+a.clear()
+print(a)  # []
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод copy
+		
+Метод .copy имеет следующий формат:
+
+L.copy()
+
+Метод .copy не принимает аргументов, делает копию списка - создается совершенно новый объект в памяти, он тоже является списком и будет состоять из таких же элементов как и оригинальный список, но у нового списка будет другой идентификатор.
+
+"Копию списка также можно получить через полный срез."
+
+a = [34, 23, 12, 28, 9, 15]
+b = a.copy()
+
+print(a)  # [34, 23, 12, 28, 9, 15]
+print(b)  # [34, 23, 12, 28, 9, 15]
+
+print('-' * 10)
+
+a[0] = 3
+
+print(a)  # [3, 23, 12, 28, 9, 15]
+print(b)  # [34, 23, 12, 28, 9, 15]
+
+
+"Метод .copy делает поверхностную копию, это значит он не делает копию вложенных списков, если они есть. При поверхностном копировании не создаются копии у вложенных объектов, поэтому изменения в одной переменной будут влиять и на другие."
+
+a = [34, 23, [12, 28, 9], 15]
+
+b = a.copy()
+
+print(a)  # [34, 23, [12, 28, 9], 15]
+print(b)  # [34, 23, [12, 28, 9], 15]
+
+print('-' * 10)
+
+a[0] = 3
+a[2][1] = 100
+
+print(a)  # [3, 23, [12, 100, 9], 15]
+print(b)  # [34, 23, [12, 100, 9], 15]
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод count
+		
+Метод .count имеет следующий формат:
+
+L.count(x)
+
+Принимает обязательно один аргумент. При помощи метода .count можно посчитать сколько раз встретилось в списке переданное значение.
+
+
+
+a = [34, 23, 12, 28, 9, 15, 23, 2, 23]
+
+print(f'23 встречается {a.count(23)} раз')
+print(f'12 встречается {a.count(12)} раз')
+print(f'24 встречается {a.count(24)} раз')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод .extend имеет следующий формат:
+
+L.extend(iterable)
+
+Метод .extend принимает обязательно один аргумент - итерабельную последовательность. Здесь нам придется забежать немного вперед, потому что данную тему мы еще не разбирали. Итерабельную последовательность состоит из нескольких элементов, поэтому списки и строки являются такой последовательностью. При помощи метода .extend можно добавить сразу все элементы из итерируемой последовательности в конец списка L. Значит метод .extend позволяет добавлять много элементов за один раз, вот его отличие от метода .append
+
+
+a = [34, 23, 12, 28, 9, 15]
+print(a)
+a.extend([23, 12])
+print(a)
+a.extend('hello')
+print(a)
+
+
+"В метод .extend можно передать список или строку, но нельзя передать число. Получите ошибку"
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+		Метод index
+
+Метод .index имеет следующий формат:
+
+L.index(x, [start [, end]])
+
+Метод .index находит переданный элемент x в списке L и возвращает его индекс. Если в списке находится несколько элементов,  равных значению x, то будет возвращен индекс первого из них. 
+
+Если список не содержит переданный элемент x, будет вызвано исключение ValueError.  
+
+У метода есть необязательные параметры start и end :
+
+Если задан индекс start то первое вхождение значения x будет искаться начиная с индекса start.
+
+Если заданы индексы start и end, то первое вхождение значения x будет искаться начиная с индекса start и перед индексом end.  
+
+Индекс start включается, а индекс end не включается
+
+
+a = [34, 23, 12, 28, 23, 2, 23]
+print(a.index(23))
+print(a.index(12))
+print(a.index(23, 1))
+print(a.index(23, 2))
+print(a.index(23, 2, 5))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод insert
+		
+Метод .insert имеет следующий формат:
+
+L.insert(index, value)
+
+Метод .insert выполняет вставку нового значения в список на определенную позицию. 
+Метод .insert должен принимать два значения: index  - индекс куда вставляем новое значение и value - что нужно ставить, то есть само значение. 
+
+
+a = [34, 23, 12, 28, 23]
+a.insert(1, 99)
+print(a)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод pop
+		
+Очень полезный метод .pop. У него следующий формат вызова:
+
+L.pop([index])
+	
+Метод .pop возвращает значение элемента с индексом index, а также удаляет его из списка L. По сути метод выполняет изъятие из списка элемента, стоящего на позиции index
+
+Необязательный аргумент - индекс index по умолчанию равен -1. Так что по умолчанию эта операция производит действие с последним элементом последовательности. Вы можете передать значение индекса для изъятия элемента
+
+
+"Результат метода .pop можно сохранить в переменную или сразу распечатать на экран."
+
+
+a.pop()
+print(a)  # [34, 23, 12, 28]
+
+b = a.pop()
+print(b)  # 28
+print(a)  # [34, 23, 12]
+
+print(a.pop())  # 12
+print(a)  # [34, 23]
+
+print(a.pop(0))  # 34
+print(a)  # [23]
+
+
+"Метод .pop вызывает IndexError, когда передать несуществующий индекс или попытаться извлечь элемент из пустого списка."
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод remove
+		
+Метод .remove имеет следующий формат:
+
+L.remove(x)
+
+ Слово remove переводится как «удалить», но этот метод, в отличие от метода .pop, удаляет по значению. Вы должны обязательно передать одно значение x. 
+
+
+Метод .remove производит удаление первого элемента, значение которого равно x из списка L. Длина списка уменьшается на единицу, элементы, стоящие справа от удаленного, смещаются влево на одну позицию.
+
+Если в списке L есть несколько элементов равных значению x, удалиться только первый найденный слева элемент. 
+
+"За один вызов метода удаляется один элемент, если нужно удалить несколько элементов, нужно несколько раз вызвать метод  .remove"
+
+
+a = [34, 23, 12, 28, 23, 34]
+a.remove(34)
+print(a)  # [23, 12, 28, 23, 34]
+a.remove(34)
+print(a)  # [23, 12, 28, 23]
+
+"Метод .remove вызывает ValueError, когда значение x не найдено в списке L."
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод reverse
+		
+Метод .reverse имеет следующий формат:
+
+L.reverse()
+
+Метод .reverse  не требует никаких аргументов и выполняет разворот списка - располагает элементы в противоположном порядке. При повторном вызове список вернётся в изначальное положение.
+
+
+a = [34, 23, 12, 28, 23]
+a.reverse()
+print(a)  # [23, 28, 12, 23, 34]
+a.reverse()
+print(a)  # [34, 23, 12, 28, 23]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод sort
+		
+Cамый, наверное, популярный метод списков - это .sort. Он выполняет сортировку. Имеет следующий формат:
+
+L.sort(key=None, reverse=False)
+
+Если не передать никаких аргументов, то по умолчанию сортировка будет выполнена по возрастанию. После этого можете вызвать метод .reverse. Список отсортируется по убыванию. Если вы сразу хотите его отсортировать по убыванию, то вы можете вызвать метод .sort и в нём внутри скобок дополнительно прописать reverse=True.
+
+
+a = [34, 23, 12, 28, 23]
+a.sort()
+print(a)  # [12, 23, 23, 28, 34]
+a.reverse()
+print(a)  # [34, 28, 23, 23, 12]
+
+b = [34, 23, 12, 28, 23]
+b.sort(reverse=True)
+print(b)  # [34, 28, 23, 23, 12]
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+В вашем распоряжении список numbers. Ваша задача добавить по порядку четыре следующих элемента в конец списка: 111, 222, 789 и 201
+
+
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+numbers.append(111)
+numbers.append(222)
+numbers.append(789)
+numbers.append(201)
+
+print(numbers)
+
+
+~~~
+
+numbers.extend((111, 222, 789, 201))
+
+~~~
+
+[numbers.append(i) for i in [111, 222, 789, 201]]
+print(numbers)
+
+~~~
+
+numbers += [111,222,789,201]
+print(numbers)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод insert
+		
+В вашем распоряжении список numbers. Ваша задача выполнить четыре следующих действия в том же порядке, как они указаны в списке:
+
+добавить значение 111  на 5-й индекс;
+добавить значение 222  на 8-й индекс;
+добавить значение 789  на 0-й индекс;
+добавить значение 201  на 11-й индекс;
+ В качестве ответа необходимо вывести измененный список numbers
+
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+numbers.insert(5, 111)
+numbers.insert(8, 222)
+numbers.insert(0, 789)
+numbers.insert(11, 201)
+
+print(numbers)
+
+~~~
+
+[numbers.insert(*num) for num in [(5, 111), (8, 222), (0, 789), (11, 201)]]
+
+print(numbers)
+
+~~~
+
+[numbers.insert(x, y) for x, y in [(5, 111), (8, 222), (0, 789), (11, 201)]]
+print(numbers)
+
+~~~
+
+for k, v in {5: 111, 8: 222, 0: 789, 11: 201}.items():
+    numbers.insert(k, v)
+print(numbers)    
+
+~~~
+
+set(map(numbers.insert, (5, 8, 0, 11), (111, 222, 789, 201)))
+print(numbers)
+
+~~~
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+[numbers.insert(ind, val) for val, ind in zip((111, 222, 789, 201), (5, 8, 0, 11))]
+print(numbers)
+
+
+~~~
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+change = ((5, 111), (8, 222), (0, 789), (11, 201))
+for p, v in change:
+    numbers.insert(p, v)
+    
+print(numbers)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод extend
+		
+В вашем распоряжении два списка numbers  и extra. Ваша задача расширить numbers список за счет списка extra
+
+Все элементы списка extra должны добавиться по порядку в конец списка numbers
+
+ В качестве ответа необходимо вывести измененный список numbers
+
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+extra = [43, 54, 23, 87, -4, -832, 90, 32, 543, 432, 4, 76, 8, 0, 21, 90, 32]
+
+numbers.extend(extra)
+print(numbers)
+
+
+~~~
+
+numbers += extra
+
+
+~~~
+
+[print(numbers) for _ in [numbers.extend(extra)]]
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод pop
+
+В вашем распоряжении список numbers. Ваша задача выполнить действия из списка строго в том же порядке, а именно:
+
+удалить элемент, стоящий на последней позиции;
+удалить элемент, стоящий на 0-й позиции;
+удалить элемент, стоящий на 12-й позиции;
+удалить элемент, стоящий на 7-й позиции;
+ В качестве ответа необходимо вывести на первой строке измененный список numbers, а на второй - сумму значений удаленных элементов
+
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+a = numbers.pop(-1)
+b = numbers.pop(0)
+c = numbers.pop(12)
+d = numbers.pop(7)
+
+sum_ = a + b + c + d
+
+print(numbers)
+print(sum_)
+
+
+~~~
+
+s = sum(numbers.pop(idx) for idx in (-1, 0, 12, 7))
+        
+print(numbers, s, sep='\n')
+
+
+~~~
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+print(numbers, numbers.pop(-1) + numbers.pop(0) + numbers.pop(12) + numbers.pop(7), sep='\n')
+
+~~~
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+a = [-1, 0, 12, 7]
+s = []
+for i in a:
+    s.append(numbers.pop(i))
+print(numbers)
+print(sum(s))
+
+~~~
+
+del_numbers=[numbers.pop(-1),numbers.pop(0),numbers.pop(12),numbers.pop(7)]
+print(f'{numbers}\n{sum(del_numbers)}')
+
+
+~~~
+
+a = 0
+for i in [-1, 0, 12, 7]:
+    a += numbers.pop(i)
+print(numbers)
+print(a)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Метод remove
+В вашем распоряжении список numbers. ​Ваша задача удалить из этого списка числа 3, 5, 7 и 9. 
+
+ В качестве ответа необходимо вывести измененный список numbers
+ 
+ 
+ numbers = [-214, 777, 181, 9, 32, -139, 43, 89, 77, 448, -20, -917, 54, 5, 432, 43, 32, 422, -895, 7, 198, 284, 472, 3, -986, -964, -989, 29]
+
+lst = [3, 5, 7, 9]
+
+for i in lst:
+    numbers.remove(i)
+
+print(numbers)
+
+
+~~~
+
+numbers = list(map(int, input().split()))
+[numbers.remove(i) for i in (3, 5, 7, 9) if i in numbers]
+print(numbers)
+
+
+~~~
+
+numbers = [-214, 777, 181, 9, 32, -139, 43, 89, 77, 448, -20, -917, 54, 5, 432, 43, 32, 422, -895, 7, 198, 284, 472, 3, -986, -964, -989, 29]
+
+list(map(numbers.remove, (3, 5, 7, 9)))
+print(numbers)
+
+
+~~~
+
+a = list(map(int, input().split()))
+
+for e in (3, 5, 7, 9):
+    try:
+        a.remove(e)
+    except ValueError:
+        pass
+print(a)
+
+~~~
+
+a = list(map(int, input().split()))
+
+for e in set(a).intersection((3, 5, 7, 9)):
+    a.remove(e)
+print(a)
+
+
+~~~
+
+for i in (3, 5, 7, 9):
+    while i in numbers:
+        numbers.remove(i)
+print(numbers)
+
+
+~~~
+
+numbers = [-214, 777, 181, 9, 32, -139, 43, 89, 77, 448, -20, -917, 54, 5, 432, 43, 32, 422, -895, 7, 198, 284, 472, 3,-986, -964, -989, 29]
+
+[numbers.remove(i) for i in [3, 5, 7, 9]]
+
+print(numbers)
+
+~~~
+
+numbers = [-214, 777, 181, 9, 32, -139, 43, 89, 77, 448, -20, -917, 54, 5, 432, 43, 32, 422, -895, 7, 198, 284, 472, 3, -986, -964, -989, 29]
+[numbers.remove(i) for i in [3, 5, 7, 9] if i in numbers]
+print(numbers)
+
+~~~
+
+numbers = [-214, 777, 181, 9, 32, -139, 43, 89, 77, 448, -20, -917, 54, 5, 432, 43, 32, 422, -895, 7, 198, 284, 472, 3, -986, -964, -989, 29]
+
+print([i for i in numbers if i not in (3, 5, 7, 9)])
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Метод sort
+		
+В вашем распоряжении список numbers. Ваша задача отсортировать список numbers в порядке убывания  и вывести на экран результат.
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+numbers.sort(reverse=True)
+print(numbers)
+
+
+"Второй способ"
+# numbers.sort()
+# numbers = numbers[::-1] 
+# print(numbers)
+
+"Третий способ"
+# numbers.sort()
+# numbers.reverse()
+# print(numbers)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Разворот
+		
+Программа получает на вход список из целых чисел. Ваша задача преобразовать его таким образом, чтобы элементы расположились в обратном порядке. 
+
+a = list(map(int, input().split()))
+a.reverse()
+print(a)
+
+
+~~~
+
+a = list(map(int, input().split()))
+print(a[::-1])
+
+~~~
+
+print(*(input().split()[::-1]))
+
+~~~
+
+print(*reversed([i for i in input().split()]))
+
+~~~
+
+lst = list(map(str, input().split()))
+lst.reverse()
+lst = " ".join(lst)
+print(lst)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход список из целых чисел. Подсчитайте сколько раз в нем присутствует число 999
+
+a = list(map(int, input().split()))
+
+print(a.count(999))
+
+
+~~~
+
+print(list(map(int, input().split())).count(999))
+
+~~~
+
+print(sum([1 for i in list(map(int, input().split())) if i==999]))
+
+~~~
+
+print( [int(i) for i in input().split()].count(999) )
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+In Python, you can use the copy module to create a deep copy of a list. A deep copy is a new list that contains new objects (not references to the original objects) and is independent of the original list.
+
+import copy
+
+original_list = [1, 2, [3, 4]]
+deep_copy_list = copy.deepcopy(original_list)
+
+print(original_list)    # [1, 2, [3, 4]]
+print(deep_copy_list)   # [1, 2, [3, 4]]
+
+# Modify the original list
+original_list[2][0] = 5
+
+print(original_list)    # [1, 2, [5, 4]]
+print(deep_copy_list)   # [1, 2, [3, 4]]
+
+
+
+
+		Метод copy
+		
+В вашем распоряжении список numbers. Ваша задача скопировать все содержимое списка numbers в новую переменную copy_numbers
+
+ В качестве ответа необходимо вывести список copy_numbers
+
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+copy_numbers = numbers[:]
+
+print(copy_numbers)
+
+
+" ***  DEEPCOPY *** "
+
+import copy
+
+original_list = [1, 2, [3, 4]]
+deep_copy_list = copy.deepcopy(original_list)
+
+
+~~~
+
+numbers = [-214, 181, -139, 448, -20, -917, 32, 422, -895, 198, 284, 472, -986, -964, -989, 29]
+
+"""1"""
+
+print((copy_numbers := numbers.copy()))
+
+"""2"""
+
+# copy_numbers = numbers.copy()
+# print(copy_numbers)
+
+"""3"""
+
+# print((copy_numbers := numbers[:]))
+
+"""4"""
+
+# copy_numbers = numbers[:]
+# print(copy_numbers)
+
+"""5"""
+
+# print((copy_numbers := [element for element in numbers]))
+
+"""6"""
+
+# copy_numbers = list(element for element in numbers)
+# print(copy_numbers)
+
+"""7"""
+
+# copy_numbers = []
+# copy_numbers.extend(numbers)
+# print(copy_numbers)
+
+"""8"""
+
+# copy_numbers = []
+# for element in numbers:
+#     copy_numbers.append(element)
+# print(copy_numbers)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Дефиснутая фраза
+		
+Вводится два слова через пробел. Ваша задача преобразовать данную фразу таким образом, чтобы все буквы стали заглавными и между буквами в каждом слове появились дефисы
+
+
+
+x = input().upper().split()     # делаем буквы заглавными и разбиваем на элементы, создаем список.
+
+word1 = x[0]    # вытаскиваем первый элемент списка
+word2 = x[1]    # вытаскиваем второй элемент списка
+
+word1 = list(word1)     # создаем разбитый список 1
+word2 = list(word2)     # создаем разбитый список 2
+
+print('-'.join(word1), '-'.join(word2))   # объединяем первую и вторую строку
+
+~~~
+a, b = input().upper().split()
+
+print( '-'.join(a),  '-'.join(b))
+
+~~~
+
+a = list(map(str, input().upper().split()))
+
+print(*a[0], sep="-", end = " ")
+
+print(*a[1], sep="-")
+
+~~~
+
+a = input().upper()
+
+print('-'.join(a).replace('- -',' '))
+
+~~~
+
+print(*map('-'.join, input().upper().split()))
+
+~~~
+
+a=input().upper().split()
+
+delimiter='-'
+
+b=list(a[0])
+c=list(a[1])
+
+b=delimiter.join(b)
+c=delimiter.join(c)
+
+print(b,c)
+
+
+~~~
+
+print(*['-'.join(i) for i in input().upper().split()])
+
+~~~
+
+a=input().upper().split()
+
+b=a[0].replace("","-")
+c=a[1].replace("","-")
+
+print(b[1:-1] + " " + c[1:-1])
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Инициалы
+Ваша программа получает на вход строку, содержащую имя, отчество и фамилию человека
+
+Вам необходимо вывести фамилию и инициалы, как в примерах ниже
+
+Sample Input:
+
+Марина Денисовна Климова
+
+Sample Output :
+
+Климова М.Д.
+
+
+lst = list(map(str, input().split()))
+name = lst[0]
+middle_name = lst[1]
+last_name = lst[2]
+
+print(f'{last_name} {name[0]}. {middle_name[0]}.')
+
+
+~~~
+
+n = input().split()
+print(f'{n[-1]} {n[0][0]}.{n[1][0]}.')
+
+~~~
+
+name, mid, last = input().split()
+
+print(f'{last} {name[0]}.{mid[0]}.')
+
+~~~
+
+a = input().split()
+print(a[2], end=' ')
+print(*a[0][0], *a[1][0], sep='.', end='.')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая выводит слова введённой строки (части, разделённые символами пустого пространства) в столбик. Нужно обойтись только методами split и join у строк, в программе должен быть всего один вызов print.
+
+
+string = input()
+
+words = string.split()
+
+output = '\n'.join(words)
+print(output)
+
+
+~~~
+
+print(*input().split(), sep='\n')
+
+~~~
+
+print(input().replace(' ', '\n') )
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,7387 @@
+
+
+https://stepik.org/lesson/295933/step/1?unit=277637
+
+3.1 Условный оператор
+
+Все программы, которые мы писали до этого были линейные, то есть все команды выполнялись сверху вниз. Все команды следуют друг за другом и ни одна из них не пропускается. С помощью условного оператора мы можем изменить это поведение.
+
+
+Оператор if
+
+Условный оператор if позволяет выполнить определенный набор инструкций в зависимости от некоторого условия.
+
+
+В простейшем варианте использование оператора if выглядит так:
+
+if условие:
+    блок команд 1
+блок команд 2
+
+"После оператора if обязательно записывается условие, результатом которого должно быть выражение True или False. "
+
+После условия необходимо поставить знак двоеточия “:”. 
+
+Если данное условие будет истинно, то выполняется блок команд 1. 
+
+Вне зависимости от условия блок команд 2 будет выполняться в любом случае. 
+
+Работая с условной конструкцией, важно знать, что Python интерпретирует ненулевые значения как True. None и 0 интерпретируются как False.
+
+
+a = 777
+if a == 777:
+    print("Этот принт сработает, если а будет равно 777.")
+    print("И так же этот принт.")
+    print("И этот.")
+
+print("А это сообщение выведется в любом случае")
+
+
+Повторюсь, в условии должно стоять выражение, значение которого истинно или ложно. Но можно подставить сразу булево значение
+
+
+if 5>1:
+    print("5>1 - Этот принт сработает всегда")
+
+if bool(100):
+    print("bool(100) - Этот принт сработает всегда")
+
+if True:
+    print("True - Этот принт сработает всегда")
+  
+
+if 5<1:
+    print("5<1 - Этот принт не увидите")
+
+if bool(0):
+    print("bool(0) - Этот принт не увидите")
+
+if False:
+    print("False - Этот принт не увидите")
+
+
+money = 100
+ticket = 90
+if money > ticket:
+    print("УРАААА!!!")
+    print("Я иду в кино!")
+print("Пора идти домой")
+
+
+
+"Если вы хотите оставить блок пустым, воспользуйтесь ключевым словом pass. Оно также может быть использовано в следующих темах, такие как while for def"
+
+
+
+"В состав оператора if может входить необязательный оператор else"
+
+if условие:
+    блок команд 1
+else:
+    блок команд 2
+блок команд 3
+
+
+"Инструкции, входящие в блок команд 1, будут выполняться только в случае, если условие будет истинно. В противном случае будет выполняться блок команд 2. А блок команд 3 выполнится после этого в любом случае."
+
+if 4 == 6 or 5 < 9:
+    print(1)
+else:
+    print(2)
+print(3)
+
+
+
+"Вводится одно число и необходимо вывести сообщение "Четное", если число делится на 2 без остатка, или "Нечетное" - в противном случае"
+
+a = int(input('Введите число: '))
+if a % 2 == 0:
+    print('Четное')
+else:
+    print('Нечетное')
+
+
+"Вводится два числа и необходимо вывести самое большое значение среди них."
+
+a = int(input('Введите первое число: '))
+b = int(input('Введите второе число: '))
+if a > b:
+    print(a)
+else:
+    print(b)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+str = input()
+
+if 'Python' in str:
+	print('ДА')
+else:
+	print('НЕТ')
+
+~~~
+
+print("ДА" if input() == "Python" else "НЕТ")
+
+
+~~~
+
+print(['НЕТ', 'ДА'][input() == 'Python'])
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Заплатите налоги
+
+Во всех странах присутствует подоходный налог. В каких-то странах он больше, в каких-то меньше. В РФ граждане платят подоходный налог в размере 13%.
+
+Представьте теперь, что люди с доходом меньше 20000 рублей освобождены от уплаты налога. 
+
+Напишите программу, которая получает на вход значение дохода и выводит на экран сумму, оставшуюся после уплаты налога в 13%. 
+
+Если у человека зарплата меньше 20000р налог не удерживается.
+
+
+income = int(input())
+
+if income < 20000:
+    print(income)
+else:
+    print(income - (income * 0.13))
+
+
+~~~
+
+n = int(input())
+print(n if n < 20000 else n * 0.87)
+
+
+~~~
+
+salary = int(input())
+print(salary * (0.87 + 0.13 * (salary < 20000)))
+
+~~~
+
+salary = int(input())
+tax = 13
+if salary > 20000:
+    print(salary - (salary * tax / 100))
+else:
+    print(salary)
+    
+~~~
+
+print(*[(i-i*0.13 if i>=20000 else i) for i in [int(input())]])  
+
+
+~~~  
+
+n = int(input())
+
+print(n if n <= 20000 else n * 0.87)
+
+
+~~~
+
+n = int(input())
+print(n - n * 0.13 if n >= 20000 else n) 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вводятся два целых числа, каждое в отдельной строке.
+
+Ваша задача вывести наибольшее из данных чисел.
+
+Примечание: используйте только условный оператор, функцией max пользоваться нельзя
+
+
+
+a = int(input())
+b = int(input())
+
+if a > b:
+	print(a)
+else:
+	print(b)
+
+
+~~~
+
+a, b = int(input()), int(input())
+print(a if a > b else b)
+
+~~~
+
+a, b = int(input()), int(input())
+print((a, b)[a < b])
+
+
+$$$ ~~~ 
+
+a, b = int(input()), int(input())
+
+if a < b:
+    a, b = b, a
+    
+print(a)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход три натуральных числа A, B и C через пробел. 
+
+Вам необходимо вывести YES в том случае, если A + B = C и вывести NO в противном случае.
+
+
+a, b, c = [int(i) for i in input().split()]
+
+two_values_equal = a + b == c
+
+if two_values_equal:
+    print('YES')
+else:
+    print('NO')
+    
+    
+~~~$$$
+
+a, b, c = map(int, input().split())
+
+print(['NO', 'YES'][a + b == c])   
+ 
+~~~
+
+[print(('NO', 'YES')[a + b == c]) for a, b, c in [[int(i) for i in input().split()]]]
+
+~~~
+
+a, b, c = map(int, input().split())
+
+print('NO' if a + b - c else 'YES')
+
+
+~~~
+
+a, b, c = (int(i) for i in input().split())
+print(('YES', 'NO')[a + b != c])
+
+
+~~~
+
+#используем прошедший материал списков и срезов. переворачиваем список и сравниваем
+
+b = a[::-1]
+
+if a == b:
+    print("YES")
+else:
+    print("NO")
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Метод remove
+
+Программа получает на вход список из целых чисел, при этом гарантируется, что числа в списке повторяться не будут.
+​​Ваша задача удалить из этого списка числа 3, 5, 7 и 9. 
+
+Обратите внимание, что каждое из чисел 3, 5, 7 и 9. необязательно должно присутствовать в введенном списке.
+
+В качестве ответа необходимо распечатать измененный список
+
+~~~
+
+# receive a list of integers
+numbers = list(map(int, input().split()))
+
+# remove numbers 3, 5, 7, and 9 using a list comprehension
+new_numbers = [num for num in numbers if num not in [3, 5, 7, 9]]
+
+# print the modified list
+print(new_numbers)
+
+
+"The list comprehension [num for num in numbers if num not in [3, 5, 7, 9]] iterates through each number in the numbers list and keeps only the ones that are not equal to 3, 5, 7, or 9. Finally, the modified list new_numbers is printed using the print() function."
+
+~~~
+
+# receive a list of integers
+numbers = list(map(int, input().split()))
+
+# create an empty list to store the modified numbers
+new_numbers = []
+
+# iterate through each number in the list
+for num in numbers:
+    # if the number is not 3, 5, 7, or 9, add it to the new list
+    if num not in [3, 5, 7, 9]:
+        new_numbers.append(num)
+
+# print the modified list
+print(new_numbers)
+
+
+"The for loop iterates through each number in the numbers list. If the number is not equal to 3, 5, 7, or 9, it is added to the new_numbers list using the append() method. Finally, the modified list new_numbers is printed using the print() function."
+
+~~~
+
+a = list(map(int, input().split()))
+
+[a.remove(i) for i in (3, 5, 7, 9) if i in a]
+print(a)
+
+~~~
+
+a = list(map(int, input().split()))
+
+print(list(n for n in a if n not in [3,5,7,9]))
+
+~~~
+
+a = list(map(int, input().split()))
+
+if 3 in a:
+    a.remove(3)
+if 5 in a:
+    a.remove(5)
+if 7 in a:
+    a.remove(7)  
+if 9 in a:
+    a.remove(9)    
+print(a)
+
+
+~~~
+
+a = list(map(int, input().split()))
+for i in a:
+    if i == 3 or i == 5 or i == 7 or i == 9:
+        a.remove(i)
+print(a)
+
+
+~~~
+
+a = [int(i) for i in input().split() if i not in '3579']
+print(a)
+
+~~~
+a = list(map(int, input().split()))
+if a.count(3)==1:
+    a.remove(3)
+if a.count(5)==1:
+    a.remove(5)
+if a.count(7)==1:
+    a.remove(7)
+if a.count(9)==1:
+    a.remove(9)
+    
+print(a)
+
+
+
+========== Моржевый оператор / WALRUS ================
+
+"Совсем недавно в мире Python, а именно начиная с версии python 3.8, появился Моржовый (walrus) оператор. Он дает возможность решить сразу две задачи: присвоить значение переменной и сразу получить это значение. Из-за этого можно написать код короче и сделать его более читаемым, и он может быть даже более эффективным с точки зрения вычислений."
+
+
+Что было до моржа?
+
+До этого оператора, если мы хотели вывести значение переменной, нужно было ее создать при помощи оператора присваивания = и затем вывести на экран. Все это занимало две строчки кода
+
+see_walrus = 'Look at my walrus, my walrus is amazing'
+print(see_walrus)
+
+
+Что теперь, когда есть «морж» ?
+
+Теперь мы можем выполнить присвоение и вывод ровно за одну строчку. И все благодаря «моржу», он просто красавчик. "Сам оператор состоит из двоеточия и знака равно записанными слитно и выглядит вот так :=  "
+
+Свое название «морж» данный оператор получил за сходство с головой лежащего моржа. Да, есть в нем что-то похожее на моржа
+
+
+print(see_walrus := 'Look at my walrus, my walrus is amazing')
+
+print(see_walrus[:11] + 'horse')
+
+"Внутри функции print мы с вами создали переменную и она сразу подставилась в вывод. Дальше мы можем также работать со значением этой переменной"
+
+
+
+		"Моржевый оператор и условия"
+
+
+Очень часто моржа можно увидеть в условии, потому что он позволяет сразу создавать переменные внутри проверки.
+
+Посмотрите на код без «моржа»
+
+
+words = input('Введите слова через пробел: ').split()
+
+count = len(words)
+if count > 3:
+    print (f"Ого сколько слов вы знаете, аж {count}")
+else:
+    print (f"Словарный запас пополнить надо, {count} это маловато")
+
+
+
+"А теперь с «моржем»"
+
+
+words = input('Введите слова через пробел: ').split()
+
+if (count := len(words)) > 3:
+    print (f"Ого сколько слов вы знаете, аж {count}")
+else:
+    print (f"Словарный запас пополнить надо, {count} это маловато")
+
+
+
+"А скобки зачем? Спросите вы. Они нужны для указания приоритета операции, мы хотим чтобы сравнение с тройкой выполнялось в последнюю очередь. Если убрать скобки, получите другой порядок выполнения операции"
+
+
+
+
+		Ввод и «моржевый» оператор
+		
+И так можно, сразу вводите и сравниваете значения
+
+
+if number := int(input('Введите число: ')) == 100:
+  print('Соточка')
+else:
+  print('Не Соточка')
+  
+  
+  
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  На момент написания текста из РФ можно было вывозить не более 10000$ или эквивалент в другой валюте. При превышении этой суммы необходимо составлять декларацию.
+
+Давайте представим, что сумму выше 10000 долларов таможня забирает себе и вам останется только 10000$.
+
+Давайте напишем такую программу, которая будет принимать целое положительное число - сумма в долларах. Если она не превышает 10000$, то выводим текст Сумма <значение> не превышает лимит, проходите
+
+Если сумма превышает 10000$ выводим текст Ого! <значение>! Куда вам столько? Мы заберем <разница>
+
+***
+
+if (num := int(input())) <= 10000:
+    print(f'Сумма {str(num)} не превышает лимит, проходите')
+else:
+    print(f'Ого! {str(num)}! Куда вам столько? Мы заберем {num - 10000}')
+    
+    
+~~~
+
+if (money:=int(input())) <= 10000:
+    print(f'Сумма {money} не превышает лимит, проходите')
+else:
+    print(f'Ого! {money}! Куда вам столько? Мы заберем {money-10000}')
+    
+ ~~~
+ 
+ limit = 10000
+ 
+if (money := int(input())) <= limit:
+    print(f'Сумма {money} не превышает лимит, проходите')
+else:
+    print(f'Ого! {money}! Куда вам столько? Мы заберем {money - limit}')
+  	
+  	
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вход вашей программе поступает фраза, если в ней присутствует слово walrus выводим текст Нашли моржа, иначе выводим Никаких моржей тут нет.
+
+
+sub_str = 'walrus'
+
+if (idx := input().find(sub_str)) != -1:
+    print(f'Нашли моржа')
+else:
+    print(f'Никаких моржей тут нет')
+    
+    
+ ~~~~
+ 
+ print(walrus:=('Никаких моржей тут нет', 'Нашли моржа')['walrus' in input()])
+ 
+ ~~~~    
+ 
+ print('Нашли моржа' if 'walrus' in (s := input()) else 'Никаких моржей тут нет')
+ 
+ ~~~
+ 
+ if (words := input().split()).count('walrus') > 0:
+	print("Нашли моржа")
+else:
+	print("Никаких моржей тут нет")
+ 
+ ~~~
+ 
+ if 'walrus' in (line := input()): 
+    print('Нашли моржа')
+else:
+    print('Никаких моржей тут нет')
+ 
+ ~~~
+ 
+ if (x := 'walrus') in input(): print('Нашли моржа')
+else:print('Никаких моржей тут нет')
+
+
+~~~
+
+b='walrus'
+if (a := str(input())).count(b):
+    print('Нашли моржа')
+else:
+    print('Никаких моржей тут нет')
+ 
+ ~~~
+ print(('Никаких моржей тут нет', 'Нашли моржа')['walrus' in (s := set(input().split()))])
+ 
+ ~~~
+ print('Нашли моржа') if ('walrus' in (user_input := input())) else print('Никаких моржей тут нет')
+ 
+ ~~~  
+   
+    "Дополнительный пример"
+
+
+my_string = "Hello, World!"
+substring = "World"
+
+if (index := my_string.find(substring)) != -1:
+    print(f"The substring '{substring}' is present in the string '{my_string}' at index {index}")
+else:
+    print(f"The substring '{substring}' is not present in the string '{my_string}'")
+
+
+
+In this code, the := operator is used to assign the value of my_string.find(substring) to the variable index and check if it is not equal to -1 in the same line. If index is not equal to -1, the first print statement is executed, otherwise the second print statement is executed.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа принимает на вход два слова s и t. 
+
+Если слово t является словом s, записанным наоборот, выведите YES, иначе выведите NO.
+
+s = input()
+t = input()
+
+t = t[::-1]
+
+if s == t:
+	print('YES')
+else:
+	print('NO')
+	
+	
+~~~
+
+if (t := input()) == (s := input()[::-1]):
+    print('YES')
+else:
+    print('NO')
+
+~~~
+
+print('YES' if input() == input()[::-1] else 'NO')
+
+~~~
+
+''' Наоборот '''
+print("YNEOS"[input() != input()[::-1]::2])
+
+
+~~~~
+
+print(('NO', 'YES')[input() == input()[::-1]])
+
+~~~
+
+s, t = input(), input()
+
+print('YES' if s == t[::-1] else 'NO')
+
+~~~
+
+s = list(input())
+t = list(input())
+
+t.reverse()
+
+if s == t:
+    print('YES')
+else:
+    print('NO')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Требуется написать программу, определяющую, является ли четырехзначное натуральное число N палиндромом, т.е. числом, которое одинаково читается слева направо и справа налево.
+
+Программа получает на вход целое положительное четырехзначное число N  и должна вывести YES,  если число N является палиндромом, и NO - если не палиндром.
+
+
+"Четырехзначное число будет палиндромом, когда у него первая цифра совпадает с четвертой, а вторая с третьей"
+"Либо можно число преобразовать в строку и сравнить будет ли данная строка равна перевернутой"
+
+
+num = input()
+
+if num == num[::-1]:
+    print('YES')
+else:
+    print('NO')
+    
+    
+$$$ ~~~ $$$
+
+a = int(input())
+
+b = a // 1000
+c = a %1000 //100
+d = a %100 //10
+e = a % 10
+
+if b == e and c == d:
+    print('YES')
+else:
+    print('NO')
+
+
+~~~~
+
+s = input()
+print(['NO', 'YES'][s == s[::-1]])
+
+~~~
+
+a =i nput()
+print( 'YES' if a[0] == a[3] and a[1] == a[2] else 'NO')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Даны три натуральных числа a, b, c записанные в отдельных строках. Ваша задача определить, существует ли треугольник с такими сторонами. 
+
+Для этого вспоминаем теорему о существовании треугольника. Она утверждает, что треугольник существует, если сумма любых двух сторон больше оставшейся третьей.
+
+Выведите строку YES, если условие теоремы выполняется, иначе выведите строку NO.
+
+
+ #приводим полученные числа в массив и сортируем его по возрастанию
+numbers = [int(input()), int(input()), int(input())]
+
+numbers.sort()
+
+#если сумма двух наименьших сторон больше 3 стороны
+
+
+a=int(input())
+b=int(input())
+c=int(input())
+
+if a + b > c and a + c > b and b + c > a:
+    print('YES')
+else:
+    print('NO')
+
+~~~ $$$ ~~~
+
+a, b, c = int(input()), int(input()), int(input())
+
+if max(a, b, c) < (a + b + c) / 2:
+    print('YES')
+else:
+    print('NO')
+
+
+~~~
+
+a, b, c = [int(input()) for i in '123']
+
+print('YES' if a + b > c and a + c > b and b + c > a else 'NO')
+
+
+~~~ $$$ ~~~
+
+a, b, c = [int(input()) for i in range(3)]
+
+print('YES' if max(a, b, c) < a + b + c - max(a, b, c) else 'NO')
+~~~
+
+A, B, C = sorted([int(input()) for _ in range(3)])
+print('YES' if A + B > C else 'NO')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Счастливый билет
+
+Вы пользуетесь общественным транспортом? Вероятно, вы расплачивались за проезд и получали билет с номером. Счастливым билетом называют такой билет с шестизначным номером (иногда и с незначащими нулями), где сумма первых трех цифр равна сумме последних трех. Т.е. билеты с номерами 385916 и 2011 – счастливые, т.к. 3+8+5=9+1+6 и 0+0+2=0+1+1. Вам требуется написать программу, которая проверяет «счастливость» билета.
+
+
+x = list(map(int, list(input())))
+
+left = sum(x[0:-3])     # получаем сумму от 0 элемента до 3 с конца
+right = sum(x[-3:])     # получаем сумму последних 3 чисел
+
+#сравниваем левую и правую часть
+if left == right:
+    print("YES")
+else:
+    print("NO")
+
+
+~~~
+
+s = input()
+s = s.rjust(6, '0')
+print('YES' if sum(map(int, s[:3])) == sum(map(int, s[3:])) else 'NO')
+
+
+$$$ ~~~
+
+a = int(input())
+
+if (a // 100000) + (a // 10000 % 10) + (a // 1000 % 10) == (a // 100 % 10) + (a //10 % 10) + (a % 10):
+    print("YES")
+else:
+    print("NO")
+
+
+~~~
+
+n = [int(i) for i in input()]
+print(('NO', 'YES')[sum(n[:-3]) == sum(n[-3:])])
+
+$$$~~~
+
+n=input()
+n=n.rjust(6,'0')
+
+x=int(n[0])+int(n[1])+int(n[2])
+y=int(n[3])+int(n[4])+int(n[5])
+
+if x==y:
+    print('YES')
+else:
+    print('NO')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая на вход получает координаты двух клеток шахматной доски и выводит сообщение о том, являются ли эти клетки одного цвета. Столбцы на шахматной доске обозначаются английскими строчными буквами.
+
+
+Программа должна выводить YES, когда клетки одного цвета, NO - разного. Гарантируется, что значение колонок это латинские буквы abcdefgh, а строки это символы цифр от 1-8
+
+x = input()
+y = input()
+
+
+r =['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+
+#получаем остаток от деления суммы индекса колонки с числом строки
+a1 =(r.index(x[0]) + int(x[1])) % 2
+a2 =(r.index(y[0]) + int(y[1])) % 2
+
+#если остатки от деления равны значит это один цвет
+if a1 == a2:
+  print('YES')
+else:
+  print('NO')
+  
+  
+~~~
+
+print(('YES', 'NO')[sum(map(ord, input() + input())) % 2])
+
+~~~
+
+a=input()
+b=input()
+
+abc = 'abcdefgh'
+
+a1 = abc.index(a[0].lower())
+b1 = abc.index(b[0].lower())
+
+a2=int(a[1])
+b2=int(b[1])
+
+if (a1 + a2) % 2 == (b1 + b2) % 2:
+    print('YES')
+else:
+    print('NO')
+
+~~~
+
+n = input()
+m = input()
+
+black = 'a1a3a5a7a9b2b4b6b8c1c3c5c7c9d2d4d6d8e1e3e5e7e9f2f4f6f8g1g3g5g7g9h2h4h6h8'
+white = 'a2a4a6a8b1b3b5b7b9c2c4c6c8d1d3d5d7d9e2e4e6e8f1f3f5f7f9g2g4g6g8h1h3h5h7h9'
+
+if n in black and m in black:
+    print("YES")
+elif n in white and m in white:
+    print("YES")
+else:
+    print("NO")
+
+
+~~~
+
+s = 'abcdefgh'
+
+a = input()
+b = input()
+
+a1 = (s.index(a[0]) + int(a[1])) % 2
+b1 = (s.index(b[0]) + int(b[1])) % 2
+
+if a1 == b1:
+    print("YES")
+else:
+    print("NO")
+    
+    
+~~~
+
+a=input()
+b=input()
+if (a[0]=="a" or a[0]=="c" or a[0]=="e" or a[0]=="g") and (a[1]=="1" or a[1]=="3" or a[1]=="5" or a[1]=="7"):
+    a="black"
+elif (a[0]=="b" or a[0]=="d" or a[0]=="f" or a[0]=="h") and (a[1]=="2" or a[1]=="4" or a[1]=="6" or a[1]=="8"):
+    a="black"
+else:
+    a="white"
+if (b[0]=="a" or b[0]=="c" or b[0]=="e" or b[0]=="g") and (b[1]=="1" or b[1]=="3" or b[1]=="5" or b[1]=="7"):
+    b="black"
+elif (b[0]=="b" or b[0]=="d" or b[0]=="f" or b[0]=="h") and (b[1]=="2" or b[1]=="4" or b[1]=="6" or b[1]=="8"):
+    b="black"
+else:
+    b="white"
+if a==b:
+    print("YES")
+else:
+    print("NO")
+    
+    
+    ~~~
+
+print('YES' if not (sum(map(ord, input())) + sum(map(ord, input()))) % 2 else 'NO')
+
+~~~
+
+a, b, s = input(), input(), 'abcdefgh'
+print(['NO', 'YES'][(s.index(a[0])+int(a[1])) % 2 == (s.index(b[0])+int(b[1])) % 2])
+
+
+
+======== 3.2 Тернарный оператор ===============
+
+https://stepik.org/lesson/761539/step/1?unit=763661
+
+Тернарный оператор — это способ написания условных конструкции в python. Тернарный оператор по-английски пишется Ternary Operator, в свою очередь слово Ternary переводится как троичный
+
+Следовательно тернарный оператор состоит из трех операндов, которые нам помогут написать условную конструкцию if-else немного другим способом, более коротким.
+
+Вот эти три операнда тернарного оператора:
+
+"condition логическое выражение, которое может принимать истинное или ложное значение"
+
+"true_value значение, которое будет присвоено, если condition приняло истинное значение"
+
+"false_value значение, которое будет присвоено, если condition приняло ложное значение"
+
+
+Записывает тернарный оператор по следующему шаблону
+
+"true_value if condition else false_value"
+
+ и данная запись будет аналогична записи
+
+if condition:
+   true_value
+else:
+   false_value
+
+
+
+age = int(input('Введите возраст посетителя: '))
+
+if age >= 18:
+    price_ticket = 20
+else:
+    price_ticket = 8
+
+print(f"Цена билета составит {price_ticket} тугриков")
+
+
+
+
+age = int(input('Введите возраст посетителя: '))
+
+price_ticket = 20 if age >= 18 else 8
+
+print(f"Цена билета составит {price_ticket} тугриков")
+
+
+
+number = int(input('Введите число: '))
+
+abs_number = number if number >= 0 else -number
+
+print(abs_number)
+
+
+
+"Если число положительное мы оставляем его как есть, иначе меняем ему знак для того чтобы оно стало положительным"
+
+
+
+	
+"Основные преимущества тернарного оператора:"
+
+простые операторы if заменяются однострочным выражением
+код становится кратким и лаконичным
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вход программе поступает целое число
+
+Ваша задача сохранить в переменную text  строку Even, если введенное число четное, иначе сохраните строку Odd
+
+В качестве ответа необходимо вывести переменную text
+
+num = int(input())
+
+text = "Even" if num % 2 == 0 else "Odd"
+
+print(text)
+
+
+~~~
+
+print(text:='Even' if int(input()) % 2 == 0 else 'Odd')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вход вашей программе поступает два неравных друг другу целых числа в отдельных строках
+
+Ваша задача сохранить наименьшее из этих чисел в переменную  minimum, а наибольшее - в maximum
+
+Использовать нужно, конечно же, тернарный оператор
+
+В качестве ответа выведите через пробел сперва minimum , а потом maximum
+
+
+
+minimum, maximum = sorted([int(input()) for _ in range(2)])
+
+print(f'{minimum} {maximum}')
+
+
+~~~$$$
+
+a, b = int(input()), int(input())
+
+print(minimum := a if a < b else b, maximum := a if a > b else b)
+
+~~~
+
+a, b = int(input()), int(input())
+
+maximum, minimum = (a, b) if a > b else (b, a)
+
+print(minimum, maximum)
+
+
+~~~
+
+a, b = int(input()), int(input())
+
+minimum = a if a < b else b
+maximum = b if a < b else a
+
+print(minimum, maximum)
+
+
+~~~
+
+print(*(minimum, maximum) if (minimum := int(input())) < (maximum := int(input())) else (maximum, minimum))
+
+~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ваша программа принимает на вход предложение и ваша задача определить является ли оно вопросом?
+
+Если последний символ предложения это знак ?, то в переменную sentence сохраните строку Вопросительное, иначе запишите строку Обычное
+
+
+text = input()
+
+sentence = "Вопросительное" if text[-1] == '?' else "Обычное"
+    
+print(sentence)
+
+
+$$$ ~~~
+
+print(sentence := 'Вопросительное' if input()[-1] in '?' else 'Обычное')
+
+~~~
+
+print(('Обычное', 'Вопросительное')[input()[-1] == '?'])
+
+
+~~~
+
+print('Вопросительное' if input().endswith('?') else 'Обычное')
+
+
+~~~
+
+x=input()
+print('Обычное' if x[-1].isalpha() else 'Вопросительное')
+
+~~~
+
+sentence = 'Вопросительное' if '?' in input() else 'Обычное'
+print(sentence)
+
+~~~
+
+print(('Обычное', 'Вопросительное')[(sentence:=input())[-1] == '?'])
+
+~~~
+
+print(sentence := ('Обычное', 'Вопросительное')[input()[-1] == '?'])
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Если расположить рядом два магнита, они начинают взаимодействовать друг с другом. При этом одинаковые магнитные полюса (север/север или юг/юг) отталкиваются друг от друга, в то время как разные магнитные полюса (север/юг) притягиваются друг к другу.
+
+Ваша программа получает два значения в разных строках - полярности магнитов, которые могут иметь значения либо N ( север) либо S (юг)
+
+Ваша задача сохранить в переменную experiment строку Притягиваются, если магниты имеют разную полярность, в противном случае сохраните строку Отталкиваются
+
+В качестве ответа необходимо вывести переменную experiment
+
+
+a = input()
+b = input()
+
+print(experiment := ('Притягиваются' if a != b else 'Отталкиваются'))
+
+~~~
+
+print(experiment:='Притягиваются' if (a:=input()) != (b:=input()) else 'Отталкиваются')
+
+~~~
+
+print(experiment := ("Отталкиваются", "Притягиваются")[input() != input()])
+
+~~~
+
+S = input()
+N = input()
+
+experiment = 'Отталкиваются' if S in N else 'Притягиваются'
+
+print(experiment)
+
+
+
+========= 3.3 Вложенный оператор if ============
+
+https://stepik.org/lesson/295934/step/1?unit=277638
+
+
+		Вложенные условия
+		
+Вы можете вкладывать один условный оператор внутрь другого
+
+
+
+a = int(input())
+if a % 2 == 0:
+  if a % 5 == 0:
+    print(a, 'делится на 2 и на 5')
+  else:
+    print(a, 'делится на 2, но не на 5')
+else:
+  print(a, 'не делится на 2')
+  
+  
+  В этом примере вводится число и проверяется на четность. 
+  
+  Если число четное, то затем оно проверяется на кратность 5 и в зависимости от этой проверки выводится сообщение "делится на 2 и на 5" либо "делится на 2, но не на 5". 
+  
+  Но если число сразу было нечетным, программы выводит сообщение "не делится на 2" без проверки на кратность 5.
+
+Но вложенный условный оператор можно также и записывать внутри блока else. Посмотрите на пример ниже.
+
+
+a = int(input())
+if a % 2 == 0:
+  if a % 5 == 0:
+    print(a, 'делится на 2 и на 5')
+  else:
+    print(a, 'делится на 2, но не на 5')
+else:
+  if a % 5 == 0:
+    print(a, 'не делится на 2,но делится на 5')
+  else:
+    print(a, 'не делится на 2 и не делится на 5')
+
+
+И количество вложенных условных операторов в вашей программе может быть сколько угодно.
+
+В примере ниже найдем минимальное значение из трех введенных чисел при помощи вложенных условий
+
+a = int(input())
+b = int(input())
+c = int(input())
+if a < b:
+    if a < c:
+        print(a)
+    else:
+        print(c)
+else:
+    if b < c:
+        print(b)
+    else:
+        print(c)
+        
+Еще один пример, где мы найдем по введенным координатам x и y к какой координатной четверти принадлежит точка.
+
+
+x = int(input('Введите координату x: '))
+y = int(input('Введите координату y: '))
+if x > 0:  # 1 или 4 четверти
+    if y > 0:
+        print('1 координатная четверть')
+    else:
+        print('4 координатная четверть')
+else:  # 2 или 3 четверти
+    if y > 0:
+        print('2 координатная четверть')
+    else:
+        print('3 координатная четверть')
+        
+
+
+И в последнем примере мы используем тройную вложенность для определения остатка числа при делении на 4.
+
+
+a = int(input())
+if a % 4 == 0:
+    print('остаток 0')
+else:
+    if a % 4 == 1:
+        print('остаток 1')
+    else:
+        if a % 4 == 2:
+            print('остаток 2')
+        else:
+            print('остаток 3')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+В данной задаче необходимо сравнить два целых числа A и B. Они поступают на вход программе отдельно в каждой строке.
+
+Ваша задача вывести символ <, если A меньше B, >, если A больше B и =, если A=B.
+
+
+
+a = int(input())
+b = int(input())
+
+if a >= b:
+    if a == b:
+        print('=')
+    else:
+        print('>')
+else:
+    print('<')
+    
+    
+~~~
+
+d = int(input()) - int(input())
+
+print('=><'[(d > 0) - (d < 0)])     
+
+~~~~
+
+a, b = int(input()), int(input())
+
+print('<' if a < b else '>' if a > b else '=')
+
+~~~
+
+A, B = int(input()), int(input())
+
+print(['=', '>', '<'][(A > B) - (A < B)])
+
+
+~~~
+
+A, B = int(input()), int(input())
+
+print('>'*(A>B) + '<'*(A<B) + '='*(A==B))
+
+
+~~~
+
+print('=') if (a := int(input())) == (b := int(input())) else (print("<") if a < b  else print('>'))
+
+~~~
+
+a=int(input())
+b=int(input())
+if a!=b:
+    if a<b:
+        print('<')
+    else:
+        print('>')
+else:
+    print('=')
+    
+~~~
+
+a, b = (int(input()) for _ in 'ab')
+
+print({a < b: '<', a > b: '>', a == b: '='}[True])
+
+
+~~~
+
+A, B = int(input()), int(input())
+
+print('><='[(A < B) + (A == B)*2])
+
+
+~~~
+
+A, B = int(input()), int(input())
+print('=' if A == B else ('<', '>')[A > B])
+
+~~~
+
+a, b = int(input()), int(input())
+print('=' if a == b else '<' if a < b else '>')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Даны три целых числа, каждое записано в отдельной строке.
+
+Нужно вывести значение наибольшего из данных чисел
+
+
+
+a=int(input())
+b=int(input())
+c=int(input())
+
+if a > b and a > c:
+    print(a)
+else:
+    if a < b and c < b:
+        print(b)
+    else:
+        print(c)
+
+~~~
+
+a, b, c = int(input()), int(input()), int(input())
+print(a if a > b and a > c else b if b > a and b > c else c)
+
+~~~
+
+a, b, c = (int(input()) for _ in 'abc')
+
+if a < b: a = b
+if a < c: a = c
+
+print(a)
+
+
+~~~
+
+a, b, c = int(input()), int(input()), int(input())
+
+print(a*(a > b and a > c) + b * (b > a and b > c) + c * (c > b and c > a))
+
+~~~
+
+print(sorted([int(input()), int(input()), int(input())])[-1])
+
+~~~
+
+''' Сравнение трёх '''
+
+print((lambda a=int(input()), b=int(input()), c=int(input()): ((a, c)[a < c], (b, c)[b < c])[a < b])())
+
+
+~~~
+
+x, y = int(input()), int(input())
+
+x = x if x > y else y
+y = int(input())
+
+print(x if x > y else y)
+
+
+~~~
+
+print(sorted([int(input()), int(input()), int(input())])[2])
+
+~~~
+
+a, b, c = int(input()), int(input()), int(input())
+if a > b:
+    print(a if a > c else c)
+else:
+    print(b if b > c else c)
+    
+~~~
+
+a, b, c = int(input()), int(input()), int(input())
+print(a if all([a > b, a > c]) else b if b > c else c)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На свой день рождения Петя купил красивый и вкусный торт, который имел идеально круглую форму. Петя не знал, сколько гостей придет на его день рождения, поэтому вынужден был разработать алгоритм, согласно которому он сможет быстро разрезать торт на N равных частей. Следует учесть, что разрезы торта можно производить как по радиусу, так и по диаметру.
+
+Помогите Пете решить эту задачу, определив наименьшее число разрезов торта по заданному числу гостей.
+
+
+# Если на празднике только именинник, то торт резать не надо
+# Если гостей чётное количество то количество разрезов будет кол-во гостей деленое на 2
+# Если гостей нечётное количество - столько разрезов и понадобится)
+
+a = int(input())
+
+if a%2==0:
+    print(a//2)
+else:
+    if a==1:
+        print(0)
+    else:
+        print(a)
+        
+ ~~~~
+ 
+ a = int(input()) 
+print(a if  a % 2 !=0 and a > 1 else int(a / 2))
+
+
+~~~
+
+guests = int(input())  # количество гостей
+pieces = 0  # количество разрезов торта, до того как посчитали гостей
+if guests % 2:  # если пришло нечётное количество гостей (guests%2 == 1, тоже самое что (if True:))
+    if guests == 1:  # если пришёл всего 1 гость
+        pieces = 0  # Петя не режет торт, а отдаёт его целиком на съедение гостю)
+    else:  # если гость не один, но их нечётное количество
+        pieces = guests  # сколько гостей, столько и разрезов торта
+else:  # если пришло чётное количество гостей
+    pieces = guests//2  # то разрезов торта будет в два раза меньше, чем кусков
+print(pieces)  # количество разрезов торта, после того как посчитали гостей
+# А если никто не придёт, то Петя не расстроится, а просто съест весь торт, не разрезая его :)
+
+
+~~~
+
+print(0 if (a:=int(input()))<2 else a if a%2 else a//2)
+
+
+~~~
+
+x = int(input())
+print(0 if x == 1 else x // 2 if x % 2 == 0 else x) 
+
+~~~
+
+n = int(input())
+if n % 2 == 0:
+    print(int(n / 2))
+else:
+    if n == 1:
+        print(0)
+    else:
+        print(n)
+
+# тернарный вариант
+# print(int(n / 2) if n % 2 == 0 else 0 if n == 1 else n)
+
+~~~
+
+N = int(input())
+
+if N % 2 == 0:
+    print(N // 2)
+else:
+    if N == 1:
+        print('0')
+    else:
+        if N % 2 != 0:
+            print(N)
+
+
+~~~~
+
+print([0, n if (n:=int(input())) % 2 == 1 else n//2][False if n in (0, 1) else True])
+
+~~~
+
+number = int(input())
+if number == 1:
+    print(0)
+elif number != 0:
+    if number % 2 == 0:
+        print(number // 2)
+    else:
+        print(number)
+        
+        
+~~~
+
+print(int(x / 2) if (x := int(input())) % 2 == 0 else 0 if x == 1 else x)
+
+~~~
+
+print(0 if (x := int(input())) == 1 else x if x % 2 else x // 2)
+
+
+$$$~~~~~~~разницу между максимальной и минимальной зарплатой~~~~~~~~~~~~~~~~~~~~~
+
+В отделе работают 3 сотрудника, которые получают заработную плату в рублях. Требуется определить: на сколько зарплата самого высокооплачиваемого из них отличается от самого низкооплачиваемого.
+
+Входные данные
+Размеры зарплат всех сотрудников вводятся в одну строку через пробел. 
+
+Необходимо вывести одно целое число — разницу между максимальной и минимальной зарплатой.
+
+a, b, c = map(int, input().split())
+
+if a > b and a > c:
+    if b > c:
+        print(a - c)
+    else:
+        print(a - b)
+else:
+    if b > a and b > c:
+        if a > c:
+            print(b - c)
+        else:
+            print(b - a)
+if c > a and c > b:
+    if b > a:
+        print(c - a)
+    else:
+        print(c - b)
+
+
+~~~
+
+a, b, c = map(int, input().split())
+if a < b:
+    a, b = b, a
+if b < c:
+    b, c = c, b
+if a < b:
+    a, b = b, a
+    
+print(a - c)
+
+~~~
+
+a,b,c=list(map(int,input().split()))
+
+print(a-c if a>b>c else
+      a-b if a>c>b else
+      b-a if b>c>a else
+      b-c if b>a>c else 
+      c-a if c>b>a else
+      c-b)
+
+
+~~~
+
+a, b, c = sorted(map(int, input().split()))
+
+print(c-a)
+
+~~~
+
+x, y, z = map(int, input().split())
+
+if z < y: z, y = y, z
+if x > z: x, z = z, x
+if x > y: x, y = y, x
+
+print(z - x)
+
+
+~~~
+
+a, b, c = map(int, input().split())
+if a > b:
+    if a > c:
+        if b > c:
+            print(a-c)
+        else:
+            print(a-b)
+    else:
+        print(c-b)
+else:
+    if a < c:
+        if b > c:
+            print(b - a)
+        else:
+            print(c - a)
+    else:
+        print(b - c)
+        
+        
+~~~
+
+a, b, c = map(int, input().split())
+
+num_1 = abs(a - b)
+num_2 = abs(a - c)
+num_3 = abs(b - c)
+
+if num_1 >= num_2:
+  result = num_1
+else:
+  result = num_2
+if result < num_3:
+  result = num_3
+  
+print(result)
+
+
+~~~
+
+a,b,c = map(int,input().split())
+
+minimum = a if b > a and c > a else b if a > b and c > b else c
+maximum = a if b < a and c < a else b if a < b and c < b else c
+
+print(maximum - minimum)
+
+
+~~~
+
+a = sorted([int(x) for x in input().split()])
+
+print(a[-1] - a[0])
+
+~~~
+
+[a, b, c] = list(map(int, input().split()))
+
+if a > b: 
+    a, b = b, a
+if b > c:
+    b, c = c, b
+if a > b: 
+    a, b = b, a  
+      
+print(c - a)
+
+
+~~~
+
+a, b, c = map(int, input().split())
+
+max = a if a > b and a > c else b if b > c else c
+min = a if a < b and a < c else b if b < c else c
+
+print(max - min)
+
+~~~
+
+a, b, c = [int(i) for i in input().split()]
+
+maximum = a
+minimum = a
+if b > maximum:
+    maximum = b
+if c > maximum:
+    maximum = c
+if b < minimum:
+    minimum = b
+if c < minimum:
+    minimum = c
+
+print(maximum - minimum)
+
+
+~~~
+
+a, b, c = map(int, input().split())
+
+maximum = a if c < a > b else b if c < b > a else c
+minimum = a if c > a < b else b if c > b < a else c
+
+print(maximum - minimum)
+
+
+~~~
+
+a, b, c = map (int, input().split())
+if a > b and a > c:
+    max = a
+else:
+    if b > c and b > a:
+        max = b
+    else:
+        max = c
+if a < b and  a < c:
+    min = a
+else:
+    if b < a and b < c:
+        min = b
+    else:
+        min = c
+        
+print(max - min)  
+
+
+~~~
+
+lst = list(map(int,input().split()))
+
+lst_new = sorted(lst)
+
+print(lst_new[2] - lst_new[0])
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Маленький Петя очень любит подарки. Его мама подарила ему на день рождения две строки равной длины, состоящие из больших и маленьких букв латинского алфавита. Теперь Петя хочет сравнить эти строки лексикографически. При этом регистр букв значения не имеет, то есть большая буква считается эквивалентной соответствующей маленькой букве. Помогите Пете выполнить сравнение.
+
+
+В каждой из первых двух строк записано по одной подаренной строке. Длина строк находится в пределах от 1 до 100 включительно. Гарантируется, что строки имеют одинаковую длину, а также состоят из больших и маленьких букв латинского алфавита.
+
+a = input().lower() 
+b = input().lower()
+
+if a != b: 
+    if a < b: 
+        print(-1) 
+    else: 
+        print(1) 
+else: 
+    print(0)
+
+
+~~~
+
+a, b = input().lower(), input().lower()
+
+print(int(a > b) - int(b > a))
+
+~~~
+
+a, b = input().lower(), input().lower()
+
+print((a > b) - (a < b))
+
+
+~~~
+
+print(0 if (a:=input().lower()) == (b:= input().lower()) else (-1 if b > a else 1))
+
+~~~
+
+a = input().lower()
+b = input().lower()
+
+if a == b:
+    print(0)
+if a < b:
+    print(-1)
+if a > b:
+    print(1)
+
+
+~~~
+
+x, y = input().lower(), input().lower()
+print(0 if x == y else 1 if y < x else -1)
+
+
+~~~
+
+a, b = [input().lower() for _ in '..']
+print(0 if a == b else (-1, 1)[b < a])
+
+~~~
+
+print(1 if (a := input().lower()) > (b := input().lower()) else -1 if a < b else 0)
+
+~~~
+
+print(0 if (a:=input().upper())==(b:=input().upper()) else [1,-1][a<b])
+
+~~~
+
+a = (str(input())).lower()
+b = (str(input())).lower()
+
+print("0" if (a == b) else "-1" if a < b else "1")
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Кнопочные гонки
+Двое решили посоревноваться в набирании текстов на сайте «Кнопочные гонки». Во время соревнования необходимо ввести текст из s символов. Первый участник набирает один символ за v1 миллисекунд и имеет пинг t1 миллисекунд. Второй участник набирает один символ за v2 миллисекунд и имеет пинг t2 миллисекунд.
+
+При соединении с пингом (задержкой) в t миллисекунд соревнование проходит для участника следующим образом:
+
+Ровно через t миллисекунд после начала соревнования участник получает текст, который необходимо ввести.
+Сразу после этого он начинает вводить этот текст.
+Ровно через t миллисекунд после того, как он перепечатал весь текст, сайт получает информацию об этом.
+Победителем в соревновании является тот участник, информация об успехе которого пришла раньше. Если информация пришла от обоих участников одновременно, считается, что произошла ничья.
+
+По данной длине текста и информации об участниках, определите исход игры.
+
+
+s, v1, v2, t1, t2 = map(int, input().split())
+
+#кол-во символов S умножаем на скорость набора и прибавляем пинг умноженный на 2 т.к в переменной значение пинга в одну сторону
+time1 = s * v1 + 2 * t1
+time2 = s * v2 + 2 * t2
+
+if time1 < time2:
+    print("First")
+else:
+    if time1 > time2:
+        print("Second")
+    else:
+        print("Friendship")
+
+
+~~~
+
+s, v1, v2, t1, t2 =map(int,input().split())
+
+time1= t1 * 2 + v1 * s
+time2= t2 * 2 + v2 * s
+
+print('First' if time1<time2 else 'Second' if time1>time2  else 'Friendship')
+
+~~~
+
+s, v1, v2, t1, t2 = map(int, input().split()) 
+
+## Кол-во символов * на скорость печати одного символа + время пинга в две стороны.
+
+a = (s * v1) + (t1 * 2)    ## первый участник. 
+b = (s * v2) + (t2 * 2)    ## второй участник.
+if a < b:
+    print('First')
+else:
+    if b < a:
+        print('Second')
+    else:
+        print('Friendship')
+
+
+
+~~~
+
+s, v1, v2, t1, t2 = map(int, input().split())
+
+a, b = s * v1 + 2 * t1, s * v2 + 2 * t2
+
+print('First' * (a < b) + 'Second' * (a > b) + 'Friendship' * (a == b))
+
+
+~~~
+
+s, v1, v2,t1, t2 = map(int,input().split())
+a =s * v1 + 2 * t1
+b =s * v2 + 2 * t2
+
+if a  <  b:
+    print("First")
+else:
+    if a  > b:
+        print("Second")
+    else:
+        print("Friendship")
+
+
+~~~
+
+lst = list(map(int,input().split()))
+
+res = (lst[0]*lst[1]+2*lst[3]) - (lst[0]*lst[2]+2*lst[4])
+
+print('Friendship' if res == 0 else 'First' if res < 0 else 'Second')
+
+~~~
+
+s, v1, v2, t1, t2 = map(int, input().split())
+
+F, S = s * v1 + t1 * 2, s * v2 + t2 * 2
+
+print('First' if F < S else 'Second' if F > S else 'Friendship')
+
+
+~~~
+
+s, v1, v2, t1, t2 = map(int,input().split())
+a = s * v1 + t1 * 2
+b = s * v2 + t2 * 2
+
+print('Friendship' if a == b else 'First' if a < b else 'Second')
+
+
+~~~
+
+s,v1,v2,t1,t2=map(int,input().split())
+
+print('Friendship' if (s:=s*(v1-v2)+2*(t1-t2))==0 else ['First','Second'][s>0])
+
+~~~
+
+s,v1,v2,t1,t2=map(int,input().split())
+
+print(['First','Second'][s > 0]if(s:=s * (v1 - v2) + 2 * (t1 - t2)) else 'Friendship')
+
+
+~~~
+
+a = list(map(int, input().split()))
+
+time1 = a[0] * a[1] + 2 * a[3]
+time2 = a[0] * a[2] + 2 * a[4]
+
+if time1 < time2:
+    print('First')
+if time2 < time1:
+    print('Second')
+if time1 == time2:
+    print('Friendship')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+При игре в "Города" игроки по очереди называют названия городов так, чтобы первая буква каждого нового слова совпадала с последней буквой предыдущего. При этом считают, что если последняя буква предыдущего слова — мягкий знак, то с первой буквой следующего слова надо сравнивать букву, предшествующую мягкому знаку.
+
+Напишите программу, которая считывает подряд две строки, после чего выводит «Good», если последний символ первой строки совпадает с первым символом второй (с учётом правила про мягкий знак), и «Bad» в противном случае.
+
+a = input().lower()
+b = input().lower()
+
+a1 = a[-1]
+b1 = b[0]
+
+if a1 == b1:
+    print('Good')
+elif a[-1] == 'ь':
+    if a[-2] == b1:
+        print('Good')
+    else:
+        print('Bad')
+else:
+        print('Bad')
+        
+
+~~~
+
+a,b=input().lower().replace('ь',''),input().lower()
+
+print('Good' if a[-1]==b[0] else 'Bad')
+
+
+~~~
+
+a = input().lower()
+b = input().lower()
+
+if (a[-1] == 'ь' and a[-2] == b[0]) or a[-1] == b[0]:
+    print('Good')
+else:
+    print('Bad')
+
+
+~~~
+
+c1, c2 = input().lower().rstrip('ь'), input().lower()
+print('Good' if c1[-1] == c2[0] else 'Bad')
+
+~~~
+
+print('Good' if input().lower().strip('ь')[-1] == input().lower()[0] else 'Bad')
+
+~~~
+
+a = input().lower().replace('ь','')
+b = input().lower().replace('ь','')
+
+if a[-1] == b[0]:
+    print('Good')
+else:
+    print('Bad')
+
+~~~
+
+print('Good' if input().lower().replace('ь','')[-1] == input().lower().replace('ь','')[0] else 'Bad')
+
+
+~~
+
+a = input().lower()
+b = input().lower()
+
+if (a[-1] == 'ь' and a[-2]==b[0]) or a[-1] == b[0]:
+    print('Good')
+else:
+    print('Bad')
+
+
+
+============ 3.4 Множественный выбор при помощи оператора elif ========
+
+Множественный выбор
+
+Сегодня мы с вами узнаем как программа сможет обрабатывать более чем 2 события без использования вложенного оператора if. Для этого нам понадобится инструкция elif. Она также как и else является необязательной частью оператора if.
+
+Само слово elif образовано от else if, что переводится как "иначе если". Напоминаю, что после  else условие никогда не ставится. А вот после elif вы обязательно должны поставить логическое выражение
+
+
+"Синтаксически конструкция выглядит следующим образом:"
+
+сначала записывается часть if с условным выражением, которое возвращает истину или ложь;
+
+затем может следовать одна или несколько необязательных частей elif (в других языках вы могли встречать else if);
+
+Завершается же запись этого составного оператора также необязательной частью else .
+
+
+
+if 5 > 1:
+    print(1)
+    print(2)
+elif 3 > 2:
+    print(3)
+    print(4)
+elif 6 > 4:
+    print(5)
+    print(6)
+elif 6 > 4:
+    print(7)
+    print(8)
+else:
+    print(9)
+print('end')
+
+
+
+Из всех указанных блоков выполнится только 1, тот чье условие выполниться первым. Как только тело if или какого-нибудь elif выполняется, программа сразу же возвращается в основную ветку (нижний ярко-голубой прямоугольник), а все нижеследующие elif, а также else пропускаются. 
+
+
+road = int(input())
+if road == 1:
+    print("1 дорога")
+elif road == 2:
+    print("2 дорога")
+elif road == 3:
+    print("3 дорога")
+else:
+    print("error")
+    
+    
+
+day = int(input())
+if day == 1:
+    print('monday')
+elif day == 2:
+    print('tuesday')
+elif day == 3:
+    print('wednesday')
+elif day == 4:
+    print('thursday')
+elif day == 5:
+    print('friday')
+elif day == 6:
+    print('saturday')
+elif day == 7:
+    print('sunday')
+else:
+    print('error')
+
+
+
+a = int(input())  # 0 < a < 10000
+if a < 0 or a >= 10000:
+    print('error')
+elif a < 10:
+    print('1 digit')
+elif a < 100:
+    print('2 digit')
+elif a < 1000:
+    print('3 digit')
+elif a < 10000:
+    print('4 digit')
+    
+    
+
+
+a = int(input())  # 0 < a < 10000
+if a < 0 or a >= 10000:
+    print('error')
+elif a < 10:
+    if a % 2 == 0:
+        print('1 digit chet')
+    else:
+        print('1 digit')
+elif a < 100:
+    print('2 digit')
+elif a < 1000:
+    print('3 digit')
+elif a < 10000:
+    print('4 digit')
+
+
+
+
+
+======== 3.4 Множественный выбор при помощи оператора elif ======
+
+https://stepik.org/lesson/295935/step/2?unit=277639
+
+
+Множественный выбор
+
+Сегодня мы с вами узнаем как программа сможет обрабатывать более чем 2 события без использования вложенного оператора if. 
+
+Для этого нам понадобится инструкция elif. Она также как и else является необязательной частью оператора if.
+
+Само слово elif образовано от else if, что переводится как "иначе если". 
+
+"Напоминаю, что после  else условие никогда не ставится." 
+"А вот после elif вы обязательно должны поставить логическое выражение"
+
+
+if 5 > 1:
+    print(1)
+    print(2)
+elif 3 > 2:
+    print(3)
+    print(4)
+elif 6 > 4:
+    print(5)
+    print(6)
+elif 6 > 4:
+    print(7)
+    print(8)
+else:
+    print(9)
+print('end')
+
+
+
+"Из всех указанных блоков выполнится только 1, тот чье условие выполниться первым. Как только тело if или какого-нибудь elif выполняется, программа сразу же возвращается в основную ветку (нижний ярко-голубой прямоугольник), а все нижеследующие elif, а также else пропускаются. "
+
+
+
+В зависимости от ввода числа на экран будет выведен номер дороги:
+
+road = int(input())
+if road == 1:
+    print("1 дорога")
+elif road == 2:
+    print("2 дорога")
+elif road == 3:
+    print("3 дорога")
+else:
+    print("error")
+    
+    
+В зависимости от ввода числа на экран будет выведено названия дня недели:
+
+day = int(input())
+if day == 1:
+    print('monday')
+elif day == 2:
+    print('tuesday')
+elif day == 3:
+    print('wednesday')
+elif day == 4:
+    print('thursday')
+elif day == 5:
+    print('friday')
+elif day == 6:
+    print('saturday')
+elif day == 7:
+    print('sunday')
+else:
+    print('error')
+    
+    
+    Вводится положительное число a меньше 10000. На экран выводится количество цифр в нем.
+    
+    a = int(input())  # 0 < a < 10000
+    
+if a < 0 or a >= 10000:
+    print('error')
+elif a < 10:
+    print('1 digit')
+elif a < 100:
+    print('2 digit')
+elif a < 1000:
+    print('3 digit')
+elif a < 10000:
+    print('4 digit')
+
+
+
+
+Вариант дополнительной проверки из прошлого пример на четность. 
+
+a = int(input())  # 0 < a < 10000
+
+if a < 0 or a >= 10000:
+    print('error')
+elif a < 10:
+    if a % 2 == 0:
+        print('1 digit chet')
+    else:
+        print('1 digit')
+elif a < 100:
+    print('2 digit')
+elif a < 1000:
+    print('3 digit')
+elif a < 10000:
+    print('4 digit')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		FizzBuzz
+
+Классическая задача для начинающих. 
+
+Ваша программа должна считать одно натуральное число, после чего вывести:
+
+“Fizz”, если это число делится на 3;
+“Buzz”, если это число делится на 5;
+“FizzBuzz”, если выполнены оба предыдущих условия;
+само это число в остальных случаях.
+
+
+a = int(input())
+
+#если делится на 15 без остатка значит это число делится и на 3 и на 5
+if a%15 == 0:
+    print('FizzBuzz')
+elif a%3 == 0:
+    print('Fizz')
+elif a%5 == 0:
+    print('Buzz')
+else:
+    print(a)
+
+
+~~~
+
+m = input()
+n = int(m)
+
+print('Fizz' * (not n % 3) + 'Buzz' * (not n % 5) or m)
+
+
+m = input()
+n = int(m)
+print('Fizz' * (not n % 3) + 'Buzz' * (not n % 5) or m)
+
+При булевом типе у нас 0 или пустая строка - это False, а все остальные целочисленные значения являются истинными. Можете протестировать любое число в консоле так bool(1), bool(-5), bool('Start') и тд.
+В данном примере используются логический тип. В этом месте (not n % 3) проверятся сначала число на кратность 3. Например число 15 кратно 3, если бы запись в скобочках была просто (n%3) то она бы равнялась такому результату (15%3)=0=False. Поэтому здесь вводится инверсия союз not. T.е. False меняем на True, а True на False. И тогда получается  (not 15%3) = True.
+При умножение строки на True или False они принимают значения 1 и 0. При умножении строки 'abc' на 1 получится  'abc', при умножении строки 'abc' на 0 получится пустая строка ''
+Возьмем число кратное только 3, то код из примера можно расписать таким образом:
+print('Fizz' * (not n % 3) + 'Buzz' * (not n % 5) or m)
+print('Fizz' * (not 9 % 3) + 'Buzz' * (not 9 % 5) or 9)
+print('Fizz' * (not False) + 'Buzz' * (not True) or 9)
+print('Fizz' * (True) + 'Buzz' * (False) or 9)
+print('Fizz' * 1 + 'Buzz' * 0 or 9)
+print('Fizz' * 1 + 'Buzz' * 0 or 9)
+print('Fizz'  + ''  or 9)
+print('Fizz' or 9) # Здесь вспоминаем как работает or,  если левая часть True, то правая не проверяется, а любая не пустая строка == True, поэтому:
+print('Fizz') #
+
+~~~
+
+n = int(input())
+print((n, 'Fizz', 'Buzz', 'FizzBuzz')[(not n % 3) + 2 * (not n % 5)])
+
+~~~
+
+n = int(input())
+
+print('Fizz'*(n%3==0) + 'Buzz'*(n%5==0) or str(n))
+
+
+~~~
+
+a = int(input())
+s = 'Fizz' * (a % 3 == 0) + 'Buzz' * (a % 5 == 0)
+print(s if s else a)
+
+~~~
+
+n = int(input())
+print(('', 'Fizz', 'Buzz', 'FizzBuzz')[(not n % 3) + 2 * (not n % 5)] or n)
+
+~~~
+
+[print([num := int(input()), "Fizz", "Buzz", "FizzBuzz"][sum([num % 3 == 0, [0, 2][num % 5 == 0]])])]
+
+
+~~~
+
+print(((n := int(input())), 'Fizz', 'Buzz', 'FizzBuzz')[bool(not n % 3) + 2 * bool(not n % 5)])
+
+~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Даны три целых числа, записанных в отдельных строках. Определите, сколько среди них совпадающих.
+
+Программа должна вывести одно из чисел: 3 (если все совпадают), 2 (если два совпадают) или 0 (если все числа различны).
+
+a, b, c = [int(input()) for _ in range(3)]
+
+if a == b == c:
+    print("3")
+elif a == b or b == c or a == c:
+    print("2")
+else:
+    print("0")
+    
+    
+~~~
+
+abc = {input(), input(), input()}
+print(0 if len(abc) == 3 else 4 - len(abc))
+
+~~~~
+
+a = int(input())
+b = int(input())
+c = int(input())
+
+if c != a != b != c:
+    print(0)
+elif a == b == c:
+    print(3)
+else:
+    print(2)
+
+
+~~~
+
+a, b, c = (int(input()) for _ in 'abc')
+if a == b == c: print(3)
+elif a == b or a == c or b == c: print(2)
+else: print(0)
+
+
+~~~
+
+print([3, 2, 0][len(set([int(input()) for _ in '123'])) - 1])
+
+~~~
+
+lis = int(input()), int(input()), int(input())
+n = max(lis.count(lis[0]), lis.count(lis[1]), lis.count(lis[2]))
+if n==1:
+    print(0)
+else:
+    print(n)
+    
+    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа определяет наименование месяца по его номеру n. Название месяца пишется с заглавной буквы
+
+
+# 1 вариант можно решить через лист
+
+months =[ "Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
+
+n = int(input())   
+
+print( months[ n - 1] ) 
+
+
+~~~
+
+m = input()
+months = {
+    '1': 'Январь',
+    '2': 'Февраль',
+    '3': 'Март',
+    '4': 'Апрель',
+    '5': 'Май',
+    '6': 'Июнь',
+    '7': 'Июль',
+    '8': 'Август',
+    '9': 'Сентябрь',
+    '10': 'Октябрь',
+    '11': 'Ноябрь',
+    '12': 'Декабрь',
+
+}
+print(months[m])
+
+
+~~~
+
+year = [
+    "январь",
+    "февраль",
+    "март",
+    "апрель",
+    "май",
+    "июнь",
+    "июль",
+    "август",
+    "сентябрь",
+    "октябрь",
+    "ноябрь",
+    "декабрь",
+    "январь",
+    "февраль",
+    "чёрт, что-то я увлёкся"
+]
+if (x:=int(input())) in range(1, 13):
+    print(year[x].title())
+
+
+~~~
+
+n = int(input())
+
+if n == 1: print('Январь')
+elif n == 2: print('Февраль')
+elif n == 3: print('Март')
+elif n == 4: print('Апрель')
+elif n == 5: print('Май')
+elif n == 6: print('Июнь')
+elif n == 7: print('Июль')
+elif n == 8: print('Август')
+elif n == 9: print('Сентябрь')
+elif n == 10: print('Октябрь')
+elif n == 11: print('Ноябрь')
+elif n == 12: print('Декабрь')
+  
+  ~~~
+  
+  print(['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'][int(input())-1])
+  
+  
+  ~~~
+  
+a = int(input())
+b = ["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"]
+print(b[a - 1])
+  
+  
+~~~
+
+a = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']
+n = int(input())
+
+if n>= 1 and n <= 12:
+  print(a[n - 1])
+else: 
+  print('Неправильно введенный номер')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Ваша программа получает на вход возраст человека. Вам необходимо вывести на экран сообщение:
+
+"Младенец", если возраст меньше 2х лет;
+"Малыш", если возраст от 2, но меньше 4;
+"Ребенок", если возраст от 4 лет, но меньше 12;
+"Подросток", когда возраст от 12 лет, но меньше 19;
+"Взрослый человек", когда возраст от 19 лет, но меньше 65;
+"Пожилой человек", если возраст 65 и более.
+
+
+a = int(input())
+
+if a < 2: print('Младенец')
+elif a < 4: print('Малыш')
+elif a < 12: print('Ребенок')
+elif a < 19: print('Подросток')
+elif a < 65: print('Взрослый человек')
+else: print('Пожилой человек')
+
+
+~~~
+
+n = int(input())
+
+d = {n < 2: 'Младенец',
+     1 < n < 4: 'Малыш',
+     3 < n < 12: 'Ребенок',
+     11 < n < 19: 'Подросток',
+     18 < n < 65: 'Взрослый человек',
+     n > 64: 'Пожилой человек'}
+     
+print(d.get(True, 'Ещё в проекте'))
+
+
+~~~
+
+a=int(input())
+if a<2:
+    print("Младенец") 
+elif a<4:
+    print("Малыш")
+elif a<12:
+    print("Ребенок")
+elif a<19:
+    print("Подросток")
+elif a<65:
+    print("Взрослый человек")
+elif a<120:
+    print("Пожилой человек")
+else:
+    print("Кащей бессмертный")
+    
+    
+$$$ ~~~
+
+n = int(input())
+print(('Пожилой человек', 'Взрослый человек', 'Подросток', 'Ребенок', 'Малыш', 'Младенец')
+      [(n < 2) + (n < 4) + (n < 12) + (n < 19) + (n < 65)])
+      
+      
+~~~
+
+n = int(input())
+print('Младенец' if n < 2 
+      else 'Малыш' if n < 4 
+      else 'Ребенок' if n < 12 
+      else 'Подросток' if n < 19 
+      else 'Взрослый человек' if n < 65 
+      else 'Пожилой человек')
+
+
+~~~
+
+a = int(input())
+if a > 0 and a < 65:
+    if a > 0 and a < 2:
+        print('Младенец')
+    elif a >= 2 and a < 4:
+        print('Малыш')
+    elif a >= 4 and a < 12:
+        print('Ребенок')
+    elif a >= 12 and a < 19:
+        print('Подросток')
+    elif a >= 19 and a < 65:
+        print('Взрослый человек')
+else:
+    print('Пожилой человек')
+
+
+~$~~~
+
+age = int(input())
+print('Младенец' if age < 2 else 'Малыш' if age < 4 else 'Ребенок' if age < 12 else 'Подросток' if age < 19 else 'Взрослый человек' if age < 65 else 'Пожилой человек')
+
+~~~
+
+print(['Пожилой человек', 'Взрослый человек', 'Подросток', 'Ребенок', 'Малыш', 'Младенец'][((a:=int(input()))<2) + (a<4) + (a<12) + (a<19) + (a<65)])
+
+~~~
+
+dict1 = {
+    'Младенец':range(2),
+    'Малыш':range(2,4),
+    'Ребенок':range(4,12),
+    'Подросток':range(12,19),
+    'Взрослый человек':range(19,65),
+    'Пожилой человек':range(65,1000)
+}
+a = int(input())
+for i, j in dict1.items():
+    if a in j:
+        print(i)
+        break
+
+
+~~~
+
+print('Младенец' if (a := int(input())) < 2 else ('Малыш' if 2 <= a < 4 else ('Ребенок' if 4 <= a < 12 else ('Подросток' if 12 <= a < 19 else ('Взрослый человек' if 19 <= a < 65 else 'Пожилой человек')))))
+
+~~~
+
+age = int(input())
+
+print(
+    age > 64 and 'Пожилой человек' or 
+    age > 18 and 'Взрослый человек' or
+    age > 11 and 'Подросток' or
+    age > 3 and 'Ребенок' or
+    age > 1 and 'Малыш' or
+    'Младенец'
+)
+
+~~~
+
+print(
+    "Младенец" if (age:=int(input())) < 2
+    else "Малыш" if 2 <= age < 4
+    else "Ребенок" if 4 <= age < 12
+    else "Подросток" if 12 <= age < 19
+    else "Взрослый человек" if 19 <= age < 65
+    else "Пожилой человек"
+)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Калькулятор своими руками
+
+Напишите программу, которая считывает с клавиатуры два вещественных числа, а затем строку. 
+
+Если эта строка является обозначением одной из четырёх основных математических операций (+, -, * или /), то выведите результат применения этой операции к введенным ранее числам, в противном случае выведите «Неизвестно». 
+
+Также «Неизвестно» следует вывести, если пользователь захочет поделить на ноль.
+
+Входные данные
+Два вещественных числа в каждой отдельной строчки. На третьей строке вводится символ операции
+
+Выходные данные
+Необходимо посчитать значение операции «+», «-», «*», «/». Если ввели символ, который не относится к данным операциям, необходимо вывести «Неизвестно». «Неизвестно» также выводится при попытке деления на ноль
+
+num1 = float(input()) # на входе ДВА числа то спользуем float
+num2 = float(input()) 
+operator = input()
+
+if operator == '+':
+    print(num1 + num2)
+elif operator == '-':
+    print(num1 - num2)
+elif operator == '*':
+    print(num1 * num2)
+elif operator == '/':
+    if num2 == 0:
+        print('Неизвестно')
+    else:
+        print(num1 / num2)
+else:
+    print('Неизвестно')
+
+
+~~~
+
+# define a function to perform the calculations
+def calculator(num1, num2, operator):
+    if operator == '+':
+        return num1 + num2
+    elif operator == '-':
+        return num1 - num2
+    elif operator == '*':
+        return num1 * num2
+    elif operator == '/':
+        if num2 == 0:
+            return "Cannot divide by zero"
+        else:
+            return num1 / num2
+    else:
+        return "Invalid operator"
+
+# get input from the user
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+operator = input("Enter the operator (+, -, *, /): ")
+
+# call the calculator function and print the result
+result = calculator(num1, num2, operator)
+print("Result: ", result)
+
+
+~~~
+
+a, b, s = float(input()), float(input()), input()
+
+try: 
+    d = {'+': a+b, '-': a-b, '*': a*b, '/': a/b}
+    print(d[s])
+except: 
+    print('Неизвестно')
+
+
+~~~
+
+a, b, c = [input() for _ in range(3)]
+print('Неизвестно'*(c not in '+-*/' or b == '0') or eval(a+c+b))
+
+~~~
+a, b, c = float(input()), float(input()), input()
+print(
+  'Неизвестно' if c == '/' and b == 0 else
+  a + b if c == '+' else
+  a - b if c == '-' else 
+  a / b if c == '/' else
+  a * b if c == '*' else
+  'Неизвестно')
+
+~~~
+
+''' Калькулятор '''
+ops = {"+": lambda x, y: x + y,
+       "-": lambda x, y: x - y,
+       "*": lambda x, y: x * y,
+       "/": lambda x, y: x / y if y else "Неизвестно"}
+a, b, op = float(input()), float(input()), input()
+print(ops.get(op, lambda x, y: "Неизвестно")(a, b))
+
+~~~
+
+try:
+    a, b, s = float(input()), float(input()), input()
+    if s not in '+-*/':
+        raise ValueError
+    print(eval(f'{a} {s} {b}'))
+except (ZeroDivisionError, ValueError):
+    print("Неизвестно")
+    
+    
+    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая имитирует проверку пароля, придуманного пользователем. Пользователь сперва вводит пароль, потом вводит подтверждение пароля. Вам нужно обработать следующие ситуации:
+
+если пароль, который ввёл пользователь (в первый раз) короче 7 символов, программа выводит Short
+если пароль достаточно длинный, но введённый во второй раз пароль не совпадает с первым, программа выводит Difference
+если же и эта проверка пройдена успешно, программа выводит латинскими буквами OK
+
+
+
+parol1 = input()
+parol2 = input()
+
+if len(parol1) >= 7 and parol1 == parol2: 	# проверяем длину первого пароля и сравниваем первый пароль со вторым
+    print('OK')
+elif len(parol1) < 7: 	# проверяем длину первого пароля 
+    print('Short')
+elif parol1 != parol2: 	# проверяем равен первый пароль второму или нет   
+    print('Difference')
+
+
+
+~~~
+
+ps = input()
+print('Short' if len(ps) < 7 else 'Difference' if ps != input() else 'OK')
+
+
+~~~
+
+a,b = input(),input()
+if len(a) < 7:
+    print('Short')
+elif a == b:
+    print('OK')
+else:
+    print('Difference')
+    
+~~~
+
+a, b = input(), input()
+print(('Short', ('Difference', 'OK')[a == b])[len(a) > 6])
+
+~~~
+
+print('Short' if len(a:=input())<7 else 'Difference' if (a!=(input())) else 'OK')
+
+~~~
+
+a = input() 
+
+g = ['Short', 'Difference', 'OK']
+
+if len(a) < 7:
+  print(g[0])
+elif a != input():  
+  print(g[1])
+else:
+  print(g[2])
+  
+  
+  
+  ~~~
+  
+  print('Short' if len((password := input())) < 7 else ['Difference', 'OK'][password == (confirmation := input())])
+
+
+=========================================
+
+
+										"Flat is better than nested"
+										
+										
+Именно так звучит одно из правил дзена Python: «Плоское лучше, чем вложенное»
+
+Мы с вами разобрали разные варианты написания условий, в некоторых из них мы использовали дополнительную вложенность. Как например в этом коде:
+
+age = int(input())
+salary = int(input())
+
+if 18 <= age <= 55:
+    if salary > 50000:
+        print('Подходит')
+    else:
+        print('Не подходит')
+else:
+    print('Не подходит')
+Правило дзена утверждает, что если есть возможность отказаться от вложенности, то лучше это сделать. В данном случае мы получим следующее:
+
+age = int(input())
+salary = int(input())
+
+if 18 <= age <= 55 and salary > 50000:
+    print('Подходит')
+else:
+    print('Не подходит')
+Поэтому проверяйте ваш код на наличие избыточных вложенностей, так делают настоящие питонисты!
+  
+  
+  
+ ============== 3.5 Оператор Switch  ===========================
+ 
+ https://stepik.org/lesson/776692/step/1?unit=779115
+ 
+ 
+ Оператор switch-case
+ 
+Во многих других языках программирования имеется оператор switch-case, который по переданному значению ищет первое совпадение с перечисленными значениями. 
+  
+  
+  
+ " Оператор switch-case в python "
+  
+  
+Оператор switch появился в python совсем недавно, только начиная с версии python3.10. 
+
+И здесь он называется оператором сопоставления с шаблонами (pattern matching statement) и соответственно используется связка операторов не switch-case, а match-case.
+
+Оператор match-case имеет следующий синтаксис:
+
+match value:
+  case <pattern_1>:
+    <action_1>
+  case <pattern_2>:
+    <action_2>
+  case <pattern_3>:
+    <action_3>
+  case _:
+    <action_wildcard>
+    
+
+После ключевого слова match указывается значение, которое нужно проверить на соответствие шаблону. В блоках case указываются сами шаблоны и проверка осуществляется сверху вниз, пока не найдется совпадение. Обычно в самом низу ставят блок действий по умолчанию, он выполняется в том случае, когда не найдется ни один из шаблонов.
+  
+  
+  lang = input("Какой язык программирования будем учить?")
+
+match lang:
+    case "JavaScript":
+        print("Ты можешь стать фронтенд разработчиком")
+    case "Python":
+        print("Ты можешь стать Data Scientist-ом")
+
+    case "PHP":
+        print("Ты можешь стать бекенд разработчиком")
+
+    case "Solidity":
+        print("Ты можешь стать Blockchain разработчиком")
+
+    case "Java":
+        print("Ты можешь стать мобильным разработчиком")
+    case  _:
+        print("Язык не важен, главное уметь решать задачи)")
+
+
+Стоит обратить внимание, что в операторе match-case всегда проверяется значение на равенство шаблону (оператор ==) и других проверок и сравнений сделать не получится. Если вам необходимо написать сложное условие, то используйте if-elif-else
+
+Pycharm и оператор match-case
+
+Если вы уже пишите код в pycharm, то в нем есть некоторые проблемы с оператором match-case. 
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Давайте попробуем потренироваться в операторе match-case
+
+Чуть ранее студенты технических специальностей университета учились 5 лет (специалитет) и затем им вручался аттестат. Ваша программа программа будет получать на вход целое число - номер курса, и в зависимости от номера выводить следующий текст
+
+если ввели 1, выведите сообщение Совсем еще зеленый студентик
+если ввели 2, выведите сообщение Джун-студент
+если ввели 3, выведите сообщение Мидл-студент
+если ввели 4, выведите сообщение Сеньер-студент
+если ввели 5, выведите сообщение Босс качалки
+при вводе остальных значений, выведите текст Неизвестный курс
+Используйте при решении оператор match-case
+  
+    
+
+num = input()
+
+match num:
+    case "1":
+        print("Совсем еще зеленый студентик")
+    case "2":
+        print("Джун-студент")
+
+    case "3":
+        print("Мидл-студент")
+
+    case "4":
+        print("Сеньер-студент")
+
+    case "5":
+        print("Босс качалки")
+    case  _:
+        print("Неизвестный курс")
+        
+        
+====== Сравнение на несколько значений в операторе match-case ============
+
+Для того, чтобы сравнить на несколько значений в одном блоке case, необходимо перечислить значения при помощи оператора 
+
+
+digit = int(input("Введите цифру: "))
+
+match digit:
+    case 0 | 3 | 6 | 9:
+        print("Без остатка делятся на 3")
+    case 1 | 4 | 7:
+        print("При делении на 3 дают остаток 1")
+    case 2 | 5 | 8:
+        print("При делении на 3 дают остаток 2")
+    case  _:
+        print(f"{digit} не является цифрой")
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Сколько дней в месяце?
+
+Часто можно услышать такой вопрос. Давайте это запрограммируем.
+
+month = int(input("Enter the month number (1-12): "))
+
+days_in_month = match month:
+    case 2:
+        28
+    case 4 | 6 | 9 | 11:
+        30
+    case 1 | 3 | 5 | 7 | 8 | 10 | 12:
+        31
+    case _:
+        "Invalid month number"
+
+print(f"There are {days_in_month} days in month {month}.")
+
+
+
+days = int(input())
+
+match days:
+    case 2 :
+        print('28')
+    case 4 | 6 | 9 | 11 :
+        print('30')
+    case 1 | 3 | 5 | 7 | 8 | 10 | 12 :
+        print('31')
+    case _:
+        print('Invalid month')
+	
+	
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Тип знака зодиака
+Программа ваша получает на вход строку - название знака зодиака и затем сообщает к какому типу относится введенный знак. Логика определения следующая:
+
+если введут любое из значений Овен, Лев, Стрелец, то программа выводит текст Огненный
+если введут любое из значений Телец, Дева, Козерог, то программа выводит текст Земной
+если введут любое из значений Близнецы, Весы, Водолей, то программа выводит текст Воздушный
+если введут любое из значений Рак, Скорпион, Рыбы, то программа выводит текст Водный	
+	
+	
+
+zodiac = input()
+
+match zodiac:
+    case 'Овен' | 'Лев' | 'Стрелец' :
+        print('Огненный')
+    case 'Телец' | 'Дева' | 'Козерог' :
+        print('Земной')
+    case 'Близнецы' | 'Весы' | 'Водолей' :
+        print('Воздушный')
+    case 'Рак' | 'Скорпион' | 'Рыбы' :
+        print('Водный')   
+    case _:
+        print('Invalid zodiac sign')
+
+
+
+~~~~~~~~~~~~~ Использование методов в операторе match-case ~~~~~~~~~~~~~~~~~~~~~~
+
+"Вы можете спокойно вызывать методы объекта внутри оператора match-case"
+
+
+direction = 'NoRtH'
+
+match direction.lower():
+  case "north" | "east" | "south" | "west":
+      print("Хорошо, я пошел!")
+  case _:
+      print("Неизвестное направление...")
+	
+	
+
+~~~~~~~~~~~~~ Проверка типов при помощи оператора match-case ~~~~~~~~~~~~~~~~~~~~~~	 
+
+
+
+"Смотрите как легко можно проверить переменную value на принадлежность к определенному типу" 
+
+
+# меняйте значение переменной value
+value = [1, 2, 3]
+
+match value:
+    case int() | float():
+        print("Имеем дело с числом")
+    case str():
+        print("Имеем дело со строкой")
+    case list():
+        print("Имеем дело со списком")
+    case  _:
+        print(f"Лучше с этим дел не иметь")
+        
+        
+
+
+=========== "4.1 Знакомство с циклом while"  ====================
+
+
+https://stepik.org/lesson/296614/step/1?unit=278348
+
+Цикл, как и условный оператор, являются важной частью структурного программирования. С помощью циклов можно организовать повторение выполнения участков кода. Потребность в этом возникает довольно часто. Например, пользователь будет повторять вводить свой пароль на сайте до тех пор, пока не введет правильный. Или, например, мы хотим написать программу, которая циклично для каждого номера, хранящегося у нас в телефонной книге, отправит смс. В этих примерах нам не обойтись без цикла
+
+"!!! В Python'е есть два основных цикла: цикл for и цикл while."
+
+"Если программа хочет повторить отрывок кода определённое количество раз, она использует цикл for . Все остальные циклы делаются с помощью while."
+
+В этом разделе мы познакомимся с циклом while
+
+
+			"Цикл while"
+    
+" while – инструкция, предназначенная для организации циклов с неизвестным количеством повторений.  Цикл while повторяется до наступления определенного события. "
+ 
+ 
+ Имеет следующую конструкцию:
+  
+while условие:
+    инструкции в цикле 1
+    инструкции в цикле 2
+    ...
+    инструкции в цикле N
+инструкции вне цикла
+
+
+
+После ключевого слова while пишется условие (логическое выражение, которое принимает значение True или False). После условия обязательно ставится знак двоеточия «:» и затем с новой строки на одном уровне отступов перечисляются инструкции, которые будут выполняться в цикле.
+
+Количество повторений цикла полностью зависит от условия: пока наше условие остаётся верным, выполняются инструкции в цикле while. После выполнение инструкции N (последней инструкции) цикл возвращается в начало исполнения и вновь будет проверяться условие на истинность.
+
+В случае, если условие окажется снова верным, то действия внутри цикла повторятся вновь. Если же условие окажется ложным, то программа перейдёт к первой инструкции вне этого цикла.
+
+
+Следует не забывать, что все инструкции в цикле while должны стоять на одинаковых уровнях отступа. Как правило, за отступ берут один знак табуляции(кнопка «tab»), он равен 4 пробелам.
+
+
+x = 1
+while x < 6:
+    print(x)
+    x = x + 1
+
+
+Вот принцип данной программы: у нас есть переменна x = 1, которая поступает в цикл while. 
+
+Проверяется условие 1 < 6. Условие является верным, поэтому мы выводим 1, а после мы к x прибавляем 1 и теперь у нас x = 2. 
+
+После завершения последней конструкции мы возвращаемся к условию цикла 2 < 6 и вновь выполняются инструкции цикла. Так повторяются вплоть до 5. 
+Когда x = 6 условие не соблюдается, поскольку 6 не меньше 6 и мы выходим к инструкциям вне цикла, но так как у нас нет условий вне цикла программа завершает свою работу.
+
+
+		"Бесконечный цикл"  
+		
+"При работе с циклом while внимательно ставьте условие и изменяйте переменную, от которой зависит условие. Потому что в случае ошибки возникает вероятность создать бесконечный цикл. "
+
+x = 1
+while x < 6:
+    print(x)
+    x = x - 1
+    
+    
+Бесконечный цикл мы можем создать и по собственному желанию. Для этого достаточно написать так:
+
+while True:
+  input('Press enter to continue!')
+  print('One more')
+  
+  
+
+=========== "Напишем программу, которая выводит ‘Hello, world!’ столько раз, сколько мы пожелаем" ====  
+  
+  
+n = int(input())
+
+b = 1
+
+while b <= n:
+    print('Hello, world!')
+    b = b + 1
+
+
+====="Напишем программу, которая удаляет из списка все цифры 3" ========
+
+a = [1, 3, 4, 3, 6, 3]
+while 3 in a:
+    a.remove(3)
+print(a)
+    
+    
+======== "Программа распечатывает посимвольно слово ‘privet’" =============   
+
+a = 'privet'
+
+while len(a) > 0:
+    print(a[0])
+    a = a[1:]
+
+
+
+===== "Программа заставляет вводить пользователя пароль до тех пор, пока не будет введен правильный" =======
+
+
+quess = input('Введите пароль: ')
+
+count = 0
+password = 'Abracadabra'
+
+
+while quess != password:
+  count += 1
+  print('Неправильный пароль')
+  quess = input('Введите пароль вновь: ')
+  
+  
+print('Вы угадали пароль')
+
+print(f'Количество неправильных попыток: {count}')
+
+
+
+					"while и «моржевый» оператор"
+					
+
+phrase = input('Введите фразу: ')
+
+while phrase != 'стоп':
+
+  print('Продолжаем веселиться!')
+  phrase = input('Введите фразу: ')
+  
+print('Закончили вечеринку!')
+
+
+
+Он продолжает заставлять пользователя вводить значения до тех пор пока не введут слово стоп. Теперь подключаем моржевый оператор и смотрите какую красоту мы получаем
+
+
+while (phrase := input('Введите фразу: ')) != 'стоп':
+  print('Продолжаем веселиться!')
+print('Закончили вечеринку!')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Посчитайте какое значение будет принимать переменная alpha после выполнения данного кода ?
+
+alpha = 3
+while alpha <= 24:
+    alpha *= 2
+   
+   Result: 48 
+    
+a = 3, a < 24, go while
+
+a = 6, a < 24, go while
+
+a = 12, a < 24, go while
+
+a = 24, a = 24, go while
+
+a = 48, a > 24 , while end
+
+
+
+
+~~~~~~~~~~~~~~~~~~~
+Посчитайте какое значение будет принимать переменная z после выполнения данного кода ?
+
+k = 10
+z = 0
+while k <= 14:
+    z = z + k
+    k += 1
+print(z)				# 60
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая распечатает все натуральные числа от 1000 до 2000 включительно.
+
+Каждое число следует выводить на отдельной строчке как в примере ниже
+
+i = 1000
+
+while i <= 2000:
+    print(i)
+    i = i + 1
+    
+    
+~~~
+
+i = 999
+while i != 2000:
+    i += 1
+    print(i)
+    
+  ~~~
+   
+n = 999
+while (n:= n +1)  <= 2000:
+    print(n)
+
+
+~~~
+
+[print(i) for i in range(1000,2001)]
+
+~~~
+
+num = 1000
+while True:
+    print(num)
+    num += 1
+    if num == 2001:
+        break
+
+~~~
+
+a = 1000
+
+while 1000 <= a <= 2000:
+
+	print(a)
+    a += 1
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Напишите программу, которая распечатает все натуральные числа кратные 5 от 195 до 6785 включительно в порядке убывания.
+
+i = 6785
+
+while i  >=  195:
+    if i  % 5  == 0:
+        print(i)
+    i -=  1
+
+
+~~~
+
+n = 6785
+
+while n >=  195:
+    print(n)
+    n -= 5  // n = n - 5
+    
+
+$$$~~~
+
+n = 6790
+
+while (n:= n -5) >= 195:
+    print(n)
+    
+    
+~~~
+
+print(*range(6785, 190, -5), sep='\n')
+
+
+print(*sorted((x for x in range(195, 6786) if x % 5 == 0), reverse=True), sep='\n')
+
+
+[print(i) for i in range(6785, 194, -1) if i % 5 == 0]
+
+~~~
+
+x = 6785
+
+while x >= 195:
+  print(x) if x % 5 == 0 else None
+  x -= 1    
+      
+      
+~~~
+
+x = 6785
+
+while x  >= 195 and x % 5 == 0 :
+    print(x)
+    x -= 5
+
+
+~~~
+
+count = 6785
+
+while count % 5 == 0 and count >= 195:
+    print(count)
+    count -=5
+    
+  
+  ~~~
+    
+x=6785
+
+while x!=190:
+    print(x)
+    x-=5    
+
+
+~~~
+
+a=190
+b=6785
+
+while b != a:
+    print(b)
+    b -= 5
+    
+    
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
+  			Мишка и старший брат
+  			
+Мишка Лимак хочет стать самым большим медведем, ну, или хотя бы стать больше своего старшего брата Боба.
+
+Сейчас вес Лимака равен a, а вес Боба равен b. Гарантируется, что вес Лимака меньше или равен весу Боба.
+
+Лимак ест много, и его вес утраивается каждый год, а вес Боба удваивается каждый год.
+
+Через сколько целых лет Лимак станет строго больше (т. е. будет весить строго больше) Боба?
+
+Входные данные
+В единственной строке находятся два целых числа a и b (1 ≤ a ≤ b ≤ 10) — веса Лимака и Боба соответственно.
+
+
+
+l,b = map(int,input().split())
+year = 0
+
+#пока вес лима будет меньше веса боба бежим по циклу и вычисляем их вес
+#один цикл это один год
+
+while l <= b:
+    l = l * 3 
+    b = b * 2
+    year += 1
+print(year)
+
+
+
+~~~
+
+a, b = map(int, input().split())
+
+y = 0
+
+while a <= b:
+    a, b, y = a * 3, b * 2, y + 1
+    
+print(y)
+
+
+~~~
+
+(a, b), cnt = map(int, input().split()), 0
+while a <= b:
+    a *= 1.5 
+    cnt += 1
+print(cnt)    
+
+
+~~~
+
+a, b = map(int,input().split())
+
+years = 0
+
+while a <= b:
+    a = a * 3
+    b = b * 2
+    years += 1
+    
+print(years)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Японцы считают цифру «4» очень несчастливой, они даже исключают ее из нумерации этажей
+
+
+Давайте и мы, от греха подальше, избавимся от этой цифры в списке numbers. Ваша задача удалить все упоминания цифры «4» в списке numbers и затем вывести список при помощи команды
+
+numbers = [2, 3, 7, 9, 5, 0, 6, 3, 6, 0, 1, 7, 9, 4, 4, 4, 2, 2, 6, 9, 1, 7, 0, 3, 8, 1, 0, 3, 8, 0, 8, 4, 0, 2, 3, 6, 6, 1, 5, 8, 7, 2, 3, 8, 7, 7, 1, 2, 2, 8, 4, 3, 4, 8, 0, 7, 9, 8, 3, 7, 7, 7, 7, 5, 1, 7, 4, 5, 0, 8, 0, 9, 2, 4, 7, 6, 6, 5, 9, 7, 1, 7, 8, 8, 3, 4, 9, 7, 6, 4, 2, 0, 0, 0, 9, 4, 0, 9, 4, 4, 4, 5, 5, 4, 2, 5, 9, 4, 8, 1, 5, 7, 1, 0, 2, 6, 8, 7, 2, 7, 9, 3, 6, 4, 7, 5, 0, 7, 2, 0, 8, 2, 9, 8, 6, 4, 4, 7, 5, 5, 9, 4, 9, 5, 6, 9, 1, 1, 3, 1, 5, 2, 1, 7, 0, 0, 7, 8, 1, 3, 0, 0, 4, 4, 3, 3, 6, 7, 8, 6, 1, 2, 0, 2, 0, 9, 9, 0, 5, 2, 4, 1, 7, 4, 9, 9, 4, 9, 6, 9, 2, 7, 1, 2, 4, 5, 4, 0, 9, 0]
+
+while 4 in numbers:
+    numbers.remove(4)
+
+print(*numbers)
+
+
+~~~
+
+
+import time
+startTime = time.time() 			# время начала замера
+
+
+# *******************************************************
+numbers = [2, 3, 7, 9, 5, 0, 6, 3, 6, 0, 1, 7, 9, 4, 4, 4, 2, 2, 6, 9, 1, 7, 0, 3, 8, 1, 0, 3, 8, 0, 8, 4, 0, 2, 3, 6, 6, 1, 5, 8, 7, 2, 3, 8, 7, 7, 1, 2, 2, 8, 4, 3, 4, 8, 0, 7, 9, 8, 3, 7, 7, 7, 7, 5, 1, 7, 4, 5, 0, 8, 0, 9, 2, 4, 7, 6, 6, 5, 9, 7, 1, 7, 8, 8, 3, 4, 9, 7, 6, 4, 2, 0, 0, 0, 9, 4, 0, 9, 4, 4, 4, 5, 5, 4, 2, 5, 9, 4, 8, 1, 5, 7, 1, 0, 2, 6, 8, 7, 2, 7, 9, 3, 6, 4, 7, 5, 0, 7, 2, 0, 8, 2, 9, 8, 6, 4, 4, 7, 5, 5, 9, 4, 9, 5, 6, 9, 1, 1, 3, 1, 5, 2, 1, 7, 0, 0, 7, 8, 1, 3, 0, 0, 4, 4, 3, 3, 6, 7, 8, 6, 1, 2, 0, 2, 0, 9, 9, 0, 5, 2, 4, 1, 7, 4, 9, 9, 4, 9, 6, 9, 2, 7, 1, 2, 4, 5, 4, 0, 9, 0]*500
+
+#while 4 in numbers:
+    #numbers.remove(4) 								#Время =  25.453126907348633
+    
+#while numbers.count(4) > 0: 						# Время =  38.656253814697266
+    #numbers.remove(4)
+
+
+#numbers = [n for n in numbers if n != 4] 		#Время =  0.015625476837158203
+
+#print(*filter(lambda x: x != 4, numbers)) 		#Время =  0.17187809944152832
+
+while 4 in numbers:
+    numbers.pop(numbers.index(4)) 				#Время =  26.02037477493286
+
+# *******************************************************
+
+endTime = time.time() 									#время конца замера
+
+totalTime = endTime - startTime 				#вычисляем затраченное время
+
+print("Время = ", totalTime)
+
+
+~~~
+
+numbers = [2, 3, 7, 9, 5, 0, 6, 3, 6, 0, 1, 7, 9, 4, 4, 4, 2, 2, 6, 9, 1, 7, 0, 3, 8, 1, 0, 3, 8, 0, 8, 4, 0, 2, 3, 6, 6, 1, 5, 8, 7, 2, 3, 8, 7, 7, 1, 2, 2, 8, 4, 3, 4, 8, 0, 7, 9, 8, 3, 7, 7, 7, 7, 5, 1, 7, 4, 5, 0, 8, 0, 9, 2, 4, 7, 6, 6, 5, 9, 7, 1, 7, 8, 8, 3, 4, 9, 7, 6, 4, 2, 0, 0, 0, 9, 4, 0, 9, 4, 4, 4, 5, 5, 4, 2, 5, 9, 4, 8, 1, 5, 7, 1, 0, 2, 6, 8, 7, 2, 7, 9, 3, 6, 4, 7, 5, 0, 7, 2, 0, 8, 2, 9, 8, 6, 4, 4, 7, 5, 5, 9, 4, 9, 5, 6, 9, 1, 1, 3, 1, 5, 2, 1, 7, 0, 0, 7, 8, 1, 3, 0, 0, 4, 4, 3, 3, 6, 7, 8, 6, 1, 2, 0, 2, 0, 9, 9, 0, 5, 2, 4, 1, 7, 4, 9, 9, 4, 9, 6, 9, 2, 7, 1, 2, 4, 5, 4, 0, 9, 0]
+
+i = 0
+s = []
+
+while i < len(numbers):
+
+    if numbers[i] != 4:
+        s.append(numbers[i])
+    i += 1
+    
+    
+print(*s)
+
+
+~~~
+
+while numbers.count(4) > 0:
+    numbers.remove(4)
+    
+print(*numbers)
+
+
+~~~
+
+i = 0
+
+while i < len(numbers):
+    if numbers[i] == 4:
+        del numbers[i]
+        i -= 1
+    i += 1
+
+
+~~~
+
+n = len(numbers)
+
+while (n := n - 1)  >=  0:
+
+    if numbers[n] == 4:
+        del numbers[n]
+        
+# здесь должен быть ваш код
+print(*numbers)
+
+
+~~~
+
+numbers = [i for i in numbers if i != 4]
+
+print(*numbers)
+
+
+~~~
+
+n = len(numbers)
+
+while n > 0:
+
+    if numbers[n-1] == 4:
+        numbers.remove(4)
+    n -= 1
+
+print(*numbers)
+
+
+~~~
+
+i = 0
+
+while i < len(numbers):
+
+    if numbers[i] == 4: 
+        numbers.remove(numbers[i])
+        i -= 1
+    i += 1
+
+print(*numbers)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На вход программе поступает слово. Вам необходимо воспроизвести процесс, в котором каждый раз у этого слово будет пропадать первая и последняя буква. Этот процесс необходимо закончить, когда в слове останется только одна буква или слово  станет пустой строкой. При этом результат каждого этапа нужно выводить
+
+
+s = input()
+print(s)
+
+#пока длина больше 1 уменьшаем переменную s на 1 символ с обоих сторон
+while len(s) > 1:
+    s = s[1:-1]
+    print(s)
+    
+
+
+~~~
+
+a = input()             	#  читаем строку
+
+print(a)
+
+while len(a) >= 1:      #  проверяем длину строки
+
+    print(a)
+    
+    a = a[1: -1]        #  сохраняем в -а- строку без первого и посл. эл.
+
+
+~~~
+
+text = input()
+print(text)
+
+while len(text) > 1:
+    text = text[1:-1]
+    print(text)
+
+~~~
+n = input()
+print(n)
+
+i = 1
+
+while i < len(n):
+    print(n[i:-i])
+    i +=1
+
+~~~
+
+word = input()
+while len(word)>0:
+    print(word)
+    word = word[1:][:-1]
+
+~~~
+
+s = input()
+while len(s) > 0:
+    print(s)
+    s = s[1:-1]
+    
+~~~
+
+s = input()
+while s:
+    print(s)
+    s = s[1:-1]
+    
+~~~
+
+print(s := input())
+
+while s: print(s := s[1:-1])
+
+~~~
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Выведите все точные квадраты натуральных чисел, не превосходящие входного натурального числа N.
+
+
+
+~~~~
+
+a = int(input())
+b = 1
+
+while b ** 2 <= a:
+    print(b ** 2)
+    b = b + 1
+
+
+~~~
+
+n = int(input())
+i = 1
+
+while i * i  <= n:     
+    print(i * i)
+    i+=1
+
+
+~~~
+
+n, q, odd_sm = int(input()), 1, 1
+
+while q <= n:
+    print(q)
+    
+    odd_sm += 2
+    q += odd_sm
+
+
+~~~
+
+n=int(input())
+k=1
+while k**2<=n:
+    print(k**2)
+    k=k+1
+
+
+~~~
+
+N, number = int(input()), 0
+
+while (number := number + 1) ** 2 <= N:
+    print(number ** 2)
+
+  
+~~~
+
+def square_gen(n, i = 1):
+    while i ** 2 <= n:
+        yield i ** 2
+        i += 1
+        
+print(*square_gen(int(input())), sep='\n')
+
+
+~~~
+
+n=int(input())
+
+i = 1
+while i ** 2 <=n:
+    print( i ** 2)
+    i += 1
+    
+~~~
+
+a = int(input())
+kvadraty = []
+i = 1
+while i**2 <= a:
+    kvadraty.append(i ** 2)
+    i += 1
+
+print('\n'.join(map(str, kvadraty)))
+
+~~~
+
+n = abs(int(input()))
+ 
+s = 1
+
+while s <=  n // s:
+    
+    print(s ** 2)
+    s += 1
+    
+    
+~~~
+
+n, a= int(input()), 1
+
+while n >= a * a:
+    print(a*a)
+    a += 1   
+    
+~~~
+
+n = int(input())
+
+i = 1
+
+while (i * i) <= n:
+    print( i * i )
+    i += 1    
+    
+
+~~~
+
+n,i = int(input()),0
+
+while (j:=(i:=i+1)*i)<=n:  print(j)    
+    
+~~~
+
+n = int(input())
+a = 1
+b = 1
+
+while b <= n:
+    a += 1
+    print(b)
+    b = a * a    
+    
+    
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+ В первый день спортсмен пробежал X километров. В каждый последующий день он увеличивал пробег на 15% от предыдущего дня. Вам необходимо определить номер дня, в который пробег спортсмена составил не менее Y километров. Само число Y будет поступать на вход программе.
+    
+    
+xKm, yKm = map(float, input().split())
+
+days = 1
+
+while xKm <= yKm:
+    xKm = xKm + xKm * 0.15
+    days = days + 1
+
+print(days)  
+
+
+~~~
+
+x, y = map(float,input().split())
+
+n = 1
+while x < y:
+    n+= 1
+    x = x +( x*0.15)
+print(n)
+    
+    
+~~~
+
+a, b = map(int, input().split())
+
+i = 1
+
+while a <=  b: 
+    j = a / 100 * 15 
+    a = a + j 
+    i += 1 
+    
+print(i)
+    
+    
+~~~
+
+x, y = map(int, input().split())
+
+day = 1
+
+while x < y:
+    x *= 1.15
+    day += 1
+    
+print (day)    
+    
+    
+~~~
+
+X, Y = map(int, input().split())
+
+i_den = 1
+
+while X <= Y:
+    X = X + (X  / 100 * 15)
+    i_den = i_den + 1
+    
+print(int(i_den))    
+
+~~~
+
+X, Y = map(int, input().split())
+
+i = 0
+
+while X * 1.15  ** i < Y :
+    i += 1
+    
+print(i + 1)  
+    
+    
+    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+		Вася и носки
+
+У Васи есть n пар носков. Утром каждого дня, собираясь в школу, Вася должен надеть пару носков. 
+Вечером, прийдя со школы, Вася снимает надетые носки и выбрасывает их. 
+Каждый m-й день (в дни с номерами m, 2m, 3m, ...) мама покупает Васе одну пару носков. Она делает это поздно вечером, поэтому Вася может надеть новые носки не раньше следующего дня. 
+
+На сколько подряд идущих дней Васе хватит носков?    
+    
+
+socks,socks_from_mam=map(int,input().split()) 
+
+# Каждый день минус 1 носок, каждый M день 1 носок добавляется, на сколько дней хватит носков?
+days = 0     
+
+
+while socks > 0: 
+    socks = socks - 1           # сколько носков осталось, отнимаем по одному каждый день.
+    days = days + 1             # увеличиваем счетчик дней
+    
+    if days % socks_from_mam == 0:     # проверка, что настал Мамин день, т.е. надо добавлять +1 носок от мамы
+        socks = socks + 1              #увеличиваем кол-во носков на 1 (носок от мамы)
+        
+print (days)  
+
+
+~~~
+
+day = 0
+
+n, m = map(int, input().split())    # есть запас носок и обещание получать каждый m день одну пару свежих
+
+while n > 0:    							# ходим в школу пока есть носки
+    n -= 1  									# носки потратил
+    day += 1    							# день прошел
+    if day % m == 0:    				# если это тот день, когда мама купила носки на следующий день
+        n += 1
+        
+print(day)
+
+~~~
+
+n, m = map(int, input().split())
+d = 0
+
+while n - d * 1 + d//m > 0:
+    d += 1
+    
+print(d)
+
+
+
+~~~
+
+n, m = map(int, input().split())
+
+d = 0
+
+while n != 0:
+    d += 1
+    n -= 1
+    if d % m == 0:
+        n += 1
+        
+print(d)
+
+
+~~~
+
+n, m = map(int, input().split())
+
+count = n
+d = 0
+while count != 0:
+    d += 1
+    count -= 1
+    if d % m == 0:
+        count += 1
+print(d)
+
+
+~~~
+
+n, m = map(int, input().split())
+
+c=n+(n-1)/(m-1)
+
+print(int(c))
+
+
+~~~
+
+socks, day = map(int, input().split())
+days = day
+
+while socks >= days:
+    socks +=1
+    days += day
+print(socks)  
+
+
+~~~
+
+n,m = map(int,input().split())
+
+i = 0
+d = 0
+
+while n > 0:
+    n = n - 1
+    d = d + 1
+    i = i + 1
+    if d == m:
+        n = n + 1
+        d = 0
+print(i)
+    
+    
+~~~
+
+a,b=map(int,input().split())
+day=b
+
+while a>= day:
+    a =a+1
+    day = day+b
+print(a)    
+    
+
+~~~
+
+(n, m), d = map(int, input().split()), 0
+
+while n:
+    d += 1 
+    n -= bool(d % m)      
+     
+print(d)      
+
+
+~~~
+
+n, m = map(int, input().split())
+
+d = 0
+while n - d + d // m > 0:
+    d += 1
+    
+print(d)
+
+~~~
+
+n, m = map(int, input().split())
+k = m
+while m <= n:
+    n += 1
+    m += k
+    
+print(n)
+    
+    ~~~
+    
+
+def e_vasya(n, m):
+    d = 0
+    i = 1
+    
+    while n > 0:
+        n = n - 1
+        d = d + 1
+        
+        if d == m * i:
+            n = n + 1
+            i = i + 1
+            
+    return d
+
+
+n, m = map(int, input().split())
+print(e_vasya(n, m))    
+    
+    
+    ~~~
+    
+n, m = map(int, input().split())
+print(int(n+((n-1) / (m-1))))    
+
+
+n, m = map(int, input().split())
+print(n + (n-1) // (m-1))
+    
+    
+    ~~~
+    
+x, y = map(int, input().split())    # читаем количество носков и переодичность закупки
+
+days = 0                            # счетчик дней
+while x != 0:                       # проверяем на исчерпание носков
+    days += 1                      # увеличиваем счетчик дней на 1
+    x -= 1                            # отримаем одну пару нсков
+    if days % y == 0:          # проверяем не наступил ли день закупки
+        x += 1                      # увеличиваем запас носков
+        
+print(days)    
+        
+        
+        
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+				Новогодние свечки
+				
+Программист Василий любит романтику — поэтому на этот Новый Год он решил освещать свою комнату свечами.
+
+У Василия есть a свечей. Когда Василий зажигает новую свечу, сначала она горит ровно один час, а затем тухнет. Василий — сообразительный малый, поэтому из b потухших свечей он умеет получать одну новую свечу. В последствии эту новую свечу (так же как и другие новые свечи) можно зажечь.
+
+Теперь Василию интересно, на сколько часов освещения хватит его свечек, если он будет действовать оптимальным образом. Помогите ему найти это число.
+
+
+a, b = map(int, input().split())
+
+hour = 0
+burn = 0
+
+while a > 0:
+    a -= 1                 # горит одна свеча
+    hour += 1              # прибавляем 1 час
+    burn += 1              # добавляем в запас 1 сгоревшую свечу
+    
+    if burn % b == 0:      # если нам хватает запаса сгоревших свечей
+        a += 1             # создаем 1 новую свечу
+        burn = 0           # обнуляем наш запас сгоревших свечей
+        
+print(hour)
+
+
+~~~
+
+a, b = map(int, input().split())
+print((a * b - 1) // (b - 1))
+
+~~~
+
+a, b = map(int, input().split())
+
+c = a // b
+d = c // b
+print(a+c+d)
+
+~~~
+
+(a, b), t = map(int, input().split()), 0
+
+while a - t + t // b:
+    t += 1
+    
+print(t)
+
+
+~~~
+
+a, b = map(int,input().split())
+
+hours = 0
+candels = 0
+
+while a > 0:
+    hours += 1
+    a -= 1
+    candels += 1
+    if b == candels:
+        a += 1
+        candels = 0
+        
+print(hours)
+
+
+~~~
+
+n, m = map(int, input().split())
+
+h = 0             		# Начинаем зажигать
+
+while n > 0:        # Если есть свечи 
+    h += 1        		# Ещё +1 час при свечах
+    n -= 1        		# Но запас свечей уменьшился -1
+    
+    if h % m == 0:  	# Есть из чего слепить свечу?
+        n += 1    			# Ура! Наскребли воска на ещё 1 свечу.
+                  				# Иначе: где хочешь, там и бери 31-го декабря!
+                  
+print(h)          # И опустела полка со свечами,
+                  # и тьма окутала землю ...
+
+
+~~~
+
+a, b = map(int, input().split())
+day = 0
+while a > 0:
+    a = a - 1
+    day = day + 1
+    if day % b == 0:
+        a = a + 1
+print(day)
+
+
+~~~
+
+a, b = map(int, input().split())
+
+hours = a
+
+while a  >= b:
+    hours += a // b
+    a //= b
+print(hours)
+
+
+~~~
+
+a, b = [int(i) for i in input().split()]
+count = 0
+print( a + a//b + a//b//b)
+        
+        
+a,b=map(int,input().split())
+print((a*b-1)//(b-1))
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+В архитектуре компьютера важную роль играют числа, являющиеся степенями двойки: 1, 2, 4, 8 и так далее. Напишите программу, которая проверяет, является ли введённое натуральное число степенью двойки. Если да, то выводится сама эта степень; если нет, выводится «НЕТ»
+
+
+a = int(input())
+counter = 0
+
+while a >= 2:
+    a -= 2 ** counter
+    counter += 1
+    
+print(counter if a == 1 else 'НЕТ')
+
+
+
+~~~
+
+a = int(input())
+
+count = 0
+
+while a >= 1 and a % 2 == 0:
+    a //= 2
+    count += 1
+    
+print(count if a == 1 else 'НЕТ')
+
+
+
+~~~
+
+x = int(input())
+i = 0
+while x > 2**i:
+    i += 1
+if x == 2**i:
+    print(i)
+else :    
+    print ('НЕТ')
+    
+ ~~~
+ 
+ a = int(input())
+power = 0
+while a % 2 == 0:
+    a /= 2
+    power += 1
+if a == 1:
+    print(power)
+else:
+    print('НЕТ')
+    
+
+~~~
+
+n = int(input())
+
+st = 0    #счётчик степени
+
+if n > 0:    						#если введёное значение больше нуля
+    while 2 ** st < n:    		#если 2 в степени будет больше n, то n точно не степень двойки и нужно завершать цикл
+        st += 1    					#увеличение степени
+    if 2 ** st == n:    			#если n является 2 в степени
+        print(st)
+    else:
+        print('НЕТ')
+else:
+    print('НЕТ')
+
+
+~~~
+
+n = int(input())
+
+m = 0
+answer = 'НЕТ'
+
+while 2 ** m <= n:
+    if 2 ** m == n:
+        answer = m
+    m += 1
+print(answer)
+
+
+~~~
+
+n = int(input('Введите произвольное число: '))
+
+counter = 0
+
+while n > 1:         # до тех пор пока n > 1
+    n = n / 2        # делим на 2
+    counter += 1     # увеличиваем счетчик на 1
+if n == 1:           # если таки дошли до 1 - значит все числа делились без остатка на 2
+    print(counter)   # печатаем счетчик степеней
+else:
+    print('НЕТ')     # в противном случае печатаем нет
+
+
+~~~
+
+n = int(input())
+s = 0
+while 2 ** s < n:
+    s += 1
+if 2 ** s == n:
+    print(s)
+else:
+    print('НЕТ')  
+    
+ ~~~
+ 
+ n = bin(int(input()))
+print('НЕТ' if n.count('1') != 1 else len(n)-3)
+
+~~~
+
+number = int(input())
+i = 0
+while number > 2 ** i:
+    i += 1
+print(i if number == 2 ** i else "НЕТ")
+
+
+~~~
+
+n = int(input())
+degree = 0
+while 2 ** degree < n:
+    degree += 1
+print(degree if 2 ** degree == n else 'НЕТ')
+
+
+~~~
+
+n = int(input())
+i = 1
+j = 0
+while i < n:
+    i *= 2
+    j += 1
+if i == n:
+    print(j)
+else:
+    print("НЕТ")
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Зимний вечер в Бурсе
+Возьмём число. Умножим его на его же первую цифру. Результат умножим на первую цифру результата. И так далее. Например, начнём с 8:
+
+
+8
+→
+8
+∗
+8
+=
+64
+64
+→
+6
+∗
+64
+=
+384
+384
+→
+3
+∗
+384
+=
+1152
+1152
+→
+1
+∗
+1152
+=
+1152
+8→8∗8=64
+64→6∗64=384
+384→3∗384=1152
+1152→1∗1152=1152
+
+
+Очевидно, когда первая цифра очередного числа в такой последовательности становится равной 1, числа перестают изменяться. Но это происходит не при всех начальных числах.
+
+Напишем программу, которая будет хотя бы приблизительно определять судьбу введённого числа n.
+
+Начиная с числа n, умножайте имеющееся число на его первую цифру, пока у получившегося числа первая цифра не станет равной 1, либо пока оно не превысит миллиарда. В качестве ответа выведите результат
+
+
+n = input()
+
+
+# В цикле умножаем имеющееся число на его первую цифру,
+# пока у получившегося числа первая цифра не станет равной 1, либо пока оно не превысит миллиарда.
+
+
+while int(n[0])!=1 and int(n) < 10 ** 9:
+    n = int(n[0]) * int(n)
+    n = str(n)
+    
+print(n)
+
+
+~~~
+
+a=input()
+
+while int(a[0])!=1 and len(a)<10:
+    a=str(int(a[0])*int(a))
+    
+print(a)
+
+
+~~~
+
+n = int(input())
+m = n
+while n <= 1000000000 and m != 1:
+    m = n
+    while m // 10 != 0:
+        m = m // 10
+    n = n * m
+print(n)
+
+
+~~~
+
+prod=x=int(input())
+
+while prod<=10**9 and x!=1:
+    x=prod
+    while x>=10:
+        x=x//10
+    prod*=x
+    
+print(prod)
+
+
+~~~
+
+n = int(input())
+while str(n)[0] != '1' and n < 1000000000:
+    n *= int(str(n)[0])
+print(n)
+
+
+~~~
+
+s = input()
+while True:
+    if int(s) > 1000000000 or s[0] == "1":
+        break
+    s = str(int(s[0])*int(s))
+print(s)
+
+
+~~~
+
+a=int(input())
+while str(a)[0] !='1' and a<1000000000:
+    a=a*int(str(a)[0])
+
+    
+print(a)
+
+
+~~~
+
+n = int(input())
+
+while str(n)[0] != '1' and n <= 10 ** 9:
+    n = n * int(str(n)[0])
+print(n)
+
+
+~~~
+
+x = int(input())
+while int(str(x)[0]) != 1 and x < 1000000000:
+    x = x * int(str(x)[0])
+print(x)
+
+~~~
+
+i = int(input())
+
+while i <= 10**9 :
+    d,f = i // 10, i % 10
+    while d !=0 : f, d = d %10, d // 10
+    
+    if f == 1 : break
+    i *= f
+
+print(i)
+
+
+~~~
+
+n, c = int(input()), 1000000000
+
+while n<=c:
+    n*=int(str(n)[0])
+    if str(n)[0]=='1': break
+    
+print(n)  
+
+
+~~~
+
+x = int(input())
+while (q := int(str(x)[0])) != 1 and x <= 10**9: x *= q
+print(x)
+
+~~~
+
+number = int(input())
+
+while (first_digit := int(str(number)[0])) != 1 and number <= 10 ** 9:
+    number *= first_digit
+print(number)
+
+
+~~~
+
+a = int(input())
+b = int(str(a)[0])
+while a*b!=a and a<= 1000000000:
+    a = a*b
+    b = int(str(a)[0])
+print(a)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Пользователь вводит целые числа по одному в строке, последовательность оканчивается числом 0. Все, что вводится после 0 не относится к последовательности. Напишите программу, которая выводит сумму всех членов данной последовательности.
+
+
+sum = 0 					# заводим переменную-счетчик
+
+while True: 							# создаем БЕСКОНЕЧНЫЙ цикл
+    num = int(input()) 				#в цикле вводим цифры
+    if num == 0: 					# делаем проверку - равняется ли вводимое число нулю
+        break 							# если равно нулю - выходим из цикла
+    sum += num 					# соответсвенно, в sum прибавляем наше число 
+
+print(sum) # выводим на экран
+
+~~~
+
+s = 0
+
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    s = s + n
+    
+print(s)
+
+
+~~~
+
+n = int(input())
+s = 0
+
+while n:
+    s += n
+    n = int(input())
+print(s)
+
+
+~~~
+
+a = []
+
+while 0 not in a:
+    a.append(int(input()))
+print(sum(a))
+
+
+~~~
+
+print(sum(map(int, iter(input, '0'))))
+
+
+~~~
+
+s = 0
+while n:=int(input()):
+    s += n
+print(s)
+
+
+~~~
+
+a=[]
+
+while not( 0 in a ):
+    a.append(int(input()))
+print(sum(a))
+
+
+~~~
+
+s = 0
+
+while (a := int(input())) != 0:
+    s += a
+print(s)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+На каждой отдельной строчке пользователь вводит друг за другом пароли в виде строки символов. Валидными паролями будем считать строки, у которых длина варьируется от 5 до 9 символов включительно. 
+Как только вы встретите первый невалидный пароль, ваша программа должна закончить считывать пароли и вывести последний введенный валидный пароль.
+
+Гарантируется, что первый пароль всегда валидный
+
+
+password = input()
+
+# если пароль от 5 до 9 символов, запоминаем его и проверяем следующий введенный пароль
+while 5 <= len(password) <= 9:
+    valid_password = password
+    password = input()
+
+print(valid_password)
+
+~~~
+
+password=input()
+
+while len(password) in range(5, 10):
+    s = password
+    password = input()
+        
+print(s)  
+
+
+~~~
+a = []
+
+while len(a) == 0 or len(a[-1]) > 4 and len(a[-1]) < 10:
+    a.append(input())
+    
+print(a[-2])
+
+~~~
+
+a = input()
+while len(a) > 4 and len(a) < 10:
+    s = a
+    a = input()
+print(s)
+
+
+~~~
+
+while 4 < len((x := input())) < 10:
+        s = x
+print(s)
+
+
+~~~
+
+password = input() 		# вводим пароль
+
+while 5 <= len(password) <= 9: 				# прописываем условие задачи в цикл
+    correct_password = password		 	# если проходит введенный пароль под это условие, 
+    															# запоминаем его как "ПРАВИЛЬНЫЙ"
+    password = input() # вводим новый
+    
+print(correct_password)
+
+
+~~~
+
+second = first = input()
+while 5 <= len(second) <= 9:
+    first, second = second, input()
+
+print(first)
+
+~~~
+
+password=input()
+
+# Запускаем цикл
+while True:
+    
+    if 5<=len(password)<=9: 			# Если длина нашего пароля по количеству символов Истина
+                check=password			# Переменная check ссылается на валидный пароль password
+
+                password=input()			# Если у нас до этого был введен валидный пароль, то повторить ввод
+
+        else:
+        	break								# # Если ложь и пароль невалидный обрываем цикл
+
+# Выводим результат переменной check
+print(check)
+
+
+~~~
+
+while  len( n:= input()) > 4 and len(n) < 10:
+    m = n
+    
+print(m)  
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Собираемся в поход
+
+У нас в наличии рюкзак, вместимость которого составляет n литров, и наша задача забить его до предела максимально возможно. Нам поступают вещи, объем которых измеряется также в литрах, и мы должны их складывать в наш рюкзак без возможности пропуска. Как только суммарный объем новой добавляемой вещи превысит вместимость рюкзака, ваша программа должна вывести слово "Довольно!" и затем на отдельных строчках суммарный объем вещей, которые мы смогли упаковать в рюкзак, и их количество
+
+Входные данные
+Число n – вместимость рюкзака. Далее идут произвольное количество строк – объем очередного предмета.
+
+Выходные данные
+Строка "Довольно!" и затем два числа – суммарный объем упакованных товаров и их количество. Каждое значение выводится в отдельной строке.
+
+
+n = int(input())        	# общий объем рюкзака
+a = 0                  		# объем который уже занят
+c = 0                  		# следующий объем
+b = 0                  		# колличество
+
+while a <= n:
+    c = int(input())
+    b = b + 1
+    a = a + c
+    
+print('Довольно!')
+print(a - c)
+print(b - 1)
+
+
+~~~
+
+n, r = int(input()), []
+
+while sum(r) <= n:
+    r.append(int(input()))
+    
+print('Довольно!', sum(r[:-1]), len(r) - 1, sep='\n')
+
+
+~~~
+
+n = int(input())
+s = int(input())
+count = 0
+prev = 0
+
+while s <= n:
+    count += 1
+    prev = s
+    s += int(input())
+    
+print(f'Довольно!\n{prev}\n{count}')
+
+
+~~~
+
+R = []                				# "РЮКЗАК"
+V = int(input())     			 	# вводим объём рюкзака
+s = int(input())      				# вводим объём первой вещи
+
+while V - s >= 0:     			# кладём вещь в рюкзак, если помещается
+    V = V - s         				# считаем оставшееся место
+    R.append(s)       			# вещи в рюкзаке
+    s = int(input())  				# берём следующую вещь
+    
+print("Довольно!")    		# последняя вещь не уместилась
+print(sum(R))         			# выводим объём взятого барахла
+print(len(R))         				# выводим количество взятых вещей
+
+
+~~~
+
+									# На вход поступает вместимость рюкзака
+n = int(input())
+
+count = 0  					# счетчик для суммирования
+iters = 0  						# счетчик количества итераций цикла
+
+# Цикл заполнения рюкзака, когда рюкзак заполнится
+# вывести сообщения о сумме и кол-ве вещей.
+
+while count < n:
+
+    a = int(input())    		# Объем вещей для рюкзака
+    count += a      			# Суммируем объем вещей
+    iters += 1  				# Считаем каждую итерацию цикла
+
+    								# Если объем вещей сразу больше рюкзака или он заполнился:
+    if a > n or count > n:
+        print('Довольно!', count - a, iters - 1, sep='\n')
+        							# Выводим объем и количество вещей минус те что не поместились.
+    elif count == n:
+        print('Довольно!', count, iters, sep='\n')
+    								# Выводим объем и количество вещей если все поместились ровно.
+    								
+    								
+    								
+~~~
+
+n = int(input())
+count, suma = 0, 0
+
+while suma < n:
+    s = int(input())
+    if suma + s > n:
+        break
+    else:
+        count += 1
+        suma += s
+        
+print('Довольно!', suma, count, sep='\n')
+
+
+~~~
+
+n = int(input())
+b = []
+while n >= sum(b):
+    b.append(int(input()))
+b.pop()
+print('Довольно!', sum(b), len(b), sep='\n')
+
+
+~~~
+
+backpack = []  											# наш рюкзак
+volume_backpack = int(input())  				# Объём рюкзака
+
+while sum(backpack) <= volume_backpack:  			# Если место есть  
+    backpack.append(int(input()))  								# Добавляем предмет
+else:  																			# Если место превысило
+    del backpack[~0]  													# Выкидываем последний предмет
+    
+print('Довольно!', sum(backpack), len(backpack), sep='\n')  		# Печать результата
+
+
+~~~
+
+n, l = int(input()), []
+
+while sum(l) <= n:
+    l.append(int(input()))
+
+print('Довольно!', sum(l := l[:-1]), len(l), sep='\n')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Новый год и спешка
+В последний день уходящего 2016 года Лимак собирается принять участие в соревновании по спортивному программированию. Соревнование начнётся в 20:00 и будет продолжаться четыре часа, то есть ровно до полуночи. Участникам будет предложено n задач, упорядоченных по возрастанию сложности, то есть задача 1 будет самой лёгкой, а задача номер n — самой сложной. Лимак знает, что ему потребуется 5·i минут на решение i-й задачи.
+
+Друзья Лимака планирую устроить роскошную новогоднюю вечеринку и Лимак хочет прибыть в полночь или ранее. Он знает, что ему требуется ровно k минут чтобы добрать до места проведения вечеринки от своего дома, где он собирается участвовать в соревновании.
+
+Сколько максимум задач может успеть решить Лимак, так чтобы не опоздать на новогоднюю вечеринку?
+
+a, b = map(int(input()))        # количество задач и время(мин) до вечеринки
+c = 0                           # количество задач
+d = 240 - b                     # время на задачи
+
+while d > 0:
+    c = c + 1
+    d -= c * 5
+    if a == c:                # если количество решенных задач равно максимальному
+        break
+        
+if d < 0:                     # если время отрицательно то нужно вычесть одну задачу
+    c -= 1
+
+print(c)
+
+
+~~~
+
+max_tasks, travel_time = map(int, input().split())
+solved_tasks = 0
+time_spent = 0
+
+while travel_time + time_spent <= 4 * 60 and solved_tasks <= max_tasks:
+    solved_tasks += 1
+    time_spent += solved_tasks * 5
+    
+print(solved_tasks - 1)
+
+~~~
+
+quest , road = map(int,input().split())
+total_mins = 240
+d = 240 - road #время на задачи
+time = 0
+count = 0
+
+while d >= 0 and total_mins >= road+time:
+    count+=1
+    d = d - (count*5)
+    time+=count*5
+if count > quest:
+    print(quest)
+else:
+    print(count-1)
+    
+    
+~~~
+
+n, k = map(int, input().split())
+time = 240 - k
+num = 0
+
+while time >= (num + 1) * 5 and num < n:
+    num += 1
+    time -= num * 5
+    
+print(num)
+~~~
+
+n, k = map(int,input().split())
+
+i = 0
+
+while 4 * 60 - k >= 0 and n > = i:   
+    i += 1
+    k = k + i * 5    
+    
+print( i - 1)
+
+
+~~~
+
+n, k = map(int, input().split())
+t, i = 0, 0
+
+while k + t <= 240 and i <= n:
+    i += 1
+    t += 5 * i
+print(i - 1)
+    
+    
+    ~~~
+
+a, b = map(int,input().split())
+time = 240 - b
+
+x = 0
+while time > (5 * x) and x != a:
+    x += 1
+    time = time - 5 * x
+    
+print(x)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+				Ваня и кубики
+				
+Ване на день рождения подарили n кубиков. Он с друзьями решил построить из них пирамиду. Ваня хочет построить пирамиду следующим образом: на верхушке пирамиды должен находиться 1 кубик, на втором уровне — 1 + 2 = 3 кубика, на третьем — 1 + 2 + 3 = 6 кубиков, и так далее. Таким образом, на i-м уровне пирамиды должно располагаться 1 + 2 + ... + (i - 1) + i кубиков.
+
+
+Ваня хочет узнать, пирамиду какой максимальной высоты он может создать с использованием имеющихся кубиков.
+
+
+num_cubs = int(input())        # кол-во всех кубиков
+i = 0                          			# кол-во этажей с кубиками
+summa_cubs = 0                 # сумма всех кубиков на этажах (считается в цикле)
+
+# пока еще есть возможность построить следующий этаж (хватит кубиков)
+
+while summa_cubs + i + 1 <= num_cubs:  
+    i += 1                    			 # делаем следующий этаж с кубиками
+    summa_cubs += i            # находим сумму кубиков
+    num_cubs -= summa_cubs     # и отнимаем эту сумму от оставшихся кубиков
+
+print(i)                       # вывод кол-ва этажей
+
+
+
+~~~
+# put your python code here
+n = int(input())
+level = 0 							# уровень пирамиды
+cubes = 1 						# количество кубиков для 1-го уровня 
+while n >= cubes: 			# проверяем хватит ли кубиков для построения следующего уровня
+    level += 1    					# Если хватило, то увеличим уровень на 1
+    n -= cubes  					# Вычитаем кубики из общего количества
+    cubes += level + 1 			  # подсчитываем сколько кубиков необходимо для следующего уровня
+
+print(level)
+
+
+~~~
+
+n, h, row = int(input()), 1, 1
+while n >= row:
+    n, row, h = n - row, row + h + 1, h + 1
+print(h - 1) 
+
+
+~~~
+
+a = int(input())
+i = 0
+sum = 0
+total_sum = 0
+while total_sum <= a:
+    i += 1
+    sum += i
+    total_sum += sum
+if total_sum > a:
+    print(i-1)
+else:
+    print(i)
+    
+    
+    ~~~
+    
+    num = int(input())
+h = 0
+while h*(h+1)*(h+2)/6 <= num:
+    last_h = h
+    h +=1
+print(last_h)
+
+~~~
+
+cube, pyr = int(input()), 0
+while cube - sum(range(pyr + 1)) >= 0: 				#проверяем на отлицательное число
+    cube -= sum(range(pyr + 1)) 							#range(1,5) -> 1+2+3+4 = 10 а это 4й уровень пирамиды
+    pyr += 1 															#дальше увеличиваем range(1,6) -> 1+2+3+4+5 = 15 и т.д.
+print(pyr-1) 															#т.как последняя строка выполнения while -> pyr += 1, то нужно его анулировать -> pyr-1
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Слияние списков
+В вашем распоряжении имеется два отсортированных списка по неубыванию элементов, состоящих из n и m элементов
+
+Ваша задача слить их в один отсортированный список размером  n + m
+
+Входные данные
+Программа получает на вход два числа n и m - количество элементов первого списка и второго списков
+
+Затем с новой строки поступают элементы первого отсортированного списка, а со следующей строки - второго списка
+
+Выходные данные
+Слить два списка в один в порядке неубывания и вывести элементы полученного списка
+
+n, m = (int, input().split())              # получаем из первой строки кол-во элементов 1 и 2 списка
+list1 = list(map(int, input().split()))    # получаем 1 список
+list2 = list(map(int, input().split()))    # получаем 2 список
+main_list = list1 + list2                  # делаем из двух списков 1
+
+
+result = []                                 # пустой список для результата
+
+                                            # проверяйте список, пока длина не станет 0
+while len(main_list) != 0:
+    a = min(main_list)                      # найти минимальный элемент в списке
+    result.append(a)                        # добавить элемент в новый список
+    main_list.remove(a)                     # удалить элемент из старого списка
+
+print(*result) 
+
+
+~~~
+
+n, m = map(int,input().split())
+s = list(map(int,input().split())) + list(map(int,input().split()))
+c = []
+while len(s) > 0:
+    c.append(min(s))
+    s.remove(min(s))
+print(*c)
+
+
+~~~
+
+n, m = map(int, input().split())
+res = []
+a, b = [[int(i) for i in input().split()] for _ in '..']
+
+while a and b:
+    res += [a.pop(0) if a < b else b.pop(0)]
+print(*res + a + b)
+
+
+~~~
+
+n, m = map(int, input().split())
+(lst1, lst2), res = [list(map(int, input().split())) for _ in '12'], []
+i = j = 0
+while i < n and j < m:
+    if lst1[i] < lst2[j]:
+        res.append(lst1[i])
+        i += 1
+    else:
+        res.append(lst2[j])
+        j += 1
+res.extend(lst1[i:] + lst2[j:])              
+print(*res)
+
+
+~~~
+
+def sort_2(a, b):
+    res = []
+    i, j = 0, 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            res.append(a[i])
+            i += 1
+        else:
+            res.append(b[j])
+            j += 1
+    res = res + a[i:] + b[j:]
+    return res
+   
+n, m = map(int, input().split())
+a, b = list(map(int, input().split())), list(map(int, input().split()))
+print(*sort_2(a, b))
+
+
+~~~
+
+input() # ненужная строка
+l1 = list(map(int, input().split()))
+l2 = list(map(int, input().split()))
+l3 = []
+
+while len(l1) != 0 and len(l2) != 0:
+    if l1[0] <= l2[0]:
+        l3.append(l1.pop(0))
+    else: 
+        l3.append(l2.pop(0))
+l3.extend(l1 if l1 else l2)
+
+print(*l3)
+
+
+~~~
+
+a = (int(x) for x in input().split())
+s = [*map(int, input().split() + input().split())]
+res = []
+while s:
+    res.append(s.pop(s.index(min(s))))
+print(*res)
+
+
+~~~
+
+n, m = map(int, input().split())
+buffer = list(map(int, input().split())) + list(map(int, input().split()))
+result = []
+i = 1
+while len(buffer) > 0:
+    result.append(min(buffer))
+    buffer.remove(min(buffer))
+    
+print(*result)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		Бал в БерлГУ
+		
+По случаю 100500-летия Берляндского государственного университета совсем скоро состоится бал! Уже n юношей и m девушек во всю репетируют вальс, менуэт, полонез и кадриль.
+
+Известно, что на бал будут приглашены несколько пар юноша-девушка, причем уровень умений танцевать партнеров в каждой паре должен отличаться не более чем на единицу.
+
+Для каждого юноши известен уровень его умения танцевать. Аналогично, для каждой девушки известен уровень ее умения танцевать. Напишите программу, которая определит наибольшее количество пар, которое можно образовать из n юношей и m девушек.
+
+
+boys_count = int(input())                         # Количество юношей
+boys_list = list(map(int, input().split()))       # Список с показателями уровней каждого юноши
+boys_list.sort()                                  # Сортируем список юношей
+
+girls_count = int(input())                        # Количество девушек
+girls_list = list(map(int, input().split()))      # Список с показателями уровней каждой девушки
+girls_list.sort()                                 # Сортируем список девушек
+
+boys = 0      
+girls = 0     
+count = 0   
+
+# Пока один из списков не станет пустым
+while boys_list != [] and girls_list != []: 
+    if abs(boys_list[boys] - girls_list[girls]) <= 1:                 # Если разность по модулю не больше единицы
+        count += 1                                              			          # Прибавляем пару
+        boys_list.pop(boys_list.index(boys_list[boys]))         # Удаляем из списка этого юношу
+        girls_list.pop(girls_list.index(girls_list[girls]))             # Удаляем из списка эту девушку
+    else: 
+        if boys_list[boys] > girls_list[girls]:                            # Если по уровню юноша лучше, чем девушка то этой девушке пару уже не найти 
+            girls_list.pop(girls_list.index(girls_list[girls]))         # удаляем её из списка
+            
+        else:                                     # Если же девушка лучше юноши, то мы не сможем найти пару ему
+            boys_list.pop(boys_list.index(boys_list[boys]))     # Поэтому удаляем его
+
+print(count) # Выводим количество пар
+
+
+~~~~
+
+n = int(input())
+lst1 = sorted(list(map(int, input().split())))
+m = int(input())
+lst2 = sorted(list(map(int, input().split())))
+c =  0
+while lst1 and lst2:
+    if abs(lst2[-1] - lst1[-1]) < 2:
+        c += 1
+        lst1.pop()
+        lst2.pop()      
+    elif lst1[-1] > lst2[-1]:
+        lst1.pop()
+    else:    
+        lst2.pop()
+print(c)    
+
+
+~~~
+
+m, y, w, x = [sorted([*map(int,input().split())]) for i in range(4)]
+
+for i in y:
+    for j in x:
+        if abs(i-j) <= 1:
+            x.remove(j)
+print(w[0]-len(x))
+
+
+~~~
+
+n = int(input())
+a = sorted(list(map(int,input().split())))
+m = int(input())
+b = sorted(list(map(int,input().split())))
+i = 0   #  количество мальчиков
+j = 0   #  количество девочек
+count = 0   #  счетчик
+while i < n and j < m:
+    if abs(b[j] - a[i]) <= 1:
+        count += 1
+        i += 1
+        j += 1
+    elif a[i] < b[j]:
+        i += 1
+    else:
+        j += 1
+print(count)
+
+
+
+~~~
+
+n = int(input())
+a = list(map(int, input().split()))
+m = int(input())
+b = list(map(int, input().split()))
+total_pairs = 0
+
+while a and b:
+    current = a.pop(0)
+    if current-1 in b:
+        b.remove(current-1)
+        total_pairs += 1
+    elif current in b:
+        b.remove(current)
+        total_pairs += 1
+    elif current+1 in b:
+        b.remove(current+1)
+        total_pairs += 1
+print(total_pairs)
+
+
+~~~~
+
+n = int(input())
+lst1 = sorted(list(map(int, input().split())))
+m = int(input())
+
+lst2 = sorted(list(map(int, input().split())))
+c = i = j = 0
+
+while i < n and j < m:
+    if abs(lst2[j] - lst1[i]) < 2:
+        c += 1
+        i += 1
+        j += 1        
+    elif lst1[i] < lst2[j]:
+        i += 1
+    else:    
+        j += 1     
+        
+print(c)
+
+
+~~~~~
+
+doesnt_matter = int(input())
+boys = sorted(list(map(int, input().split())))      # читаем список умений мальчиков
+doesnt_matter = int(input())
+
+girls = sorted(list(map(int, input().split())))     # читаем список умений девочек
+pair = 0                                            # счетчик пар
+
+if len(boys) > len(girls):
+    boys, girls = girls, boys
+
+while boys and girls:                            # пока список не пуст
+    if girls[0] - boys[0] > 1:
+        boys.remove(boys[0])
+    elif boys[0] - girls[0] > 1:
+        girls.remove(girls[0])
+    else:
+        pair += 1
+        boys.remove(boys[0])
+        girls.remove(girls[0])
+        
+print(pair)
+
+
+~~~~
+
+n = input()
+nn = sorted(map(int, input().split()))
+mn = int(input())
+mm = sorted(map(int, input().split()))
+for n in nn:
+    for m in mm:
+        if m - 2 < n < m + 2:
+            mm.remove(m)
+            break
+print(mn - len(mm))
+
+~~~~
+
+m, y, w, x = [sorted([*map(int,input().split())]) for i in range(4)]
+for i in y:
+    for j in x:
+        if abs(i-j) <= 1:
+            x.remove(j)
+            break
+print(w[0]-len(x))
+
+
+~~~~
+
+n = int(input())
+a = list(map(int, input().split()))
+m = int(input())
+b = list(map(int, input().split()))
+para = 0
+
+while len(a) > 0 and len(b) > 0:
+    if min(a) == min(b) or min(a) + 1 == min(b) or min(a) == min(b) + 1:
+        a.remove(min(a))
+        b.remove(min(b))
+        para += 1
+    else:
+        if min(a) < min(b):
+            a.remove(min(a))
+        else:
+            b.remove(min(b))
+            
+print(para)
+
+
+~~~
+
+m, s1 = int(input()), list(map(int, input().split()))
+g, s2 = int(input()), list(map(int, input().split()))
+s1.sort(reverse = True)
+s2.sort(reverse = True)
+
+c = 0
+
+while len(s1) != 0 and len(s2) != 0:
+    if -1 <= s1[0] - s2[0] <= 1:
+        s1.remove(s1[0])
+        s2.remove(s2[0])
+        c += 1
+    elif s1[0] > s2[0]:
+        s1.remove(s1[0])
+    else:
+        s2.remove(s2[0])
+print(c)
+
+
+~~~~
+
+m = int(input())
+m1 = input()
+m1 = list(int(i) for i in m1.split())
+m1.sort(reverse =True) #блок по парням m = male
+
+f =  int(input())
+f1 = input()
+f1 = list(int(i) for i in f1.split()) 
+f1.sort(reverse =True) #блок по девушкам f = female
+
+count = 0 #счетчик пар
+
+for i in range(len(m1)):
+    for j in range(len(f1)):
+        if (f1[j] >0 and m1[i] > 0) and  ((m1[i] - f1[j]) == 0 or abs(m1[i] - f1[j]) == 1):
+            count += 1
+            f1[j] = -1
+            m1[i] = -1
+
+
+print(count)
+
+
+~~~~
+
+x = input()
+a = [int(i) for i in input().split()]
+z = input()
+b = [int(i) for i in input().split()]
+count = 0
+for i in sorted(a):
+    for j in sorted(b):
+        if i == j or i + 1 == j or i - 1 == j:
+            count += 1
+            b.remove(j)
+            break
+print(count)
+
+
+~~~~
+
+n = int(input())
+boys_skills = list(map(int, input().split()))
+boys_skills.sort()
+
+m = int(input())
+girls_skills = list(map(int, input().split()))
+girls_skills.sort()
+couple = 0
+
+
+while boys_skills and girls_skills:
+    if abs(boys_skills[0] - girls_skills[0]) <= 1:
+        boys_skills.pop(0)
+        girls_skills.pop(0)
+        couple += 1
+    else:
+        if boys_skills[0] < girls_skills[0]:
+            boys_skills.pop(0)
+        else:
+            girls_skills.pop(0)
+            
+            
+print(couple)
+
+~~~~
+
+n, boys = input(), sorted(map(int, input().split()))
+m, girls = input(), sorted(map(int, input().split()))
+pair = 0
+
+while len(boys) > 0 < len(girls):
+    if -2 < boys[0] - girls[0] < 2:
+        boys.pop(0)
+        girls.pop(0)
+        pair += 1
+    elif boys[0] < girls[0]: boys.pop(0)
+    else: girls.pop(0)
+    
+print(pair)
+
+
+
+~~~~
+
+boy = int(input())  
+boy_level = list(map(int, input().split())) 
+girl = int(input()) 
+girl_level = list(map(int, input().split()))
+k = min(boy, girl)
+
+boy_level.sort()
+girl_level.sort()
+count = 0
+
+while count < k:
+    
+    if len(boy_level) == 0:
+        break
+    elif len(girl_level) == 0:
+        break
+    else:
+        if boy_level[0] - girl_level[0] > 1:
+            del girl_level[0]
+        elif boy_level[0] - girl_level[0] < -1:
+            del boy_level[0]
+        else:
+            count += 1
+            del boy_level[0]
+            del girl_level[0]
+        
+print(count)
+
+
+~~~~
+
+col_man = int(input())
+skill_man = list(map(int, input().split()))
+col_woman = int(input())
+skill_woman = list(map(int, input().split()))
+pairs = 0
+
+for i in sorted(skill_man):
+    for a in sorted(skill_woman):
+        if abs(i - a) <= 1:
+            pairs += 1
+            skill_woman.remove(a)
+            break
+
+print(pairs)
+
+
+~~~
+
+trash = int(input())  # не используется
+skill_b = list(map(int, input().split()))
+trash = int(input())  # не используется
+skill_g = list(map(int, input().split()))
+skill_b.sort(), skill_g.sort()  # сортируем оба списка
+pairs = 0  # счетчик пар
+
+while skill_b and skill_g:
+    if len(skill_b) != 0 or len(skill_g) != 0:  # проверяем что оба списка не пустые
+        (b := skill_b[0])  # создаем 2 переменные 
+        (g := skill_g[0])  # для удобства в следующем if
+    else:
+        break  # останавливает цикл
+    if b - 1 == g or b == g or b + 1 == g:  # дальше согласно условию задачи
+        pairs += 1
+        skill_b.pop(0), skill_g.pop(0)
+    else:
+        if b > g:
+            skill_g.pop(0)
+        else:
+            skill_b.pop(0)
+            
+print(pairs)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+=======  4.3 Обход всех цифр числа с помощью while ===============
+
+https://stepik.org/lesson/296615/step/1?unit=278349
+
+
+Обход всех цифр числа
+
+В одном из предыдущих уроков мы уже разбивали на цифры двузначные и трехзначные  числа при помощи целочисленного деления ( // ) и остатка от деления ( % ). Но как нам быть с числами, которые содержат большое количество цифр?
+
+С этой проблемой поможет справится цикл while, при помощи которого можно без труда обработать число с произвольным количеством разрядов.
+
+Разберём этот алгоритм на примере четырехзначные  числа.  
+"Напишем программу, которая выведет каждую цифру числа, начиная с конца:"
+
+n = 4782
+while n > 0:
+    print(n%10)
+    n = n//10
+    
+    
+Вот как работает данный алгоритм: пока наше число больше нуля мы получаем его последнюю цифру, а после убираем её. 
+Важно сохранять правильный порядок выполнения операций, поскольку другой порядок приведёт к другому ответу.
+
+Данный алгоритм будет успешно работать с любым натуральным числом, вне зависимости от количества разрядов в нем: вы можете заменить число 4782 любым другим и посмотреть, что получится
+
+
+			"Обход всех цифр числа в двоичной системе"
+			
+
+В примере выше мы не зря при делении нацело и по остатку использовали число 10, оно взято потому что мы с вами используем десятичную систему счисления. 
+
+Если изменить деление с 10 на другое значение, то обход  цифр будет осуществлен в другой системе счисления. К примеру, если заменить 10 на 2, то выдает число в двоичной записи. 
+
+Напишем программу, которая выведет число 14 в двоичной записи наоборот по одному символу на строке
+
+
+n = 14
+
+while n > 0:
+    print(n%2)
+    n = n//2
+    
+    "https://numsys.ru/ => Онлайн-перевод чисел в разные системы"
+    
+    
+    
+   
+    					=======  "Примеры использования алгоритма" ======
+    					
+    					
+	"1) Узнаем сколько разрядов в числе"
+
+n = int(input('Введите число: '))
+
+count = 0
+
+while n > 0:
+    n = n // 10
+    count = count + 1
+    
+print(f"Количество цифр={count}")
+
+
+=== === === === === ===
+
+
+	"2) Найдем сколько всего четных цифр:"
+
+n = int(input('Введите число: '))
+count_even = 0
+
+while n > 0:
+    last = n % 10
+    if last % 2 == 0:
+        count_even = count_even + 1
+    n = n//10
+    
+print(f"Количество четных цифр = {count_even}")
+
+=== === === === === ===
+
+	"3) Посчитаем сумму всех цифр числа"
+
+n = int(input('Введите число: '))
+s = 0
+
+while n > 0:
+    s = s + n % 10
+    n = n//10
+    
+print(f"Сумма всех цифр = {s}")    
+
+=== === === === === ===
+
+	"4) Посчитаем произведение всех цифр числа"
+
+n = int(input('Введите число: '))
+product = 1
+
+while n > 0:
+    last = n % 10
+    product = product * last
+    n = n//10
+    
+print(f"Произведение всех цифр = {product}")
+
+
+=== === === === === ===
+
+
+5) Найдем самую большую и самую маленькую цифру в числе: 
+
+n = int(input('Введите число: '))
+
+maximum = 0
+minimum = 9
+
+while n > 0:
+    last = n % 10
+    if last > maximum :
+        maximum = last
+    if last < minimum :
+        minimum = last
+    n = n//10
+    
+print(f"Самая большая цифра = {maximum}")
+print(f"Самая маленькая цифра = {minimum}")
+    
+    
+    
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Сколько раз будет выполняться цикл while в данной программе?
+
+number = 999000112233
+count = 0
+while number > 0:
+    number = number // 10
+    count = count + 1
+    
+print(count) 		# 12
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Какой ответ выведет программа?
+
+number = 1234567890
+count = 0
+while number > 0:
+    last_digit = number % 10
+    if last_digit < 3:
+        count = count + 1
+    number = number // 10
+    
+print(count) 			# 3
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Какой ответ выведет программа?
+
+number = 73408
+m = 0
+s = 0
+while number > 0:
+    last_digit = number % 10
+    s = s + last_digit
+    if last_digit > m:
+        m = last_digit
+    number = number // 10
+
+
+print(s + m) 			# 30
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа принимает на вход одно натуральное число и выводит его цифры в столбик в обратном порядке.
+
+num = int(input())
+while num > 0:
+    digit = num % 10
+    print(digit)
+    num = num // 10
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа принимает на вход одно натуральное число и выводит на экран сумму цифр данного числа
+
+num = int(input())
+
+sum_of_digits = 0
+
+while num > 0:
+    digit = num % 10
+    sum_of_digits = sum_of_digits + digit
+    num = num // 10
+    
+print(sum_of_digits)
+
+
+In this program, the num variable is initialized with the integer value entered by the user using the input() function. The program also initializes a variable called sum_of_digits with the value 0.
+
+The program then enters a while loop, which will execute as long as num is greater than zero.
+
+"Inside the loop, the program uses the modulus operator (%) to extract the rightmost digit of num." This is assigned to the digit variable. The program then adds the value of digit to the sum_of_digits variable using the += operator.
+
+Next, "the program uses integer division (//) to remove the rightmost digit from num." 
+
+"This updated value of num will be used in the next iteration of the loop to extract and add the next digit."
+
+When num eventually becomes zero, the loop will terminate, and the program will exit. The final value of sum_of_digits is then printed to the screen using the print() function.
+
+
+~~~
+
+
+n = int(input())         # вводим число
+k = 0                       # устанавливаем счетчик
+while n > 0:             # производим вычисления в блоке ниже пока n > 0
+    k += n % 10         # берем остаток от введенного числа (последнюю цифру)
+    n = n // 10           # уменьшаем наше введенное число на один разряд (убираем последнюю цифру)
+print(k)                    # выводим на печать
+
+
+    ~~~
+    
+a = int(input())
+sum = 0
+
+while a > 0:
+    sum = sum + a % 10
+    a = a // 10
+print(sum)    
+
+
+~~~
+
+n = input()
+s = i = 0
+
+while i  <  len(n):
+    s += int(n[i])
+    i += 1
+print(s)
+
+
+~~~
+
+sum = 0
+n = int(input())
+
+while n != 0:   
+	sum += n % 10
+	n = n // 10
+
+print(sum)
+
+
+~~~
+
+s, n = 0, []
+n.extend(input())
+
+while len(n) > 0:
+    s += int(n[0])
+    del n[0]
+    
+print(s)
+
+
+~~~
+
+s, n = 0, int(input())*10
+while n := n // 10: 
+    s += n % 10
+print(s)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Программа принимает на вход одно натуральное число и выводит на экран произведение цифр данного числа
+
+
+
+num = int(input("Enter a natural number: "))
+
+product_of_digits = 1
+
+while num > 0:
+
+    digit = num % 10
+    product_of_digits *= digit
+    num = num // 10
+    
+    
+print("The product of the digits is:", product_of_digits)
+
+
+n this program, the num variable is initialized with the integer value entered by the user using the input() function. The program also initializes a variable called product_of_digits with the value 1.
+
+The program then enters a while loop, which will execute as long as num is greater than zero.
+
+Inside the loop, "the program uses the modulus operator (%) to extract the rightmost digit of num." This is assigned to the digit variable. 
+"The program then multiplies the value of digit with the product_of_digits variable using the *= operator."
+
+Next, "the program uses integer division (//) to remove the rightmost digit from num." 
+
+"This updated value of num will be used in the next iteration of the loop to extract and multiply the next digit."
+
+When num eventually becomes zero, the loop will terminate, and the program will exit. The final value of product_of_digits is then printed to the screen using the print() function.
+
+
+For example, if the user enters the value 12345, the output of the program will be:
+
+The product of the digits is: 120
+
+
+
+
+~~~~~
+
+n = int(input())        			# вводим число
+k = 1                   				# устанавливаем счетчик
+
+while n > 0:            			# производим вычисления в блоке ниже пока n > 0
+    k *= n % 10         			# берем остаток от введенного числа (последнюю цифру) и увеличиваем "K" на него
+    n = n // 10         			# уменьшаем наше введенное число на один разряд (убираем последнюю цифру)
+    
+print(k)                				# выводим на печать
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The program accepts one natural number as input and displays the minimum and maximum digits of this number in separate lines
+
+num = int(input("Enter a natural number: "))
+max_digit = 0
+min_digit = 9
+
+while num > 0:
+    digit = num % 10
+    if digit > max_digit:
+        max_digit = digit
+    if digit < min_digit:
+        min_digit = digit
+    num = num // 10
+
+print("The maximum digit is:", max_digit)
+print("The minimum digit is:", min_digit)
+
+
+In this program, the num variable is initialized with the integer value entered by the user using the input() function. 
+
+The program also initializes two variables, max_digit and min_digit, with the values 0 and 9, respectively.
+
+The program then enters a while loop, which will execute as long as num is greater than zero. 
+
+"Inside the loop, the program uses the modulus operator (%) to extract the rightmost digit of num. This is assigned to the digit variable."
+
+Next, "the program compares the value of digit with max_digit and min_digit using if statements."
+
+"If digit is greater than max_digit, the value of max_digit is updated to digit. Similarly, if digit is less than min_digit, the value of min_digit is updated to digit."
+
+Finally, "the program uses integer division (//) to remove the rightmost digit from num." 
+
+"This updated value of num will be used in the next iteration of the loop to extract and compare the next digit."
+
+When num eventually becomes zero, the loop will terminate, and the program will exit. The final values of max_digit and min_digit are then printed to the screen using the print() function.
+
+For example, if the user enters the value 32594, the output of the program will be:
+
+The maximum digit is: 9
+The minimum digit is: 2
+
+
+~~~
+
+num = int(input())
+min_d = 10  
+max_d = -1
+while num != 0:
+
+    last_digit = num % 10  					# находим последнюю цифру
+    
+    if last_digit > max_d:  						# если последняя цифра будет больше заданной максимальной, то
+        max_d = last_digit  						# нашему максимальному значению присваиваем значение last_digit
+    if last_digit < min_d:  						# если последняя цифра будет меньше заданной минимальной, то
+        min_d = last_digit  						# нашему минимальному значению присваиваем значение last_digit    
+    num = num // 10
+
+print(min_d)  										# выводим результат
+print(max_d)
+
+
+~~~
+
+n = int(input())
+minim, maxim = n % 10, n % 10
+
+while n > 0:
+    z = n % 10
+    minim = min(minim, z)
+    maxim = max(maxim, z)
+    n //= 10
+print(minim, maxim, sep='\n')
+
+
+
+~~~
+
+a = list(map(int, input()))
+print(min(a), max(a), sep='\n')
+
+~~~
+
+x = int(input())
+minimum, maximum = 9, 0
+ 
+while x:
+    x, n = divmod(x, 10)
+    minimum = min(minimum, n)
+    maximum = max(maximum, n)
+ 
+print(minimum)
+print(maximum) 
+
+
+
+In Python, divmod(x, y) is a built-in function that takes two arguments x and y and returns a tuple containing the quotient and remainder of the division of x by y.
+
+When divmod() is used with y = 10, it can be used to extract the rightmost digit of a number x and the remaining digits, as follows:
+
+
+x = 12345
+digit, remainder = divmod(x, 10)
+
+
+In this example, the value of x is 12345. When divmod(x, 10) is called, the function returns the tuple (5, 1234), because 5 is the remainder of x divided by 10, and 1234 is the quotient.
+
+By assigning the tuple to two variables digit and remainder, we can extract the rightmost digit (5) into the digit variable, and the remaining digits (1234) into the remainder variable.
+
+We can then repeat this process with the remainder variable to extract the next rightmost digit, and so on, until there are no more digits left.
+
+x = 12345
+while x > 0:
+    digit, x = divmod(x, 10)
+    print(digit)
+
+
+
+In this example, the program repeatedly extracts the rightmost digit of x and prints it to the screen using a while loop. The loop continues as long as x is greater than zero.
+
+Output: 5 4 3 2 1
+
+~~~~~
+
+n = input()
+
+i = 0
+mini, maxi = int(n[1]), int(n[1])
+
+while i < len(n):
+
+    if int(n[i]) > maxi:
+        maxi = int(n[i])
+    if int(n[i]) < mini:
+        mini = int(n[i])
+    i += 1
+    
+print(mini, maxi, sep='\n')
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа принимает на вход одно натуральное число. Ваша задачи найти сколько раз встречается цифра 7 в этом числе
+
+num = int(input())
+i = 0
+
+while num > 0:
+    if num % 10 == 7:
+        i = i + 1
+    num = num // 10
+    
+print(i)
+
+
+~~~
+
+print(input().count('7'))
+
+
+
+$$$ ~~~	***
+
+
+
+n = list(input())
+count = 0
+
+while '7' in n:
+    n.remove('7')
+    count += 1
+print(count)
+
+
+~~~
+
+
+n = int(input())        			# вводим число
+k = 0                   				# устанавливаем счетчик
+
+while n > 0:            			# производим вычисления в блоке ниже пока n > 0
+    if n % 10 == 7:     		# если последняя цифра 7
+        k += 1          			# увеличиваем "K" на 1
+        n = n // 10     			# уменьшаем наше введенное число на один разряд (убираем последнюю цифру)
+    elif n % 10 != 7:   		# если последняя цифра не 7
+        n = n // 10     			# уменьшаем наше введенное число на один разряд (убираем последнюю цифру)
+        
+print(k)                				# выводим на печать
+
+
+~~~
+
+z = 0
+
+for i in input():
+    if i=='7': z+=1
+    
+print(z)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Программа принимает на вход одно натуральное число и выводит его цифры в двоичной системе в столбик в обратном порядке.
+
+
+num = int(input())
+
+while num != 0:
+    
+    print(num % 2)			# calculates the remainder of num when divided by 2, which will be either 0 or 1. 
+    
+    # this is the rightmost binary digit of the number, since in binary, each place value represents a power of 2.
+    
+    num = num // 2
+    # This line divides num by 2 using integer division (the // operator) and assigns the result back to num. This effectively shifts the binary digits one place to the right, since each place value in binary represents a power of 2. For example, if num was originally 13 (which in binary is 1101), this line would change it to 6 (which in binary is 110).
+    
+    print(num)
+
+
+
+~~~
+
+x = int(input())
+
+while x > 0:
+
+    last = x % 2
+    print(last)
+    x = x // 2
+
+
+~~~
+
+n = bin(int(input()))
+n = n[2::]
+
+for i in reversed(n):
+    print(i)
+    
+~~~
+
+q = int(input())
+
+z = bin(q)[2:]
+
+for i in range(len(z)):
+    print(z[::-1][i])
+    
+ 
+~~~
+
+n = bin(int(input()))[2:]
+
+print(*list(n)[::-1], sep='\n')
+
+
+~~~
+
+n = bin(int(input()))[2:]
+
+print('\n'.join(n)[::-1])
+
+
+
+
+=============. 4.4 Нахождение всех делителей числа ===========
+
+
+https://stepik.org/lesson/296955/step/2?unit=278683
+
+n = int(input())
+i = 1
+
+while i <= n // 2:
+	if n % i == 0:
+		print(i, end= ' ')
+	i = i + 1
+
+print(n)
+	
+~~~
+
+n = int(input())
+i = 1
+
+while i <= n ** 0.5:
+	if n% i == 0:
+		print(i, n // i)	
+	i += 1
+	
+~~~
+
+n = int(input())
+i = 1
+
+while i * i <= n:
+	if n% i == 0:
+		if i == n // i:
+			print( i )	
+		else:
+			print(i, n // i)
+	i += 1
+	
+	
+~~~
+
+n = int(input())
+i = 1
+a = []
+
+while i * i <= n:
+	if n% i == 0:
+		if i == n // i:
+			a.append(i)
+		else:
+			a.append(i)
+			a.append( n // i)
+	i += 1
+	
+a.sort()
+print(a)
+	
+	
+~~~ 	*** ~~~~~~
+
+n = int(input())
+i = 1
+a = []
+
+while i * i <= n:
+    if n % i == 0:
+        a.append(i)
+        if i != n // i:
+            a.append(n // i)
+
+    i += 1
+
+a.sort()
+print(a)
+
+	
+	
+	~~~~~~~~~~~~~~~~~~
+
+
+Какова сумма всех натуральных делителей числа 34?  => 54
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Дано натуральное число N. Определить, является ли оно простым. Натуральное число N называется простым, если у него есть только два делителя: единица и само число N. 
+
+В качестве ответа выведите "Yes", если число простое,  "No" - в противном случае.
+
+
+n = int(input())
+
+i = 1
+a = []                            			# список делителей числа n 
+
+while i ** 2 <= n:                	# находим все делители числа n
+    if n % i == 0:   
+        a.append(i)               	# добавляем делители n в списоке делителей
+        if i != n // i:
+            a.append(n // i)      	# отсееваем повторы
+    i += 1
+    
+# простые числа делятся без остатка только на себя и единицу, следовательно
+# длина списка делителей простого числа равна 2
+
+if len(a) == 2:
+    print('Yes')                  		# число простое
+else:
+    print('No')
+
+
+~~~~
+
+a=int(input())
+i=2
+while a%i!=0 and i<a:
+    i+=1
+print('Yes' if i==a else 'No')
+
+~~~
+
+n=int(input())
+d = 2
+while n!=1 and n % d != 0:
+    d += 1
+print("Yes" if n==d else "No")
+
+
+~~~
+
+def dig(x):
+    i = 2
+    while x % i != 0 and i < x:
+        i += 1
+    return i == x
+
+print(['No', 'Yes'][dig(int(input()))])
+
+
+~~~
+
+n = int(input())
+i = 1
+a = []
+
+while i ** i <= n:
+    if n % i == 0:
+        a.append(i)
+        if i != n // i:
+            a.append(n // i)
+    i += 1
+print('Yes' if [1, n] == a else 'No')
+
+
+~~~
+
+from sympy import isprime
+
+print(('No', 'Yes')[isprime(int(input()))])
+
+~~~
+
+n = int(input())
+i = 1
+count = 0
+while i < n ** 0.5:
+    if n % i == 0:
+        count += 2
+    i += 1
+print('Yes' if count == 2 else 'No')
+
+
+~~~
+
+n = int(input())
+i = 1
+s = 0
+
+while  0 < i <= 9999999:
+    if n % i == 0:
+        s+=1
+    i+=1        
+if 1 < s <= 2:
+    print('Yes')
+    
+else:
+    print('No')
+    
+    ~~~~~~~
+    
+    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+Программа получает на вход натуральное число N. 
+
+Нужно найти сумму его делителей. 
+
+
+n = int(input())
+c = 1
+sum = 0
+
+while c <= n:
+    if n % c == 0:
+        sum +=c
+    c += 1
+print(sum)
+
+
+~~~
+
+a = int(input())
+count = 1
+sum_1 = 0
+while count <= a:
+    if a % count == 0:
+        sum_1 += count
+    count += 1
+print(sum_1)
+
+
+~~~
+
+n = int(input())
+i = 1
+a = []
+while i <= n:
+    if n % i == 0:
+        a.append(i)
+    i += 1
+print(sum(a))
+
+
+~~~
+
+n = int(input())
+i = 1
+a = []
+while i * i <= n:
+    if n % i == 0:
+        a.append(i)
+        if i != n // i:
+            a.append(n//i)
+    i += 1
+print(sum(a))
+
+
+~~~
+
+# Поиск делителей числа
+a = int(input())
+b = [i for i in range(1, a + 1) if a % i == 0]
+# print(b) # Если нужен список
+print(sum(b))
+
+~~~
+
+[print(sum(x for x in range(1, n + 1) if not n % x)) for n in [int(input())]]
+
+
+~~~
+
+print((n:=int(input()), sum([i for i in range(1, n+1) if n%i==0]))[n>0])
+
+
+
+============== Алгоритм Евклида ===================
+
+https://stepik.org/lesson/296616/step/1?unit=278350
+
+
+Алгоритм Евклида позволяет найти наибольший общий делитель (НОД) для двух чисел
+
+Давайте сперва освежим память и вспомним, что такое делитель. Делитель натурального числа a – это натуральное число b, на которое число a делится нацело.  
+
+Например, делителем числа 6 являются числа: 1, 2, 3, 6. 
+
+
+"Простым числом называется такое натуральное число, которое имеет два делителя: единица и само это число. "
+
+
+Например, простым числом будет являться число 5, так как у него только два делителя: 1 и 5. Также числа 7 и 13 будут являться простыми числами, а вот единица - нет. "У единицы только один делитель, а должно быть два."
+
+
+"Общий делитель - это число, которое может быть делителем каждого числа из указанного множества."
+
+Например, делители числа 10: 1, 2, 5, 10; а у числа 20: 1, 2, 4, 5, 10, 20. Общими делителями у 10 и 20 будут следующие числа: 1, 2, 5, 10.
+
+
+
+					"Наибольший общий делитель (НОД)"
+
+
+"Наибольший общий делитель (НОД) – это число, которое делит без остатка два числа и делится само без остатка на любой другой делитель данных двух чисел. Проще говоря, это самое большое число, на которое можно без остатка разделить два числа, для которых ищется НОД."
+
+В нашем примере с числами 10 и 20 наибольшим общим делителем будет число 10."
+
+
+	"Алгоритм Евклида: нахождение НОД вычитанием"
+
+	1. Получаем числа a и b
+	2. Пока a не равно b:
+		a. Находим большее из них
+		b. Вычитаем из большего числа меньшее.  
+	3. Выводим a или b (не имеет значение какое из чисел выводить, поскольку они равны)
+
+
+a = int(input('Введите первое число: '))
+b = int(input('Введите второе число: '))
+
+while a != b:
+    if a > b:
+        a = a - b
+    else:
+        b = b - a
+        
+print(f'Нод={a}')
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+			"Алгоритм Евклида: нахождения НОД делением"
+			
+
+Алгоритм Евклида через вычитание удобен и понятен, однако он имеет один большой недостаток: в ситуации, когда одно число намного больше другого процесс вычитания может занять слишком много времени.
+
+Например, если a = 100000000, b = 2, то алгоритм будет вычитать 2 из числа 100000000 до тех пор, пока не дойдёт до 2.
+
+
+		"В подобных случаях проще находить НОД при помощи деления."
+		
+
+Алгоритм Евклида путём деления имеет следующий вид:
+
+1. Получаем числа a и b
+2. Пока b > 0:
+	1. Добавим переменную c, в которую вносим остаток от деления a на b;
+	2. В a кладём значение b
+	3. В b кладём значение c
+3. Выводим a.
+
+
+"Примечание: в данном примере мы изначально предположили, что a > b, но особого значения, поскольку если a < b, то программа сделает на один шаг больше, потратив его на перестановку значений в переменных."
+
+
+a = int(input('Введите первое число: '))
+b = int(input('Введите второе число: '))
+
+while b > 0:
+    c = a % b
+    a = b
+    b = c
+    
+print(f'Нод={a}')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Как расшифровывается аббревиатура НОД?
+
+Наибольший общий делитель
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Чему равен НОД чисел 23 и 17 
+
+=> 1
+
+
+используем этот код  
+
+a = int(input('Введите первое число: '))
+b = int(input('Введите второе число: '))
+
+while b > 0:
+    c = a % b
+    a = b
+    b = c
+    
+print(f'Нод={a}')
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Даны два натуральных числа A и B. Требуется найти их наибольший общий делитель (НОД) методом вычитания
+
+a, b = map(int, input().split())
+
+while a != b:
+    if a > b:
+        a = a - b
+    else:
+        b = b - a
+        
+print(a)
+
+
+
+~~~
+
+'''
+    Найти НОД методом вычитания:
+'''
+
+a, b = map(int, input().split())
+
+while a != b:
+    a, b = max(a, b) - min(a, b), min(a, b)
+    
+print(a)
+
+
+~~~
+
+a, b = [int(i) for i in input().split()]
+while a != 0: a, b = abs(b - a), a
+print(b)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Та же самая задача, необходимо найти НОД двух чисел, "только теперь нужно модернизировать свой код при помощи нахождения остатка от деления"
+
+
+
+a, b = map(int, input().split())
+
+while a != 0 and b != 0:
+    
+    if a > b:
+        a = a % b
+    else:
+        b = b % a
+ 
+print(a + b)
+
+
+~~~
+
+a, b = map(int, input().split())
+
+while b > 0:
+    a, b = b, a % b
+    
+print(a)
+
+
+~~~
+
+a, b = map(int, input().split())
+
+while b > 0:
+
+    if a <  b:
+        a, b = b, a
+    c = a % b
+    a, b =  b, c
+    
+print(a)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Как расшифровывается аббревиатура НОК?
+
+= > Наименьшее общее кратное
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Чему равен НОК чисел 35 и 5? =>  35
+
+To find the smallest common multiple of 35 and 5, we can start by listing the multiples of each number:
+
+Multiples of 35: 35, 70, 105, 140, 175, 210, 245, 280, 315, 350, ...
+
+Multiples of 5: 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, ...
+
+We can see that 35 is the smallest multiple that is common to both lists, so the smallest common multiple of 35 and 5 is 35.
+
+Therefore, the answer is 35.
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+"# НОК = (A * B) / НОД       # A и B в первоначальном виде."
+
+Чему равен НОК чисел 75 и 120?
+
+75 = 3 * 5 * 5
+
+120 = 3 * 5 * 8
+
+выделяем общие делители (3 * 5) и домнажаем на несовпадающие делители (5, 8)
+
+3 * 5 * 5 * 8
+
+
+a, b = map(int, input().split())
+
+z = a * b						# создоем переменную для НОК (наименшее общее кратное)
+
+
+while b > 0:					# Нахоdим НОД (наибольший общий делитель)
+    a, b = b, a % b
+
+print(int(z / a))				#Находим НОК
+
+
+"~~~~~~~~~~~~~~~~~~~~~"
+
+def NOD(a, b):								# " Нахоdим НОД (наибольший общий делитель) "
+"
+    while b: a, b = b, a % b
+    
+    return a
+
+
+
+def NOK(a, b):								# "НОК (наименшее общее кратное)"
+
+    return a * b // NOD(a, b)
+    
+
+print(NOK(*map(int, input().split())))
+
+
+
+
+~~~~~~~~~~~~~~~~~~~
+
+a, b = map(int, input().split())
+
+n = b * a
+while b > 0:
+    a, b = b, a % b
+print(n // a)
+
+
+~~~~~
+
+a, b = sorted(map(int, input().split()))
+c = a
+while c % b != 0:
+    c += a
+print(c)
+
+
+~~~~
+
+a, b = map(int, input().split())    # Вводим два числа
+
+m = a * b                           # Сохраняем произведение наших чисел (a * b)
+while b > 0:                        # Выполняем цикл операций по нахождению НОД
+    a, b = b, a%b                   # Находим делением
+    
+print(m//a)                         # Находим НОК=(a * b)/НОД. Выводим ответ.
+
+
+
+
+============ Инструкции break, continue, else ============
+
+https://stepik.org/lesson/296956/step/1?unit=278684
+
+
+
+
+Перед тем, как приступить к непосредственной теме урока необходимо узнать о бесконечных циклах. 
+
+Бесконечный цикл - цикл, написанный таким образом, что условие выхода из него никогда не сработает, таким образом он выполняется бесконечное количество раз. 
+
+"Пример бесконечного цикла:"
+
+
+a = 1
+
+while a > 0:
+    print(a)
+    a += 1
+
+
+"Если вы хотите только выйти из бесконечного цикла, то вам в этом поможет оператор break"
+
+Оператор break используется для принудительного выхода из цикла. Цикл прерывается без ошибок и дальше программа сразу переходит к выполнению инструкций, которые следуют за циклом while. Реализуется break следующим образом
+
+
+a = 1
+
+while a > 0:
+    print(a)
+    
+    if a == 5:
+        break
+    a += 1
+
+
+В итоге наша программа выведет числа от 1 до 5 и цикл завершится. 
+
+
+"Следует отметить, что break выходит из цикла целиком и если в цикле были инструкции, расположенные ниже команды, то они выполнены не будут."
+
+
+
+		===== "Инструкция continue" =====
+
+
+Позволяет перейти к следующей итерации цикла до завершения всех команд в данном цикле. 
+Вот пример простейшего применения инструкции continue, который выводит четные числа от 1 до 10
+
+
+a = 0
+
+while a <= 10:
+    a += 1
+    if a % 2 != 0: 
+        continue
+    print(a)
+    
+
+В этом коде каждый раз когда a является нечетным числом continue прерывает текущую итерацию и отправляет нас к следующей.
+
+
+		===== "Инструкция else" ======
+		
+Она позволяет выполнить блок определенного кода, если цикл заканчивается без принудительного выхода.
+Для примера узнаем состоит ли список a только из чётных цифр и выведем No или Yes.
+
+a = [24, 68, 42, 32, 23, 18, 22]
+
+while len(a) > 0:
+
+    last = a.pop()
+    
+    if last % 2 != 0:
+        print('No')
+        break
+        
+    print(f'{last} четное число')
+    
+else:
+    print('Yes')
+
+
+
+В примере выше мы увидели вывод слова No, так как наш цикл закончился принудительно.  
+"Когда срабатывает инструкция break блок else будет пропущен." А вот в примере ниже мы зайдем в блок else, потому что break не сработает
+
+
+a = [24, 68, 42, 32, 18, 22]
+
+while len(a) > 0:
+
+    last = a.pop()
+    if last % 2 != 0:
+        print('No')
+        break
+        
+    print(f'{last} четное число')
+    
+else:
+    print('Yes')
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вам нужно понять какие числа будут выведены на экран после выполнения данного кода
+
+
+
+t = 7
+while t > 1:
+    t -= 1
+    if t == 3:
+        break
+    print(t)
+
+Output: 15
+
+
+
+~~~~~~~~~~~~~~~
+
+t = 7
+while t > 1:
+    t -= 1
+    if t == 3 or t == 1:
+        continue
+    print(t)
+
+
+Output: 17
+
+
+~~~~~~~~~~~~~~~~~~
+
+Программа получает на вход натуральное число n > 1. "Выведите минимальный делитель этого числа, отличный от единицы."
+
+К примеру для числа 12 делителями являются 1, 2, 3, 4, 6, 12. 
+
+
+num = int(input())
+
+d = 2                # делитель должен быть отличен от единицы, а также не должен делиться на ноль
+
+while True:
+    if num % d == 0:
+        print(d)
+        break
+    
+    d = d + 1
+
+
+
+~~~
+
+a=int(input())
+
+i=2
+
+while a % i  != 0 :
+
+    i+=1
+    if a==i: break
+    
+print(i)
+
+
+~~~
+
+Диапазоном range(2, int(num ** 0.5) + 1) отсекаем лишние итерации. Если не обнаруживаем нужный делитель в этом диапазоне, то тогда не сработает оператор break, а значит выполнится код в части else цикла while.
+
+num = int(input())
+
+for i in range(2, int(num ** 0.5) + 1):
+    if num % i == 0:
+        print(i)
+        break
+else:
+    print(num)
+    
+    
+~~~~~
+
+a = int(input())
+
+c = 2                   # сохраняем в переменной минимальный возможный делитель
+
+while c <= a:           # пока С не равно А
+
+    if a % c == 0:      # если это делитель, сразу выводим его и завершаем цикл досрочно
+        print(c)
+        break           #
+    c += 1              # иначе увеличиваем на 1
+
+
+~~~
+
+n = int(input())
+i = 2
+while i ** 2 <= n:
+    if n % i == 0:
+        n = i
+        break
+    i += 1
+print(n)
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Давайте переберем все числа от а до b включительно и будем их выводить на экран, при этом нужно выполнить следующие условия:
+
+пропускать (не выводить) числа, которые делятся на 2 или на 3
+если встречаете число, кратное 777, необходимо принудительно закончить цикл, само это число не выводить
+
+
+a = int(input()) -1
+b = int(input())
+
+while a < b:
+    a = a + 1
+    
+    if a % 777 == 0:                # если число кратное 777, заканчиваем цикл
+        break
+    
+    if a % 2 == 0 or a % 3 == 0:    # не выводить числа которые делятся на 2 или 3
+        continue
+    
+    print(a)
+
+
+~~~
+
+a, b = int(input()), int(input())
+
+while b - a + 1:
+
+    if a == 777:
+        break
+        
+    if (a % 2) * (a % 3):
+        print(a)
+        
+    a += 1
+
+
+~~~
+
+a = int(input())
+b = int(input())
+
+a = a - 1
+
+while a  <  b:
+    a += 1
+    
+    if a % 777 == 0:
+        break
+    if a % 2 == 0 or a % 3 == 0:
+        continue
+        
+    print(a)
+
+
+~~~
+
+
+a, b = int(input()), int(input()) + 1
+
+while a < b:
+
+    if a == 777:
+        break
+        
+    if a % 2 and a % 3:
+        print(a)
+        
+    a += 1
+
+
+~~~
+
+a, b = int(input()), int(input())
+
+while a <= b:
+
+    if a % 777 == 0:
+        break
+        
+    elif a % 2 != 0 and a % 3 != 0:
+        print(a)
+        
+    a += 1
+
+
+~~~
+
+a, b = int(input()) - 1, int(input())
+
+while a <= b:
+
+    a += 1
+    
+    if a == 777:
+        break
+        
+    if a % 2 == 0 or a % 3 == 0:
+        continue
+        
+    if a > b:
+        break
+        
+    print(a)
+
+
+~~~
+
+a, b = int(input()), int(input())
+
+while  a <= b:
+
+    if a % 777 == 0:
+        break
+    if a % 2 != 0 and a % 3 != 0:
+        print(a)
+        
+    a += 1
+
+
+~~~
+
+a,b = int(input()),int(input())
+
+x = a
+while x <= :
+    if x %2 !=0 and x %3 != 0 and x // 777 == 0:
+        print (x)
+        
+    x += 1
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+				Гипотеза Коллатца
+				
+Сиракузская последовательность, или последовательность Коллатца, строится так: возьмём натуральное число n; 
+"если оно чётное, то заменим его числом n / 2;"
+
+ "если же оно нечётное, то заменим его числом 3n+1."
+ 
+ Получившееся число — следующее в сиракузской последовательности после числа n. 
+ Затем заменяем получившееся число по тому же правилу, и так далее.
+ 
+Определите, сколько шагов потребуется сиракузской последовательности, стартующей с заданного числа, чтобы прийти к 1.
+
+Обычно, если проделать такую замену достаточно много раз, мы приходим к числу 1 (за которым следует снова 1). Например: 
+
+8 → 4 → 2 → 1 или 10 → 5 → 16 → 8 → 4 → 2 → 1.
+
+Определите, сколько шагов потребуется сиракузской последовательности, стартующей с заданного числа, чтобы прийти к 1.
+
+Если вы обнаружите число, сиракузская последовательность от которого не приходит к 1, то... вы, скорее всего, ошиблись. 
+Но если нет, то поздравляем: вы прославитесь, ведь вопрос о том, всегда ли сиракузская последовательность приходит к 1 (независимо от начального числа), давно будоражит умы математиков.
+
+
+n = int(input())
+
+count = 0                    # Создаем счетчик
+
+while True:                  # Пока выражение True
+    if n == 1:               # Если наше число равно 1
+        break                # то выходим из цикла
+    count += 1  
+    
+    if n % 2 == 0:           # Проверяем на четное число
+        n = n / 2
+    else:                    # Иначе нечетное число
+        n = 3 * n + 1
+        
+print(count)
+
+
+
+~~~
+
+n, cnt = int(input()), 0
+
+while n != 1:
+
+    n = n // 2 
+    
+    if n % 2 == 0 else 3 * n + 1
+    cnt += 1
+    
+print(cnt) 
+
+
+~~~
+
+n = int(input()) 					#Вводим инпут
+count = 0 						#Создаем счетчик
+
+while True:						#Пока выражение True
+
+    if n%2==0:					#Проверяем на четное число
+        count += 1 				#Добавляем к счетсику +1
+        n = n//2 					#Делим четное число на 2
+        if n == 1: 					#Если наше число достигнит 1,
+            break 					#то выходим из цикла
+    if n%2!=0: 					#Проверям на нечетное число
+        count+=1 				#Добавляем к счетсику +1
+        n = 3*n+1 				#Записываем выражение из условии
+        if n == 1: 					#Если наше число достигнит 1,
+            break 					#то выходим из цикла
+            
+print(count) 						#выводим счетчик
+
+
+~~~
+
+формула быстрого сокращения, делим пополам на каждом шаге (навеяно формулой быстрого возведения в степень). Это возможно, потому что для нечётного 
+n выржение  3 * n + 1 всегда будет чётным!
+
+n, cnt = int(input()), 0
+
+while n != 1:
+
+    n, cnt = (n // 2, cnt + 1) if n % 2 == 0 else ((3 * n + 1) // 2, cnt + 2) 
+    
+print(cnt)
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ Распечатается ли фраза «Конец» в этой программе?
+
+i = 0
+while i < 5:
+    print(i)
+    i += 1
+else:
+    print("Конец")			=> YES
+    
+    
+    
+~~~~~
+
+Распечатается ли фраза «Конец» в этой программе?
+
+i = 0
+
+while i < 5:
+    if i == 5:
+        break
+    print(i)
+    i += 1
+else:
+
+    print("Конец") 			=> YES
+
+
+
+~~~~~
+
+ Распечатается ли фраза «Конец» в этой программе?
+
+i = 0
+while i < 5:
+    if i == 3:
+        break
+    print(i)
+    i += 1
+else:
+    print("Конец")			=> NO
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Вам на вход поступает слово и ваша задача в цикле while обойти все его буквы и распечатать их в формате фразы:
+
+«Текущая буква: <letter>».
+
+Как только вы встретите строчные английские буквы «e» или «a» нужно вывести фразу «Ага! Нашлась», перестать печатать буквы и принудительно выйти из цикла.
+
+В случае, если в слове не оказалось букв «e» или «a» необходимо вывести фразу «Распечатали все буквы»
+
+
+
+a = input()
+
+while len(a) > 0:
+
+    if a[0] == 'a' or a[0] == 'e':             
+        print('Ага! Нашлась')
+        break
+    print(f'Текущая буква: {a[0]}')
+    a = a[1::]                                 
+else:
+    print('Распечатали все буквы')
+
+
+
+~~~
+
+string = input()
+i = 0
+
+while len(string) > i:
+
+    if string[i] in 'ae':
+        print('Ага! Нашлась')
+        break
+        
+    print(f'Текущая буква: {string[i]}')
+    i += 1
+else:
+    print('Распечатали все буквы')
+    
+    
+~~~~
+
+s = input()
+i = 0
+
+while i < len(s):
+    if s[i] == "a" or s[i] == "e":
+        print("Ага! Нашлась")
+        break
+    print(f"Текущая буква: {s[i]}")
+    i = i + 1
+else:
+    print("Распечатали все буквы")
+
+
+~~~
+
+word = list(input())
+while word:
+    if word[0] in 'ae':
+        print('Ага! Нашлась')
+        break
+    print('Текущая буква:', word[0])
+    word.remove(word[0])
+else:
+    print('Распечатали все буквы')
+    
+    
+~~~
+
+w = input()
+l = 0
+while l < len(w):
+    if w[l] in 'ae':
+        print('Ага! Нашлась')
+        break
+    print('Текущая буква:', w[l])
+    l += 1
+else:
+    print('Распечатали все буквы')    
+    
+    
+~~~
+
+x=input().replace('a','e').split('e')
+
+print('\nТекущая буква: '.join(' '+ x[0])[2:])
+print(['Распечатали все буквы','Ага! Нашлась'][len(x)>1])
+
+
+~~~
+
+s, i = input(), 0
+
+while i < len(s):
+    if s[i] in "ae":
+        print("Ага! Нашлась")
+        break
+    else:
+        print("Текущая буква:", s[i])
+        i += 1
+else:
+    print("Распечатали все буквы")
+    
+    
+~~~
+
+
+text, c = input(), ''
+
+while text:
+    c = text[0]
+    
+    if c == 'e' or c == 'a':
+        print('Ага! Нашлась')
+        break
+    print('Текущая буква:', c)
+    text = text[1:]   
+    
+if len(text) == 0:
+    print('Распечатали все буквы')
+
+
+~~~
+
+w = input()
+x = w
+
+while x.find('a') != 0 and x.find('e') != 0:
+
+    if len(x) != 0:
+        print('Текущая буква:', x[0])
+        x = x[1:]
+    elif w.find('a') == 0 or w.find('e') == 0:
+        print('Ага! Нашлась')
+        break
+    else:
+        print('Распечатали все буквы')
+        break
+else:
+    print('Ага! Нашлась')
+    
+    
+    ~~~
+    
+s = input()
+
+while len(s):
+    if s[0]  in 'ea':
+        print('Ага! Нашлась')
+        break
+    print(f'Текущая буква: {s[0]}')
+    s = s[1:]
+else:
+    print('Распечатали все буквы')
+
+
+~~~
+
+w = input()
+l = 0
+while l < len(w):
+    if w[l] in 'ae':
+        print('Ага! Нашлась')
+        break
+    print('Текущая буква:', w[l])
+    l += 1
+else:
+    print('Распечатали все буквы')
+
+
+~~~
+
+s, i = input(), 0
+while i < len(s):
+    if s[i] not in 'ae':
+        print(f'Текущая буква: {s[i]}')
+    else:
+        print("Ага! Нашлась")
+        break
+    i += 1
+else:
+    print("Распечатали все буквы")
+    
+~~~~
+
+word = input()
+while word:
+    if word[0] in 'ae':
+        print('Ага! Нашлась')
+        break
+    else:
+        print(f'Текущая буква: {word[0]}')
+    word = word[1:]
+else:
+    print('Распечатали все буквы')
+    
+    
+~~~
+
+s = input()
+letter = 0
+
+while True:
+    try:
+        if s[letter] != 'a' and s[letter] != 'e':
+            print(f'Текущая буква: {s[letter]}')
+        if s[letter] == 'a' or s[letter] == 'e':
+            print('Ага! Нашлась')
+            break
+        letter += 1
+    except IndexError:
+        print('Распечатали все буквы')
+        break
+        
+        
+~~~
+
+w = [*input()]
+while w:
+    if (s := w.pop(0)) in 'ae':
+        print(f'Ага! Нашлась')
+        break
+    print(f'Текущая буква: {s}')
+else:
+    print(f'Распечатали все буквы')
+    
+    
+
+
+

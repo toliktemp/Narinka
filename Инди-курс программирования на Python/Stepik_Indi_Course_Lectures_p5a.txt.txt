@@ -1,0 +1,1260 @@
+============== 5.7 Вложенные списки ===============
+
+https://stepik.org/lesson/296964/step/1?unit=278692
+
+Вложенный список – это список, элементами которого являются также списки.
+
+
+a = [[0, 2, 4, 6], [1, 5, 9, 13], [3, 10, 17, 19]]
+
+
+"найдём длину нашего списка:"
+
+a = [[0, 2, 4, 6], [1, 5, 9, 13], [3, 10, 17, 19]]
+
+print(len(a))
+print(a[2])
+print(a[2][1])
+
+
+Как мы видим по выводу функции len, в списке a у нас всего 3 элемента. Это означает, что каждый вложенный список рассматривается как один элемент списка. Из чего следует, что если обращаться к элементу списка, то получим целиком вложенный список. Например обращение a[2] получим [3, 10, 17, 19]
+
+
+И т.к. этот элемент тоже является списком, то с ним также можно работать при помощи индексов, делается это при помощи двойной индексации. Например, a[2][1] получим: 10
+
+
+a = [[0, 2, 4, 6], [1, 5, 9, 13], [3, 10, [14, 15, 16], 17, 19]]
+
+print(a[2])
+print(a[2][2])
+print(a[2][2][1])
+
+
+" строки представляют собой коллекцию из символов, то список из строк тоже можно считать вложенной структурой"
+
+b = ["hello", "hi", "world"]
+print(b[2])				# world
+print(b[2][0])			# w
+
+
+" Поэтому стоит запомнить, что строка внутри списка так же является вложенным элементом. "
+
+
+
+a = [
+  [0, 2, 4, 6], 
+  [1, 5, 9, 13],
+  [3, 10, 17, 19]
+]
+
+" 1). Обход по значению:"
+
+for i in a:
+    for j in i:
+        print(j, end=" ")
+    print()
+    
+
+И нам нужно "обойти элементы в порядке слева-направо, сверху-вниз. " 
+При обращении к каждому элементу перед выводом необходимо использовать две пары квадратных скобок, где первая указывает на строку, а вторая на столбец., т.е. наш 0 лежит под индексом [0][0], следующая за ним 2 – под индексом [0][1], последнее число – 19 находится под индексом [2][3]. 
+
+Значит мы при таком подходе фиксируем номер строки и для неё перебираем каждый номер столбца.
+
+a = [[0, 2, 4, 6], [1, 5, 9, 13], [3, 10, 17, 19]]
+for i in range(3):
+    for j in range(4):
+        print(a[i][j], end=" ")
+    print()
+
+
+0 2 4 6 
+1 5 9 13 
+3 10 17 19 
+
+
+# увеличим все значения на 10 и после цикла выведем список a.
+
+a = [
+  [0, 2, 4, 6], 
+  [1, 5, 9, 13], 
+  [3, 10, 17, 19]
+]
+for i in range(3):
+    for j in range(4):
+        a[i][j] += 10
+        print(a[i][j], end=" ")
+    print()
+print(a)
+
+
+"При обходе по индексам мы так же можем идти в другом направлении, например, можно двигаться сверху-вниз, а потом слева-направо, т.е. сначала будет выведено 0 1 3, потом 2 5 10 и т.д."
+
+a = [
+    [0, 2, 4, 6],
+    [1, 5, 9, 13],
+    [3, 10, 17, 19]
+]
+
+for j in range(4):
+
+    for i in range(3):
+    
+        print(a[i][j], end=" ")
+        
+    print()
+
+
+" Можно так же обходить элементы справа-налево, начиная снизу и двигаясь вверх, т.е. сначала получим 19 17 10 3, потом 13 9 5 1 и т.д. Для это в функции range нужно указать убывающую прогрессию до -1, т.к. -1 не учитывается и доходим только до 0. "
+
+
+a = [
+    [0, 2, 4, 6],
+    [1, 5, 9, 13],
+    [3, 10, 17, 19]
+]
+
+for i in range(2, -1, -1):
+    for j in range(3, -1, -1):
+        print(a[i][j], end=" ")
+    print()
+
+
+19 17 10 3 
+13 9 5 1 
+6 4 2 0 
+
+
+" элементы матрицы можно обойти в любом порядке. Но самый часто используемый вариант обхода – обход слева-направо двигаясь сверху вниз. "
+
+
+
+*** 	" Нахождение суммы строк или столбцов матрицы " ***
+
+Для нахождения суммы строк лучше добавить новую переменную для вычисления суммы, которая будет обнуляться при переходе к новой строке.
+
+a = [
+    [0, 2, 4, 6],
+    [1, 5, 9, 13],
+    [3, 10, 17, 19]
+]
+
+for i in range(3):
+    sum = 0
+    for j in range(4):
+        sum += a[i][j]
+    print(sum)
+
+#  Output:
+12
+28
+49
+
+
+" Для нахождения суммы по столбцам необходимо поменять два эти цикла местами и больше ничего менять не нужно: "
+
+a = [
+    [0, 2, 4, 6],
+    [1, 5, 9, 13],
+    [3, 10, 17, 19]
+]
+
+for j in range(4):
+    sum = 0
+    for i in range(3):
+        sum += a[i][j]
+    print(sum)
+
+
+Output:
+4
+17
+30
+38
+
+
+*** 	" Заполнение вложенного списка " ***
+
+a = []
+n = int(input('Введите количество строк: '))
+m = int(input('Введите количество столбцов: '))
+
+for i in range(n):
+    a.append([0] * m)
+    
+for i in a:
+    print(i)
+
+
+Также можно вместо нуля в список внести любое другое значение.
+
+"Если же нужно в список вносить значения, вводимые с клавиатуры, то необходимо действовать иначе: нужно создать промежуточный список и во вложенном цикле добавлять то, что вводите с клавиатуры, после завершения внутреннего цикла, этот новый список добавляем в наш изначальный:"
+
+a = []
+n = int(input('Введите количество строк: '))
+m = int(input('Введите количество столбцов: '))
+
+for i in range(n):
+    b = []
+    for i in range(m):
+        b.append(int(input('Введите элемент: ')))
+    a.append(b)
+    
+for i in a:
+    print(i)
+
+
+
+*** 	" Квадратная матрица " ***
+
+Очень часто вы будете иметь дело именно с квадратными таблицами, т.е. размерностью n на n.
+В таких таблицах имеется главная диагональ, которая идёт из элемента [0][0] по пути [1][1], [2][2] и так до элемента [n][n]. 
+Следовательно, у элементов главной диагонали номер строки совпадает с номером столбца, т.е. [i] = [j]
+
+ 
+Эта диагональ делит матрицу на 2 треугольника. 
+
+Первый треугольник состоит из элементов, расположенных выше главной диагонали: с элементами по индексу [0][1], [0][2], [1][2]. 
+
+Второй треугольник с элементами по индексу [1][0], [2][0], [2][1].
+
+В этих треугольниках наблюдается одна особенность:
+У верхнего треугольника i < j, т.е. номер строки меньше номера столбца, а у нижнего треугольника i > j, т.е. номер строки больше номера столбца.
+
+Теперь рассмотрим следующий пример: на главной диагонали будут лежать 10, ниже будут 3, а выше – 5.
+Для этого сначала заполним матрицу нулями и проверим правильность заполнения:
+
+
+
+a = []
+n = int(input('Введите размер квадратной матрицы: '))
+for i in range(n):
+    a.append([0] * n)
+
+for i in range(n):
+    for j in range(n):
+        if i == j:
+            a[i][j] = 10
+        elif i > j:
+            a[i][j] = 3
+        else:
+            a[i][j] = 5
+for i in a:
+    print(i)
+
+
+
+*** 	" Как организовать считывание данных в матрицу" ***
+
+
+"Для считывания одномерного (невложенного) списка из чисел мы пользовались следующей инструкцией:"
+
+list(map(int,input().split()))
+
+matrix = []
+for i in range(3):
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+print(matrix)
+
+
+цикл повторяется 3 раза, значит на выходе мы получим матрицу, состоящую из трех рядов
+
+
+
+Для считывания n-строк матрицы вместо вы можете воспользоваться следующим кодом
+
+n = int(input('Введите количество строк матрицы: '))
+
+matrix = []
+
+for i in range(n):
+    matrix.append(
+        list(map(int, input(f"Введите элементы {i} строки: ").split()))
+    )
+    
+print(matrix)
+
+print('------Вывод матрицы построчно------')
+
+for row in matrix:
+    print(row)
+
+
+"Для матрицы  n * n,"
+
+n =int(input())
+
+a = [[(int(input())) for j in range(n)] for i in range(n)]
+
+print(a)
+
+
+"Используем map()"
+
+n =int(input())
+
+a = [list(map(int, input().split())) for i in range(n)]
+
+print(a)
+
+
+" или вот теже три строки в одной магической: "
+
+print((lambda n: [list(map(int, input().split())) for i in range(n)])(int(input())))
+
+
+*****
+
+n = int(input())  							# матрица размером n x n;
+
+b = []  										# создаётся пустой список
+
+for i in range(n):  						# просчитываются n строк
+    b.append((
+                 input().split()))  		# считывается строка, через split разбивается на элементы списка (type : str), 
+                 								и одним списком присоединяются к b[] c индексом 0, 1, 2... до n
+                 								
+    for j in range(n):
+        b[i][j] = int(b[i][j])  				# каждый элемент матрицы приводится к  int,  type: str --> int
+
+
+
+============== 5.8 Вложенные списки, Часть 2 ===============
+
+https://stepik.org/lesson/332555/step/5?unit=315943
+
+
+		Треугольник Паскаля
+		
+На этом занятии рассмотрим реализацию вложенных списков в треугольнике Паскаля.
+
+
+n = int(input('Введите размер матрицы: '))
+triangle = []
+
+for i in range(n+1):
+    triangle.append([1] + [0]*n)
+
+for i in triangle:
+    print(i)
+    
+    При вводе 4 получим:
+
+[1, 0, 0, 0, 0]
+[1, 0, 0, 0, 0]
+[1, 0, 0, 0, 0]
+[1, 0, 0, 0, 0]
+[1, 0, 0, 0, 0]
+
+
+"Теперь наша задача – обходить элементы слева-направо и сверху-вниз, исключая нулевую строку и нулевой столбец: "
+
+for i in range(1, n+1):
+    for j in range(1, n+1):
+        triangle[i][j] = triangle[i-1][j] + triangle[i-1][j-1]
+        
+
+
+И давайте отдельным циклом выведем элементы нашего треугольника:
+
+for i in range(0, n+1):
+    for j in range(0, n+1):
+        print(triangle[i][j], end=" ")
+    print()
+    
+   ***** 
+
+n = int(input('Введите размер матрицы: '))
+triangle = []
+
+for i in range(n + 1):
+    triangle.append([1] + [0] * n)
+
+for i in range(1, n + 1):
+    for j in range(1, n + 1):
+        triangle[i][j] = triangle[i - 1][j] + triangle[i - 1][j - 1]
+
+for i in range(0, n + 1):
+    for j in range(0, n + 1):
+        print(triangle[i][j], end=" ")
+    print()
+    
+    
+    
+    ***
+    
+n = int(input('Введите размер матрицы: '))
+
+triangle = []
+
+for i in range(n + 1):
+    triangle.append([1] + [0] * n)
+
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        triangle[i][j] = triangle[i - 1][j] + triangle[i - 1][j - 1]
+
+for i in range(0, n + 1):
+    for j in range(0, n + 1):
+        print(triangle[i][j], end=" ")
+ 
+    print()
+    
+    
+    Введём 4 и получим:
+    
+1 0 0 0 0 
+1 1 0 0 0 
+1 2 1 0 0 
+1 3 3 1 0 
+1 4 6 4 1
+    
+
+n = int(input('Введите размер матрицы: '))
+triangle = []
+
+for i in range(n + 1):
+    triangle.append([1] + [0] * n)
+
+for i in range(1, n + 1):
+    for j in range(1, i + 1):
+        triangle[i][j] = triangle[i - 1][j] + triangle[i - 1][j - 1]
+
+for i in range(0, n + 1):
+    for j in range(0, i + 1):
+        print(triangle[i][j], end=" ")
+    print()
+
+
+Введите размер матрицы: 4
+1 
+1 1 
+1 2 1 
+1 3 3 1 
+1 4 6 4 1 
+    
+    
+    *******************************************
+    
+ Вам нужно посчитать сумму элементов двумерного квадратного (NxN) списка, которые расположены на главной диагонали.
+
+Под главной диагональю матрицы подразумевается диагональ, проведённая из левого верхнего угла в правый нижний.
+
+n = int(input())  
+a = []  
+s = 0  		
+
+for i in range(n):
+    b = []                                  # Создание пустого списка
+    b = list(map(int, input().split()))     # Заполнение списка
+    a.append(b)                             # Добавление списка в строку матрицы
+    
+for i in range(n):                          # Обход строк матрицы
+    for j in range(n):                      # Обход столбцов матрицы
+        if i == j:                          # Если текущий элемент находится на главной диагонале 
+            s += a[i][j]                    # Суммирование элемента
+print(s)
+
+
+~~
+
+res = 0
+for i in range(int(input())):
+    res += int(input().split()[i])
+print(res)
+
+~~
+
+n = int(input())
+s = []
+x = 0
+for i in range(n):
+    s.append(list(map(int,input().split())))
+    for j in range(i+1):
+        if i == j:
+            x = x + s[i][j]
+print(x)
+
+
+~~
+
+print(
+    sum(
+        [int(input().split()[i]) for i in range(int(input()))]
+    )
+)
+
+
+~~
+
+print(sum([int(input().split()[i]) for i in range(int(input()))]))
+
+~~
+
+n=int(input())
+b=[]
+for i in range(n):
+    b.append(list(map(int,input().split())))
+c=0
+for i in range(n):
+    for j in range(n):
+        if i==j:
+            c+=b[i][j]
+print(c)
+
+
+*********************
+
+Обход элементов матрицы - 1
+
+"Необходимо обойти элементы этой матрицы => сверху вниз слева направо" и вывести элементы именно в таком порядке в виде таблицы. 
+    
+    
+    
+n = int(input())
+a = []
+for i in range(n):
+    a.append(list(map(int, input().split())))
+
+for i in range(n):
+    for j in range(n):
+        print(a[j][i], end=' ')
+    print()
+
+    # Получаем размер матрицы	
+    # Переменная для хранения матрицы
+    # Каждый цикл это 1 строка
+    # В строку добавляем массив
+    # Цикл для вывода, строка	
+    # Столбик
+    # Меняем индексы местами, столбец через пробел
+
+    
+    
+    ~~
+    
+    [print(*row) for row in zip(*(input().split() for i in range(int(input()))))]    
+    
+    ~~
+    
+n = int(input())
+m = [[int(j) for j in input().split()] for i in range(n)]
+
+for i in range(n):
+    print(*[m[j][i] for j in range(n)])
+    
+~~
+
+matrix = [input().split() for i in range(int(input()))] #считали матрицу
+new_matrix = list(zip(*matrix))  #транспонируем матрицу
+[print(*row) for row in new_matrix] #выводим матрицу
+
+
+~~
+
+lst = [list(map(int, input().split())) for _ in range(int(input()))]
+
+for i in zip(*lst):
+    print(*i)
+    
+~~
+
+n=int(input())
+a=sum([(input().split())for _ in range(n)],[])
+[print(*[a[n*i+j] for i in range(n)])for j in range(n)]
+
+
+~~
+
+a = []
+for i in range(int(input())):
+    b = []
+    for j in input().split():
+        b.append(j)
+    a.append(b)    
+
+for j in range(len(b)):
+    for i in range(len(a)):
+        print(a[i][j], end = " ")
+    print()    
+    
+
+~~
+
+n = int(input())
+s = [list(map(int, input().split())) for i in range(n)]
+s_1 = [[s[i][j] for i in range(n)] for j in range(n)]
+for i in s_1:
+    print(*i)
+    
+    
+~~
+
+matrix = [[int(i) for i in input().split()] for _ in range(int(input()))]
+for i in range(len(matrix)):
+    for j in range(len(matrix)):
+        print(matrix[j][i], end=' ')
+    print()
+
+
+*******************************************
+
+Обход элементов матрицы - 2
+
+Задана целочисленная квадратная матрица размером N x N. 
+
+"Необходимо обойти элементы этой матрицы => снизу вверх справа налево " и вывести элементы именно в таком порядке в виде таблицы. 
+
+  
+    
+
+n =int(input())                       # получили размер матрицы
+a = []                                		# переменная для матрицы
+for j in range(n):                    # заполняем матрицу
+    a.append(list(input().split()))
+    
+for i in range(n):                    # пробежали по циклу i
+    for j in range(n):                # пробежали по циклу j
+        print(a[n-1-j][n-1-i], end=" ") 	# меняем индексы местами, вычитая их из длины матрицы и -1
+    print() 
+    
+
+~~
+
+n = []                                          			# заводим пустой список
+for i in range(int(input())):                   	# цикл итераций из инпута
+    n.append(list(map(int, input().split())))   	# добавляем в список считанный список
+for i in range(len(n)-1, -1, -1):               		# внешний цикл итераций от n-1 до -1 с шагом -1
+    for j in range(len(n)-1, -1, -1):           		# внутрений с тем же
+        print(n[j][i], end=' ')                 				# просто меняем местами i и j что-бы идти
+        															  снизу вверх и справа налево
+    print()                                     					# добавляем перенос строки между сторками
+    
+ ~~
+ 
+ a = [list(map(int, input().split())) for _ in range(int(input()))]
+for i in range(len(a) - 1, - 1, -1):
+    for j in range(len(a) - 1, - 1, -1):
+        print(a[j][i], end=' ')
+    print()
+    
+ ~~
+ 
+ n = int(input())
+a = []
+
+for _ in range(n):
+    a += input().split()
+    
+for i in range(n):
+    print(*a[-1-i::-n])
+    
+~~
+
+n = int(input())
+lst = list(reversed([list(reversed(list(map(int, input().split())))) for i in range(n)]))
+
+for i in range(n):
+    for j in range(n):
+        print(lst[j][i], '', end='')
+    print()
+
+
+~~
+
+[print(*l[::-1]) for l in [*zip(*[[*map(int,input().split())] for _ in range(int(input()))])][::-1]]
+
+~~
+n = int(input())
+a = [[int(j) for j in input().split()] for i in range(n)]
+
+for column in range(n - 1, -1, -1):
+    for line in range(n - 1, -1, -1):
+        print(a[line][column], end=' ')
+    print()
+    
+    
+The second line of code uses a list comprehension to read in the integers for each row of the matrix from the user. The input() function is called n times (once for each row), and each resulting string is split on whitespace using the split() method to create a list of integers. The int() function is then used to convert each string in the list to an integer. This process is repeated for each row of the matrix, and the resulting nested lists are stored in the variable a.
+
+The third and fourth lines of code use nested loops to print the transpose of the matrix. The outer loop iterates over the columns of the matrix, starting from the rightmost column and moving leftward. The inner loop iterates over the rows of the matrix, starting from the bottom row and moving upward. For each element in the matrix, the value of a[line][column] is printed followed by a space, using the end parameter of the print() function to ensure that the output is on the same line. After printing all of the elements in a given column, the inner loop prints a newline character to move to the next line of output. The end result is that the transpose of the matrix is printed in the console, with rows and columns flipped.    
+
+
+~~
+
+n = int(input())
+a = [(list(map(int, input().split()))) for i in range(n)]
+for i in range(n):
+    for j in range(n):
+        print(a[~j][~i], end=' ')
+    print()
+    
+    
+The outer loop iterates over the rows of the matrix, from 0 up to but not including n. The variable i represents the current row index.
+
+The inner loop iterates over the columns of the matrix, also from 0 up to but not including n. The variable j represents the current column index.
+
+For each element in the matrix, the code accesses the element with indices ~j and ~i in the a list. The tilde operator (~) is a bitwise NOT operator, which means it flips all the bits of the integer and subtracts 1. When used with an integer x, ~x is equivalent to -x - 1. Therefore, ~j is equivalent to -(j+1), and ~i is equivalent to -(i+1).
+
+The negative indices are used here to traverse the matrix in reverse order: the inner loop iterates over the columns from right to left, and the outer loop iterates over the rows from bottom to top. This means that the elements of the original matrix are accessed in reverse order, which results in the transpose of the matrix being printed.
+
+Finally, the code uses the print() function to output the current element followed by a space, with the end parameter set to ' ' to ensure that the output is on the same line. After all the elements in a row have been printed, the inner loop ends and the outer loop prints a newline character to move to the next line of output. The end result is that the transpose of the matrix is printed in the console, with rows and columns flipped.
+
+~~
+
+n = int(input())
+table = [input().split() for _ in range(n)]
+
+for i in range(n - 1, -1, -1):
+    print(*[table[j][i] for j in range(n)][::-1])
+
+
+
+****************************************************
+
+					Обход элементов матрицы - 3
+					
+Задана целочисленная матрица, состоящая из N строк и M столбцов. 
+
+" Необходимо обойти элементы этой матрицы => cправа налево сверху вниз" и вывести элементы именно в таком порядке в виде таблицы. 
+
+
+
+
+
+n, m = map(int, input().split())     
+a = [] 
+                              
+for i in range(n):
+    a.append(list(input().split()))  
+    
+for i in range(n):                   
+    for j in range(m - 1, -1, -1):   
+        print(a[i][j], end=' ')     
+         
+    print() 
+    
+    
+ ~~
+ 
+n, m = map(int, input().split())
+mtrx = [list(map(int, input().split())) for _ in range(n)]
+[print(*[mtrx[i][j] for j in range(m-1,-1,-1)], sep=' ') for i in range(n)]
+ 
+ 
+ ~~
+ 
+ N, M = map(int, input().split())
+matrix = [reversed(list(map(int, input().split()))) for row in range(N)]
+for row in matrix:
+	print(*row)
+	
+	
+~~
+
+n, m = map(int, input().split())
+a = [input().split()[::-1] for i in range(n)]
+[print(*i) for i in a]
+
+~~
+
+n,m=map(int,input().split())
+a=sum([(input().split())for _ in range(n)],[])
+[print(*[a[m*(j+1)-i-1]for i in range(m)])for j in range(n)]
+
+
+~~
+
+n, m = map(int, input().split())
+matrix = []
+
+for _ in range(n):
+    matrix_row = []
+    nums_str = input()
+    for num in nums_str.split():
+        matrix_row.append((int(num)))
+    matrix.append(matrix_row)
+
+for i in range(n):
+    for j in range(m - 1, -1, -1):
+        print(matrix[i][j], end=' ')
+    print()
+ 
+ ~~
+ 
+ cs, cr = map(int, input().split())
+n = [input().split() for i in range(cs)]                  
+[print(*[i[~j] for j in range(cr)]) for i in n]
+
+
+~~
+
+n, m = map(int, input().split())
+a = [[int(e) for e in input().split()] for _ in range(n)]
+
+for i in range(n):
+    for j in range(m - 1, -1, -1):
+        print(a[i][j], end=' ')
+    print()
+    
+
+************************************************
+
+Обход элементов матрицы - 4
+
+Задана целочисленная матрица, состоящая из N строк и M столбцов. 
+
+"Необходимо обойти элементы этой матрицы => слева направо снизу вверх" и вывести элементы именно в таком порядке в виде таблицы. 
+
+
+n, m = map(int, input().split())     		# вводим строки и столбцы
+a = []  
+                             							# создал новый список
+for i in range(n):
+    a.append(list(input().split()))  		# добавляем элементы в список a
+for i in range(n - 1, -1, -1):       		# обход по строкам 
+    for j in range(m):               			# обход по строкам 
+        print(a[i][j], end=' ')      				
+        
+    print() 
+
+ ~~
+ 
+ n = int(input().split()[0])
+ 
+a = [input().split() for _ in range(n)][::-1]
+
+[print(*i) for i in a]    
+ 
+ ~~
+ 
+n, m = map(int, input().split())
+mtx = [list(map(int, input().split())) for row in range(n)]
+
+for row in mtx[::-1]:
+    print(*row)
+ 
+ 
+ ~~
+ 
+ a = []
+n,m = map(int,input().split())
+
+for i in range(n):
+    a.append(list(map(int,input().split())))
+    
+for i in range(n-1,-1,-1):
+    for j in range(m):
+        print(a[i][j],end=' ')
+        
+    print()   
+ 
+ ~~
+ 
+ n, m = map(int, input().split())
+array = [list(map(int, input().split())) for _ in range(n)]
+for row in reversed(array):
+    print(*row)
+    
+
+~~
+
+n, m = map(int, input().split())
+
+a = [list(map(int, input().split())) for i in range(n)]
+
+for i in range(-1, -1 * n -1, -1):
+    for j in range(m):
+        print(a[i][j], end=' ')
+        
+    print()
+ 
+ 
+ ~~
+ 
+line, column = map(int, input().split())
+arr = []
+
+for i in range(line):
+    arr.append(list(map(int, input().split())))
+
+for line_index in range(line -1, -1, -1):
+    for elem_index in range(column):
+        print(arr[line_index][elem_index], end=' ')
+        
+    print()
+ 
+ 
+ 
+ 
+ ***************************************************
+ 
+ https://stepik.org/lesson/296964/step/7?unit=278692
+ 
+ A. Красивая матрица 
+ 
+Перед Вами матрица размера 5 × 5, состоящая из 24-x нулей и единственной единицы. Строки матрицы пронумеруем числами от 1 до 5 сверху вниз, столбцы матрицы пронумеруем числами от 1 до 5 слева направо. За один ход разрешается применить к матрице одно из двух следующих преобразований:
+
+Поменять местами две соседние строки матрицы, то есть строки с номерами i и i + 1 для некоторого целого i (1 ≤ i < 5).
+Поменять местами два соседних столбца матрицы, то есть столбцы с номерами j и j + 1 для некоторого целого j (1 ≤ j < 5).
+
+
+c = []                    
+for i in range(5):        
+    c.append(list(map(int, input().split())))
+
+for i in range(5):        
+    for j in range(5):    
+        if c[i][j] == 1:  
+            a = i         
+            b = j         
+
+с = abs(a-2) + abs(b-2) 
+
+print(с)
+
+
+~~
+
+a = []
+
+# Принимаем матрицу
+for i in range(5):
+    a.append(list(map(int, input().split())))
+    
+    
+# Ищем индекс вложенного списка с единицей
+for i in range(5):
+    if 1 in a[i]:
+    
+        # Находим разницу между индексами единицы и индексами центра матрицы [2][2]
+        
+        count = abs(i - 2) + abs(a[i].index(1) - 2)
+        
+        # Это и есть минимальное количество действий для перемещения единицы в центр
+        break
+        
+print(count) 
+ 
+
+~~
+
+a = []
+for i in range(5):
+    a.append(list(map(int, input().split())))
+    
+for i in range(5):
+    for j in range(5):
+        if a[i][j] == 1:
+            print((abs(2-i))+(abs(2-j)))
+
+
+~~
+
+abs(x) - возвращает абсолютное значение х ( значение по модулю )
+
+a = [[int(x) for x in input().split()] for y in range(5)]
+
+for i in range(5):
+    for j in range(5):
+        if a[i][j]==1:
+            print(abs(i-2) + abs(j-2))
+
+ 
+~~
+
+a = []
+count = 0
+for i in range(5):
+    a.append(list(map(int, input().split())))
+for i in range(5):
+    for j in range(5):
+        if a[i][j] == 1:
+            while i!=2:
+                if i < 2:
+                    a[i][j], a[i + 1][j] = a[i + 1][j], a[i][j]
+                    i += 1
+                    count += 1
+                elif i > 2:
+                    a[i][j], a[i - 1][j] = a[i - 1][j], a[i][j]
+                    i -= 1
+                    count += 1
+            while j!=2:
+                if j < 2:
+                    a[i][j], a[i][j + 1] = a[i][j + 1], a[i][j]
+                    j += 1
+                    count += 1
+                elif j > 2:
+                        a[i][j], a[i][j - 1] = a[i][j - 1], a[i][j]
+                        j -= 1
+                        count += 1
+print(count)
+
+
+~~
+
+a = [input().split() for _ in range(5)]
+
+k = [abs(i - 2) + abs(j - 2) for i in range(5) for j in range(5) if a[i][j] == '1']
+
+print(*k)
+
+~~
+
+matrix = [list(map(int, input().split())) for row in range(5)]
+for index_row in range(len(matrix)):
+	if 1 in matrix[index_row]:
+		index = (index_row, matrix[index_row].index(1))
+		print(abs(2 - index[0]) + abs(2 - index[1]))
+		
+		
+~~
+
+a = []
+n = 0
+m = 0
+count = 0
+
+for i in range(5):
+    a.append(list(map(int, input().split())))
+
+for i in range(5):
+    for j in range(5):
+        if a[i][j] == 1:
+            n += i
+            m += j
+
+while n != 2 or m != 2:
+    if n > 2:
+        n -= 1
+        count += 1
+    elif n < 2:
+        n += 1
+        count += 1
+    elif m > 2:
+        m -= 1
+        count += 1
+    elif m < 2:
+        m += 1
+        count += 1
+
+print(count)
+
+~~
+
+lst = []
+
+for _ in range(5):
+    lst.append(list(map(int, input().split())))
+    
+for i in range(5):
+    if 1 in lst[i]:
+        for j in range(5):
+            if lst[i][j] == 1:
+                print(abs(i - 2) + abs(j - 2))
+                break
+        break  
+
+ 
+ ~~
+ 
+ lst=[[int(i) for i in input().split()] for _ in range(5)]
+ 
+for i in lst:
+    if 1 in i:
+        a=lst.index(i)
+        b=i.index(1)
+print(abs(2-a)+abs(2-b)) 
+
+
+~~
+
+for i in (2, 1, 0, 1, 2):
+    if '1' in (l := input()):
+        print(i + abs(l.split().index('1') - 2))
+        
+        
+~~
+
+print(*[(abs(i-2)+abs(j-2)) for i in range(5) for j, k in enumerate(input().split()) if int(k)])
+
+~~
+
+d = [list(map(int, input().split())) for i in range(5)]
+
+for i in range(len(d)):
+    if 1 in d[i]:
+        print(abs(2-i)+ abs(2-d[i].index(1)))
+ 
+ ~~
+ 
+ res = [list(map(int, input().split())) for _ in range(5)]
+total = 0
+for i in range(5):
+    if 1 in res[i]:
+        for j in range(5):
+            if res[i][j] == 1:
+                total += abs(2 - i) + abs(2 - j)
+                break
+print(total)
+
+
+======================================
+
+Сумма строк и столбцов двумерного массива 
+
+
+Задан целочисленный двумерный массив, состоящий из N строк и M столбцов. Требуется вычислить сумму элементов в каждой строке и в каждом столбце.
+
+Программа получает на вход два натуральных числа N и M – количество строк и столбцов двумерного массива. В каждой из последующих N строк записаны M целых чисел – элементы массива. Все числа во входных данных не превышают 1000 по абсолютной величине.
+
+В первой строке вам необходимо вывести N чисел – суммы элементов массива для каждой строки в отдельности.
+
+Во второй строке в аналогичном формате выведите M чисел – суммы элементов для каждого столбца.
+ 
+ 
+ n, m = map(int, input().split())
+a = []
+
+for _ in range(n):
+    b = list(map(int, input().split()))
+    a.append(b)
+
+for i in range(n):
+    sum_row = 0
+    for z in range(m):
+        sum_row += a[i][z]
+    print(sum_row, end=' ')
+print()
+
+for i in range(m):
+    sum_col = 0
+    for z in range(n):
+        sum_col += a[z][i]
+    print(sum_col, end=' ')
+
+~~
+
+row, col = map(int, input().split())
+matrix = [list(map(int, input().split())) for row in range(row)]
+for row in matrix:
+	print(sum(row), end=' ')
+print()
+for x in range(col):
+	print(sum([row[x] for row in matrix]), end=' ')
+	
+
+~~
+
+n,m = map(int,input().split())
+l=[]
+
+for i in range(n):
+    l.append(list(map(int, input().split())))
+    
+for row in range(n):
+    print(sum(l[row]), end=' ')
+print()
+
+for stolb in range(m):
+    s=[]
+    
+    for row in range(n):
+        s.append(l[row][stolb])
+        
+    print(sum(s[::]), end=' ')
+    s=[]
+
+
+~~
+
+n, m = map(int, input().split())
+
+matrix = [[int(i) for i in input().split()] for i in range(n)]
+
+print(*[sum(i) for i in matrix])
+
+print(*[sum(row[i] for row in matrix) for i in range(m)])
+ 
+ 
+ ~~
+ 
+n, m = map(int,input().split())
+
+s = [list(map(int,input().split())) for i in range(n)]
+
+print(*[sum(s[i][j] for j in range(m)) for i in range(n)])
+
+print(*[sum(s[i][j] for i in range(n)) for j in range(m)])
+ 
+ 
+ ~~
+ 
+ n, m = map(int, input().split())
+ 
+row_sum, col_sum = [], [0] * m
+
+for i in range(n):
+    row = list(map(int,input().split()))
+    row_sum.append(sum(row))
+    col_sum = list(map(sum, zip(row, col_sum)))    
+          
+print(*row_sum)
+print(*col_sum)
+ 
+ 
+ 
+ ===========================================
+ 
+ Симметричная ли матрица? 
+ 
+Проверьте, является ли двумерный массив симметричным относительно главной диагонали. Главная диагональ — та, которая идёт из левого верхнего угла двумерного массива в правый нижний.
+
+https://www.youtube.com/watch?v=JEu4oF3l7w4
+
+
+lst = []
+
+for i in range(int(input())):
+    lst.append(list(map(int, input().split())))
+flag = 'Yes'
+
+for i in range(len(lst)):
+    for j in range(len(lst[0])):
+        if lst[i][j] != lst[j][i]:
+            flag = 'No'
+            
+print(flag)
+
+ 
+ ~~
+ 
+ n = int(input())
+s = [input().split() for i in range(n)]
+s1 = [[s[j][i] for j in range(n)] for i in range(n)]
+print('Yes' if s == s1 else 'No')
+
+~~
+
+n = int(input())                                         
+a = [list(map(int, input().split())) for i in range(n)] 
+
+p = "Yes"
+
+for i in range(n):                                            
+    for j in range(n):                                      
+        if a[j][i] != a[i][j]:    
+            p = "No"
+            break   
+print(p)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

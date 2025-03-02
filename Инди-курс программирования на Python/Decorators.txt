@@ -1,0 +1,550 @@
+
+========== 7.14 Декораторы ===============
+
+https://stepik.org/lesson/372080/step/2?unit=359634
+
+
+Декоратор – функция, которая принимает одну функцию и возвращает другую функцию. 
+
+Они нужны для того, чтобы функции добавилось новое поведение.
+
+
+# decorator
+
+def decorator(func):
+    def inner():
+        print('start decorator...')
+        func()
+        print('finish decorator')
+
+    return inner
+
+
+def say():
+    print('Hello !')
+
+
+d = decorator(say)
+print(d)    # <function decorator.<locals>.inner at 0x1092188b0>
+
+print(d())
+# Output:
+# start decorator...
+# Hello !
+# finish decorator
+# None
+
+
+**********
+
+# decorator
+
+def decorator(func):
+    def inner(*args, **kwargs):
+        print('start decorator...')
+        func(*args, **kwargs)
+        print('finish decorator')
+
+    return inner
+
+
+def say(name, surname):
+    print(f'Hello {name} {surname} !')
+
+
+say = decorator(say)
+print(say)
+say('George', 'Peterson')
+
+
+def bye(name, surname):
+    print(f'Bye-bye {name} {surname}!')
+
+
+bye = decorator(bye)
+bye('James', 'Bond')
+
+
+********** 	********** 	**********
+
+# decorator
+
+def header(func):
+    def inner(*args, **kwargs):
+        print('<h1>')
+        func(*args, **kwargs)
+        print('</h1>')
+    return inner
+
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+    return inner
+
+
+
+def say(name, surname):
+    print(f'Hello {name} {surname} !')
+
+
+say = header(say)
+print(say)
+say('George', 'Peterson')
+
+
+def bye(name, surname):
+    print(f'Bye-bye {name} {surname}!')
+
+
+bye = table(header(bye))
+bye('James', 'Bond')
+
+
+
+********** 	********** 	**********
+
+# decorator
+
+def header(func):
+    def inner(*args, **kwargs):
+        print('<h1>')
+        func(*args, **kwargs)
+        print('</h1>')
+    return inner
+
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+    return inner
+
+
+@header
+def say(name, surname):
+    print(f'Hello {name} {surname} !')
+
+
+@header     # say = header(say)
+@table      # bye = table(bye)
+def bye(name, surname):
+    print(f'Bye-bye {name} {surname}!')
+
+
+bye('James', 'Bond')
+print('*' * 30)
+say('Britney', 'Spears')
+
+
+********** 	********** 	**********
+
+Что такое декоратор в Python?
+
+Функция, которая принимает другую функцию в качестве аргумента и добавляет к ней некоторую функциональность
+
+***
+
+Какова цель использования декоратора в Python?
+
+
+Чтобы изменить поведение функции без изменения ее исходного кода
+
+***
+
+Как можно определить декоратор для функции в Python?
+
+Использование символа @, за которым следует имя декоратора над определением функции
+
+
+***
+
+Может ли функция иметь несколько декораторов в Python?
+
+Да, их можно ставить друг на друга
+
+
+***
+
+В каком порядке декораторы применяются к функции в Python?
+
+@timer
+@logger
+def say_hello():
+   print("Hello")
+   
+=> Снизу вверх
+
+
+********** 	********** 	**********
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+
+    return inner
+
+def say(name, surname, age):
+    print('hello', name, surname, age)
+    
+    
+"Внесём этот код в консоль и обратимся к имени функции say при помощи атрибута __name__"
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+
+    return inner
+
+def say(name, surname, age):
+    print('hello', name, surname, age)
+
+print('До декорирования', say.__name__)
+
+say = table(say)
+
+print('После декорирования', say.__name__)
+
+Output:
+До декорирования say
+После декорирования inner
+
+"Мы видим, что после декорирования функция теряет свое оригинальное первоначальное имя. Она теперь ссылается на функцию возвращаемую функцию inner. "
+
+"Аналогично потери имени мы можем также потерять оригинальную строку документирования. "
+
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+
+    return inner
+
+def sqr(x):
+    '''
+    Функция возводит в квадрат
+    :param x:
+    :return:
+    '''
+    print(x**2)
+print('-----До декорирования-----')
+print(sqr)
+print(sqr.__name__)
+help(sqr)
+
+sqr = table(sqr)
+print('-----После декорирования-----')
+print(sqr)
+print(sqr.__name__)
+help(sqr)
+
+
+И если задекорировать эту функцию мы так же потеряем строку документации. И т.к. в функции inner() нет справки по документации, то мы ничего не увидим.
+
+В этом и заключается проблема – при использовании декоратора теряется имя и строка документации декорированной функци.
+
+
+=========== Решение проблемы ============
+
+" Способ 1 "
+
+Вручную проставить эти атрибуты. Перед возвращением функции inner у нас есть доступ к той функции, которую мы декорируем и мы можем изменить её имя и документацию на нужную при помощи присвоения атрибутам функции .__name__ и .__doc__
+
+
+def table(func):
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+    inner.__name__ = func.__name__
+    inner.__doc__ = func.__doc__
+    return inner
+
+def sqr(x):
+    '''
+    Функция возводит в квадрат
+    :param x:
+    :return:
+    '''
+    print(x**2)
+
+sqr = table(sqr)
+sqr(2)
+
+
+"Проверка на имя и документацию такой функции дадут такой же результат, как и у обычной функции sqr."
+
+*****
+
+"Способ 2"
+
+Использование декоратора wraps, который можно импортировать из модуля functools. 
+
+Навешиваете декоратор wraps на вложенную функцию inner, передаете ему исходную функцию, которая декорируется и все, остальное он сделает сам
+
+
+from functools import wraps
+def table(func):
+
+    @wraps(func)
+    def inner(*args, **kwargs):
+        print('<table>')
+        func(*args, **kwargs)
+        print('</table>')
+    return inner
+
+def sqr(x):
+    '''
+    Функция возводит в квадрат
+    :param x:
+    :return:
+    '''
+    print(x**2)
+
+sqr = table(sqr)
+print(sqr)
+print(sqr.__name__)
+help(sqr)
+
+
+"При обращении к имени или документации sqr мы получим нужное нам имя и документацию."
+
+
+***
+
+Какова цель функции wraps из модуля functools? =>
+
+Чтобы сохранить имя и док стрингу исходной функции при использовании в качестве декоратора
+
+
+*** 
+ What is the purpose of the wraps function from the functools module =>
+ 
+wraps is convenience function for invoking update_wrapper() as a function decorator, when defining a wrapper function. It is equivalent to partial(update_wrapper, wrapped=wrapped, assigned=assigned, updated=updated). 
+
+So @wraps decorator actually gives a call to functools.
+
+
+==============================
+
+Напишите декоратор text_decor, который оборачивает вызов декорированной функции фразами «Hello» и «Goodbye!»: фраза «Hello» печатается до вызова, фраза «Goodbye!» - после
+
+@text_decor
+def simple_func():
+    print('I just simple python func')
+
+simple_func()
+
+# Вывод
+Hello
+I just simple python func
+Goodbye!
+@text_decor
+def multiply(num1, num2):
+    print(num1 * num2)
+
+multiply(3, 5)
+
+# Вывод
+Hello
+15
+Goodbye!
+Ваша задача написать только определение функции декоратора text_decor
+
+
+
+def text_decor(func):
+    def inner(*args, **kwargs):
+        print('Hello')
+        func(*args, **kwargs)
+        print('Goodbye!')
+    return inner
+
+
+~~
+
+def text_decor(func):
+
+    def wrapper(*args,**kwargs):
+        print('Hello')
+        func(*args,**kwargs)
+        print('Good buy')
+    return wrapper
+    
+    
+~~
+
+from functools import wraps
+
+def text_decor(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        print('Hello')
+        val = func(*args, *kwargs)
+        print('Goodbye!')
+        return val
+        
+    return wrapper
+    
+    
+~~
+
+=======================================
+
+
+Напишите декоратор repeater, который дважды вызывает декорированную функцию
+
+@repeater
+def multiply(num1, num2):
+    print(num1 * num2)
+
+multiply(2, 7) # после этого распечатается две строки со значением 14
+multiply(5, 3) # после этого распечатается две строки со значением 15
+
+Ваша задача написать только определение функции декоратора repeater
+
+
+
+def repeater(func):
+    def inner(*args, **kwargs):
+        func(*args,**kwargs)
+        func(*args, **kwargs)
+    return inner
+    
+    
+~~
+
+def repeater(func):
+    def wrapper(*args, **kwargs):
+        [func(*args, **kwargs) for i in range(2)]
+
+    return wrapper
+    
+~~
+
+def repeater(summa):
+    def number(*num):
+        summa(*num)
+        summa(*num)
+    return number
+
+
+@repeater
+def multiply(*num):
+    summa = 1
+    for i in num:
+        summa *= i
+    print(summa)
+    
+    
+~~
+
+def repeater(func):
+
+    def inner(*args, **kwargs):
+        for i in range(2):
+            func(*args)
+
+    return inner
+
+
+@repeater
+def multiply(num1, num2):
+    print(num1 * num2)
+    
+ 
+ ====================================   
+    
+    
+   Напишите декоратор double_it, который возвращает удвоенный результат вызова декорированной функции
+
+@double_it
+def multiply(num1, num2):
+    return num1 * num2
+
+res = multiply(9, 4) # произведение 9*4=36, но декоратор double_it удваивает это значение
+print(res)
+@double_it
+def get_sum(*args):
+    return sum(args)
+
+res = get_sum(1, 2, 3, 4, 5)
+print(res) # печатает 30
+
+Ваша задача написать только определение функции декоратора double_it 
+
+
+
+# Напишите определение декоратора double_it  
+def double_it(func):                     
+    def inner(*args, **kwargs):          
+        return func(*args, **kwargs) * 2 
+    return inner   
+
+# Код ниже не удаляйте, он нужен для проверки   
+@double_it
+def multiply(num1, num2):
+    return num1 * num2
+
+
+@double_it
+def some_func_return(a, b, c):
+    return a ** b + c
+
+
+@double_it
+def get_sum(*args):
+    return sum(args)
+
+
+assert multiply(9, 4) == 72
+assert multiply(100, 4) == 800
+
+assert get_sum(1, 2, 3, 4, 5) == 30
+
+assert some_func_return(4, 5, 4) == 2056
+assert get_sum(14, 51, 34) == 198
+assert get_sum(14) == 28
+assert get_sum() == 0
+assert get_sum(43, 5, 43, 43, 43, 43, 3, 2) == 450
+print('Good')
+
+
+~~
+
+def double_it(func):
+    def inner(*args, **kwargs):
+        return func(*args, **kwargs) * 2
+    return inner
+    
+~~
+
+def double_it(func):
+    def my_func(*args, **kwargs):
+        return 2 * func(*args, **kwargs)
+    return my_func    
+    
+    
+============================================
+
+Напишите декоратор add_args, который добавляет к переданным аргументам 
+еще два значения: строку begin в начало аргументов, строку end в конец. 
+
+Также декоратор должен сохранить первоначальное имя декорируемой функцию и ее строку документации
+    
+    
+
+=========================
+
+    
+    
+    

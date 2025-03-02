@@ -1,0 +1,1387 @@
+
+================ 9.1 Чтение и запись данных. Функция open ================
+
+https://stepik.org/lesson/435913/step/1?unit=426036
+
+
+'''Если файл на русском то необходимо использывать кодировку utf-8'''
+file = open('111.txt', encoding='utf-8')
+
+
+В самой программе не забудьте экранировать строку полного пути, чтобы избежать проблемы встречи специальных символов (for OS Windows)
+
+file = open( r'C:\Users\admin\PycharmProjects\pythonProject3\my_text.txt', encoding = 'utf-8')
+print(file.read())
+
+
+
+															===== Методы файлов =====
+					
+					
+	===== Метод .read =====
+
+Метод .read позволяет прочитать содержимое файла или его часть.
+
+Если не передавать аргумент n, то будет считано все содержимое файла сразу. При помощи параметра n можно прочитать определенное количество символов.
+
+my_file = open('my_text.txt', encoding='utf-8')
+
+print('Считываем 7 символов')
+print(my_file.read(7))
+
+print('Считываем следующие 12 символов')
+print(my_file.read(12))	
+	
+	
+Важно понимать, что при применении этой функции несколько раз подряд будет считываться часть за частью этого текста — виртуальный курсор будет сдвигаться на считанную часть текста. 
+
+Объект TextIOWrapper запоминает место, в котором метод .read остановился относительно одного файла, и последующую вызов метода .read продолжит чтение там, где прошлый его закончил. 
+
+" Но перенести место считывания можно при помощи метода .seek "
+
+Если файл был прочитан до конца и вновь попытаться вывести его содержимое, будет получена пустая строка.	
+	
+	
+
+	===== Метод seek =====	
+	
+
+При помощи метода .seek можно передвинуть место курсора в файле - это то место, с которого начинается считывание информации. 
+После вызова метода .read этот курсор всегда сдвигается вперед. 
+Если вы хотите вернуть его назад или сдвинуть еще дальше, просто передайте методу номер позиции в файле. 
+
+Изначально курсор стоит в начале файла и его позиция равна 0.
+
+
+my_file = open('my_text.txt', encoding='utf-8')
+
+print('Считываем 7 символов')
+print(my_file.read(7))
+
+print('Идем в начало файла')
+my_file.seek(0)
+
+print('Считываем 7 символов')
+print(my_file.read(7))
+
+print('Идем в 24 позицию')
+my_file.seek(24)
+
+print('Считываем 12 символов')
+print(my_file.read(12))
+	
+	
+	
+with open('example.txt', 'r') as file:
+
+    file.seek(0) 						 	# move to the beginning of the file
+    contents = file.read()  			# read the entire file
+    
+    print(contents)
+	
+	
+
+	===== Метод readline =====		
+	
+Метод .readline позволяет считывать информацию из файла построчно. 
+
+Данный метод считывает строку и сдвигает курсор на целую строку. 
+Применение этого метода несколько раз будет приводить к считыванию нескольких строк файла.
+
+my_file = open('my_text.txt', encoding='utf-8')
+
+print(my_file.readline())
+print(my_file.readline())
+
+print(my_file.readline().strip())
+print(my_file.readline().strip())
+
+
+"Дополнительный пробел при выводе возникает, потому что сама строка файла заканчивается символом переноса и функция print после выполнения делает перенос. "
+
+" Принято при считывании строки файла избавляться от знаков переноса при помощи метода строк .strip "
+	
+
+with open('example.txt', 'r') as file:
+
+    line = file.readline() 			 # read the first line
+    
+    while line:
+        print(line.strip())  			# print the line with leading/trailing whitespace removed
+        line = file.readline()  		# read the next line
+
+
+
+with open('example.txt', 'r') as file:
+    for line in file:
+        print(line.strip())
+
+	
+	===== Метод readlines =====	
+	
+Метод .readlines позволяет считать файл целиком и по строкам, записав каждую строку при этом в список. 
+
+my_file = open('my_text.txt', encoding='utf-8')
+
+rows = my_file.readlines()
+print(rows)
+
+print('-'*10)
+
+print(f'Файл содержит {len(rows)}  строк')
+print('-'*10)
+
+print('Итерируемся по строкам')
+
+for row in rows:
+  print(row.strip())
+
+Этот список можно использовать дальше как вам угодно, например, в качестве итерируемого объекта в цикле.	
+
+
+
+
+	===== Метод write =====	
+	
+	
+Выше были методы, которые позволяли считать содержимое файла. 
+Но раз можно получать содержимое, то можно его и изменять. 
+Это делается при помощи метода .write. 
+Он должен принимать строку, которую вы хотите записать в файл. 
+
+Посмотрим как это работает:
+
+
+
+По умолчанию наша запись с открытием файла на самом деле выглядит следующим образом:
+
+my_file = open('my_text.txt', 'r', encoding='utf-8')
+
+или
+
+my_file = open('my_text.txt', mode='r', encoding='utf-8')
+
+
+Обратите внимание на параметр mode. 
+По умолчанию при открытии файла его значение равно r,  что обозначает read(чтение). 
+Чтобы иметь возможность записывать данные в файл, необходимо открывать его в режиме w (write - запись) 
+
+
+
+my_file = open('my_file.txt', mode='w', encoding='utf-8')
+
+print(my_file.write('Hello world'))
+
+print(my_file.write('Again hello world\n'))
+
+print(my_file.write('last hello world'))
+
+
+
+=> " После запуска программ метод .write  перезатрет все содержимое файла новыми значениями. "
+
+" Также обратите внимание, что метод .write не добавляет переносы на новые строки, вы должны будете сами добавлять при помощи служебного символа \n, который отвечает за перенос строки. "
+
+
+" При попытке записать информацию в несуществующий файл, никакой ошибки не будет. Функция open создаст файл с таким название в той же папке, где находится ваш модуль "
+
+
+my_file = open('my_file.txt', mode='a', encoding='utf-8')
+
+print(my_file.write('Hello world'))
+
+print(my_file.write('Again hello world\n'))
+
+print(my_file.write('last hello world'))
+
+
+
+
+	===== Метод close =====
+
+Его нужно вызывать после того, как вы закончили обрабатывать ваш файл. Если его не закрывать, то может произойти утечка памяти. 
+
+Таким образом, схема работы с файлом должна быть следующей:
+
+Открытие файла
+
+Обработка файла
+
+Закрытие файла
+
+
+file = open('111.txt', 'a', encoding = 'utf-8')
+
+file.write('hello world\n')
+file.write('hello world\n')
+
+file.close()
+
+
+Но есть проблема: в случае возникновения ошибки в обработке файла, файл не закроется, даже несмотря на наличие метода .close. 
+
+Лучший вариант избегания данной проблемы – использование контекстного менеджера, о котором будет следующий модуль.
+
+
+
+	===== Create a New File =====
+
+
+To create a new file in Python, use the open() method, with one of the following parameters:
+
+"x" - Create - will create a file, returns an error if the file exist
+
+"a" - Append - will create a file if the specified file does not exist
+
+"w" - Write - will create a file if the specified file does not exist
+
+
+
+~ Create a file called "myfile.txt":
+
+f = open("myfile.txt", "x")
+
+
+
+~ Create a new file if it does not exist:
+
+f = open("myfile.txt", "w")
+
+
+
+
+	===== Delete File =====
+	
+To delete a file, you must import the OS module, and run its os.remove() function:
+
+Remove the file "demofile.txt":
+
+import os
+
+os.remove("demofile.txt")
+
+
+
+
+	***			Check if File exist: 	***
+
+To avoid getting an error, you might want to check if the file exists before you try to delete it:
+
+Check if file exists, then delete it:
+
+import os
+
+if os.path.exists("demofile.txt"):
+  os.remove("demofile.txt")
+else:
+  print("The file does not exist")
+
+
+	
+
+	*** 	Delete Folder 	***
+	
+To delete an entire folder, use the os.rmdir() method:
+
+
+Remove the folder "myfolder":
+
+import os
+
+os.rmdir("myfolder")
+
+
+Note: You can only remove empty folders.
+
+
+
+
+
+
+	===== Режимы доступа =====
+	
+Давайте вновь вспомним определение функции open:
+
+def open(file, mode='r', buffering=None, encoding=None, errors=None, newline=None, closefd=True)
+
+Сейчас мы подробно поговорим об аргументе mode. 
+
+Он отвечает за режим открытия файла и может принимать следующие значения:
+
+=> r: открывает файл в режиме «только для чтения». Этот режим применяется по умолчанию для функции open. Чтение файла начинается  с начала
+
+=> rb: открывает файл в режиме «только для чтения» в двоичном формате и начинает чтение с начала файла. Буква b обозначает слово binary(двоичный). Хотя двоичный формат можно использовать для разных целей, обычно он используется при работе с такими вещами, как изображения, видео и т. д.
+
+=> r+: открывает файл для чтения и записи, помещая указатель в начало файла.
+
+=> w: открывается в режиме «только для записи». Указатель помещается в начало файла, и это перезапишет любой существующий файл с таким же именем. Он создаст новый файл, если файл с таким именем не существует.
+
+=> wb: открывает файл в режиме «только для записи» в двоичном режиме.
+
+=> w+: открывает файл для записи и чтения.
+
+=> wb+: открывает файл для записи и чтения в двоичном режиме.
+
+=> a: открывает файл для добавления к нему новой информации. Указатель помещается в конец файла. Новый файл создается, если файл с таким именем не существует.
+
+=> ab: открывает файл для добавления в двоичном режиме.
+
+=> a+: открывает файл как для добавления, так и для чтения.
+
+=> ab+: открывает файл как для добавления, так и для чтения в двоичном режиме.
+
+" Учитывайте, что не все режимы поддерживают одновременно чтение и запись. Например, режимы «a» и «w» предполагают только запись. " 
+
+" При попытке выполнить чтение файла получите ошибку. "
+
+=>  Одним из режимов, поддерживающих и чтение и запись, является «a+».
+
+
+================================
+
+Напишите функцию file_read, которая принимает имя файла, и печатает его содержимое.
+
+Учитывайте, что содержимое файла может быть как на русском языке, так и на английском
+
+
+
+def file_read(file_name):
+    file = open(file_name) 
+    print(file.read())     
+    file.close()           
+
+~~
+
+def file_read(file_name):
+    with open(file_name, "r", encoding = "utf-8") as file:
+        print(file.read())
+        
+~~
+
+def file_read(file_name):
+    with open(file_name, mode='r', encoding='utf-8') as file:
+        print(file.read())
+
+~~
+
+def file_read(file_name):
+    with open(file_name, 'r', encoding='utf-8') as output:
+        print(output.read())
+        
+~~
+
+def file_read(file_name: str):
+    try:
+        with open(str(file_name), '+r', encoding = 'utf-8') as file:
+            result =  file.read()
+            print(result)
+    except Exception as error:
+        print("Ошибка при работе с файлом:", error)
+    finally:
+        if file:
+            file.close()
+            
+
+~~
+
+def file_read(file_name: str) -> None:
+    """
+    Функция, которая принимает имя файла, и печатает его содержимое.
+    :param file_name: имя файла.
+    :return: None.
+    """
+    with open(file_name, 'r', encoding='utf-8') as file:
+        print(''.join(file))
+
+
+~~
+
+def file_read(file_name):
+    file = open(f'{file_name}', encoding='utf-8')
+    print(file.read())
+    file.close()
+    
+
+
+=================================
+
+Напишите функцию file_n_lines, которая печатает первые n-строка файла. Функция file_n_lines принимает на вход название файла и количество строк для прочтения.
+
+Не забывайте избавляться от символа переноса строки
+
+К примеру, если бы имелся файл hello.txt со следующим содержимым:
+
+h
+he
+hel
+hell
+hello
+То вызов file_n_lines(hello.txt, 3) должен распечатать следующее:
+
+h
+he
+hel
+
+Ваша задача написать только определение функции file_n_lines
+
+
+def file_n_lines(name: str, n: int):
+
+    f = open(name, 'r', encoding = 'utf-8') 		# открываем файл
+    
+    for i in range(n):                      						# выводим необходимое количество строк из файла
+        print(f.readline(), end = '')
+    f.close()   
+
+
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+    with open(file_name) as file:
+        [print(file.readline().rstrip()) for _ in range(n)]
+
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+	"""Функция принимает на вход название файла, количество строк для прочтения и выводит их"""
+
+    with open(file_name, mode='r', encoding='utf-8') as file:
+        for i in range(n):
+            print(file.readline(), end='')
+
+
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+	"""Функция принимает на вход название файла, количество строк для прочтения и выводит их"""
+    with open(file_name,encoding = 'utf-8') as f:
+        for i in range(n):
+            print(f.readline().strip())
+
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:    
+    my_file = open(file_name, encoding='utf-8')
+    rows = my_file.readlines()
+    for i in range(n):
+        print(rows[i], end = '')
+        
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+    with open(file_name, mode='r', encoding='utf-8') as file:
+        for _ in range(n):
+            print(file.readline().strip('\n'))
+
+
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+    text = open(file_name, encoding='utf-8')
+    print(*text.readlines()[:n], sep='', end='')
+    
+    
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+	"""Печатает первые n-строк файла"""
+
+    with open(file_name) as f:
+        text = f.read().splitlines()
+        #print(text[:3])
+        for i in text[:n]:
+            print(i)
+            
+~~
+
+def file_n_lines(file_name: str, n: int) -> None:
+
+    with open(file_name, encoding='utf-8') as ifile:
+        data = ifile.readlines()
+        for i in range(n):
+            print(data[i].strip())
+            
+
+==========================================
+
+Напишите функцию create_file_with_numbers, которая принимает на вход одно целое положительное число - n.
+
+Функция должна создать файл с название "range_<number>.txt" и наполнить его целыми числами от 1 до n включительно, причем каждое число записывается  в отдельной строке
+
+Пример: функция create_file_with_numbers(5) должна создать файл range_5.txt с содержимым
+
+
+def create_file_with_numbers(n):
+    file = open(f'range_{n}.txt', 'x')  			# открываем файл, если его не существует - он его создает
+    for i in range(n):                  					# в файл записываем числа от 1 до введенного числа
+        file.write( str(i + 1) + '\n')
+    file.close()                        						# закрываем файл
+
+
+~~
+
+def create_file_with_numbers(n):
+    file = open("range_"+str(n)+".txt", "w", encoding="utf-8")
+    for num in range(1, n+1):    
+        file.write(str(num)+"\n")
+    file.close()
+
+~~
+
+def create_file_with_numbers(n):
+    with open(f"range_{n}.txt", "a+", encoding="utf-8") as f:
+        for i in range(1,n+1):
+            f.write(f"{i}\n")
+
+~~
+
+def create_file_with_numbers(n):
+
+    with open(f'range_{n}.txt', mode='w', encoding='utf-8') as fw:
+        fw.write('\n'.join(map(str, range(1, n + 1))))
+
+
+~~
+
+def create_file_with_numbers(n):
+    open(f'range_{n}.txt', 'w').writelines('\n'.join(map(str, range(1, n + 1)))) 
+    
+~~
+
+def create_file_with_numbers(n):
+    with open(f'range_{n}.txt', mode='w', encoding='utf-8') as fw:
+        print(*range(1, n + 1), file=fw, sep='\n')
+
+~~
+
+def create_file_with_numbers(n):
+    with open(f"range_{n}.txt" , "w") as f:
+        [print(i, file=f) for i in range(1, n + 1)]
+        
+        
+~~
+
+def create_file_with_numbers(n: int) -> None:
+
+    '''Функция создаёт файл с именем "range_<number>.txt" и наполняет его целыми числами от 1 до n включительно'''
+    
+    file = open(f'range_{n}.txt','w')
+    for i in range(1,n+1):
+        file.writelines(f'{i}\n')
+    file.close()
+    
+    
+~~
+
+def create_file_with_numbers(n):
+
+    my_file = open(f'range_{n}.txt', mode='a', encoding='utf-8')		#т.к.нужного файла не существует, то создаем его через ф-цию open в режиме добавления данных (mode='a')
+    
+    for i in range(1, n + 1):			#создаем цикл через ф-цию range
+        my_file.write(f'{i}\n')			#записываем через f строки построчно значения 'i' добавляя в конце \n
+    my_file.close()						#после завершения цикла for, закрываем файл
+
+
+==================================
+
+
+Напишите функцию longest_word_in_file, которая принимает имя файла и внутри его содержимого находит самое длинное слово и возвращает его в качестве ответа. В случае,  если есть несколько слов с максимальной длиной, нужно вернуть слово, которое встречается последнее в тексте.
+
+При этом слова в тексте отделяются друг от друга пробелами, любые другие знаки пунктуации необходимо исключить.  И также учитывайте, что слова в тестах будут как на русском языке, так и на английском.
+
+Если бы содержимое файла было таким:
+
+He was running, but it was like running through deep water. There were trees all around him, 
+trees which tried to stop him. They reached out with their branches. 
+And it was behind him. It was coming nearer. 
+то ответом было бы слово branches
+
+Все возможные знаки пунктуации можно получить из модуля string
+
+from string import punctuation
+
+
+from string import punctuation  
+
+def remove_punctuations(word):         
+    """ создаем функцию удаления знаков пунктуации и проходимся по переменной 
+    в которой хранятся все знаки пунктуации, если этот знак есть в нашем слове 
+    удаляем этот знак и возвращаем слово без знаков препинания """
+    
+    for punct in punctuation:          
+        if punct in word:              
+            word = word.replace(punct, "")     
+    return word                        
+
+
+def longest_word_in_file(file_name):
+    """return the longest word"""
+    
+    file = open(file_name, "r", encoding="utf-8")         
+    max_word = ""                      
+    for line in file:                 
+        words = line.split()           
+        for word in words:             
+            word_without_punct = remove_punctuations(word) 
+            if len(word_without_punct) >= len(max_word):   
+                max_word = word_without_punct              
+    return max_word                    
+
+
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    with open(file_name, encoding="utf-8") as f:
+        text = f.read()
+        
+        words = reversed([x.strip(punctuation) for x in text.split()])
+        
+        return max(words, key=len)
+
+
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    with open(file_name,  encoding='utf-8') as f:
+        l = []
+        for word in f.read().split():
+            word = word.strip(punctuation)
+            l.append(word)
+        return sorted(l, key=lambda x: len(x))[-1]
+        
+~~
+
+from re import split
+
+def longest_word_in_file(filename):
+    with open(filename, 'r') as f:
+        return max(split('\W+', f.read())[:: -1], key=lambda x: len(x))
+        
+        
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    file = (open(file_name, 'r', encoding='utf-8')).read()  # берем весь текст из нужного файла и сразу присваиваем его переменной file в виде строки
+    longest_world = '' # просто создаем пустую переменную для нашего самого длинного слова
+
+    for i in punctuation: # удаляем все знаки пунктуации из нашей переменной file
+        if i in file:
+            file = file.replace(i, "")
+
+    file = file.split() # преобразуем нашу строку в список из слов в этой строке
+
+    for world in file:   # сравниваем слова в нашем списке и находим самое длинное слово
+        if len(world) >= len(longest_world):
+            longest_world = world
+
+    return longest_world
+
+
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    a = open(file_name, encoding='utf-8')
+    x = ''
+    for i in a.read().split():
+        i = i.strip(punctuation)
+        if len(i) >= len(x):
+            x = i
+    return x
+    
+
+~~
+    
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    with open(file_name, encoding='utf-8') as f:
+        words = [*map(lambda x: x.strip(punctuation), f.read().split())]
+        return max(words[::-1], key=lambda x: len(x))
+
+
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    file = open(file_name, encoding = 'utf8')
+    text = file.read()
+    for i in punctuation:
+        text = text.replace(i, '')
+    text = text.split()
+    m = max([len(i) for i in text])
+    return [i for i in text if len(i) == m][-1]
+    
+    
+~~
+
+def longest_word_in_file(file_name):
+
+    from string import punctuation
+    with open(file_name, 'r', encoding='utf-8') as f:
+        res = max([i.strip((punctuation)) for i in f.read().split()][::-1], key = len)
+    return res
+     
+     
+~~
+
+from string import punctuation
+
+def longest_word_in_file(file_name):
+    file = open(file_name, encoding='utf-8') 			# открываем  файл для чтения
+    max_word = '' 													# длина максимального слова
+    for row in file: 													# считываем первую строку из файла
+        for word in row.split(): 									# пробегаемся по каждому слову в строке
+            word = word.strip(punctuation) 				# убираем из слова лишние символы (пунктуации)
+            if len(word) >= len(max_word): 				# если слово больше максимального (по длине)
+                max_word = word 								# то записываем новое максимальное слово
+    return max_word 											# возвращаем максимальное слово   
+        
+
+~~
+
+from string import punctuation
+
+
+def longest_word_in_file(file_name):
+    file = open(file_name, mode="r", encoding="utf-8")
+    txt = file.read()
+    for el in punctuation:
+        txt = txt.replace(el, "")
+    return max(txt.split()[::-1], key=len)
+    
+    file.close()
+
+
+===========================================
+
+В этой задаче вам необходимо скачать файл, в котором записаны натуральные числа. Ваша задача найти
+
+количество трехзначных чисел;
+сумму двухзначных чисел
+В качестве ответа укажите найденные два числа через запятую без других знаков и пробелов. Сперва количество, потом сумма
+
+
+
+В файле записаны натуральные числа. 
+Найти количество трехзначных чисел; сумму двухзначных чисел
+В качестве ответа укажите найденные два числа через запятую без других знаков и пробелов. 
+Сперва количество, потом сумма
+
+
+count_3_digit = 0
+count_2_digit = 0
+sum_2_digit = 0
+total_lines = 0
+
+with open('numbers.txt', 'r') as file:
+    for line in file:
+        if total_lines == 100001:
+            break
+        total_lines += 1
+        
+        number = int(line.strip())
+        
+        if 100 <= number <= 999:
+            count_3_digit += 1
+        elif 10 <= number <= 99:
+            sum_2_digit += number
+            count_2_digit += 1
+
+print(count_3_digit, sum_2_digit, sep=',')
+
+print(f'{count_3_digit}')
+print(f'{sum_2_digit}')
+print(f'{count_2_digit}')
+
+
+
+
+
+
+========== 9.3 Работаем с JSON в Python. Парсинг JSON, сохраняем JSON в файл ==========
+
+Encoders and Decoders
+
+JSON					Python
+
+object					dict
+array					list
+string					str
+number(int)			int
+number(real)			float
+true						True
+false						False
+null						None
+
+
+
+
+		========== Сериализация ===========
+		
+Сериализация в общем виде - это процесс сохранения объекта в виде последовательности байт, чтобы в будущем по этой последовательности можно было бы восстановить исходный объект. 
+
+В частном случае - это может быть сохранение в текстовую строку, как например в нашем случае с форматом JSON
+
+Процесс сериализации в JSON-формат заключается в преобразовании питоновского объекта(обычно словаря, но можно использовать и другие типы) в строку, сформированную по правилам JSON-формата. Например, такой вот словарь 
+
+
+{
+ 'apple': {"price": 10,"color": "green"},
+ 'banana': {"price": 4.5, 'color': "yellow"},
+}
+
+
+будет преобразован вот в такую строку 
+
+' {"apple": {"price": 10, "color": "green"}, "banana": {"price": 4.5, "color": "yellow"}} '
+
+
+
+
+		========== Десериализация ===========
+
+Десериализация это обратный процесс. 
+
+Это «раскодирование» строки определенного формата обратно в питоновский словарь. Процесс десериализации возможен в случае, если строка оформлена по всем правилам формата. В противном случае вы получите ошибку десериализации json.decoder.JSONDecodeError
+
+
+" Итак, если вам нужно отправить данные из своей программы например на сервер, то речь идет о преобразовании в JSON - это сериализация. И обратно - получить данные из вне в виде JSON для использования в вашей программе - это десериализация. "
+
+
+
+
+		========== Модуль json ===========
+
+Основным инструментом по работа с форматом JSON является одноименный модуль json. 
+
+Его не нужно устанавливать, он является встроенным модулем и ставится вместе с интерпретатором python. 
+
+Первым делом его нужно импортировать:
+
+import json
+
+
+			Для процесса сериализации модуль json предлагает две функции:
+
+" 1. функция dumps преобразует объект в строку в формате json "
+
+" 2. функция dump преобразует объект в строку в формате json и записывает в файл "
+
+
+
+			Для процесса десериализации модуль json предлагает также две функции:
+
+" 1. функция loads десериализует JSON-строку в питоновский объект "
+
+" 2. функция load десериализует файл, хранящий JSON-строку, в питоновский объект "
+
+
+
+---------------------------------
+
+Процесс преобразования значения словаря в строку формата JSON называется => сериализация
+
+Процесс преобразования строки формата JSON в словарь называется  => десериализация
+
+
+---------------------------------
+
+
+JSON is a syntax for storing and exchanging data.
+
+JSON is text, written with JavaScript object notation.
+
+
+
+		" Parse JSON - Convert from JSON to Python "
+		
+If you have a JSON string, you can parse it by using the json.loads() method.
+
+The result will be a Python dictionary.
+
+
+
+
+		" Convert from JSON to Python: "
+
+import json
+
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y["age"])
+
+
+
+
+		" Convert from Python to JSON "
+		
+If you have a Python object, you can convert it into a JSON string by using the json.dumps() method.
+
+
+
+
+import json
+
+# a Python object (dict):
+
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+
+
+======================================
+
+			*** Из формата JSON в объект Python
+
+
+Давайте начнем с процесса десериализации.
+
+JSON – это текстовый формат обмена данными. Значит информация, хранящаяся в формате JSON, представлена в виде текста или, другими словами, в виде строки.
+
+
+
+import json
+from pprint import pprint
+
+
+str_json = """
+{
+    "response": {
+        "count": 32363,
+        "items": [
+            {
+                "id": 287350527,
+                "first_name": "Sonya",
+                "last_name": "Kargina",
+                "photo_50": "https://pp.vk.me/...2c1/J2EL--qCZa8.jpg"
+            },
+            {
+                "id": 341523166,
+                "first_name": "Slava",
+                "last_name": "Kholod",
+                "photo_50": "https://pp.vk.me/...321/eTxKNQSJMuk.jpg"
+            }
+        ]
+    }
+}
+
+"""
+
+print(type(str_json))
+
+data = json.loads(str_json)
+pprint(data)
+print(type(data))
+
+
+
+Теперь можно работать с этим объектом как со словарём - обращаться по ключам и получать значения. 
+
+print(data["response"])
+
+print(data["response"]["items"][0]["first_name"])
+
+print(data['response']['count'])
+
+print(data['response']['items'])
+
+print(len(data['response']['items']))
+
+print('*' * 50 + '\n')
+
+for item in data['response']['items']:
+    print(item['first_name'])
+    print(item['last_name'])
+    print(item['photo_50'])
+    print('*' * 50 + '\n')
+
+
+
+
+В самом цикле мы обходим элементы списка data["response"]["items"], которые представляют собой словарь. Значит мы можем обращаться к ключам этого словаря, например так:
+
+for item in data["response"]["items"]:
+    print(item["first_name"], item["last_name"])
+
+
+
+============================================
+
+
+								Сериализация
+
+Теперь обсудим как создать собственную строку формата JSON. 
+
+Сделаем это на основе имеющегося кода. 
+
+Например мы захотим удалить ключ id из каждого элемента и добавить свой собственный ключ likes.
+
+Для удаления ключа используем инструкцию del. 
+
+Добавим ключ likes с рандомным значением, для получения которого подключим модуль random, а точнее его функция randint. 
+
+
+
+import json
+from pprint import pprint
+from random import randint
+
+str_json = """
+{
+    "response": {
+        "count": 32363,
+        "items": [
+            {
+                "id": 287350527,
+                "first_name": "Sonya",
+                "last_name": "Kargina",
+                "photo_50": "https://pp.vk.me/...2c1/J2EL--qCZa8.jpg"
+            },
+            {
+                "id": 341523166,
+                "first_name": "Slava",
+                "last_name": "Kholod",
+                "photo_50": "https://pp.vk.me/...321/eTxKNQSJMuk.jpg"
+            }
+        ]
+    }
+}
+"""
+
+data = json.loads(str_json)
+
+for item in data["response"]["items"]:
+  del item["id"]
+  
+  item["likes"] = randint(100, 200)
+  
+pprint(data["response"]["items"])
+
+
+# Мы можем увидеть, что в каждом элементе больше нет ключа id и появился ключ likes, значение которого генерируются случайно в диапазоне от 100 до 200.
+
+
+
+# Теперь мы хотим  измененный словарь сконвертировать в строку формата JSON. В этом нам поможет функция dumps из модуля json.
+
+
+import json
+from pprint import pprint
+from random import randint
+
+str_json = """
+{
+    "response": {
+        "count": 32363,
+        "items": [
+            {
+                "id": 287350527,
+                "first_name": "Sonya",
+                "last_name": "Kargina",
+                "photo_50": "https://pp.vk.me/...2c1/J2EL--qCZa8.jpg"
+            },
+            {
+                "id": 341523166,
+                "first_name": "Slava",
+                "last_name": "Kholod",
+                "photo_50": "https://pp.vk.me/...321/eTxKNQSJMuk.jpg"
+            }
+        ]
+    }
+}
+"""
+
+data = json.loads(str_json)
+
+for item in data["response"]["items"]:
+  del item["id"]
+  item["likes"] = randint(100, 200)
+  
+new_json = json.dumps(data)
+print(new_json)
+
+print('Ниже json с параметром indent'.center(40, '-'))
+
+json_indent = json.dumps(data, indent = 2)
+print(json_indent)
+
+
+Чтобы строка сформировалась в более красивом виде можно задать значение отступа в параметре indent функции dumps:
+
+" new_json = json.dumps(data, indent = 2) "
+
+
+Также стоит учитывать в какой объект в Python преобразуется объект из JSON. 
+
+
+Мы видим, что если имеем объект в JSON, то в Python получим словарь, если массив – то получим список и т.д.
+
+Обратите внимание на нижние значения:
+
+питоновское значение None будет сконвертировано в знаение null в формате JSON
+питоновское значение True будет сконвертировано в знаение true в формате JSON
+питоновское значение False будет сконвертировано в знаение false в формате JSON 
+
+
+
+import json
+from pprint import pprint
+from random import randint
+
+str_json = """
+{
+    "id": 287350527,
+    "first_name": "Sonya",
+    "last_name": "Kargina",
+    "photo_50": "https://pp.vk.me/...2c1/J2EL--qCZa8.jpg"
+}
+"""
+
+data = json.loads(str_json)
+
+del data["photo_50"]
+data["likes"] = randint(100, 200)
+data["is_married"] = False
+data["is_adult"] = True
+data["mail"] = None
+  
+new_json = json.dumps(data)
+print(new_json)
+print()
+print('Ниже json с параметром indent'.center(40, '-'))
+
+json_indent = json.dumps(data, indent = 2)
+print(json_indent)
+
+
+Как мы видим, ключ a вместо None имеет значение null, а ключ b вместо True заменился на true.
+
+
+------------------------------
+
+import datetime
+…
+for item in data["response"]["items"]:
+    del item["id"]
+    item["likes"] = randint(100, 200)
+    item['a'] = None 
+    item['b'] = True
+    item['now'] = datetime.now()
+
+
+То при вызове возникнет ошибка, в которой будет сказано, что объект типа datetime не может быть представлен формата типа JSON.
+
+Чтобы исправить эту ошибку необходимо преобразовать объект даты к одному из базовых типов, поддерживаемых JSON. Одним из типов является строка.
+
+for item in data["response"]["items"]:
+    del item["id"]
+    item["likes"] = randint(100, 200)
+    item['a'] = None 
+    item['b'] = True
+    item['now'] = datetime.now().strftime("%d/%m/%y")
+    
+    Теперь в items будет пара ключ-значение, которая выглядит следующим образом:
+
+"now": "30/06/22"
+
+
+Часто JSON необходимо сохранять в виде файла.
+
+Для этого в json есть метод dump, который принимает 2 аргумента: 1 – объект, который хотите сохранить, 2 – название файлика. 
+
+
+with open("my.json", "w") as file:
+    json.dump(data, file, indent=3)
+    
+    
+Откроем его для чтения в чистом файле:
+
+with open("my.json", "w") as file:
+    json.load(file)
+    
+print(data)
+print(type(data))
+
+
+---------------------------------
+
+В JSON строке встретилось значение null
+
+{
+  "name": "Jonny",
+  "surname": null
+}
+
+В какой питоновский объект будет сконвертировано значение null при десериализации? => None
+
+
+***
+
+В JSON строке встретилось значение true
+
+{
+  "name": "Jonny",
+  "have_driver_license": true
+}
+В какой питоновский объект будет сконвертировано значение true при десериализации? => True
+
+
+***
+
+В JSON строке встретилось значение false
+
+{
+  "name": "Jonny",
+  "have_driver_license": false
+}
+
+
+В какой питоновский объект будет сконвертировано значение false при десериализации? = > False
+
+
+=============================
+
+Ваша задача выполнить сериализацию словаря  и сохранить полученную json-строку в переменную json_data
+
+В качестве ответа распечатайте значение переменной json_data
+
+import json
+
+d = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26}
+
+json_data = json.dumps(d)
+
+print(json_data)
+
+
+~~
+
+import json
+
+alphabet = {chr(x): x - 96 for x in range(97, 123)}
+json_data = json.dumps(alphabet)
+
+print(json_data)
+
+
+~~
+
+import json
+from string import ascii_lowercase
+
+json_data = json.dumps({k: v for v, k in enumerate(ascii_lowercase, 1)})
+print(json_data)
+
+
+~~
+
+from string import ascii_lowercase
+import json
+
+print(json_data := json.dumps({ascii_lowercase[i]: i + 1 for i in range(26)}))
+
+
+~~
+
+from string import ascii_lowercase
+alphabet={}
+for i in range(len(ascii_lowercase)):alphabet[ascii_lowercase[i]]=i+1
+
+import json
+json_data=json.dumps(alphabet)
+print(json_data)
+
+
+~~
+
+from string import ascii_lowercase
+import json
+
+alphabet = {}
+for j in range(len(ascii_lowercase)):
+    alphabet[ascii_lowercase[j]] = j + 1
+
+json_data = json.dumps(alphabet)
+print(json_data)
+
+
+
+# from string import ascii_lowercase
+# import json
+# from pprint import pprint
+
+# alphabet = {}
+# for j in range(len(ascii_lowercase)):
+#     alphabet[ascii_lowercase[j]] = j + 1
+
+# json_data = json.dumps(alphabet, indent=2)
+# pprint(json_data)
+
+# with open("json_1", "w") as file:
+#     json.dump(alphabet, file, indent=2)
+
+
+=========================================
+
+				Анализ продаж
+				
+К вам в руки попал файлик формата json , в котором содержится информация одного автосалона о продажах менеджеров. В файле указано для каждого менеджера список проданных им автомобилей, а также проставлена цена продажи каждого автомобиля.
+
+Ваша задача скачать файлик и самостоятельно найти самого успешного менеджера по итоговой сумме продаж. В качестве ответа нужно через пробел указать сперва его имя, затем фамилию и после общую сумму его продаж.
+
+
+
+import json
+
+maximum = 0
+max_name = ''
+max_last_name = ''
+
+with open('manager_sales.json', 'r') as f:
+    data = json.load(f)
+    # print(data)
+    # print(type(data))
+    for element in data:
+
+      name = element['manager']['first_name']
+      last_name = element['manager']['last_name']
+      total = 0
+      for car in element['cars']:
+        total += car['price']
+
+      print(name, last_name, total)
+      
+      if total > maximum:
+        maximum = total
+        max_name = name
+        max_last_name = last_name
+
+    print(maximum, max_name, max_last_name)
+
+
+
+
+

@@ -1,0 +1,266 @@
+
+======== 5.4 Переходим на PyCharm =========
+
+https://stepik.org/lesson/814369/step/1?unit=817681
+
+https://www.jetbrains.com/help/pycharm/multicursor.html#multiselection
+
+PEP 8 - руководство по написанию кода на Python => https://pythonworld.ru/osnovy/pep-8-rukovodstvo-po-napisaniyu-koda-na-python.html
+
+
+
+https://stepik.org/lesson/814369/step/1?unit=817681
+
+
+самый простой вариант это отформатировать код при помощи PyCharm. Вам всего лишь нужно нажать сочетание клавиш :
+
+Ctrl+Alt+L на Windows
+command+option+L на Mac
+
+
+						Горячие клавиши в PyCharm
+						
+Редактирование:
+
+ Отменить последнее действие	 											Ctrl + Z
+ Отменить последнюю отмену действия	 								Ctrl + Shift + Z
+ Перемещение между словами	 											Ctrl + влево/вправо
+ Переход в начало/конец файла	 											Ctrl + Home/End
+ Удалить от текущей позиции до конца слова	 					Ctrl + Del
+ Удалить от текущей позиции до начала слова	 					Ctrl + Backspace
+ Дублировать текущую строку	 												Ctrl + D
+Увеличить / уменьшить текущий отступ									Tab / Shift + Tab
+Приведение кода в соответствие Code-Style							Ctrl + Alt + L
+Закомментировать/раскомментировать текущую строку	Ctrl + /
+Закомментировать/раскомментировать выделенный код	Ctrl + Shift + /
+Замена в тексте																			Ctrl + R
+Замена во всех файлах																Ctrl + Shift + R
+
+
+
+Работа с поиском:
+
+Быстрый поиск по всему проекту											Дважды Shift
+Быстрый поиск по настройкам, действиям и тд					Ctrl + Shift + A
+Поиск в файле																			Ctrl + F
+Поиск по всем файлам (переход — F4)									Ctrl + Shift + F
+Список недавно открытых файлов с переходом к ним			Ctrl + E
+Список недавно измененных файлов с переходом к ним		Ctrl + Shift + E
+Перейти к объявлению переменной, класса, метода			Ctrl + B
+
+
+
+========================
+
+		Удаляем слова-дубли
+		
+На вход программе поступает строка, состоящая из нескольких слов, знаком разделителем между словами будем считать символ пробела. 
+Ваша задача исключить из строки дублирующие слова: первое появление слова остается в строке, второе и все последующие появления исключаются. При сравнении на дубли строк регистр букв не учитывать, это значит слова python и PyThOn считаются одинаковыми.
+
+В качестве ответа необходимо вывести итоговую строку без дублей.
+
+
+my_list = input().split()
+
+unique_list = []
+
+for word in my_list:
+    if word.lower() not in [w.lower() for w in unique_list]:
+        unique_list.append(word)
+        
+print(' '.join(unique_list))
+
+~~
+
+s = set()
+
+for i in input().split():
+    if i.lower() not in s:
+        s.add(i.lower())
+        print(i, end=' ')  
+
+
+~~
+
+a = input().split()
+b = []
+c = []
+for i in a:
+    if i.lower() not in b:
+        b.append(i.lower())
+        c.append(i)
+        
+print(*c)
+
+~~
+
+txt = input().split()
+lst, lstn = [], [] 
+
+for x in txt:
+    if x.lower() not in lst:
+        lst.append(x.lower())
+        lstn.append(x)
+        
+print(*lstn)
+
+
+~~
+
+s = input()
+d = dict.fromkeys(s.lower().split())
+
+for w in s.split()[::-1]:
+    d[w.lower()] = w
+    
+print(' '.join(d.values()))
+
+
+~~
+
+s = input().split()
+lst_in = [w.lower() for w in s] 		#создаем копию со всеми маленькими буквами
+lst_in.reverse() 						#разварачиваем для последующего удаления с конца
+lst_out = []
+
+#начинаем перебор и удаляем из копии списка слово, если его больше одного
+for word in s:
+    while lst_in.count(word.lower()) >1:
+        lst_in.remove(word.lower())
+
+while len(lst_in): 					#пока копия почищенного списка больше нуля
+    dword = lst_in.pop() 		#получаем последнее слово и запоминаем
+    for word in s: #проход по введенному списку
+        if word.lower()==dword: 		#если слово совпало с удаленным
+            lst_out.append(word) 		#добавить его в итоговый список
+            break 								#и дальше можно ничего не искать
+            
+print(*lst_out)
+
+~~
+
+s = input().split()
+res = []
+
+for w in s:
+    if not any([w.lower() == i.lower() for i in res]):
+        res.append(w)
+        
+print(*res)
+
+
+~~
+
+l = input().split()
+l1=[]
+
+for i in range(len(l)):
+    if l[i].lower() not in [item.lower() for item in l[:i]]:
+        l1.append(l[i])
+        
+print(*l1)
+
+~~
+
+words = input().split()
+temp = []
+for word in words:
+    if word.lower() not in temp:
+        print(word, end=' ')
+        temp.append(word.lower())
+        
+
+~~
+
+a = input().split()
+b = []
+c = []
+
+for i in a:
+    if i.lower() not in b:
+        b.append(i.lower())
+        c.append(i)
+        
+print(" ".join(c))
+
+
+~~
+
+s = input().split()
+S = ''
+for i in s:
+    if i.lower() not in S.lower().split():
+        S = S+i+' '
+print(S)
+    
+~~
+
+spisok = []
+
+[spisok.append(i) for i in input().split(" ") if i.lower() not in list(map(lambda x: x.lower(), spisok))]
+print(" ".join(spisok))
+
+
+~~
+
+l = input().split()
+l1 = []
+
+for i in l:
+    if i.lower() not in [i.lower() for i in l1]:
+        l1.append(i)
+print(" ".join(l1))
+
+
+~~
+
+lst = []
+
+for word in input().split():
+    if word.lower() not in lst:
+        lst.append(word.lower())
+        print(word, end=" ")
+        
+~~
+
+lst = input().split()
+tmp = set(i.lower() for i in lst)
+res = []
+for i in lst:
+    if i.lower() in tmp:
+        res.append(i)
+        tmp.remove(i.lower())
+        
+print(" ".join(res))
+
+
+~~
+
+my_list = ["apple", "banana", "orange", "apple", "orange", "grape", "banana"]
+my_list = list(set(my_list))
+print(my_list)
+
+
+we first define a list called my_list that contains some duplicate words. 
+Then we convert the list to a set using the set() function, which removes duplicates. 
+
+Finally, we convert the set back to a list using the list() function and print the resulting list.
+
+
+
+
+
+my_list = ["apple", "banana", "Orange", "apple", "orange", "grape", "banana"]
+unique_list = []
+
+for word in my_list:
+    if word.lower() not in [w.lower() for w in unique_list]:
+        unique_list.append(word)
+print(unique_list)
+
+
+we create an empty list called unique_list to hold the unique words. 
+We then loop through each word in the original list my_list, convert it to lowercase using the lower() method, and check if it is already in unique_list after converting all words in unique_list to lowercase using a list comprehension. 
+If the word is not already in unique_list, we append it to the list. 
+
+This approach allows us to ignore the case of the letters when comparing duplicates.
