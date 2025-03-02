@@ -1,0 +1,918 @@
+LIST : ["apple", "banana", "cherry"]
+
+TUPLE : ("apple", "banana", "cherry")
+
+DICTIONARY : {"name":"apple", "color":"green"}
+
+SET : {"apple", "banana", "cherry"}
+
+*****
+
+a = 'Hello, World!"
+
+print( a [1] )
+print( a [ 2 : 5])
+print( a [ : : -1]
+b = a.split( ',' )
+
+print ( a [ : 3])
+print ( a [ 3 : ] )
+print ( a [ : ] )
+print ( a [ : : 2] )
+print ( a [ 2 : : ] )
+
+b = "   Hello Tolik   "
+# print(len(b))
+# print(b.lower())
+# print(b.upper())
+
+# print(b.replace("H", "J"))
+
+  c = "Hello, Tolik"
+# b = c.split(",")
+print(b)
+# print(b[0])
+
+
+
+x = ["hello",2,54,-2,7,12,98,"world"]
+
+print (x[len(x)-1])
+
+xnew = [x[0],x[len(x)-1]]
+
+*****
+
+========================================
+Converting a STRING list into an integer
+========================================    
+
+string_list = ['1','2','3','4','5']
+
+***  conversion_to_integer = [ int(i) for i in string_list ]
+
+#second method
+
+conversion_to_integer = list(map(int, string_list))
+
+
+
+=========================================
+Converting an INTEGER list into a string
+=========================================
+
+numbers = [1,2,3,4,5]
+
+str_list = [ str(num) for num in numbers]
+
+str_lst = list(map(str, numbers))
+
+==================================
+# extract a number from the string
+==================================
+
+r = "456results string789"
+str = ''.join(x for x in r if x.isdigit())
+print(str)
+print ( int(str) * 2 )
+
+
+r = "456results string789"
+new = []
+for x in r:
+    if x.isdigit():
+        new.append(x)
+
+str = ''.join(new)
+print(int(str) * 24)
+
+
+======================
+extract integers from mixed list
+======================
+
+testList = [1, 4.66, 7, "abc", 5, True, 3.2, False, "Hello", 7]
+
+def parseIntegers(mixedList):
+    return [x for x in mixedList if (isinstance(x, int) or isinstance(x, float)) and not isinstance(x, bool)]
+
+print(parseIntegers(testList))
+
+
+=====================
+Extract numbers from a list of strings
+=====================
+str = "h3110 23 cat 444.4 rabbit 11 2 dog"
+
+new_list1 = [int(m) for n in str for m in n if m in '0123456789']
+print(new_list1)
+
+
+===================
+You can filter the string by digits using str.isdigit method
+===================
+
+str1 = "3158 reviews"
+x = list(filter(str.isdigit, str1))
+print(x)
+
+*****
+
+=======================
+# swap chars in string
+=======================
+str = 'badcfe'
+
+str1 = ''.join( str[x:x + 2][::-1] for x in range( 0, len(str), 2))
+
+print(str1)		# abcdef
+
+
+
+def oddswap(arr_str):
+    str = list(arr_str)
+
+    for i in range(0,len(str),2):
+        temp = str[i]
+        str[i] = str[i+1]
+        str[i+1] = temp
+
+    return ''.join(str)
+
+print(oddswap(str))		# abcdef
+
+============
+SWAP numbs
+============
+
+a = 5
+b = 10
+
+a,b = b,a
+
+
+*****	
+
+numbers = [1,2,3,4,5,6,7,8,9,10]		
+
+evens = [num for num in numbers if num % 2 == 0]
+
+odds = [num for num in numbers if num % 2 != 0]
+
+
+
+
+#	else_Exmp = [num * 2 if num % 2 == 0 else num/2 for num in numbers]
+	print(else_Exmp)
+
+
+#	obj = ["Even" if i % 2 == 0 else "Odd" for i in range(11)]
+	print(obj)
+
+
+#	with_vowels = "This is so much fun!"
+
+	x = ''.join(char for char in with_vowels if char not in 'aeiou')
+
+*****		
+==============================
+Multiplying a list of integers
+==============================
+
+# 1
+
+lst = [1,2,3,4,5]
+
+updated_list = [ x * 2 for x in lst]
+
+# 2
+
+def timesTwo(arr)
+	return x * 2
+
+lst1 = map(timesTwo, arr)
+
+--- --- ---
+
+def multiplyByNumb(arr, num):
+    new_list = [i * num for i in arr]
+    return new_list
+
+# 3
+
+new_result = []
+
+for num in lst:
+	new_result.append(num * 2)
+
+# 4
+ 
+def squareArrVal(arr):
+     for i in range(len(arr)):
+         arr[i] = arr[i] * arr[i]
+     return arr
+
+*****
+================================
+#extract a char from the string
+================================
+
+r = "456results string789"
+str1 = ' '.join(x for x in r if x.isalpha())
+
+
+
+*****	
+======================================================================
+#Select some elements from list knowing their index. Create a new list
+which contains element with index 1,2,5
+======================================================================
+	arr = [-2,1,5,3,8,5,6]
+
+	arr_index = [1,2,5]
+
+	arr_elements = [arr[i] for i in arr_index]
+
+	mult_elem_index = [arr[i] * 2 for i in arr_index]
+
+
+===============================
+List Reversed Order
+===============================
+
+#1		x = list(reversed(range(10)))
+
+#2		def reverse_range(num):
+			for i in range(num)[ ::-1 ]:
+				print(i)
+
+		print(reverse_range(10))
+
+#3		for numb in range(10, 0, -1):
+			print(numb)
+
+
+#4		wordList = ['hi', 'hello', 'this', 'that', 'is', 'of']
+
+		i = len(wordList) - 1
+		while i >= 0:
+		    print(wordList[i])
+		    i = i - 1
+
+#5		x = wordList[::-1]
+
+
+#6		[print(i) for i in wordList[::-1]]
+
+
+#7		[print (i) for i in reversed(wordList)]
+
+
+#8		for i in range( len(wordList) - 1, -1, -1) :
+    		print(wordList[i])
+
+#9		for i in reversed(wordList) :
+        	print(i)
+
+
+
+*****	.startswith()
+
+str='school'
+
+if str.startswith('s') :
+    print("yes")
+else:
+    print("no")
+
+
+'school'.startswith('schoo')    #True
+
+'school'.startswith('k')    #False
+
+*****	.endswith()
+
+'school'.endswith('ol')  	#True 
+'school'.endswith('ll')  	#False 
+
+*****
+
+str='school'
+
+if 'oo' in str:
+    print("Yes")
+
+if 'h' in str:
+    print("Yes")
+
+
+'scho' in 'school'                # matches string-initially
+True 
+
+
+'k' in 'school' 
+False 
+
+
+*****		.count()
+
+str =  'colorless green ideas sleep furiously'
+print(f"Count of char 's' : {str.count('s')}")
+
+print(f"Count of char 'ee' : {str.count('ee')}")
+
+*****
+
+# reverse - reverse the elements of the list(in-place)
+os = ['Windows', 'macOS', 'Linux']
+
+1. *   list(reversed(os)		# output: ['Linux', 'macOS', 'Windows']
+
+2.     rev_list = os[::-1]
+
+3.     print(os[1][::-1])	# reverse only one item
+
+4.     lst = [1, 2, 3, 4, 5]	
+	   lst.reverse()
+
+
+
+******		.replace()
+
+
+str = 'Mary had a little lamb'
+
+str.replace('a', 'xx')		# 'Mxxry hxxd xx little lxxmb'
+
+
+******		.strip()
+
+foo = '  \t hello world\n \n'
+
+print(foo.strip())
+
+
+*****		.index()
+
+str = 'green ideas'
+
+print(str.index('e'))
+print(str.index('id'))
+
+*****
+
+# How to access elements from a list
+list = ['p','r','o','b','e']
+
+print(list[0]) 	# output: p
+
+print(list[4])	# output: e
+
+print(list[-1])	# output e
+print(list[-3])	# output o
+
+
+nested_list=['Happy', [2,1,3,4,5], 3.0]
+
+print(nested_list[0][0])	# output H
+print(nested_list[1][2])	# output 3
+
+
+# How to slice lists 
+
+list = ['p','r','o','b','e']
+print(list[2:5])	# output ['o', 'b', 'e']
+
+print(list[:-5])	# output ['p']
+
+print(list[:])
+
+*****
+
+# Add element to a list
+
+list=[1,2,3,4]
+
+list.append(4)
+
+list.extend([,5,6,7])
+
+list.insert(-1,8)
+
+list.insert(len(list),"Last_Item")
+
+*****
+
+# delete or remove elements from a list
+
+my_list = ['p','r','o','b','l','e','m']
+
+del my_list[2]	# output: ['p', 'r', 'b', 'l', 'e', 'm'] 
+
+del my_list[1:5]	# output: ['p', 'm']
+
+
+*****
+
+# pop - Remove the item at the given position in the list and
+return it.
+
+list = [1,2,3,4,5]
+list.pop() - removes last item in the list
+list.pop(1) - removes index : 1 from the list
+
+*****
+
+# spliting a string by space
+
+import re
+b = re.split("(\s+)", "456results string789")
+print(b)   ['456results', ' ', 'string789']
+
+c = "I'm a test"
+print(c.split())   ["I'm", 'a', 'test']
+
+*****
+
+# index - returns the index of the specified item in the list
+numbers = [5,6,7,8,9,10]
+numbers.index(6) #1
+   
+   # Can specify start and end
+numbers = [5,5,6,7,5,8,8,9,10]
+
+numbers.index(5) 		# 0
+numbers.index(5, 1) 	# 1
+numbers.index(5, 2) 	# 4
+numbers.index(8,6,8) 	# 6
+
+*****
+
+# count - return the number of times x appears in the list
+
+numbers = [5,5,6,7,5,8,8,9,10]
+
+print(numbers.count(2))		# output: 0
+print(numbers.count(5))		# output: 3
+
+
+*****
+
+# sort - sort the items of the list(in-place)
+
+vowels = ['e', 'a', 'u', 'o', 'i']
+
+* vowels.sort(reverse=False)		# output: ['a', 'e', 'i', 'o', 'u']
+
+
+
+=============================
+			Arrays / Lists
+=============================
+
+thislist = ["apple", "banana", "cherry"]
+
+print( thislist[1] )
+
+
+	#Change the second item:
+thislist[1] = "blackcurrant"
+
+
+	# Check if "apple" is present in the list:
+if "apple" in thislist:
+	print("Yes, 'apple' in fruits list ")
+	
+	
+	# Print the number of items in the list:
+print( len(thislist) )
+
+
+	# To add an item to the end of the list, use the append() method:
+thislist.append( "orange" )
+
+
+	# Insert an item as the second position:
+thislist.insert( 1, "orange" )
+
+
+	# The remove() method removes the specified item:
+thislist.remove("banana")
+
+
+	# The pop() method removes the specified index, (or the last item if index is not specified):
+thislist.pop()
+
+	# The del keyword removes the specified index:
+del  thislist [ 0 ]
+
+
+	# The del keyword can also delete the list completely:
+del thislist
+
+
+	# The clear() method empties the list:
+thislist.clear ()
+
+
+	# It is also possible to use the list() constructor to make a new list.
+thislist = list ( ("apple", "banana", "cherry" ) )
+
+
+	# Reverse the order of the fruit list:
+fruits = ['apple', 'banana', 'cherry']
+fruits.reverse()
+
+
+	# Sort the list alphabetically:
+fruits.sort(reverse=False)
+fruits.sort(reverse=True)
+
+vowels = ['e', 'a', 'u', 'o', 'i']
+vowels.sort()
+print(vowels)
+
+vowels.sort(reverse=True)
+print(vowels)
+
+
+*****	Nested Lists
+
+a = [[1, 2, 3], [4, 5, 6]]
+
+print(a[0])
+print(a[0][2])
+
+a[0][1] = 7
+
+for row in a:
+	for elem in row:
+		print(elem, end="")
+	print()
+
+
+sum = 0
+for row in a:
+	for elem in row:
+		sum = sum + elem
+print(sum)
+
+=============================
+			Dictionaries
+=============================
+
+
+capitals = { "svk" : "Bratislava",
+			"deu" : "Berlin",
+			"dnk" :  "Copengagen",
+		}
+
+capitals["abc"] = "New Country"
+
+capitals["abc"] = "Moscow"
+
+#prints all keys
+for data in capitals:
+	print( data, end= " , " )			# svk,deu,dnk,
+	
+
+#prints all values
+for x in capitals:
+	print( capitals[x] )			# Bratislava, Berlin, Copengagen
+	
+
+
+for key in capitals.keys():
+	print ( key )
+	
+for value in capitals.values():
+	print ( values )
+	
+for key, value in capitals.items():
+	print ( key, " = = ", value )
+
+
+# get()	Returns the value of the specified key
+x = capitals.get( "dnk" )
+
+
+a = capitals.keys()		# dict_keys(['svk', 'deu', 'dnk'])
+
+b = capitals.values()	# dict_values(['Bratislava', 'Berlin', 'Copengagen'])
+
+c = capitals.items()	# dict_items([('svk', 'Bratislava'), ('deu', 'Berlin'), ('dnk', 'Copengagen')])
+
+
+if "abc" in capitals:
+	print(" Yes, 'abc' in capitals" )
+else:
+	print(" No, 'abc' not in capitals" )
+	
+	
+	
+	#Adding an item to the dictionary
+	
+thisdict =	{
+			  "brand": "Ford",
+  			  "model": "Mustang",
+  			  "year": 1964
+		}
+thisdict [ "color" ] = "red"
+
+
+	# Insert an item to the dictionary:
+	thisdict.update( "color" : "White" )
+
+
+	# The pop() method removes the item with the specified key name:
+thisdist.pop("model")
+
+
+	# The popitem() method removes the last inserted item 
+thisdict.popitem()
+
+	
+	# The del keyword removes the item with the specified key name:
+del thisdict [ "model" ]
+
+
+	# Make a copy of a dictionary with the dict() method:
+mydict = dict ( thisdict )
+
+
+	# to use the dict() constructor to make a new dictionary:
+thisdict =	dict(brand="Ford", model="Mustang", year=1964)
+
+# note that keywords are not string literals
+# note the use of equals rather than colon for the assignment
+	
+
+################################################################
+
+# How to round up a floating point number to 2 decimal places
+x = 1.6324
+x = round(x, 2)
+
+
+
+******
+numb = input("Enter first number:\n")
+print (numb, type(numb))	#string
+
+numb = int(numb)			#integer
+
+
+******
+
+# for c in range(11):
+	print(c)
+
+# for c in range(4,11):
+	print(c)
+
+# for c in range(3,11):
+	if c == 8:
+		break
+	print(c)
+
+# for c in range (5, 21):
+    if c == 11:
+        continue
+    print(c)
+
+# for i in range(5, 500, 10):
+	print(i)
+
+
+# for i in range(1,101):
+	if i % 5 == 0:
+		print("Coding")
+
+	if i % 10 == 0:
+		print("Dojo")
+
+	else:
+		print(i)
+
+# def sumNumbers(num):
+	sum = 0
+	for i in range(1, num):
+		if i % 2 != 0:
+			sum = sum + i
+	return sum
+print(sumNumbers(101))
+
+
+# for i in range(2018, 0, -4):
+	print(i)
+
+
+# 	lst = []
+	for i in range(300, 501):
+    	if(i%7 == 0) and (i%5!=0):
+        	lst.append(str(i))
+
+print(','.join(lst))
+
+=======================
+iterating over a list
+=======================
+
+    lst = [3,5,1,2]
+    for i in range(len(lst)):
+    	print(i)				# 0,1,2,3
+
+
+    for i in lst:	
+    	print(i)				# 3,5,1,2
+
+
+    for i in range(len(lst)):
+    print(lst[i])				# 3,5,1,2
+
+
+    for i in range(len(lst)):
+    	print(lst[i] + 3)		# 6, 8, 4, 5
+
+
+    for i in range(len(lst)):
+    	arr[i] = arr[i] * arr[i]	# [9, 25, 1, 4]
+
+
+*****
+
+==============
+enumerate()
+==============
+grocery = ['bread', 'milk', 'butter']
+
+#1  print(list(enumerate(grocery)))
+
+#2  for item in enumerate(grocery):
+		print(item)
+
+
+#3  for count, item in enumerate(grocery):
+		print(count, item)
+
+*****
+
+Example: how to use a loop within a loop a nested for loop
+
+print ("This is the start of the program")
+
+for i in range (1,6):
+    for j in range (1,6):
+        for k in range (1,6):
+            print ("i: " + str(i) + " j: " + str(j) + " k: " + str(k))
+    print()    
+
+*****
+
+score = input("Enter score: ")
+score = int(score)
+if score > 80 or score == 80:
+    grade = 'A'
+elif score > 70 or score == 70:
+    grade = 'B'
+elif score > 55 or score == 55:
+    grade = 'C'
+elif score > 50 or score == 50:
+    grade = 'Pass'
+else:
+    grade = 'Fail'
+print ("\n\nGrade is: " + grade)
+
+
+age = input("Enter your age: ")
+age = int(age)
+have_own_car = input("Do you own your own car (y/n): ")
+
+if (age > 21) and (have_own_car == 'y'):
+    print ("You are over 21 years old and own your own car")
+    
+if (age > 21) and (have_own_car == 'n'):
+    print ("You are over 21 years old and you do NOT own your own car")
+
+if (age == 21) and (have_own_car == 'y'):
+    print ("You are 21 years old and you own your own car")
+
+if (age == 21) and (have_own_car == 'n'):
+    print ("You are 21 years old and you DO NOT own your own car"    )
+
+if (age < 21) and (have_own_car == 'y'):
+    print ("You are younger than 21 and you own your own car")
+
+if (age < 21) and (have_own_car == 'n'):
+    print ("You are younger than 21 and you DO NOT own your own car"    )
+
+
+salary = float(input("Enter your annual salary, (e.g. 50000): "))
+
+if (salary > 50000) or (age > 21):
+    print ("you can join our club because you earn more than $50000 OR you are over 21 (or both)")
+else:
+    print ("you need to be earning more than 50000 OR be over 21 (or both) to join our club")
+    
+
+*****
+
+x = 1
+while x < 6:
+    print("Spam")
+    x = x + 1
+    print("I love spam")
+
+print("done")
+print("gone")
+
+******
+==================================
+from nested array create an array
+==================================
+
+nest_list = [[1,2,3],[4,5,6],[7,8,9],[10,11,12]]
+new_list = [y for x in nest_list for y in x]
+
+print(new_list)			# [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+=============================
+# remove duplicates from list
+=============================
+nest_list = [[1,2,4,3,3],[6,5,4,4,5,6],[7,8,7,8,9],[11,10,11,10,12,12]]
+new_list = [y for x in nest_list for y in x]
+
+# 1   s = set(new_list)
+	  print(s)		# {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+
+# 2
+		s = set()
+		for i in new_list:
+		    s.add(i)
+
+		print(s)	# {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+
+
+# 3
+		new = []
+
+		for i in new_list:
+			if i not in new:
+				new.append[i]
+
+		print(new)		# [1, 2, 4, 3, 6, 5, 7, 8, 9, 11, 10, 12]
+
+******
+
+# ZIP()
+
+numbers = [1, 2, 3]
+letters = ["A", "B", "C"]
+
+for numbers_value, letters_value in zip(numbers, letters):
+    print(numbers_value, letters_value)
+
+
+*****
+
+Which one is NOT a legal variable name?: my-var
+
+How do you create a variable with the numeric value 5?: x = 5; x = int(5)
+
+How do you create a variable with the floating number 2.8? x = 2.8; x = float(2.8)
+
+What is a correct syntax to return the first character in a string? x = "Hello"[0]
+
+Which method can be used to remove any whitespace from both the beginning and the end of a string? strip()
+
+Which method can be used to replace parts of a string? 
+print(string.replace("geeks", "Geeks"))  
+
+
+*****
+
+
+=============================================
+Return lowercase characters from given string
+=============================================
+
+# initializing string  
+test_str = "GeeksForGeeKs"
+
+res = [char for char in test_str if char.islower()] 
+  
+# printing result  
+print("The lowercase characters in string are : " + str(res)) 
+
+
+
+# Return lowercase characters in string  
+# Using filter() + lambda 
+res = list(filter(lambda c: c.islower(), test_str)) 
+  
+# printing result  
+print("The lowercase characters in string are : " + str(res))
+
+
+https://www.geeksforgeeks.org/python-return-lowercase-characters-from-given-string/
+

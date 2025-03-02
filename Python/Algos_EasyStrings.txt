@@ -1,0 +1,891 @@
+jsoneditonline.org
+
+Reverse a String 🔥
+
+"""
+It's worth noting that strings are immutable in python, meaning
+that they can't be changed in place, so the reversed version
+of the string will be in a new variable.
+"""
+
+
+original_string = "Hello World!"
+
+
+#1
+reversed_string1 = original_string[::-1]
+# print(reversed_string1)
+
+
+#2 use the str.join() method with the reversed() function to achieve the same result:
+reversed_string2 = ''.join(reversed(original_string))
+# print(reversed_string2)
+
+
+#3 use the ''.join() function and the range() function to reverse a string
+
+reversed_string3 = ''.join(original_string[i] for i in range(len(original_string) -1, -1, -1))
+print(reversed_string3)
+
+# Method 1
+def reverse_str(s):
+    str_arr = list(s)
+    start, end = 0, len(str_arr) - 1
+    while start < end:
+        str_arr[start], str_arr[end] = str_arr[end], str_arr[start]
+        start += 1
+        end -= 1
+    return "".join(str_arr)
+
+
+# Method 2
+def reverse_string(s):
+    if len(s) <= 1:
+        return s
+
+    return reverse_string(s[1:]) + s[0]
+
+
+# Method 3
+def reverse_string(s):
+    tmp = ""
+    for char in s:
+        tmp = char + tmp
+    return tmp
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢ ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+FizzBuzz 🔥
+
+"""
+FizzBuzz is a simple programming task used in coding interviews
+to test a candidate's basic programming skills. The task is to
+write a program that prints the numbers from 1 to n,
+where n is a positive integer, but for multiples of 3 print "Fizz"
+instead of the number, for multiples of 5 print "Buzz" instead
+of the number, and for multiples of both 3 and 5, print "FizzBuzz"
+instead of the number.
+"""
+
+
+def fizz_buzz(n):
+    for i in range(1, n+1):
+        if i % 3==0 and i % 5==0:
+            print('fizzbuzz')
+        elif i % 3 == 0:
+            print('fizz')
+        elif i % 5 == 0:
+            print('buzz')
+        else:
+            print(i)
+
+
+print(fizz_buzz(15))
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+Reverse Only Alphabetical 🔥
+
+# Первый пример
+
+"""
+You are given a string that contains alphabetical characters
+(a - z, A - Z) and some other characters ($, !, etc.).
+reverse only the alphabetical ones
+"""
+
+original_string = "Hello World! 123"
+
+alphabetical = "".join([char for char in original_string if char.isalpha()])
+
+print(f"alphabetical: {alphabetical}")
+
+reversed_alphabetical = alphabetical[::-1]
+
+result = original_string
+
+print(f"reversed alphabetical: {reversed_alphabetical}")
+
+
+# for i in range(len(alphabetical)):
+#     result = result.replace(alphabetical[i], reversed_alphabetical[i], 1)
+# print(result)
+
+
+
+# Второй пример
+
+# 1. Вычленяем только буквенные значения в новый array
+temp = []
+for i in original_string:
+    if i.isalpha():
+        temp.append(i)
+
+
+# 2. Из буквенного array создаем одно слово
+lst = ''.join(temp)
+print(f'joined list: {lst}')
+
+# 3. Теперь мы это слово реверсируем
+reversed_lst = lst[::-1]
+print(reversed_lst)
+
+
+# Третий пример
+
+def reverse_only_alpha(s):
+    alpha_chars = []
+    s = list(s)
+    new_s = ""
+
+    r = re.compile("[a-zA-Z]")
+
+    for char in s:
+        if r.match(char):
+            alpha_chars.append(char)
+
+    reversed_alpha = reverse_array(alpha_chars)
+
+    idx_ra = 0
+    for i in range(len(s)):
+        if r.match(s[i]):
+            new_s += reversed_alpha[idx_ra]
+            idx_ra += 1
+        else:
+            new_s += s[i]
+
+    return new_s
+
+
+def reverse_array(arr):
+    return arr[::-1]
+
+
+# Еще несколько способов:
+
+What we can do is identify just the alphabetical characters, store them in a separate array, and then reverse them.
+
+We can use regex to detect alphabetical characters using an expression like /[a-zA-Z]/.
+
+
+r = re.compile("[a-zA-Z]")
+
+for char in s:
+    if r.match(char):
+        alpha_chars.append(char)
+        
+        
+ This time, we swap out alphabetical characters in the original string with elements from our newly created reversedAlpha, based on position/index:
+ 
+ idx_ra = 0
+for i in range(len(s)):
+    if r.match(s[i]):
+        new_s += reversed_alpha[idx_ra]
+        idx_ra += 1
+    else:
+        new_s += s[i]
+        
+Boom, that'll ignore non-alphabetical characters. Do also ensure you are iterating the reversedAlpha array separately from the for-loop that tests the original string. If you don't want to deal with even more pointers, you can use the .shift() method that continues to grab the left-most element in the array.
+
+
+Второй метод:
+
+import re
+
+def swap(arr, a, b):
+    temp = arr[a]
+    arr[a] = arr[b]
+    arr[b] = temp
+    return arr
+
+
+def reverse_only_alpha(s):
+    start = 0
+    end = len(s) - 1
+    arr = list(s)
+
+    r = re.compile("[a-zA-Z]")
+
+    while start <= end:
+        if not r.match(arr[start]):
+            start += 1
+        elif not r.match(arr[end]):
+            end -= 1
+        else:
+            swap(arr, start, end)
+            start += 1
+            end -= 1
+
+    return "".join(arr)
+
+print(reverse_only_alpha("sea!$hells3"))
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+Is An Anagram 🔥
+
+
+Here's the definition of an anagram: a word, phrase, or name formed by rearranging the letters of another: such as cinema, formed from iceman.
+
+We are given two strings like "cinema" and "iceman" as inputs. Can you write a method isAnagram(str1, str2) that will return true or false depending on whether the strings are anagrams of each other?
+
+
+One Pager Cheat Sheet
+
+Write a method isAnagram(str1, str2) to check if two strings are anagrams of each other, given that they contain only alphanumeric characters and have a length of up to 100000, with an expected time and space complexity of O(nlogn) and O(n), respectively.
+We can use lowercase and sorting to efficiently determine if two strings, such as Mary and Army, are anagrams.
+By splitting, sorting and joining the characters in each string, we can easily compare the raw characters present to determine if two strings are anagrams.
+This algorithm has an O(n log n) time complexity and O(n) space complexity.
+
+
+
+def is_anagram(str1, str2):
+    a = list(str1.lower())
+    b = list(str2.lower())
+
+    a.sort()
+    b.sort()
+
+    return a == b
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Validate Palindrome 🔥
+
+
+Given a string str, can you write a method that will return True if is a palindrome and False if it is not? If you'll recall, a palindrome is defined as "a word, phrase, or sequence that reads the same backward as forward". For now, assume that we will not have input strings that contain special characters or spaces, so the following examples hold:
+str = 'thisisnotapalindrome'
+
+
+
+def is_palindrome(s):
+    new_str = s.lower()
+    return new_str == new_str[::-1]
+
+
+print(is_palindrome('Abba'))
+print(is_palindrome('madam'))
+print(is_palindrome('racecar'))
+
+
+
+# Второй пример
+
+import re
+
+ALPHA_NUMERIC = re.compile("[^a-zA-Z0-9]")
+
+
+def is_palindrome(s):
+    if not s or s == "":
+        return True
+    else:
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+            left_char = s[left].lower()
+            right_char = s[right].lower()
+
+            if is_alpha_num(left_char) and is_alpha_num(right_char):
+                if left_char == right_char:
+                    left += 1
+                    right -= 1
+                else:
+                    return False
+            else:
+                if not is_alpha_num(left_char):
+                    left += 1
+                if not is_alpha_num(right_char):
+                    right -= 1
+
+        return True
+
+
+def is_alpha_num(c):
+    return False if ALPHA_NUMERIC.match(c) else True
+
+
+print(is_palindrome('A Santa Lived As a Devil At NASA'));
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+Sum Digits Until One
+
+We're provided a positive integer num. Can you write a method to repeatedly add all of its digits until the result has only one digit?
+
+SNIPPET
+// start with 49
+4 + 9 = 13
+
+// since the previous addition was 13,
+// move onto summing 13's digits
+1 + 3 = 4
+
+We would then return 4.
+
+def add_digits(num):
+    while num >= 10:
+        digits = [int(d) for d in str(num)]
+        num = sum(digits)
+    return num
+    
+This method uses a while loop to repeatedly add the digits of the input number until the result is a single digit. The digits are obtained by converting the number to a string and then using a list comprehension to create a list of integers representing each digit. Then the sum of the digits is calculated using the built-in sum function. The loop continues until the sum is less than 10, at which point the single digit result is returned.
+
+
+import functools
+
+
+def sum_digits(num):
+    while num > 9:
+        arr = list(str(num))
+        num = functools.reduce(lambda x, y: int(x) + int(y), arr)
+    return num
+
+
+
+
+Alternatively you could use modulus operator like this
+
+def add_digits(num):
+    if num == 0:
+        return 0
+    elif num % 9 == 0:
+        return 9
+    else:
+        return num % 9
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+Detect Substring in String
+
+How would you write a function to detect a substring in a string?
+
+If the substring can be found in the string, return the index at which it starts. Otherwise, return -1.
+
+
+you can use "the in operator to check if a substring is present in a string." 
+
+string = "Hello, world!"
+substring = "world"
+
+if substring in string:
+    print("The substring was found in the string.")
+else:
+    print("The substring was not found in the string.")
+
+
+
+You can also use the "str.find() method" to search for a substring in a string. It returns the index of the first occurrence of the substring, or -1 if the substring is not found. Here is an example:
+
+
+string = "Hello, world!"
+substring = "world"
+
+index = string.find(substring)
+if index != -1:
+    print("The substring was found at index", index)
+else:
+    print("The substring was not found in the string.")
+    
+    
+You can also "use python's re module to detect substring. re.search(pattern, string) method returns a match object if there is a match anywhere in the string".
+
+
+import re
+
+string = "Hello, world!"
+substring = "world"
+match = re.search(substring, string)
+if match:
+    print("The substring was found in the string.")
+else:
+    print("The substring was not found in the string.")
+
+
+***
+idx_of_start = 0
+j = 0
+s = 'digginn'
+sub_s = 'inn'
+
+for i in range(len(s)):
+  # if match, compare next character of sub_s with next of string
+  if s[i] == sub_s[j]:
+    j += 1
+  else:
+    j = 0
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Dollar Sign Deletion 🔥🔥🔥
+
+You're given an array of strings containing alphabetical characters and certain $ characters. A $ represents a DELETE action whereby the character before it is deleted.
+
+Each of these strings will be run through a method to operate on the $ DELETE action. We want to find out if the final string is the same for all of them.
+
+
+#1
+original_list = ['as$a', '$ssb', '$$cdg', '$$ded', 'yhe$']
+
+for i in range(len(original_list)):
+    original_list[i] = original_list[i].replace("$", "")
+    
+print(original_list)
+
+
+#2
+arr = ['fas$t$car$s', '$sign', 'S$ingapure']
+
+new_list = [x.replace("$", "") for x in arr]
+print(new_list)
+
+***
+
+strings = ["Hello", "world!", "Goodbye"]
+char_to_remove = "l"
+
+strings = [string.replace(char_to_remove, "") for string in strings]
+print(strings)
+
+***
+
+strings = ["Hello", "world!", "Goodbye"]
+char_to_remove = "l"
+for i in range(len(strings)):
+    strings[i] = strings[i].replace(char_to_remove, "")
+print(strings)
+
+
+*** "Убираем $ из слова" ***
+
+str = 'fastt$carss$'
+
+
+def remove_special_char(str):
+    arr = []
+    for ch in str:
+        if ch == '$':
+            arr.pop()
+        else:
+            arr.append(ch)
+    return ''.join(arr)
+    
+***
+
+str = 'Who love$s money'
+
+char_remove = '$'
+new_str = ''
+
+for char in str:
+    if char != char_remove:
+        new_str += char
+print(new_str)
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Find First Non-Repeating Character
+
+You're given a string of random alphanumerical characters with a length between 0 and 1000.
+
+Write a method to return the first character in the string that does not repeat itself later on.
+
+
+def first_non_repeat(s):
+    char_counter = OrderedDict()
+
+    for char in s:
+        if char in char_counter:
+            char_counter[char] = char_counter[char] + 1
+        else:
+            char_counter[char] = 1
+
+    for char in s:
+        if char_counter[char] == 1:
+            return char
+
+    return ""
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Find Duplicate Words
+
+A very common interview challenge is to determine how often words appear in a given string or set of strings. Here's a version of this: return a list of duplicate words in a sentence.
+
+
+
+⚜️"Determine how often words appear in a given string or set of strings."
+
+s = "Original String Original String"
+split_s = s.lower().split(' ')
+
+occurrences = {}
+
+for word in split_s:
+    if word not in occurrences:
+        occurrences[word] = 1
+    else:
+        occurrences[word] += 1
+
+dupes = []
+for k in occurrences:
+    if occurrences[k] == 2:
+        dupes.append(k)
+
+print(dupes)
+
+
+def word_frequencies(strings):
+
+    # Create an empty dictionary to store the frequency of each word
+    word_count = {}
+    
+    # Iterate through the input strings
+    for s in strings:
+    
+        # Split the string into words
+        words = s.split()
+        
+        # Iterate through the words, keeping track of the frequency of each word
+        for word in words:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+    return word_count
+
+
+word_frequencies("this is a test string with test word")
+{'this': 1, 'is': 1, 'a': 1, 'test': 2, 'string': 1, 'with': 1, 'word': 1}
+
+word_frequencies(["this is a test string","string with test word"])
+{'this': 1, 'is': 1, 'a': 1, 'test': 2, 'string': 2, 'with': 1, 'word': 1}
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Remove All Adjacent Duplicates in String
+
+
+⚜️"A duplicate removal consists of choosing two adjacent and equal letters and removing them."
+
+ You are required to repeatedly make duplicate removals on s until no adjacent duplicate 
+ elements are left. Return the final string after all such duplicate removals have been made.
+ 
+For example, consider a string abbaca. We remove bb from this string since the letters are adjacent and equal (duplicate removal). There are no other possible moves, so we proceed with the result of this move that makes the string aaca. From this, aa can be removed, so the final string becomes ca. 
+ 
+
+"# Пример для строки"
+def remove_adjacent_duplicates(s):
+    stack = []
+    for i in s:
+        if stack and stack[-1] == i:
+            stack.pop()
+        else:
+            stack.append(i)
+    return ''.join(stack)
+
+
+# print(remove_adjacent_duplicates('abbaca'))
+
+
+"# Пример для листа"
+def remove_adjacent_duplicates1(lst):
+    i = 0
+
+    while i < len(lst) - 1:
+
+        # Check if the current element is the same as the next element
+        if lst[i] == lst[i+1]:
+            # If so, remove the next element
+            lst.pop(i+1)
+        else:
+            # Otherwise, move on to the next element
+            i += 1
+    return lst
+
+
+x = remove_adjacent_duplicates1([1, 2, 2, 3, 3, 3, 4, 4, 4, 4])
+print(x)
+# [1, 2, 3, 4]
+y = remove_adjacent_duplicates1([1,1,1,1,2,2,2,2,3,3,3,3,3])
+print(y)
+# [1,2,3]
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Custom Sort String
+
+
+⚜️ "Custom sort string -  permute string"
+
+Permute the characters of str with respect to the order defined by order such that if a character x occurs before a character y in order, then x should occur before y in the permuted string.
+
+
+def permute_string(order, str):
+    # Create a dictionary to store the position of each character in the custom order
+    order_dict = {c: i for i, c in enumerate(order)}
+    
+    # Create a list of tuples, where each tuple contains a character from str and its 
+       position in the custom order
+       
+    str_tuples = [(c, order_dict[c]) for c in str]
+    
+    # Sort the list of tuples based on the position in the custom order
+    str_tuples.sort(key=lambda x: x[1])
+    
+    # Extract the characters from the sorted tuples and join them into a single string
+    permuted_str = "".join([t[0] for t in str_tuples])
+    
+    return permuted_str
+
+
+permute_string("cba", "abc")
+"cba"
+
+permute_string("zyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyz")
+"zyxwvutsrqponmlkjihgfedcba"
+
+
+
+
+
+function that takes in two strings, "order" and "str", and returns a permuted version of "str" that follows the custom order specified in "order":
+
+def custom_sort_string(order, s):
+    frequencyDict = {}
+    
+    for i in s:
+        if i in frequencyDict:
+            frequencyDict[i] += 1
+        else:
+            frequencyDict[i] = 1
+    
+    result = ""
+    for i in order:
+        if i in frequencyDict:
+            result += (i * frequencyDict[i])
+            del frequencyDict[i]
+    
+    for i in frequencyDict:
+        result += (i * frequencyDict[i])
+
+    return result
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Simplify Absolute Paths
+
+⚜️ "Simplifying Absolute Paths"
+
+Solution Walkthrough
+The key to solving this problem is to check the given path for specific characters. On encountering these characters, we have to create a new, simplified path based on the syntactical meaning of elements in the original path. More specifically, these are the cases we need to check,
+
+Repeated or trailing slash characters '/'
+Period '.' or double period '..'
+How Can We Do This Programmatically?
+Traversing through a string, checking each character, and then performing specific operations according to it - this sounds like a job for our favorite data structure, stacks! To make our jobs easy, we first split the input string at each '/' and save it as an array (remember, file/directory names are separated by a '/'!). Next, we traverse this array, and each string (file/directory) is checked per the below conditions.
+
+If it is a file name, add it to the stack.
+If it is a double period '..', pop the top element from the stack (a double period indicates going up a directory).
+If it is a single period '.', no operation is performed (a single period refers to the current directory).
+Once the traversal is complete and all operations are performed, the array of strings is joined to form a single string. During joining, a single slash '/' is added at the start and in between all the strings left in the stack (remember, we do not want a slash '/' at the end as no trailing slashes!). This represents the canonical path.
+
+
+
+from re import X
+
+def simplifyAbsolutePath(path):
+    stack = []
+    pathItems = path.split('/')
+    for item in pathItems:
+        if item and item!='.':
+            if item == '..':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(item)
+    return '/' + '/'.join(stack)
+    
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+Length of Longest Palindromic Subsequence
+
+
+⚜️ "Length of Longest Palinromic Subsequence"
+
+A palindrome is a word, phrase, or sequence that reads the same backward or forwards. A palindromic subsequence is a palindrome derived from a sequence by deleting some or no elements from it. This subsequence is formed without changing the order of the elements in the original sequence.
+
+Given a string s, can you find the length of the longest palindromic subsequence of s?
+
+
+
+
+
+import heapq
+import math
+
+
+def longestPalindromeSubseq(s):
+    if not s:
+        return 0
+    grid = [[0] * len(s) for _ in range(len(s))]
+    
+    for i in range(len(s) - 1, -1, -1):
+        grid[i][i] = 1
+        
+        for j in range(i + 1, len(s)):
+            if s[i] == s[j]:
+                grid[i][j] = grid[i + 1][j - 1] + 2
+            else:
+                grid[i][j] = max(grid[i + 1][j], grid[i][j - 1])
+                
+    return grid[0][len(s) - 1]
+    
+    
+
+
+def longestPalSubseq(string):
+    n = len(string)
+    dp = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        dp[i][i] = 1
+        
+    for start in range(n - 1, -1, -1):
+        for end in range(start + 1, n):
+            if string[start] == string[end]:
+                dp[start][end] = dp[start + 1][end - 1] + 2
+            else:
+                dp[start][end] = max(dp[start + 1][end], dp[start][end - 1])
+                
+    return dp[0][n - 1]
+
+
+string = "abcdefg"
+length = longestPalSubseq(string)
+print(length)
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+⚜️ "Swap elements in array"
+arr = [1,2,3,4,5,6]
+
+def swap_elements_in_array(arr, el1, el2):
+    temp = arr[el1]
+    arr[el1] = arr[el2]
+    arr[el2] = temp
+    return arr
+
+x = swap_elements_in_array(arr, 1, 4)
+print(x)			# [1, 5, 3, 4, 2, 6]
+
+
+
+⚜️ "Returning Tuples for Unpacking"
+
+stock_prices = [('AAPL',200),('GOOG',300),('MSFT',400)]
+
+# print stock and price
+for item in stock_prices:
+    print(item) 			# ('AAPL', 200) ('GOOG', 300) ('MSFT', 400)
+
+# print only stock
+for stock, price in stock_prices:
+    print(stock) 			# AAPL GOOG MSFT
+
+# print only price
+for stock, price in stock_prices:
+    print(price) 		# 200 300 400
+
+
+⚜️"The employee of the month function will return both the name and number of hours worked for the top performer (judged by number of hours worked)."
+
+work_hours = [('Abby',100),('Billy',400),('Cassie',800)]
+
+def employee_check(work_hours):
+    current_max = 0
+    employee_of_month = ''
+
+    for employee, hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_month = employee
+        else:
+            pass
+    return (employee_of_month, current_max)
+
+print(employee_check(work_hours))
+
+
+
+⚜️"Program that orders the digits of a two-digit positive number from smaller to larger and displays the result on the screen, while also displaying an error message if a non-two-digit number is entered:"
+
+num = int(input("Enter a two-digit positive number: "))
+
+if len(str(num)) != 2 or num < 10:
+    print("Error: Please enter a two-digit positive number.")
+else:
+    digits = [int(d) for d in str(num)]
+    digits.sort(reverse=True)
+    print("The digits in ascending order: ", digits)
+    result = int("".join(map(str, digits)))
+
+print(result)
+
+
+1. Введено число, необходимо проверить если это число двухзначное или нет
+2. Число необходимо разделить
+3. Произвести реверс этих цифр
+4. Вывести число на экран
+
+
+
+➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢   ➢
+
+
+Красивое лучше, чем уродливое.
+Явное лучше, чем неявное.
+Простое лучше, чем сложное.
+Сложное лучше, чем запутанное.
+Плоское лучше, чем вложенное.
+Разреженное лучше, чем плотное.
+Читаемость имеет значение.
+Особые случаи не настолько особые, чтобы нарушать правила.
+При этом практичность важнее безупречности.
+Ошибка никогда не должна замалчиваться.
+Если только вы сами этого не захотите.
+Встретив двусмысленность, отбрось искушение угадать.
+Должен существовать один и, желательно, только один очевидный способ сделать что-то.
+Хотя он поначалу может быть и не очевиден, если вы не голландец.
+Сейчас лучше, чем никогда.
+Хотя никогда зачастую лучше, чем прямо сейчас.
+Если реализацию сложно объяснить — идея плоха.
+Если реализацию легко объяснить — идея, возможно, хороша.
+Пространства имён — отличная штука! Будем делать их больше!

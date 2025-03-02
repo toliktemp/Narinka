@@ -1,0 +1,1060 @@
+var x = 3;
+x = x + 1;
+console.log(x);		# 4
+
+
+var x = 3;
+x = x + 2;
+console.log(x + 2);		#7
+console.log(x);			#5
+
+
+var x = 3;
+x = x * x;
+console.log(x); 		#9	
+console.log(x * 2);		# 18
+
+
+var x = 2;
+var y = 5;
+var z = x + y;
+console.log(z);		#7
+
+
+
+	*** Level 2
+
+
+
+var x = [1,2,4];
+console.log(x);		# [ 1, 2, 4 ]
+
+
+var x = [1,3,5];
+console.log(x[0]);		#1
+
+
+var x = [2,4,6];
+console.log(x[1]);		#4
+
+
+var x = [1,3,5];
+console.log(x[2]);		#5
+
+
+var x = [1,3];
+console.log(x[0]);		#1
+
+
+var x = [1,2,4];
+x[0] = x [1];
+console.log(x[0]);		# 2 [2,2,4]
+
+
+var x = [1,3,5];
+var y = x.length;
+console.log(y);			#3
+
+
+var x = [2,4,6,3,7];
+var y = x.length-2;
+console.log(x[y]);		#3 (5-2)
+
+
+
+var x = [2,4,6,3,7];
+var y = x.length;
+console.log(x[y-1]);		#7
+
+
+
+var x = [1,3,5,7];
+x[0] = x.length-2;		# [ 2, 3, 5, 7 ]
+console.log(x);		
+
+
+
+var x = [1,3,5,7];
+x[x.length - 3] = x[x.length/2 + x.length/4];
+console.log(x);		#[ 1, 7, 5, 7 ]
+
+
+
+var x = [1,3,5,7];
+var y = [2,4,6];
+x[2] = y[x.length - 3];
+console.log(x);		# [ 1, 3, 4, 7 ]
+
+
+
+var x = [1,3,5,7];		***
+var y = [2,4,6];
+x[2] = y[x.length - 3] + x [ x[0] + y[0] ]; 
+
+#x[2](5) = y[1](4) + x[3](7) = 4 + 7
+
+console.log(x);		#[ 1, 3, 11, 7 ]
+
+
+
+		*** Level 3
+
+
+var x = [1,3,5];
+x[0] = x[2];
+x[1] = x[0];
+console.log(x);		#[ 5, 5, 5 ]
+
+
+var x = [1,3,5];
+vay = [0,5,7];
+x[0] = x[1] + y[2];
+y[1] = y[2] - x[0];
+console.log(x);			#[10,3,5]
+
+
+var x = [1,3,5,7];
+var y = [2,4,6];
+x[0] = x[1] + y[2];
+y[1] = y[2] - x[0];
+console.log(x);			# [ 9, 3, 5, 7 ]
+
+
+
+var x = [1,3,5,8];
+x[0] = x[x.length - 1];
+console.log(x);		     # [ 8, 3, 5, 8 ]
+
+
+
+var x = [1,3,5,8];
+var temp = x[x.length - 1];
+x[x.length - 1] = x[0];
+console.log(x);			# [ 1, 3, 5, 1 ]
+
+
+
+var x = [1,3,5,8];
+var temp = x[x.length - 1];
+x[x.length - 1] = x[0];
+x[0] = temp;
+console.log(x);		# [ 8, 3, 5, 1 ]
+
+
+
+var x = [1,3,5,8];
+x.pop();
+x.push(7);
+console.log(x);		#[ 1, 3, 5, 7 ]
+
+
+
+var x = [1,3,5];
+x[0] = 15;
+x[3] = 77; 			#add extra element to array
+console.log(x);		#[ 15, 3, 5, 77 ]
+
+
+
+var x = [1,3,5,8,2,-5,-8];
+x[0] = x[x.length - 1];
+x[x.length - 1] = x[0];
+console.log(x);		# [ -8, 3, 5, 8, 2, -5, -8 ]
+
+
+
+var x = [1,3,5,8,2,-5,-8];  
+var temp = x[x.length - 1];
+x[x.length - 1] = x[0];
+x[0] = temp;
+console.log(x);		#[ -8, 3, 5, 8, 2, -5, 1 ]
+
+
+
+var x = [1,3,5];
+x.push(7);
+console.log(x);		#[1,3,5,7]
+
+
+
+var x = [2,4,6];
+x.push(3);
+console.log(x);		#[2,4,6,3]
+
+
+var x = [1,3,5];
+var y = x[0] + x[1];
+x.push(7);
+console.log(x);		#[ 1, 3, 5, 7 ]
+
+
+
+var x = [2,3,5];
+x.push( x[0] + x[1]);
+console.log(x);		#[ 2, 3, 5, 5 ]
+
+
+
+var x = [1,3,5];
+x.pop();
+console.log(x);		# [1,3]
+	
+
+var x = [1,3,5];
+x.push(2);
+x.pop();
+console.log(x);		#[ 1, 3, 5 ]
+
+
+
+	*** level 4
+
+
+var counter =1;
+if(counter == 1) {
+	console.log("hello")
+}								#hello
+
+
+
+
+var counter = 1;
+if (counter == 1) {
+	console.log("hello");
+}
+else if (counter == 2) {
+	console.log("word");
+}								#hello
+
+
+ 
+ 
+var counter = 2;
+
+if(counter < 10) {
+	console.log('less than 10');
+}
+
+else {
+	console.log("greater than or equal to 10")
+}								#less than 10
+
+
+
+
+var counter = 1;
+if(counter == 5)
+{
+	console.log('coding');
+}
+else
+{
+	console.log('dojo');
+}								# dojo
+
+
+
+
+var x = [2,4,5];
+var counter = 0;
+
+if(x[counter] < 5) {
+	console.log('coding');
+}
+else {
+	console.log('dojo')
+}
+								# prints coding (x = 2, counter = 0)
+
+
+
+
+var x = [2,4,5];
+var counter = 2;
+
+if(x[counter]>10){
+	console.log('coding');
+}
+else {
+	console.log('dojo');
+}									# dojo
+
+
+
+
+
+var x = [2,4,5];
+
+var counter = 0;
+
+if(x[counter]> 0)
+{
+	console.log('coding');
+	counter=counter+1;
+}
+
+console.log(x[counter]);		# prints: coding,  counter is 4
+
+
+
+
+var x = [2,4,5];
+var counter = 0;
+
+if(x[counter] > 0) {
+	console.log('coding');
+	counter = counter + 1;
+}
+
+if (x[counter] > 0){
+	console.log('coding');
+	counter = counter + 1;
+}
+
+if(x[counter] > 0) {
+	console.log('coding');
+	counter = counter + 1;
+}
+
+console.log(x);
+console.log(counter);
+
+								# coding, coding, coding, [2,4,5], 3
+
+
+
+*** Level 5
+
+
+for (var i = 0; i < 10; i++) {
+	console.log(i);
+}							# prints from 0 to 9
+
+
+var x = 1;
+for (var i = 0; i < 3; i++)
+{ 
+ x = x + 1;
+}
+console.log(x);				#4
+
+
+var x = 1;
+for (var i = 0; i < 3; i+2)
+{ 
+ x = x + 1;
+}
+console.log(x);				#4
+console.log(i);				#3
+
+
+
+var x = 1;
+for (var i = 0; i < -1; i+2)
+{ 
+ x = x + 1;
+}
+console.log(x);				#1
+
+
+
+var x = [];
+for (var i = 0; i < 10; i++)
+{ 
+x.push ( i *2 );
+}
+console.log(x); 			# [ 0, 2, 4, 6, 8, 10, 12, 14, 16, 18 ]
+
+
+
+var x = [1,3,5,8];		***
+for( var i = 0;  i < x.length;  i++) {
+	if  (x [i]  > 4) {
+		x [i] = 0;
+		}	
+}
+console.log(x);				# [ 1, 3, 0, 0 ]
+
+
+
+var x = [-1,3,2,7]; 	***
+
+for(var i =0; i < x.length; i++) {
+	if(x[i] < i){
+		x[i] = -10;}	
+}
+console.log(x); 			#[ -10, 3, 2, 7 ]
+
+
+
+
+for (var i=20;  i ! = 10;  i--) {
+	console.log(i);
+	} 						#print from 20 to 11
+
+
+
+var x = 0;
+
+for (var i =1; i < 4; i++) {
+	x = x + i;
+	console.log(x);
+	console.log(i);
+	} 						# 1,1,3,2,6,3
+
+
+
+var x = 0;
+
+for (var i=1; i < 4; i= i + 2) {
+	x = x + i;
+	console.log(x);
+	console.log(i);	
+	
+} 							# 1,1,4,3
+
+
+
+	*** Level 6
+
+
+
+function a()
+{
+  console.log(5);				#output: 5
+}
+			
+
+
+
+function a()
+{
+  console.log(55);
+}
+
+
+
+function a()
+{
+  var b = 25;
+  b = b + 10;
+  console.log(b);
+}
+a();
+
+
+
+
+function a(b,c)
+{
+  console.log(b);
+  console.log(c);
+}
+
+a(3,5); 								#output 3,5
+
+
+
+
+function a(b, c)
+{
+  return b + c;
+}
+console.log(a(3,5));  				#output 8
+
+
+
+
+function a(b,c)
+{
+  return b * c;
+}
+console.log(a (3,5));   				#output 15
+
+
+
+
+function a(b, c)
+{
+  return b * 3 - c;
+}
+console.log (a(3,2));		 		#output 7
+console.log(a(1,1));  				#output 1
+
+
+
+function a(b,c)
+{
+  return b + c;
+}
+
+console.log(a(1,1) + a(2,2));	 	#output 6
+
+
+
+function a (b, c)
+{
+  return b + c;
+}
+console.log(a(1, a(2,3))); 	 		#output 6
+
+
+
+function a(b, c)
+{
+  return b + c;
+}
+console.log (a(a(1,2), a(2,3)));  	#output 8
+
+
+
+
+function a (b,c)
+{
+  return b + c;
+}
+console.log(a(a(1,2), a(2,(a(1,2))))); 	 #output 8
+
+
+
+
+function a(b, c)
+{
+  console.log(b);
+  return b + c;
+}
+
+console.log (a(3,2));
+
+
+
+function a(b, c)
+{
+  console.log (c);
+  return b - c;
+}
+console.log (a (3,2));  			#output 2,1
+
+
+
+function a()
+{
+  return 25;
+  return 50;
+}
+console.log(a()); 				#output 25
+
+
+
+
+function a(b, c)
+{
+  return 25;
+  return b + c;
+}
+console.log(a.3,2);   			#output 25
+
+
+
+
+function a(b, c)
+{
+  return b + c;
+}
+console.log(a(a(2,3), a(1,1)));		# 7
+
+
+
+
+function a(b, c)
+{
+  return 0;
+}
+console.log(a(a(2,3), a(1,1)));   	#output 0
+
+
+
+*** Level 7
+
+
+
+for (var i=1; i < 100; i++)
+{
+  if(i == 10)
+  {
+    break;
+  }
+  console.log(i);
+}
+									#output: 1,2,3,4,5,6,7,8,9
+
+
+
+for (var i = 13; i <= 20; i++)
+{
+  if (i == 50)
+  {
+    break;
+  }
+  console.log(i);
+}
+								#output: 13,14,15,16,17,18,19,20
+
+
+
+for(var i = 1; i <=20; i++)
+{
+  if ( i>5)
+  {
+    break;
+  }
+  else
+    {
+      console.log("hello");
+    }
+}
+						#output: hello, hello, hello, hello, hello
+
+
+
+
+
+for(var i=9; i <=20; i++)
+{
+  if(i == 10)
+  {
+    break;
+  }
+  else 
+  {
+    console.log("hello");
+  }
+  console.log(i);		#output hello, 9
+
+
+
+var message = "CodingDojo";
+
+for (var i=5; i<=20; i++)
+{
+  if(i == message.length)
+  {
+    break;
+  }
+  console.log(i);
+}
+
+#output 5,6,7,8,9
+
+
+
+	*** Level 8
+	
+
+
+for(var num1=1; num1 <= 3; num1++)	//runs 3 times
+{
+  for(var num2 = 1; num2 <= 2; num2 ++) //runs 2 times every cycle
+  {
+    console.log("Dojo");
+  }
+}							# Dojo,Dojo,Dojo,Dojo,Dojo,Dojo
+
+
+
+for(var num1 = 0; num1 <= 3; num1++)	***
+{
+  for (var num2 = 0; num2 ++)   # this loop never runs
+  {
+    if(num1 = 5) 
+    {
+      console.log("coder");
+    }
+  }
+  console.log('ninja');
+}
+									# ninja, ninja, ninja, ninja
+
+
+
+var x = 'coding';
+var y = 'dojo';
+
+for(var num1 = 0; num1 < x.length -3; num1++)
+{
+  for(var num2 = 0; num2 <= y.length-4; num2++)
+  {
+    console.log(x + y);
+  }
+}			# codingdojo, codingdojo, codingdojo, codingdojo
+
+
+
+
+var msg1 = 'hello';			//***
+var msg2 = 'world!';
+
+for (var num1 = 1; num1 <= msg1.length; num1++)
+  // for (var num1=1; num1 <= 5, num1++) {
+
+  for (
+    var num2 = 1;
+    num2 <= msg2.length;
+    num2++
+  ) // for(var num2 = 1, num2 <=6 ; num2++)
+
+  {
+    if (msg1.length == 4) {
+      console.log(msg1 + ' ' + msg2);
+    }
+  }
+if (num1 != 4) {
+  console.log(msg1.length + msg2.length);
+}
+ 										# 11,11,11,11  
+
+  
+  
+  
+  
+
+var array = [5,3,4,1];
+
+for(var x =0; x<array.length; x++)
+  //(var x = 0; x < 4, x++)
+{
+  for(var y = array.length - 1; y >= x; y--)
+    //(var y = 3; y>=x; y--)
+  {
+    if(array[x] > array[y])
+    { // in this block we're swaping a values and we nee temp var
+      var temp = array[y];
+      array[y] = array[x];
+      array[x] = temp;
+    }
+  }
+}
+console.log(array);						 # [1,3,4,5]
+
+
+
+	*** Level 9
+	
+	
+var number = ' '; 				//empty string
+var x = 5;
+
+while (x < 10)
+{
+  number += x;
+  x++;
+}
+console.log(number) 				# "56789" - string
+
+
+
+var count = 1;
+
+while(count < 5)
+{
+  console.log('Dojo);
+  count++;
+}							#Dojo,Dojo,Dojo,Dojo
+
+
+
+var x =1;
+var y = 48;
+
+while(x < 100)
+{
+  if (x == y)
+  {
+    break;
+  }
+  x++;
+}
+console.log(x); 				#output: 48
+
+
+
+var message = "coding";
+var x = 1;
+while (x < 100)
+{
+  x++;
+}
+console.log(message); 		 # output: coding
+
+
+
+var x = 7;
+var message = "boom";
+
+while (x > message.length)
+// while (x > 4)
+{
+  console.log(message + x):
+  x --;
+}							# boom7, boom6, boom5
+
+
+
+		*** Level 10
+	
+
+
+var x = [['coding','boom],['dojo','yeah']];
+console.log(x[0][0] + '-' + x[1][0]);
+											# output: coding-dojo
+
+
+
+var x = [[5,10],[15,20,25,30],[45,50]];
+console.log(x[1][3] + x[2][1]+ x[0][0]);
+												# output: 85
+
+
+
+
+var x = 2;
+var y = [[2,4,6,8],[10],[12,32,50]];
+if(y[0][0] == x)
+{
+  console.log("Hello World!");
+}
+else
+{
+  console.log("Codingdojo");
+}											#Hello World!
+
+
+
+
+var numbers = [ [1,4,5,7],[2,6,8,9] ];
+
+if(numbers[0][3] == 7)
+{
+  number[0].push(10);
+  console.log(numbers[0]);
+}										# [1, 4, 5, 7, 10]
+
+
+
+
+var x = [[2,4,6,8],[12],[10,32,50]];
+if (x[1][0] - x[2][0] == x[0][0])
+{
+  console.log(x[1][0] + x[2][1] + x[0][2]);
+}
+else
+{
+  console.log(x[0][0] + x[1][0] + x[0][3]);
+}
+												#output: 50
+
+
+
+	*** Level 11
+	
+
+var x = [];
+x[0] = 'Hello';
+x[1] = 'World';
+x[2] = 100;
+console.log(x.length + ''+ x[0]);   				# 3 Hello
+
+
+
+var x = 2;
+var points = [40,100,1,5,25,10];
+if (points[x] == 1)
+{
+  console.log(points[x-2])
+}
+else
+{
+  console.log('hello');
+}												# 40
+
+
+
+
+var x=2;
+var y = [1,2,3,4,5];
+var z = [6,7,8,9,10];
+
+if (y[x] + z1 == z[4])
+{
+  console.log('Dojo');
+}
+else
+{
+  console.log('Hello World');
+}
+											#output: Dojo
+
+
+
+
+var x = 'boom';
+var y = ['hi','hello','hey'];
+
+ if (x.length == 3)
+ {
+   y.push(x);
+   console.log(x[3]);
+ }
+ else
+ {
+   console.log(x);
+ }										#output: boom
+
+
+
+
+var x = [‘John’, ‘Chris’, ‘Mark’, ‘PJ’];
+
+if(x.length == 4)
+{
+ 	console.log(x [x.length -3]);
+}
+else
+{
+	console.log(‘Dojo’);
+}										#Chris
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=	=	=	=	=	=	=	=	=
+var x = [1,2,3,4,5,10]
+for(var i=0; i<5;i++){   
+   console.log(i);
+}
+var x = [1,2,3,4,5,10]
+for(var i=0; i<5; i++)
+{
+   i = i + 1;  
+   console.log(i);
+}
+var x = [1,2,3,4,5,10]
+for(var i=0; i<5; i++)
+{
+   i = i + 3; 
+   console.log(i);
+}
+function y(num1, num2){    
+   return num1+num2;
+}
+console.log(y(2,3))
+console.log(y(3,5))
+function y(num1, num2){
+   console.log(num1);   
+   return num1+num2;
+}
+console.log(y(2,3))
+console.log(y(3,5))
+a = 15;
+console.log(a);
+function y(a){
+   console.log(a);   
+   return a;
+}
+b = y(10);
+console.log(b);
+a = 15;
+console.log(a);
+function y(a){
+   console.log(a);   
+   return a*2;
+}
+b = y(10);
+console.log(b);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

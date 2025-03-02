@@ -1,0 +1,1209 @@
+⚜️ https://www.codewars.com/kata/57cfdf34902f6ba3d300001e/train/python
+
+
+Sort and Star
+
+
+def two_sort(array):
+    first_value = min(array)
+    result = ''
+    for letter in first_value:
+        result = result + letter + '***'
+    return result[:-3]
+
+
+def two_sort(array):
+    array.sort()
+    q = []
+    for i in array[0]:
+        q.append(i + '***')
+    return ''.join(q).rstrip('***')
+
+
+def two_sort(array):
+    array.sort()
+    return ''.join(i + '***' for i in array[0])[:-3]
+
+
+
+def two_sort(array):
+    return ''.join([i+'***' for i in sorted(array)[0]]).strip('*')
+    
+    
+    
+def two_sort(array):
+    # your code here
+    array.sort()
+    first_word = "***".join([l for l in array[0]])
+    return first_word
+
+
+def two_sort(a):
+    a.sort()
+    b=a[0]
+    b='***'.join(b)
+    return b
+
+
+def two_sort(a):
+    a = sorted(a)
+    result = "***".join(a[0])
+    return result
+    
+
+def two_sort(array):
+    sorted_array = sorted(array)[0]
+    return '***'.join(sorted_array[i:i+1] for i in range(0, len(sorted_array)))
+
+    
+def two_sort(array):
+    return '***'.join(list(sorted(array)[0]))
+    
+
+    
+def two_sort(array):
+    res = sorted(array)
+    firstw = res[0]
+    answer = ""
+    for letter in firstw:
+        answer += letter + "***" 
+    return answer[:-3]
+
+
+def two_sort(array):
+    return "***".join([c for c in sorted(array)[0]])
+
+
+def two_sort(array):
+    return "".join(x +"***" for x in sorted(array)[0]).rstrip("*")
+
+
+def two_sort(lst):
+    return '***'.join(min(lst))
+    
+
+def two_sort(array):
+    res = ""
+    array.sort()
+    for char in array[0]:
+        res += f"{char}***"
+        
+    return res[:-3]
+    
+    
+def two_sort(a):
+    a = sorted(a)
+    result = a[0]
+    result = result.replace("", "***")
+    return result [3:-3]
+
+
+
+def two_sort(array):
+    array = sorted(array)
+    res = ''
+    v = 0
+    for i in array[0]:
+        res += str(i)
+        v += 1
+        if v == len(array[0]):
+            break
+        else:
+            res += '***'
+    return res
+
+
+def two_sort(array):
+    word = sorted(array)[0]
+    newWord = ""
+    for letter in word:
+        newWord+=(letter + "***")
+    return(newWord[:-3])
+
+
+⚜️ https://www.codewars.com/kata/53dbd5315a3c69eed20002dd/python
+
+List Filtering
+
+def filter_list(lst):
+    return [item for item in lst if isinstance(item, int) and item >= 0]
+    
+
+def filter_list(l):
+    output = []
+    for x in l:
+        if type(x) == int:
+            output.append(x)
+    return output
+    
+
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [i for i in l if type(i) != str]
+
+
+def filter_list(l):
+    new_list =[]
+    for x in l:
+        if type(x) != str:
+            new_list.append(x)
+    return new_list
+    
+
+def filter_list(l):
+    # Created Empty list to return filtered elements
+    f_list = []
+    
+    # for loop for each member in list passed as argument
+    for i in l:
+        # Check if the element is integer
+        if isinstance(i, int):
+            # Append that element in the filtered list
+            f_list.append(i)
+    # return a new list with the strings filtered out
+    return f_list
+    
+
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [i for i in l if not isinstance(i, str)]
+  
+  
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [e for e in l if isinstance(e, int)]
+  
+  
+def filter_list(lst):
+  return list(filter(lambda x: isinstance(x, int), lst))  
+
+
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [e for e in l if type(e) is int]
+
+
+
+def filter_list(l):
+  'return a new list with the strings filtered out'
+  return [x for x in l if type(x) is not str]
+
+
+def filter_list(s):
+    return list(filter(lambda x: isinstance(x, int), s))
+    
+    
+def filter_list(lst):
+	return [elem for elem in lst if isinstance(elem, int)]
+
+
+⚜️ https://www.codewars.com/kata/55ad04714f0b468e8200001c/python
+
+
+get character from ASCII Value
+
+Write a function get_char() / getChar() which takes a number and returns the corresponding ASCII char for that value.
+
+
+
+def get_char(c):
+    return chr(c)
+    
+    
+def get_char(value):
+    '''Return the ASCII char for a given value'''
+    return chr(value)
+
+
+def get_char(c):
+    
+    myascii = {}
+    myascii['32'] = ' '
+    myascii['33'] = '!'
+    myascii['34'] = '"'
+    myascii['35'] = '#'
+    myascii['36'] = '$'
+    myascii['37'] = '%'
+    myascii['38'] = '&'
+    myascii['39'] = ''
+    myascii['40'] = '('
+    myascii['41'] = ')'
+    myascii['42'] = '*'
+    myascii['43'] = '+'
+    myascii['44'] = ','
+    myascii['45'] = '-'
+    myascii['46'] = '.'
+    myascii['47'] = '/'
+    myascii['48'] = '0'
+    myascii['49'] = '1'
+    myascii['50'] = '2'
+    myascii['51'] = '3'
+    myascii['52'] = '4'
+    myascii['53'] = '5'
+    myascii['54'] = '6'
+    myascii['55'] = '7'
+    myascii['56'] = '8'
+    myascii['57'] = '9'
+    myascii['58'] = ':'
+    myascii['59'] = ';'
+    myascii['60'] = '<'
+    myascii['61'] = '='
+    myascii['62'] = '>'
+    myascii['63'] = '?'
+    myascii['64'] = '@'
+    myascii['65'] = 'A'
+    myascii['66'] = 'B'
+    myascii['67'] = 'C'
+    myascii['68'] = 'D'
+    myascii['69'] = 'E'
+    myascii['70'] = 'F'
+    myascii['71'] = 'G'
+    myascii['72'] = 'H'
+    myascii['73'] = 'I'
+    myascii['74'] = 'J'
+    myascii['75'] = 'K'
+    myascii['76'] = 'L'
+    myascii['77'] = 'M'
+    myascii['78'] = 'N'
+    myascii['79'] = 'O'
+    myascii['80'] = 'P'
+    myascii['81'] = 'Q'
+    myascii['82'] = 'R'
+    myascii['83'] = 'S'
+    myascii['84'] = 'T'
+    myascii['85'] = 'U'
+    myascii['86'] = 'V'
+    myascii['87'] = 'W'
+    myascii['88'] = 'X'
+    myascii['89'] = 'Y'
+    myascii['90'] = 'Z'
+    myascii['91'] = '['
+    myascii['92'] = '\\'
+    myascii['93'] = ']'
+    myascii['94'] = '^'
+    myascii['95'] = '_'
+    myascii['96'] = '`'
+    myascii['97'] = 'a'
+    myascii['98'] = 'b'
+    myascii['99'] = 'c'
+    myascii['100'] = 'd'
+    myascii['101'] = 'e'
+    myascii['102'] = 'f'
+    myascii['103'] = 'g'
+    myascii['104'] = 'h'
+    myascii['105'] = 'i'
+    myascii['106'] = 'j'
+    myascii['107'] = 'k'
+    myascii['108'] = 'l'
+    myascii['109'] = 'm'
+    myascii['110'] = 'n'
+    myascii['111'] = 'o'
+    myascii['112'] = 'p'
+    myascii['113'] = 'q'
+    myascii['114'] = 'r'
+    myascii['115'] = 's'
+    myascii['116'] = 't'
+    myascii['117'] = 'u'
+    myascii['118'] = 'v'
+    myascii['119'] = 'w'
+    myascii['120'] = 'x'
+    myascii['121'] = 'y'
+    myascii['122'] = 'z'
+    myascii['123'] = '{'
+    myascii['124'] = '|'
+    myascii['125'] = '}'
+    myascii['126'] = '~'
+    
+    if c in myascii:
+        out = myascii[str(c)]
+    else:
+        out = chr(c)
+    return out
+
+
+⚜️ https://www.codewars.com/kata/56cd44e1aa4ac7879200010b/python
+
+
+Is the string uppercase?
+
+
+
+def is_uppercase(inp):
+    caps = inp.upper()
+    if caps == inp:
+        return True
+    else :
+        return False
+        
+        
+def is_uppercase(inp):
+    a = ""
+    b = "$%&"
+    if inp == a:
+        return True
+    if inp == b:
+        return True
+    return inp.isupper()
+    
+
+
+def is_uppercase(inp):
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    
+    for i in range (len(inp)):
+        if inp[i] not in letters:
+            pass
+        else:
+            return False
+    return True
+
+
+
+def is_uppercase(inp):
+    for s in inp:
+        if s.isalpha() and not s.isupper():
+            return False
+    return True
+
+
+
+def is_uppercase(inp):
+    if inp == "$%&":
+        return True
+    return inp.isupper()
+
+
+def is_uppercase(inp):
+    return all( [n.isupper() for n in inp if n.isalpha()] )
+
+
+def is_uppercase(inp):
+    return not any(x.islower() for x in inp)
+
+
+
+import re
+def is_uppercase(inp):
+    return len(re.findall("[a-z]+", inp)) < 1
+
+
+import re
+def is_uppercase(inp):
+    if inp.upper() == inp:
+        return True
+    elif re.match('[a-z]',inp) != None:
+        return False
+    else:
+        return False
+        
+
+
+def is_uppercase(inp):
+    return inp.upper()==inp
+    
+    
+    
+def is_uppercase(inp):
+    return all( i.isupper() for i in inp if i.isalpha() )    
+    
+ 
+    
+def is_uppercase(inp):
+    if inp==inp.upper() or len(inp)==0:
+        return True
+    else:
+        return False
+        
+        
+def is_uppercase(inp):
+    retBool = True 
+    for i in inp:
+        if i == " ":
+            continue
+        if ord(i) > 97 and ord(i) < 97+26:
+            return False
+    return True
+    
+    
+
+def is_uppercase(inp):
+    is_char = [c for c in inp if (ord(c) >= 65 and ord(c) <= 90) or (ord(c) >= 97 and ord(c) <= 122)]
+    return all([c.isupper() for c in is_char])
+    
+    
+    
+def is_uppercase(inp):
+    for element in inp:
+        if element.islower():
+            return False
+    return True
+
+
+def is_uppercase(inp):
+    return inp.lower()==inp.swapcase()    
+
+
+  *****  
+class Word:
+    
+    def __init__(self,string=None):
+        self.string = string
+    
+    def isup(self,string):
+        if ord(string)-96 > 0:
+            if not string.isalpha():
+                return True 
+            return False
+        return True
+        
+    def is_upper(self):
+        string = self.string
+        for i in range(len(string)):
+            if not (self.isup(string[i])):
+                return False
+        return True
+        
+
+
+def is_uppercase(string):
+    a = Word(string)
+    return a.is_upper()
+    
+ 
+   ***** 
+   
+def is_uppercase(inp):
+    for letter in inp:
+        if letter in 'abcdefghijklmnopqrstuvwxyz':
+            return False
+    return True
+    
+    
+
+def is_uppercase(inp):
+    from re import search
+    if search(r'[a-z]', inp):
+        return False
+    return True
+    
+    
+    
+def is_uppercase(stg):
+    return not any(c.islower() for c in stg)
+    
+        
+⚜️ https://www.codewars.com/kata/578553c3a1b8d5c40300037c/python
+
+Ones and Zeros
+
+
+Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+
+Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+
+
+
+def binary_array_to_number(arr):
+  sum = 0
+  for i in range(0, len(arr)):
+      sum += arr[i] * 2**(len(arr)-1-i)
+  return sum
+
+
+def binary_array_to_number(arr):
+    total = 0
+    
+    for n in range(len(arr)):
+        if arr[n] == 1:
+            total += pow(2,len(arr)-1-n)
+    return total
+
+
+def binary_array_to_number(arr):
+    return int("".join(map(str, arr)), 2)
+    
+   
+def binary_array_to_number(arr):
+  return int(''.join([str(i) for i in arr]), 2)
+   
+    
+def binary_array_to_number(arr):
+  # your code
+  res = 0
+  li = [x for x in reversed(arr)]
+  print(li)
+  for i in range(len(li)):
+      if li[i] == 1:
+          res = res + 2**i
+  return res
+
+
+def binary_array_to_number(arr):
+    number = 0
+    for i in range(len(arr)):
+        number += arr[i]*2**(len(arr)-1-i)
+    return number
+
+
+def binary_array_to_number(arr):
+    s = 0
+    for digit in arr:
+        s = s * 2 + digit
+
+    return s
+    
+    
+def binary_array_to_number(arr):
+  # your code
+  binary = "".join([str(n) for n in arr])
+  return int(binary, 2)    
+
+def binary_array_to_number(arr):
+    return sum(digit * 2**i for i, digit in enumerate(reversed(arr)))
+
+
+def binary_array_to_number(arr):
+  return sum( 2**i for i, n in enumerate( arr[ ::-1 ] ) if n )
+  
+  
+def binary_array_to_number(arr):
+    strng = ' '
+    for nr in arr:
+        strng = strng + str(nr)
+    return  (int(strng,2))
+    
+    
+def binary_array_to_number(arr):
+  # your code
+  res = 0
+  arr.reverse()
+  for index in range(len(arr)):
+      res += arr[index]*pow(2,index)
+  return res
+  
+
+def binary_array_to_number(arr):
+  return sum(value*(2**index) for index, value in enumerate(arr[::-1]))
+
+
+
+
+⚜️ https://www.codewars.com/kata/51f2b4448cadf20ed0000386/python
+
+Remove anchor from URL
+
+Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+
+def remove_url_anchor(url):
+ 	return url.split('#')[0]
+
+
+
+def remove_url_anchor(url):
+    index = url.find('#')
+    return url[:index] if index >= 0 else url
+    
+
+
+def remove_url_anchor(url):
+    pos = 0
+    for i in url:
+        if i == '#':
+            break
+        pos += 1
+    # print(url[:pos])
+    return url[:pos]
+    
+    
+def remove_url_anchor(url):
+    # TODO: complete 
+    #create an empty list and append url to it
+    li = [] 
+    for i in url:
+        li.append(i)
+    # check if # is in the list....if yes delete # and values after it
+    if "#" in li:
+        x = li.index("#") # get the index of # in the list
+        del li[x :: ] # deleting x and values after it
+        newli = "".join(li) # converting the list to a string back
+        return newli 
+    else:
+        newli = "".join(li) 
+        return newli
+
+
+def remove_url_anchor(url):
+    parsed_url = ''
+    for i in url:
+        if i == '#':
+            return parsed_url
+        else:
+            parsed_url += i
+    return parsed_url
+
+
+
+import re
+
+def remove_url_anchor(url):
+    fn = re.search(r"[^#]+", url)
+    return fn.group(0)
+    
+
+
+def remove_url_anchor(url):
+  try:
+  	return url[:url.index('#')]
+  except:
+    return url
+    
+    
+
+⚜️ https://www.codewars.com/kata/52f3149496de55aded000410/python
+
+Summing a number's digits
+
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
+
+
+def sum_digits(number):
+    return sum(int(c) for c in str(abs(number)))
+
+
+******
+def sum_of_decimal_digits(n):
+    return sum(int(c) for c in str(abs(n)))
+
+
+This function takes a number n as input and first calculates its absolute value using the abs function. The absolute value of n is then converted to a string using the str function, and a list comprehension [int(c) for c in str(abs(n))] is used to build a list of integers representing the decimal digits of n. Finally, the sum function is used to calculate the sum of the integers in the list.
+
+Here's an example usage of the function:
+
+>>> sum_of_decimal_digits(123)
+6
+>>> sum_of_decimal_digits(-456)
+15
+>>> sum_of_decimal_digits(789)
+24
+
+******
+
+def sumDigits(number):
+    return sum([int(i) for i in str(abs(number))])
+    
+
+def sumDigits(number):
+    '''
+    return the abs of each of input number's decimal digits
+    '''
+    sum = 0
+    number = abs(number)
+    for i in str(number):
+        sum += int(i)
+    return sum
+    
+  
+ def sum_digits(number):
+    return sum(int(x) for x in str(number) if x.isdigit())  
+    
+    
+def sumDigits(number):
+  # use list comprehensions and filter if a digit has "-"
+  return reduce(lambda x, y: x+y, [int(digit) for digit in str(number) if digit != "-"])
+    
+    
+
+def sumDigits(number):
+    number = abs(number)
+    return_number = 0
+    
+    while number > 0:
+        return_number += number % 10
+        number = int(number / 10)
+        
+    return return_number
+
+
+
+def sum_digits(number):
+    return sum(map(int, str(abs(number))))
+    
+    
+def sumDigits(number):
+    sum = 0
+    for s in str(abs(number)):
+        sum+=int(s)
+    return sum
+    
+    
+def sumDigits(number):
+    return sum([ int(a) for a in str(number if number>=0 else -number)])
+    
+    
+
+def sumDigits(number):
+    acc = 0
+    number = abs(number)
+    while number >= 10:
+        last_digit = number%10
+        acc += last_digit
+        number = (number-last_digit)/10
+    acc += number
+    
+    return acc
+    
+    
+def sum_digits(number):
+    sum = 0
+    if number < 0:
+        number = (-1)*number
+    for i in str(number):
+        sum = sum + int(i)
+    return sum    
+    
+    
+
+def sum_digits(number):
+    y = 0
+    for x in str(number):
+        if x.isnumeric():
+            y += int(x)
+        
+    return y    
+
+
+
+def sum_digits(number):
+    a = list(''.join(str(abs(number))))
+    return sum(list(map(int, a)))
+    
+    
+def sum_digits(number):
+    ans = 0
+    for i in str(number):
+        if i != '-':
+            ans += int(i)
+    return ans
+    
+   
+def sum_digits(number):
+    return sum(int(i) for i in str(number).lstrip('-'))
+    
+
+def sum_digits(number):
+    num_string = str(abs(number))
+    total = 0
+    
+    for char in num_string:
+        total += int(char)
+    
+    return total
+    
+    
+⚜️ https://www.codewars.com/kata/5547929140907378f9000039/python
+
+Vowel remover
+
+
+def remove_vowels(string):
+    vowels = "aeiou"
+    new_string = ""
+    
+    for char in string:
+        if char.lower() not in vowels:
+            new_string += char
+    return new_string
+
+
+input_string = "Hello World!"
+output_string = remove_vowels(input_string)
+print(output_string)
+
+
+def shortcut( s ):
+    return s.replace("a", "").replace("e", "").replace("i","").replace("o","").replace("u","")
+
+
+def shortcut( s ):
+    return "".join([char for char in s if char not in "aeiou"])
+    
+    
+def shortcut(s):
+    return s.translate(None, 'aeiou')
+    
+    
+def shortcut( s ):
+    for vowel in "aeiou":
+        s = s.replace(vowel, "")
+    return s
+    
+
+def shortcut(s):
+    for i in ["a","e","i","o","u"]:
+        if i in s:
+            s = s.replace(i,"")
+
+    return(s)
+    
+
+
+
+shortcut = lambda string: ''.join([i for i in string if i not in 'aeiou'])
+
+
+import re
+def shortcut( s ):
+    return re.sub('[aeiou]','',s)
+
+
+def shortcut( s ):
+    # ...
+    vowel = 'aeiou'
+    appended_item = []
+    for item in s:
+        if item not in vowel:
+            appended_item.append(item)
+    string = ''.join(appended_item)
+    return string
+    
+
+def shortcut( s ):
+    result = ''
+    vowels = 'aeiou'
+    for i in s:
+        if i not in vowels:
+            result +=i
+    return result
+
+
+⚜️ https://www.codewars.com/kata/5b853229cfde412a470000d0/python
+
+Twice as old
+
+Your function takes two arguments: current father's age (years)
+current age of his son (years)
+Сalculate how many years ago the father was twice as old as his son (or in how many years he will be twice as old). The answer is always greater or equal to 0, no matter if it was in the past or it is in the future.
+
+
+def twice_as_old(dad_years_old, son_years_old):
+    '''Calculates how many years ago the father was twice as old as his son, or how many years til he will be'''
+    twice_sons_age = 2*son_years_old
+    difference = dad_years_old - twice_sons_age
+    return abs(difference)
+    
+    
+def twice_as_old(dad_years_old, son_years_old):
+    return abs(dad_years_old - 2*son_years_old)
+    
+    
+def twice_as_old(dad_years_old, son_years_old):
+    return dad_years_old - son_years_old*2 if dad_years_old > son_years_old*2 else son_years_old*2 - dad_years_old
+    
+    
+def twice_as_old(dad_years_old, son_years_old):
+    pass
+    if son_years_old == 0 :
+        return dad_years_old
+    else:
+        return abs(dad_years_old - (son_years_old*2))
+
+
+
+⚜️ https://www.codewars.com/kata/56fa3c5ce4d45d2a52001b3c/train/python
+
+Exclusive "or" (xor) Logical Operator
+
+def xor(a,b):
+    return a != b
+    
+    
+def xor(a,b):
+    return a ^ b
+    
+    
+def xor(a,b):
+    return a is not b
+
+
+def xor(a,b):
+    print(a,b)
+    if a == True and b == True:    
+        return False
+    elif a == True or b == True:
+        return True
+    return False
+    
+
+def xor(a,b):
+    return bool((a + b) % 2)
+    
+    
+
+def xor(a,b):
+    return a + b == 1
+
+
+def xor(a, b):
+    return (a or b) and not (a and b) 
+    
+    
+def xor(a,b):
+    return False if (a and b) == True or (a or b) == False else True
+    
+    
+def xor(a, b):
+    return (not a) != (not b)
+    
+    
+def xor(a,b):
+    if a == True and b == True:return False
+    if a == True and b == False:return True
+    if a == True and b == True:return True
+    if a == False and b == False:return False
+    else: return True
+    
+    
+def xor(a,b):
+    return abs(a-b)
+    
+    
+    
+def xor(a,b):
+    if a and not b:
+        return True
+    elif not a and b:
+        return True
+    else:
+        return False
+        
+        
+def xor(a,b):
+    '''
+    this function returns true if exactly one of the two expressions
+    are true, false otherwise.
+    
+    pseudo-code:
+    if True == 1 from either a,b 
+        return true
+    else:
+        return false
+    '''
+#     solution 1 passes!
+# 
+#     if a == True and b == False or a == False and b == True:
+#         return True
+#     else:
+#         return False
+
+    #solution 1 refactored
+    return True if a==True and b==False or a==False and b==True else False
+
+
+
+⚜️ https://www.codewars.com/kata/57a083a57cb1f31db7000028/python
+
+Powers of 2
+
+Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+
+
+
+def powers_of_two(n):
+    return [2**i for i in range(n+1)]
+    
+
+
+def powers_of_two(n):
+    if(n == 0):
+        return [1]
+    return powers_of_two(n-1) + [2**n]
+
+
+def powers_of_two(n):
+    a = []
+    for i in range(0, n + 1):
+        a.append(2 ** i)    
+    return a
+    
+""" 
+def powers_of_two(n):
+    return [1<<x for x in range(n + 1)]
+   
+   
+   This code implements a function powers_of_two that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n (inclusive).
+
+The function works as follows:
+
+It uses a list comprehension to generate a list of powers of 2, where the exponent ranges from 0 to n (inclusive).
+
+The expression 1<<x calculates 2 raised to the power of x. 
+
+The operator << is the bitwise left shift operator in Python. 
+
+It takes two operands: the first one is the number to be shifted, and the second one is the number of positions by which the number should be shifted to the left. In this case, 1 is the number to be shifted, and x is the number of positions. 
+
+The result of 1<<x is equivalent to 2**x.
+
+Therefore, the function returns a list of powers of 2, where the exponent ranges from 0 to n (inclusive), calculated using the bitwise left shift operator. 
+
+$$$$$$
+
+The << operator in Python performs a bitwise left shift on an integer value. It takes two operands: the first one is the number to be shifted, and the second one is the number of positions by which the number should be shifted to the left.
+
+Here are some examples of using the << operator:
+
+# Shift the binary representation of 5 two positions to the left
+# The binary representation of 5 is 00000101
+# After the shift, it becomes 0000010100, which is 20 in decimal
+print(5 << 2)  # Output: 20
+
+# Shift the binary representation of 9 one position to the left
+# The binary representation of 9 is 00001001
+# After the shift, it becomes 00010010, which is 18 in decimal
+print(9 << 1)  # Output: 18
+
+# Shift the binary representation of 10 three positions to the left
+# The binary representation of 10 is 00001010
+# After the shift, it becomes 010100, which is 80 in decimal
+print(10 << 3)  # Output: 80
+
+# Shift the binary representation of 15 four positions to the left
+# The binary representation of 15 is 00001111
+# After the shift, it becomes 111100, which is 240 in decimal
+print(15 << 4)  # Output: 240
+
+
+Note that the bitwise left shift operator is equivalent to multiplying the number by 2 raised to the power of the number of positions to be shifted.
+    
+    
+    
+"""    
+    
+def powers_of_two(n): 
+	return [ 2 ** i for i in range(n+1) ]
+
+
+
+def powers_of_two(n):
+    arr = []
+    for i in range(n + 1):
+        arr.append(2 ** i)
+    return arr
+    
+
+def powers_of_two(n):
+    return list(map(lambda n: 2**n, [i for i in range(n+1)]))
+    
+
+
+⚜️ https://www.codewars.com/kata/57a55c8b72292d057b000594/python
+
+Reversing Words in a String
+
+
+def reverse(st):
+    return ' '.join(st.split()[::-1])
+    
+
+This function uses the split method to split the input string s into a list of words, using whitespace as the separator. 
+
+The [::-1] slice notation reverses the order of the list of words. Finally, the join method is used to join the reversed list of words back into a single string, using a single space as the separator.
+
+
+
+def reverse(st):
+    s = st.split()
+    return ' '.join(s[::-1])
+    
+    
+    
+def reverse(s):
+    s = s.split()
+    s = s[-1::-1]
+    return ' '.join(s)
+    
+
+def reverse(st):
+    str_list = st.split()
+    str_list_reverse = str_list[::-1]
+    str_list_convert = " ".join(str_list_reverse)
+    return str_list_convert
+   
+
+def reverse(st):
+    return " ".join(reversed(st.split())).strip()
+    
+    
+def reverse(st):
+    st = st.split()
+    st.reverse()
+    return ' '.join(st)
+    
+    
+    
+def reverse(st):  
+    words = st.strip().split()
+    words.reverse()
+    return ' '.join(words)    
+    
+    
+*** def reverse(string : str) -> str:
+    	return ' '.join(reversed(string.split()))
+    	
+    	
+def reverse(s):
+    return " ".join([i for i in s.split()][::-1])
+    
+    
+    
+def reverse(st):
+    item = list(st.split())
+    return ' '.join(item[::-1])
+
+
+def reverse(st):
+    for sentenses in st.split('\n'):
+        return(' '.join(sentenses.split()[::-1]))
+    return st [::-1]
+    
+    
+def reverse(st):
+    st=st.split(' ')
+    st=st[::-1]
+    
+    st=' '.join(st)
+    st.strip()
+    return ' '.join(st.split())
+
+
+
+def reverse(st):
+    b = st.split()
+    return ' '.join([b[i] for i in range(len(b)-1,-1,-1)])
+
+
+import re
+def reverse(st):
+    # Your Code Here
+    tmps = " ".join(st.strip().split(' ')[::-1])
+    return re.sub(r"[ ]{2,}", " ", tmps)
+    
+
+def reverse(st):
+    
+    result = []
+    splited_st = st.split(" ")
+    
+    result = list(filter(None, splited_st))
+    
+    result = reversed(result)
+    return " ".join(result)
+
+
+
+def reverse(st):
+    l=st.split(" ")[::-1] 
+    return " ".join([x for x in l if x!=""])
+
+⚜️

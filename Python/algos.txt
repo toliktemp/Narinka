@@ -1,0 +1,343 @@
+													
+													⚜️  Algos  Easy Strings Questions ⚜️
+
+⚜️ "Swap elements in array"
+arr = [1,2,3,4,5,6]
+
+def swap_elements_in_array(arr, el1, el2):
+    temp = arr[el1]
+    arr[el1] = arr[el2]
+    arr[el2] = temp
+    return arr
+
+x = swap_elements_in_array(arr, 1, 4)
+print(x)			# [1, 5, 3, 4, 2, 6]
+
+
+
+⚜️ "Returning Tuples for Unpacking"
+
+stock_prices = [('AAPL',200),('GOOG',300),('MSFT',400)]
+
+# print stock and price
+for item in stock_prices:
+    print(item) 			# ('AAPL', 200) ('GOOG', 300) ('MSFT', 400)
+
+# print only stock
+for stock, price in stock_prices:
+    print(stock) 			# AAPL GOOG MSFT
+
+# print only price
+for stock, price in stock_prices:
+    print(price) 		# 200 300 400
+
+
+⚜️"The employee of the month function will return both the name and number of hours worked for the top performer (judged by number of hours worked)."
+
+work_hours = [('Abby',100),('Billy',400),('Cassie',800)]
+
+def employee_check(work_hours):
+    current_max = 0
+    employee_of_month = ''
+
+    for employee, hours in work_hours:
+        if hours > current_max:
+            current_max = hours
+            employee_of_month = employee
+        else:
+            pass
+    return (employee_of_month, current_max)
+
+print(employee_check(work_hours))
+
+
+
+⚜️"Program that orders the digits of a two-digit positive number from smaller to larger and displays the result on the screen, while also displaying an error message if a non-two-digit number is entered:"
+
+num = int(input("Enter a two-digit positive number: "))
+
+if len(str(num)) != 2 or num < 10:
+    print("Error: Please enter a two-digit positive number.")
+else:
+    digits = [int(d) for d in str(num)]
+    digits.sort(reverse=True)
+    print("The digits in ascending order: ", digits)
+    result = int("".join(map(str, digits)))
+
+print(result)
+
+
+1. Введено число, необходимо проверить если это число двухзначное или нет
+2. Число необходимо разделить
+3. Произвести реверс этих цифр
+4. Вывести число на экран
+
+
+⚜️"You're given a string of random alphanumerical characters with a length between 
+0 and 1000. Write a method to return the first character in the string that does not repeat 
+itself later on."
+
+
+def first_non_repeating(string):
+    # Create a dictionary to store the count of each character
+    char_count = {}
+    # Iterate through the string, keeping track of the count of each character
+    for char in string:
+        if char in char_count:
+            char_count[char] += 1
+        else:
+            char_count[char] = 1
+    # Iterate through the string again, checking for the first character that has a count of 1
+    for char in string:
+        if char_count[char] == 1:
+            return char
+    # If no non-repeating characters are found, return None
+    return None
+
+
+
+⚜️"Determine how often words appear in a given string or set of strings."
+
+s = "Original String Original String"
+split_s = s.lower().split(' ')
+
+occurrences = {}
+
+for word in split_s:
+    if word not in occurrences:
+        occurrences[word] = 1
+    else:
+        occurrences[word] += 1
+
+dupes = []
+for k in occurrences:
+    if occurrences[k] == 2:
+        dupes.append(k)
+
+print(dupes)
+
+
+def word_frequencies(strings):
+
+    # Create an empty dictionary to store the frequency of each word
+    word_count = {}
+    
+    # Iterate through the input strings
+    for s in strings:
+    
+        # Split the string into words
+        words = s.split()
+        
+        # Iterate through the words, keeping track of the frequency of each word
+        for word in words:
+            if word in word_count:
+                word_count[word] += 1
+            else:
+                word_count[word] = 1
+    return word_count
+
+
+word_frequencies("this is a test string with test word")
+{'this': 1, 'is': 1, 'a': 1, 'test': 2, 'string': 1, 'with': 1, 'word': 1}
+
+word_frequencies(["this is a test string","string with test word"])
+{'this': 1, 'is': 1, 'a': 1, 'test': 2, 'string': 2, 'with': 1, 'word': 1}
+
+
+
+
+⚜️"A duplicate removal consists of choosing two adjacent and equal letters and removing them."
+
+ You are required to repeatedly make duplicate removals on s until no adjacent duplicate 
+ elements are left. Return the final string after all such duplicate removals have been made.
+ 
+For example, consider a string abbaca. We remove bb from this string since the letters are adjacent and equal (duplicate removal). There are no other possible moves, so we proceed with the result of this move that makes the string aaca. From this, aa can be removed, so the final string becomes ca. 
+ 
+
+"# Пример для строки"
+def remove_adjacent_duplicates(s):
+    stack = []
+    for i in s:
+        if stack and stack[-1] == i:
+            stack.pop()
+        else:
+            stack.append(i)
+    return ''.join(stack)
+
+
+# print(remove_adjacent_duplicates('abbaca'))
+
+
+"# Пример для листа"
+def remove_adjacent_duplicates1(lst):
+    i = 0
+
+    while i < len(lst) - 1:
+
+        # Check if the current element is the same as the next element
+        if lst[i] == lst[i+1]:
+            # If so, remove the next element
+            lst.pop(i+1)
+        else:
+            # Otherwise, move on to the next element
+            i += 1
+    return lst
+
+
+x = remove_adjacent_duplicates1([1, 2, 2, 3, 3, 3, 4, 4, 4, 4])
+print(x)
+# [1, 2, 3, 4]
+y = remove_adjacent_duplicates1([1,1,1,1,2,2,2,2,3,3,3,3,3])
+print(y)
+# [1,2,3]
+
+
+
+
+⚜️ "Custom sort string -  permute string"
+
+Permute the characters of str with respect to the order defined by order such that if a character x occurs before a character y in order, then x should occur before y in the permuted string.
+
+
+def permute_string(order, str):
+    # Create a dictionary to store the position of each character in the custom order
+    order_dict = {c: i for i, c in enumerate(order)}
+    
+    # Create a list of tuples, where each tuple contains a character from str and its 
+       position in the custom order
+       
+    str_tuples = [(c, order_dict[c]) for c in str]
+    
+    # Sort the list of tuples based on the position in the custom order
+    str_tuples.sort(key=lambda x: x[1])
+    
+    # Extract the characters from the sorted tuples and join them into a single string
+    permuted_str = "".join([t[0] for t in str_tuples])
+    
+    return permuted_str
+
+
+permute_string("cba", "abc")
+"cba"
+
+permute_string("zyxwvutsrqponmlkjihgfedcba", "abcdefghijklmnopqrstuvwxyz")
+"zyxwvutsrqponmlkjihgfedcba"
+
+
+
+
+
+function that takes in two strings, "order" and "str", and returns a permuted version of "str" that follows the custom order specified in "order":
+
+def custom_sort_string(order, s):
+    frequencyDict = {}
+    
+    for i in s:
+        if i in frequencyDict:
+            frequencyDict[i] += 1
+        else:
+            frequencyDict[i] = 1
+    
+    result = ""
+    for i in order:
+        if i in frequencyDict:
+            result += (i * frequencyDict[i])
+            del frequencyDict[i]
+    
+    for i in frequencyDict:
+        result += (i * frequencyDict[i])
+
+    return result
+
+
+⚜️ "Simplifying Absolute Paths"
+
+Solution Walkthrough
+The key to solving this problem is to check the given path for specific characters. On encountering these characters, we have to create a new, simplified path based on the syntactical meaning of elements in the original path. More specifically, these are the cases we need to check,
+
+Repeated or trailing slash characters '/'
+Period '.' or double period '..'
+How Can We Do This Programmatically?
+Traversing through a string, checking each character, and then performing specific operations according to it - this sounds like a job for our favorite data structure, stacks! To make our jobs easy, we first split the input string at each '/' and save it as an array (remember, file/directory names are separated by a '/'!). Next, we traverse this array, and each string (file/directory) is checked per the below conditions.
+
+If it is a file name, add it to the stack.
+If it is a double period '..', pop the top element from the stack (a double period indicates going up a directory).
+If it is a single period '.', no operation is performed (a single period refers to the current directory).
+Once the traversal is complete and all operations are performed, the array of strings is joined to form a single string. During joining, a single slash '/' is added at the start and in between all the strings left in the stack (remember, we do not want a slash '/' at the end as no trailing slashes!). This represents the canonical path.
+
+
+
+from re import X
+
+def simplifyAbsolutePath(path):
+    stack = []
+    pathItems = path.split('/')
+    for item in pathItems:
+        if item and item!='.':
+            if item == '..':
+                if stack:
+                    stack.pop()
+            else:
+                stack.append(item)
+    return '/' + '/'.join(stack)
+    
+
+
+⚜️ "Length of Longest Palinromic Subsequence"
+
+A palindrome is a word, phrase, or sequence that reads the same backward or forwards. A palindromic subsequence is a palindrome derived from a sequence by deleting some or no elements from it. This subsequence is formed without changing the order of the elements in the original sequence.
+
+Given a string s, can you find the length of the longest palindromic subsequence of s?
+
+
+
+
+
+import heapq
+import math
+
+
+def longestPalindromeSubseq(s):
+    if not s:
+        return 0
+    grid = [[0] * len(s) for _ in range(len(s))]
+    
+    for i in range(len(s) - 1, -1, -1):
+        grid[i][i] = 1
+        
+        for j in range(i + 1, len(s)):
+            if s[i] == s[j]:
+                grid[i][j] = grid[i + 1][j - 1] + 2
+            else:
+                grid[i][j] = max(grid[i + 1][j], grid[i][j - 1])
+                
+    return grid[0][len(s) - 1]
+    
+    
+
+
+def longestPalSubseq(string):
+    n = len(string)
+    dp = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        dp[i][i] = 1
+        
+    for start in range(n - 1, -1, -1):
+        for end in range(start + 1, n):
+            if string[start] == string[end]:
+                dp[start][end] = dp[start + 1][end - 1] + 2
+            else:
+                dp[start][end] = max(dp[start + 1][end], dp[start][end - 1])
+                
+    return dp[0][n - 1]
+
+
+string = "abcdefg"
+length = longestPalSubseq(string)
+print(length)
+
+
+
+
+

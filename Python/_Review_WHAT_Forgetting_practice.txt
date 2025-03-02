@@ -1,0 +1,1088 @@
+str = 'Hello World'
+
+stringList = list(str) 	#converting a string to an array
+['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd']
+
+idxStr = [0,2,7,8]
+
+newArr = [ str[i].capitalize() + " Love"  for i in idxStr ]
+#['H Love', 'L Love', 'O Love', 'R Love']
+
+newArr1 = [ str[i].lower() * 5  for i in idxStr ]
+#['hhhhh', 'lllll', 'ooooo', 'rrrrr']
+
+********************************
+sampleStr = "Hello, this is a sample string"
+ 
+print( "Last character in string : " , sampleStr[-1] )
+print( "Second Last character in string : " , sampleStr[-2] )
+print( "First character in string : " , sampleStr[ -len(sampleStr) ] )
+
+********************************
+# Check the size of string before accessing character by index
+
+sampleStr = "Hello"
+n = 50    
+if n < len(sampleStr) :
+    print( sampleStr[50] )
+else :         
+    print ("Index : Out of range")
+
+********************************
+
+==========================================
+Check if a list contains all the elements of another list
+==========================================
+
+def main():
+    # List of string 
+    list1 = ['Hi' ,  'hello', 'at', 'this', 'there', 'from']
+    
+    # List of string
+    list2 = ['there' , 'hello', 'Hi']
+    
+         
+  # check if list1 contains all elements in list2
+      
+    result =  all(elem in list1  for elem in list2)
+        if result:
+        print("Yes, list1 contains all elements in list2")    
+    else :
+        print("No, list1 does not contains all elements in list2")    
+        
+     
+# check if list1 contains any elements of list2
+    result =  any(elem in list1  for elem in list2)
+    if result:
+        print("Yes, list1 contains any elements of list2")    
+    else :
+        print("No, list1 contains any elements of list2")        
+ 
+********************************
+
+    # List of string 
+list1 = ['Hi' ,  'hello', 'at', 'this', 'there', 'from']
+
+    # Add an element at 3rd position in the list
+    list1.insert(3, 'why')
+
+list2 = [3,5,7,1]
+ 
+  # Insert all the elements in list2 to list1 between 3 to 4 th element
+    list1 = list1[:3] + list2 + list1[3:]
+    
+    
+ #  Adding item in list using list.append()
+	list1.append("from")
+	
+********************************
+
+# List of tuples i.e. word and its frequency count    
+    wordFreq = [ ('the' , 34) , ('at' , 23), ('should' , 1) , ('from' , 3) ]
+
+#By default sort() function will sort the list of tuple by first item in tuple
+wordFreq.sort()    
+
+#Sort List of tuple by 2nd Item of tuple, using Lambda Function as key function
+wordFreq.sort(key=lambda elem: elem[1])
+
+********************************
+
+#Sort a list of strings  |  list.sort()
+listOfStrings = ['hi' , 'hello', 'at', 'this', 'there', 'from']
+
+listOfStrings.sort()
+reverse=True
+
+#Sort List of string by Numeric Order
+listOfNum = ['55' , '101', '152', '98', '233', '40', '67']
+listOfNum.sort(key=int)
+
+listOfNum.sort(reverse=True, key=int)
+
+
+********************************
+# Remove duplicate elements from list
+
+def removeDuplicates(listofElements):
+	uniqueList = []
+	for elem in listofElements:
+		if elem not in uniqueList:
+			uniqueList.append(elem)
+    
+	return uniqueList
+
+
+# List of Numbers with duplicates   
+listOfNums = [10, 2, 45, 3, 5, 7, 2 , 10, 45,  8, 10]
+
+#Removing duplicates from a List using set
+listOfNums = list(set(listOfNums))
+
+
+# Removing duplicates from a List by keeping the Order
+listOfNums = removeDuplicates(listOfNums)
+********************************
+#Parse integers from list
+
+testList = [1, 4.66, 7, "abc", 5, True, 3.2, False, "Hello", 7]
+print([x for x in testList if isinstance(x,int) and not isinstance(x,bool)])
+
+def parseIntegers(mixedList):
+    return [x for x in testList  if (isinstance(x, int)
+               or isinstance(x, float))
+               and not isinstance(x, bool)]
+
+b = parseIntegers(testList)
+
+
+
+********************************
+#Parse integers from string
+
+import re
+string1 = "498results should get"
+
+b=int(re.search(r'\d+', string1).group())
+
+
+r = "456results string789"
+s = ''.join(x for x in r if x.isdigit())
+print ( int(s) )
+
+
+********************************
+# Convert a list to string
+
+listOfwords = ["This" , "is", "a", "sample", "program"]
+
+fullStr = ', '.join(listOfwords)
+print(fullStr)
+
+
+mixList = ["This" , "is", "a", "sample", 44, 55, 66, "program"]
+fullStr = '_'.join([str(elem) for elem in mixList ])
+print("Joined String : ", fullStr)
+
+********************************
+# Remove element from a list by value or Index   |  remove()
+listOfnum = [12, 44, 56, 45, 34, 3, 56, 4, 33, 44, 56]
+
+# Remove first occurrence of 56 from List 
+    listOfnum.remove(56)
+
+ # If given element doesn't exists in list, then remove() can throw Error
+    # Therefore use try / except while calling list.remove()
+    try :
+        listOfnum.remove(99)
+    except ValueError:
+        print("Given Element Not Found in List")        
+        
+    # Check if element exist in List, before removing
+    if 99 in listOfnum:
+        listOfnum.remove(99)
+    else:
+        print("Given Element Not Found in List")
+
+********************************
+#we’re sorting a list of tuples by the second value
+in each tuple
+tuples = [(1,'d'),(2,'b'),(4,'a'),(3,'c')]
+sorted(tuples, key=lambda x: x[1])
+
+
+sorted(range(-5, 6), key=lambda x: x * x)
+[0, -1, 1, -2, 2, -3, 3, -4, 4, -5, 5]
+********************************
+
+ # Remove the element at index 2 in list    
+    value = listOfnum.pop(2)
+    
+    
+# Remove duplicates function
+    
+    def remove_duplicates(lst):
+    res = []
+    for x in lst:
+        if x not in res:
+            res.append(x)
+    return res
+
+a = remove_duplicates(listOfnum)
+print(a)
+
+
+********************************
+
+    # Creating an Empty Tuple
+    emptyTuple = ()
+    
+     tupleObj = ('Riti', 31, 'London', 78.88)
+
+    listOfNumbers = [12 , 34, 45, 22, 33 ]
+    
+    # Create a tuple from list by type casting
+    tupleObj = tuple(listOfNumbers)
+    
+        for elem in tupleObj:
+        print(elem)
+        
+        # Check if element 34 exists in tuple
+    if 34 in tupleObj:
+        print("Element Found in Tuple")
+    else:
+        print("Element not Found in Tuple")    
+        
+        
+# Check if element 1001 doesn't exists in tuple    
+    if 1001 not in tupleObj:
+        print("Yes, element Not In tuple")
+    else:
+        print("Element is in Tuple")    
+        
+        
+# Find the index of 24 in tuple, if not found then handle the exception
+    try :
+        pos = tupleObj.index(24)
+        print("Element 24 Found at : " , pos)
+    except ValueError as e:
+        print(e)
+
+    # Get the count of how many times 34 appears in tuple
+    count = tupleObj.count(34)
+    
+    print("Count of 34 in tuple is : ", count)
+   
+    # Based on occurrence count check if element exists in tuple
+    if tupleObj.count(34) > 0 :
+        print("34 Found in Tuple")
+    else:
+        print("34 Not Found in Tuple") 
+********************************
+    # Append 19 at the end of tuple
+    tupleObj = tupleObj + (19 ,)
+
+
+
+********************************
+
+    # Dictionary of string and int
+    wordFreqDic = {
+        "Hello": 56,
+        "at" : 23 ,
+        "test" : 43,
+        "this" : 78
+        }
+
+    # Check if dict contains any entry with key 'test' 
+    if "test" in wordFreqDic:
+        print("Yes 'test' key exists in dict")
+    else:
+        print("No 'test' key does not exists in dict")    
+
+
+#    Check if key exists in dictionary using get()
+    if wordFreqDic.get("test") != None:
+        print("Yes 'test' key exists in dict")    
+    else:
+        print("No 'test' key does not exists in dict") 
+        
+        
+    # But what of any element in dictionary has value None i.e.
+    
+    wordFreqDic["from"] = None
+    
+    if wordFreqDic.get("from", -1) != -1:
+        print("Yes 'from' key exists in dict")
+    else:
+        print("No 'from' key does not exists in dict")       
+        
+        
+********************************
+    # Create a new list from the view object returned by keys() 
+    dictkeys = list (wordFreqDic.keys())
+
+#    Creating a filtered list of keys in dictionary using for loop
+  
+    dictkeys = list()
+    
+    # Creating a list of keys that start with 't'     
+    for x in wordFreqDic :
+        if x.startswith('t') :
+            dictkeys.append(x)
+
+    # Creating a list of keys that start with 't'        
+    dictkeys = [x for x in wordFreqDic if x.startswith('t')]
+
+********************************
+#    Creating a list of dulicate values in dictionary
+   
+    uniqueValues = list()
+    duplicateValues = list()
+    
+    # Creating a list of all duplicate values in dictionary     
+    for x in wordFreqDic.values() :
+        if x not in uniqueValues :
+            uniqueValues.append(x)
+        else:    
+            duplicateValues.append(x)
+     
+    print("List of Duplicate values in Dictionary" , duplicateValues)
+
+
+********************************
+#Enumerate() function
+for i, v in enumerate( ['tic', 'tac', 'toe'] )
+	print(i, v)
+
+
+********************************
+
+    # If key exist in dictionary then delete it using del.
+    if "at" in wordFreqDic:
+        del wordFreqDic["at"]
+        
+    # If key is not present in dictionary, then del can throw KeyError
+    try:
+        del wordFreqDic["testing"]
+    except KeyError:
+        print("Key 'testing' not found")
+        
+        
+    # Trying to delete an element from dict, which is not present.
+    # Also, if we don't pass any default value then it will throw KeyError.     
+    
+    try:
+        wordFreqDic.pop("testing")    
+    except KeyError:
+        print("Key not found")   
+        
+********************************
+#Get a list of keys from dictionary which has the given value
+
+def getKeysByValue(dictOfElements, valueToFind):
+    listOfKeys = list()
+    listOfItems = dictOfElements.items()
+    for item  in listOfItems:
+        if item[1] == valueToFind:
+            listOfKeys.append(item[0])
+    return  listOfKeys 
+
+********************************
+wordsDict = {
+        "Hello": 56,
+        "at" : 23 ,
+        "test" : 43,
+        "this" : 43,
+        "who" : [56, 34, 44]
+        }
+
+
+#     Get list of keys with value 43 using list comprehension
+
+listOfKeys = [key  for (key, value) in wordsDict.items() if value == 43]
+print(listOfKeys)
+
+
+
+#output ['test', 'this']
+********************************
+# List of strings
+    listOfStr = ["hello", "at" , "test" , "this" , "here" , "now" ]
+        
+    # List of ints
+    listOfInt = [56, 23, 43, 97, 43, 102]
+    
+    # Create a zip object from two lists
+    zipbObj = zip(listOfStr, listOfInt)
+    
+    # Create a dictionary from zip object
+    dictOfWords = dict(zipbObj)
+    
+    displatDict("Dictionary from two Lists " , dictOfWords)
+
+
+********************************
+    # Filter dictionary by keeping elements whose values are string of length 6
+    newDict = dict(filter(lambda elem: len(elem[1]) == 6,dictOfNames.items()))
+
+
+    # Filter dictionary by keeping elements whose keys are divisible by 2
+    newDict = { key:value for (key,value) in dictOfNames.items() if key % 2 == 0}
+
+********************************
+
+mylist = [1,2,3,4,5,6,7,8,9,10,2,1,6,31,20]
+newlist = []
+for i in mylist:
+  if i not in newlist:
+    newlist.append(i)
+print(newlist)
+
+
+
+test_list = [1, 3, 4, 6, 7]
+remove_list = [3, 6]
+print ("The original list is : " + str(test_list))
+print ("The original list is : " + str(remove_list))
+
+res = [i for i in test_list if i not in remove_list]
+print ("The list after performing remove operation is : " + str(res))
+
+
+
+********************************
+
+def main():
+
+if __name__ == '__main__':
+    main()
+
+
+
+********************************
+def converter(listOfelems, callback):
+    newList = list()
+    # Iterate oover each element of list
+    for elem in listOfelems:
+        # call given function on each element & append result in new list
+        newList.append(callback(elem))
+    return newList
+
+
+listOfNum = [35, 36, 37,38,40]
+
+    # passing lambda function as callback function
+modList = converter(listOfNum, lambda x : (x*9)/5 + 32)
+print('Modified list : ', modList)
+
+********************************
+
+playlist = {
+    'title':'patagonia bus',
+    'author' : 'colt steele',
+    'songs': [
+        {'title':'song1', 'artist':['blue'],'duration':2.5},
+        {'title':'song2', 'artist':['kitty','djcat'], 'duration':5.25},
+        {'title':'song3', 'artist':['garfield'], 'duration':2.0}
+    ]
+
+}
+
+
+print(playlist['songs'][0]['duration'])
+
+print(playlist['songs'][2]['title'])
+
+
+for item in playlist['songs']:
+    print(item['artist'])
+
+
+total_length = 0
+for song in playlist['songs']:
+    total_length=total_length + song['duration']
+
+print(total_length)
+
+
+********************************
+# Sorted Array
+arr = [64, 25, 12, 22, 11]
+
+for i in range(len(arr)):
+    min = i
+
+    for j in range(i+1, len(arr)):
+        if arr[min] > arr[j]:
+            min = j
+
+    arr[i], arr[min] = arr[min], arr[i]
+
+
+print("Sorted Array")
+for i in range(len(arr)):
+    print(arr[i])
+
+
+
+def bubbleSort(arr):
+
+    n = len(arr)
+
+    for i in range(n):
+
+    #last i elements are already in place
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+
+    for i in range(len(arr)):
+        print(arr[i])
+
+arr = [64, 34, 25, 12, 22, 11, 90]
+
+
+print("Sorted Array: ")
+bubbleSort(arr)
+
+********************************
+
+answear = {count : chr(count) for count in range(65,92)}
+
+print(answear)
+
+for k, v in answear.items():
+    print(f"key: {k}   value: {v}")
+
+
+********************************
+
+ints = [8, 23, 45, 12, 78]
+
+for idx, val in enumerate(ints):
+    print(idx, val)
+
+print("\n")
+
+index = 0
+while index < len(ints):
+    print(index, ints[index])
+    index += 1
+
+
+print("\n")
+
+for i in range(len(ints)):
+   print (i, ints[i])
+
+
+
+
+********************************
+
+def count_words(string):
+    string_list = string.split(" ")
+    return len(string_list)
+
+print("Counted words: ", count_words("Hey there it's me!"))
+
+
+
+********************************
+def throws(num):
+    try:
+        return num / 0
+    except ZeroDivisionError:
+        print("Division by zero")
+    finally:
+        print("In finally block for cleanup")
+
+print(throws(4))
+
+
+
+
+********************************
+'''
+You can filter the string by digits using str.isdigit method
+'''
+str1 = "3158 reviews"
+x = list(filter(str.isdigit, str1))
+print(x)
+
+
+print("\n")
+
+'''
+extract integers from mixed list
+'''
+
+testList = [1, 4.66, 7, "abc", 5, True, 3.2, False, "Hello", 7]
+
+def parseIntegers(mixedList):
+    return [x for x in mixedList if (isinstance(x, int) or isinstance(x, float)) and not isinstance(x, bool)]
+
+print(parseIntegers(testList))
+
+print("\n")
+
+
+
+'''
+Extract numbers from a list of strings
+'''
+
+str = "h3110 23 cat 444.4 rabbit 11 2 dog"
+
+new_list1 = [int(m) for n in str for m in n if m in '0123456789']
+print(new_list1)
+
+
+print("\n")
+
+'''
+Convert all strings in a list to int
+'''
+
+results = ['1', '2', '3']
+
+results1 = [int(i) for i in results]
+
+results2 = list(map(int, results))
+
+print(results1)
+print(results2)
+
+
+
+str1 = ['1 2 3', '4 5 6', 'invalid']
+numbers = []
+for item in str1:
+    for subitem in item.split():
+        if(subitem.isdigit()):
+            numbers.append(subitem)
+print(numbers)
+# ['1', '2', '3', '4', '5', '6']
+
+
+
+
+********************************
+# factorial
+
+def fact(num):
+    if num == 0:
+        return 1
+    return num * fact(num - 1)
+
+print(fact(8))
+
+
+
+
+********************************
+
+# Function for nth fibonacci number - Space Optimisataion 
+# Taking 1st two fibonacci numbers as 0 and 1
+
+
+def fibonacci(n):
+    a = 0
+    b = 1
+
+    if n < 0 :
+        print("Enter a number greater than Zero")
+    elif n == 0:
+        return a
+    elif n == 1:
+        return b
+    else:
+        for i in range (2, n):
+            c = a + b
+            a = b
+            b = c
+        return b
+
+
+# Use recursion
+
+def Fibonacci(n):
+    if n < 0:
+        print("Enter a number greater than Zero")
+
+    elif n == 1:
+        return 0
+
+    elif n == 2:
+        return 1
+
+    else:
+        return Fibonacci(n-1) + Fibonacci(n-2)
+
+print('*' * 21)
+
+# print(fibonacci(-1))
+# print(fibonacci(1))
+# print(fibonacci(8))
+
+
+# print(Fibonacci(-1))
+print(Fibonacci(2))
+print(Fibonacci(9))
+
+
+def fib_list(x):
+     nums = []
+     a, b = 0, 1
+     while len(nums) < x:
+         nums.append(b)
+         a, b = b, a+b
+     return nums
+
+print(fib_list(9), ": Result")
+
+
+********************************
+#Count the number of array values less than a given Ydef greater (arr, y):
+    count = 0
+    for i in range(len(arr)):
+        if arr[i] > y:
+            count = count + 1
+    return count
+
+print(greater(arr, 4))
+
+
+
+********************************
+arr = [[11, 12, 5, 2], [15, 6,10], [10, -4, 8, 27, 12, 5], [12,15,49,6]]
+
+for row in arr:
+    for elem in row:
+        print(elem, end=' ')
+    print()
+
+sum = 0
+max = 0
+min = 0
+for row in arr:
+    for elem in row:
+        sum = sum + elem
+        if elem > max:
+            max = elem
+        if elem < min:
+            min = elem
+    avg = sum / len(arr) / 2
+    print()
+print(f"Sum of all elements: {sum}")
+print(f"Max of elem: {max}")
+print(f"Min of elem: {min}")
+print(f"Average: {avg}")
+
+
+max = 0
+min = 0
+sum = 0
+for i in range(len(arr)):
+    for j in range(len(arr[i])):
+        sum = sum + arr[i][j]
+        if arr[i][j] > max:
+            max = arr[i][j]
+        if arr[i][j] < min:
+            min = arr[i][j]
+    avg = sum / len(arr) / 2
+
+print(f"max value: {max}")
+print(f"min value: {min}")
+print(f"sum of two dimensional array : {sum}")
+print(int(avg))
+
+
+
+********************************
+
+for i in range (1,100):
+    if i% 3 == 0:
+        print('fizz')
+    elif i%5 == 0:
+        print('buzz')
+    elif (i % 3 == 0) and (i % 5 ==0):
+        print('fizzbuzz')
+    else:
+        print(i)
+
+********************************
+
+def max_value (arr):
+    max_ = arr[0]
+
+    for item in arr:
+        if item > max_:
+            max_ = item
+    return max_
+
+
+a = [12,324,35,-4,0, 34]
+
+print(f'max value: ', max_value(a))
+
+
+def min_value (arr):
+    min_val = arr[0]
+
+    for item in arr:
+        if item < min_val:
+            min_val = item
+    return min_val
+
+
+
+********************************
+#Insertion Sort
+
+def insertion_sort(arr):
+    for i in range (0,len(arr)):
+        current_value = arr[i]
+        position = i
+
+        while position > 0 and arr[position -1] > current_value:
+            arr[position] = arr [position - 1]
+            position = position - 1
+        arr[position] = current_value
+
+    return arr
+
+
+arr = [1,45,4,2,6,3,11,56,23]
+print (insertion_sort(arr))
+
+
+def insertionSort(alist):
+    for index in range(1,len(alist)):
+        currentvalue = alist[index]
+        position = index
+
+    while position>0 and alist[position-1]>currentvalue:
+        alist[position]=alist[position-1]
+        position = position-1
+        alist[position]=currentvalue
+
+
+alist = [54,26,93,17,77,31,44,55,20]
+insertionSort(alist)
+print(alist)
+
+
+********************************
+def sumOfOdd5000():
+
+    sum = 0
+    for i in range (1,5001):
+
+        if (i % 2 == 1):
+            sum += i
+
+    print (sum)
+
+
+********************************
+# Sum Elements of Two Lists
+
+ethernet_devices = [1, [7], [2], [8374163], [84302738]]
+usb_devices = [1, [7], [1], [2314567], [0]]
+
+
+# two lists with Comprehension
+all_devices = [x + y for x, y in zip(ethernet_devices, usb_devices)]
+
+
+********************************
+#Find largest, smallest, second largest and second smallest in a list
+
+list1 = [12, 45, 2, 41, 31, 10, 8, 6, 4]
+
+# Python program to find largest, smallest,
+# second largest and second smallest in a
+# list with complexity O(n)
+def Range(list1):
+	largest = list1[0]
+	largest2 = list1[0]
+	lowest = list1[0]
+	lowest2 = list1[0]
+	for item in list1:
+		if item > largest:
+			largest = item
+		elif largest2!=largest and largest2 < item:
+				largest2 = item
+		elif item < lowest:
+			lowest = item
+		elif lowest2 != lowest and lowest2 > item:
+			lowest2 = item
+
+	print("Largest element is:", largest)
+	print("Smallest element is:", lowest)
+	print("Second Largest element is:", largest2)
+	print("Second Smallest element is:", lowest2)
+
+********************************
+def reverseList (list):
+    for i in range(int(len(list)/2)):
+        tmp = list[len(list)-1-i]
+        list[len(list)-1-i] = list[i]
+        list[i] = tmp
+    return list
+
+
+arr_list = [1,2,3,4,5]
+
+print(reverseList(arr_list))
+
+
+********************************
+def average_of_list(lst):
+    average = sum(lst) / len(lst)
+    return average
+
+lst = [1,2,3,4]
+
+print("Average of the list =", round(average_of_list(lst), 2))
+
+
+********************************
+numbers = [1,2,3,4,5,6]
+
+odd = [num for num in numbers if num % 2 == 1]
+print(odd)
+
+even = [num for num in numbers if num % 2 == 0]
+print(even)
+
+val = [num ** 4 for num in numbers]
+print(val)
+
+val1 = [num * 2 if num % 2 == 0 else num / 2 for num in numbers]
+print(val1) # even numbers multiply by 2 and odd numbers divided by 2
+
+********************************
+# Create a list of strings: fellowship
+fellowship = ['frodo', 'samwise', 'merry', 'aragorn', 'legolas', 'boromir', 'gimli']
+
+# Create list comprehension: new_fellowship
+new_fellowship = [member for member in fellowship if len(member) >= 7]
+
+# Print the new list
+print(new_fellowship)
+
+
+
+********************************
+# file vehicles.py
+class Vehicle:
+    def __init__(self, wheels, capacity, make, model):
+        self.wheels = wheels
+        self.capacity = capacity
+        self.make = make
+        self.model = model
+        self.mileage = 0
+        
+    def drive(self,miles):
+        self.mileage += miles
+        return self
+
+    def reverse(self,miles):
+        self.mileage -= miles
+        return self
+
+
+class Bike(Vehicle):
+    def vehicle_type(self):
+        return "Bike"
+
+
+class Car(Vehicle):
+    def set_wheels(self):
+        self.wheels = 4
+        return self
+
+
+class Airplane(Vehicle):
+    def fly(self, miles):
+        self.mileage += miles
+        return self
+
+
+
+v = Vehicle(4,8,"dodge","minivan")
+print(v.make)
+
+
+b = Bike(2,1,"Schwinn","Paramount")
+print(b.vehicle_type())
+
+
+c = Car(8,5,"Toyota", "Matrix")
+c.set_wheels()
+print(c.wheels)
+
+
+a = Airplane(22,853,"Airbus","A380")
+a.fly(580)
+print(a.mileage)
+
+********************************
+
+import sys
+n = int (input("Enter a number :  "))
+d = dict()
+
+for i in range(1, n + 1):
+    d[i] = i * i
+
+print(d)
+
+
+********************************
+for i in range(2018, 1, -4):
+    print(i)
+
+def countdownByFour():
+    for i in range (2018, 0, -4):
+        print (i)
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+********************************

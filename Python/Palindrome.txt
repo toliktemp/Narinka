@@ -1,0 +1,156 @@
+Palindrome Phrase is a collection of words and special characters, which remains the exact same way when read backwards
+
+
+A Palindrome Number is a collection of numbers which remains the exact same way when read backwards.
+
+Palindrome Examples:
+Mom
+Madam
+a2332a
+Rubber
+Dad
+123454321
+
+
+📍  First Solution:
+
+
+number = int(input("Enter any number :"))
+
+#store a copy of this number
+temp=number
+
+#calculate reverse of this number
+reverse_num=0
+
+
+while(number > 0):
+
+    #extract last digit of this number
+    digit= number % 10
+
+    #append this digit in reveresed number
+    reverse_num = reverse_num * 10 + digit
+
+    #floor divide the number leave out the last digit from number
+    number = number // 10	
+
+
+#compare reverse to original number
+if(temp == reverse_num):
+    print("The number is palindrome!")
+else:
+    print("Not a palindrome!")
+
+
+
+📍 Second Solution:
+
+
+def check_palindrome(string):
+
+    length = len(string)
+    first = 0
+    last = length - 1
+    status = True
+
+    while(first < last):
+           if(string[first] == string[last]):
+               first = first+1
+               last = last-1
+           else:
+               status = False
+               break
+
+    return int(status)
+
+
+string = input("Enter the string: ")
+
+status = check_palindrome(string)
+
+if(status):
+    print("It is a palindrome ")
+else:
+    print("Sorry! Try again")
+
+
+
+
+📍    Thirt Solution:
+
+
+def check_palindrome_1(string):
+    reversed_string = string[::-1]
+    status = 1
+    
+    if(string != reversed_string):
+        status = 0
+    return status
+
+
+string = input("Enter the string: ")
+status = check_palindrome_1(string)
+
+if(status):
+    print("It is a palindrome ")
+else:
+    print("Sorry! Try again")
+
+
+
+❄️		Palindrome String
+
+
+🔷
+
+
+def isPalindrome(word):
+    return word == word[::-1]
+
+
+word = 'kayak'
+result = isPalindrome(word)
+
+if result:
+    print("Yes")
+else:
+    print("No")
+
+
+🔷
+
+def isPalindrome(str):
+    for i in range(0, int(len(str)/2)):
+        if str[i] != str[len(str)-i-1]:
+            return False
+    return True
+
+
+word = 'kayak'
+result = isPalindrome(word)
+
+if result:
+    print("Yes")
+else:
+    print("No")
+
+
+🔷
+
+def isPalindrome(str):
+    reversed_str = ''.join(reversed(str))
+    if str == reversed_str:
+        return True
+    return False
+
+
+word = 'kayak'
+result = isPalindrome(word)
+
+if result:
+    print("Yes")
+else:
+    print("No")
+
+
